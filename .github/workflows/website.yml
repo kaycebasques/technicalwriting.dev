@@ -19,7 +19,7 @@ jobs:
           source ${{github.workspace}}/bootstrap.sh
       - name: generate
         run: |
-          make html
+          source ${{github.workspace}}/build.sh
       - name: pages
         uses: actions/configure-pages@v3
       - name: upload
