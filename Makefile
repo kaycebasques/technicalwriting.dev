@@ -1,5 +1,5 @@
 SPHINXOPTS ?=
-SPHINXBUILD ?= sphinx-build
+SPHINXBUILD ?= python3 -m sphinx
 SOURCEDIR = .
 BUILDDIR  = _build
 
