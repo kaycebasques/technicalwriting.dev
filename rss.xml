@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>technicalwriting.dev</title>
+        <link>https://technicalwriting.dev</link>
+	<description>
+            TODO
+	</description>
+        <language>en-us</language>
+	<pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+	<atom:link href="https://technicalwriting.dev/rss.xml" rel="self"
+                type="application/rss+xml"/>
+        <item>
+            <title>TODO</title>
+	    <link>https://technicalwriting.dev/TODO.html</link>
+	    <description>
+                TODO
+            </description>
+	    <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+	    <guid>https://technicalwriting.dev/TODO.html</guid>
+        </item>
+    </channel>
+</rss>

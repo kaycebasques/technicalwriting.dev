@@ -1,0 +1,67 @@
+/* TODO: Struggle with CSS here */
+
+a.headerlink {
+    margin-left: 0.25em;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+div.highlight {
+    background-color: lightgrey;
+    margin: 1em 0 0 0;
+    padding: 1em;
+}
+
+div.highlight pre {
+    overflow-x: scroll;
+}
+
+footer {
+    margin: 3em 0 0 0;
+    padding: 0;
+}
+
+footer p {
+    text-align: center;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+}
+
+footer pre {
+    width: max-content;
+    margin: 0 auto;
+}
+
+footer pre code {
+    font-family: monospace;
+}
+
+img {
+    max-width: 100%;
+}
+
+nav {
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.toctree-l1 {
+    padding-bottom: 1em;
+}
