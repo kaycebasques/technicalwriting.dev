@@ -4,20 +4,24 @@
         <title>technicalwriting.dev</title>
         <link>https://technicalwriting.dev</link>
 	<description>
-            TODO
+            A research blog focused on the design, UI, UX, and implementation
+            of real-world documentation websites.
 	</description>
         <language>en-us</language>
-	<pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+	<pubDate>Sat, 17 Feb 2024 19:35:03 +0000</pubDate>
 	<atom:link href="https://technicalwriting.dev/rss.xml" rel="self"
                 type="application/rss+xml"/>
         <item>
-            <title>TODO</title>
-	    <link>https://technicalwriting.dev/TODO.html</link>
+            <title>Field research: search boxes</title>
+	    <link>https://technicalwriting.dev/searchbox.html</link>
 	    <description>
-                TODO
+                Where should I put the search box on my documentation site?
+                What text should I put inside the search box? What should
+                happen when I type stuff into the search box? What should the
+                search results page look like?
             </description>
-	    <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
-	    <guid>https://technicalwriting.dev/TODO.html</guid>
+	    <pubDate>Sat, 17 Feb 2024 19:35:03 +0000</pubDate>
+	    <guid>https://technicalwriting.dev/searchbox.html</guid>
         </item>
     </channel>
 </rss>
