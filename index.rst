@@ -9,10 +9,12 @@ documentation websites.
 Field research
 --------------
 
+* :ref:`Methodology <methodology>`
 * :ref:`Search boxes <searchbox>`
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
+   methodology
    searchbox
