@@ -31,9 +31,9 @@ Summary
 * There are a lot of keyboard shortcuts used for accessing the search box:
   :kbd:`S`, :kbd:`/`, :kbd:`Ctrl+K`, etc.
 
---------
-Research
---------
+--------------
+Field research
+--------------
 
 See :ref:`methodology` for background on my research approach.
 
