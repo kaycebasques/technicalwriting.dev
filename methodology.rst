@@ -34,3 +34,10 @@ Popular sites
 I lean towards studying docs sites for products that I know to be popular. The
 rationale is that these sites essentially condition us around what's normal
 and what's not normal for a docs site.
+
+-----------------------
+Left-to-right text bias
+-----------------------
+
+I don't work on heavily internationalized docs sites and therefore I have
+left-to-right text biases such as "the site nav is usually on the left".
