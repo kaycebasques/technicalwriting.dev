@@ -1,4 +1,4 @@
-.. _searchbox:
+.. _searchboxes:
 
 ============================
 Field research: search boxes
@@ -41,6 +41,28 @@ where the search term occurs in the top matches. It seems to highlight 3
 sections where there's a match in each doc.
 
 .. image:: /_static/requests-serp-20240217.png
+
+React
+=====
+
+The React homepage has a search box taking up most of the header. On the far
+left of the search box there's a magnifying glass icon. The placeholder text is
+``Search``. The keyboard shortcut for accessing the search box (:kbd:`Ctrl+K`)
+is shown on the far right.
+
+.. image:: /_static/react-home-20240218.png
+
+The quickstart page has the same search box UI as the homepage.
+
+.. image:: /_static/react-quickstart-20240218.png
+
+Focusing the search box presents a modal. Typing ``test`` into the search box
+yields a list of matches. The section headings (e.g. ``REACT CANARIES:
+ENABLING INCREMENTAL FEATURE ROLLOUT OUTSIDE META``) are the doc titles. The
+query matches are highlighted in the brand color. The search engine is powered
+by Algolia.
+
+.. image:: /_static/react-searchbox-20240218.png
 
 -----
 Tools

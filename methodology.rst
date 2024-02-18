@@ -6,24 +6,26 @@ Field research: methodology
 
 This page outlines how I approach all my field research.
 
---------------------------------------------------------
-Heavy bias towards docs sites for computer professionals
---------------------------------------------------------
+----------------------------------------------
+Bias for docs sites for computer professionals
+----------------------------------------------
 
-I write docs for software engineers. My research is heavily biased towards
-docs sites for these people. The docs sites for people in other domains
-are under very different constraints. However, over time I may try to sample
-docs sites from other domains precisely because they might approach the same
-problem very differently than docs sites for software engineers.
+I'm paid to write docs for computer professionals, mostly software engineers.
+My research is heavily biased towards docs sites for these people. The docs
+sites for people in other domains are under very different constraints. I.e. if
+you're not also writing docs for computer professionals, my research might not
+be relevant for you. Over time I may try to sample docs sites from other
+domains precisely because they might approach similar problems very
+differently.
 
 -----------------
 Docs site "types"
 -----------------
 
 I aim to get a wide-range of samples from different "types" of docs sites.
-The docs sites for code libraries, CLI tools, programming languages, and
-platforms are all under very different constraints and therefore often solve
-the same problem in very different ways.
+The docs sites for code libraries, frameworks, CLI tools, programming
+languages, and platforms are all under quite different constraints and
+therefore often solve the same problem in very different ways.
 
 -------------
 Popular sites

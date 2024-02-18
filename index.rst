@@ -10,11 +10,11 @@ Field research
 --------------
 
 * :ref:`Methodology <methodology>`
-* :ref:`Search boxes <searchbox>`
+* :ref:`Search boxes <searchboxes>`
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    methodology
-   searchbox
+   searchboxes
