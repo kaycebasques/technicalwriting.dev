@@ -21,3 +21,4 @@ html_static_path = ['_static']
 html_extra_path = [
     'rss.xml'
 ]
+html_permalinks_icon = '#'
