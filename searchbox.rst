@@ -14,6 +14,8 @@ This page contains my `field research`_ around the following questions:
 * What should happen when I type stuff into the search box?
 * What should the search results page look like?
 
+See :ref:`methodology` for background on my research approach.
+
 ---------
 Libraries
 ---------
@@ -35,10 +37,14 @@ On the quickstart page the search box is below-the-fold.
 Typing ``test`` into the search box does nothing.
 
 The search results page presents the total number of matches and previews of
-where the search term occurs in the top matches. It seems to highlight the
-query term up to 3 times in each doc.
+where the search term occurs in the top matches. It seems to highlight 3
+sections where there's a match in each doc.
 
 .. image:: /_static/requests-serp-20240217.png
+
+-----
+Tools
+-----
 
 ---------
 Languages
@@ -56,6 +62,8 @@ The quickstart page also doesn't have a search box.
 .. image:: /_static/rust-quickstart-20240217.png
 
 The search box for rustdoc, however, takes up pretty much the entire header.
+The keyboard shortcut for accessing the search box is ``S``. The placeholder
+text is ``Click or press 'S' to search, '?' for more options...``.
 
 .. image:: /_static/rustdoc-home-20240217.png
 
@@ -65,8 +73,8 @@ Types``.
 
 .. image:: /_static/rustdoc-serp-20240217.png
 
-There's also a search help modal that shows keyboard shortcuts and structured
-search tricks.
+There's also a search help modal (keyboard shortcut: ``?``) that shows more
+keyboard shortcuts and structured search tricks.
 
 .. image:: /_static/rustdoc-searchhelp-20240217.png
 
@@ -122,7 +130,7 @@ more results" UI element.
 
 .. image:: /_static/mdn-searchbox-20240217.png
 
-The search results page shows the total number of matches, previews of where
+The search results page shows the total number of matches and previews of where
 the term occurs in the top matches. It also presents options to filter by
 relevance or popularity. Presumably the "best" filter is a combination of
 relevance and popularity?
