@@ -14,6 +14,8 @@ This page contains my `field research`_ around the following questions:
 * What should happen when I type stuff into the search box?
 * What should the search results page look like?
 
+See :ref:`methodology` for background on my research approach.
+
 -------
 Summary
 -------
@@ -21,21 +23,26 @@ Summary
 * The search box is usually in the header. The position within the header
   varies. Some sites have it in the center. Others have it on the right. None
   had it on the left. Some have it take up the entire header.
+* Most sites keep the position of the search box consistent across pages.
 * There's usually a magnifying glass icon in the search box.
 * The placeholder text varies a lot. Some search boxes have no placeholder
   text. The single word ``Search`` is the greatest common denominator.
 * Search boxes often expand when you focus them.
 * Results are usually shown immediately after typing.
-* A few sites only surface results through modals i.e. they don't have
+* Some sites only surface results through modals i.e. they don't have
   dedicated search results pages.
-* There are a lot of keyboard shortcuts used for accessing the search box:
-  :kbd:`S`, :kbd:`/`, :kbd:`Ctrl+K`, etc.
+* The keyboard shortcut used for accessing the search box is not standardized.
+  Some sites use :kbd:`S`, others use :kbd:`/`, etc.
+* There seems to be a lot of variety in search algorithms. Some sites seem to
+  only check the doc title. Others check both the title and content. Others
+  use popularity as a ranking signal.
 
 --------------
 Field research
 --------------
 
-See :ref:`methodology` for background on my research approach.
+For every site I looked at (something close to a) homepage and (something close
+to a) quickstart tutorial.
 
 Libraries
 =========
@@ -84,8 +91,94 @@ you enter text.
 
 .. image:: /_static/react-searchbox-20240218.png
 
-Tools
-=====
+CLI tools
+=========
+
+Git
+---
+
+The Git homepage has a search box in the header. There's a magnifying glass
+icon. The placeholder text is ``Search entire site...``. 
+
+.. image:: /_static/git-home-20240218.png
+
+Git doesn't seem to have a quickstart page; this reference page seemed like
+the next best choice. It has the same search box UI as the homepage.
+
+.. image:: /_static/git-reference-20240218.png
+
+Typing ``test`` into the search box yields a dropdown of results. The dropdown
+is structured like a table. The first 10 or so results are ``git`` commands.
+The next 10 or so results seem to be section titles from an authoritative
+book.
+
+.. image:: /_static/git-searchbox-20240218.png
+
+cURL
+----
+
+The cURL homepage doesn't have a search box:
+
+.. image:: /_static/curl-home-20240218.png
+
+Neither does the quickstart page:
+
+.. image:: /_static/curl-quickstart-20240218.png
+
+Frameworks
+==========
+
+.NET
+----
+
+The .NET homepage has a magnifying glass icon on the right side of the header
+that represents the search box. 
+
+.. image:: /_static/dotnet-home-20240218.png
+
+The quickstart page has the same search box UI.
+
+.. image:: /_static/dotnet-quickstart-20240218.png
+
+Focusing the search box causes it to take up the entire header. The magnifying
+glass icon becomes an ``X`` icon. Typing ``test`` seems to show keyphrases
+related to the search query.
+
+.. image:: /_static/dotnet-searchbox-20240218.png
+
+The search results page is very similar to a Google Search results page.
+Query matches are bold in the descriptions, but not in the titles. Below the
+title you see the absolute path to each doc. You can filter by content type
+or product. ``.NET`` is not selected in the product filter, even though that's
+where I came from.
+
+.. image:: /_static/dotnet-serp-20240218.png
+
+Unreal
+------
+
+The Unreal homepage has 2 search boxes. In the header there's a magnifying
+glass icon to the right. At the top of the content area, to the right, there's
+another search box. The placeholder text for that one is
+``Search Documentation...``. It also has a magnifying glass icon. 
+
+.. image:: /_static/unreal-home-20240218.png
+
+The quickstart page has the same search box UI.
+
+The search box in the header seems broken; when I typed ``test`` and pressed
+:kbd:`Enter` nothing happened. Focusing the other search box caused a blue
+border around it. Typing ``test`` didn't cause any changes i.e. no dropdown
+or modal appeared.
+
+.. image:: /_static/unreal-quickstart-20240218.png
+
+The search results page shows the number of results, the usual list of titles
+and descriptions, and query matches in bold. It also lets you filter content
+to only see stuff from certain parts of the ecosystem e.g. news, documentation,
+forums, etc.
+
+.. image:: /_static/unreal-serp-20240218.png
 
 Languages
 =========
@@ -139,6 +232,17 @@ occurs in the title or the summary. An ``X`` icon shows up on the far right
 of the search box after you enter text.
 
 .. image:: /_static/java-searchbox-20240218.png
+
+Go
+--
+
+The Go homepage doesn't have a search box:
+
+.. image:: /_static/go-home-20240218.png
+
+Neither does the quickstart page:
+
+.. image:: /_static/go-quickstart-20240218.png
 
 Platforms
 =========
@@ -197,3 +301,36 @@ relevance or popularity. Presumably the "best" filter is a combination of
 relevance and popularity?
 
 .. image:: /_static/mdn-serp-20240217.png
+
+Amazon Web Services
+-------------------
+
+The search box on the AWS homepage takes up most of the header. There's a
+magnifying glass icon and the placeholder text is
+``Search in AWS documentation``. No keyboard shortcut is mentioned.
+
+.. image:: /_static/aws-home-20240218.png
+
+Typing ``test`` into the search box shows a dropdown of results. The results
+seem to be queries that other users entered? An ``X`` icon shows up at the far
+right after you enter text.
+
+.. image:: /_static/aws-home-searchbox-20240218.png
+
+The quickstart page that I arbitrarily picked has only a magnifying glass icon
+to represent the search box. The location of the search box moved to the right.
+
+.. image:: /_static/aws-quickstart-20240218.png
+
+Typing ``test`` yields a dropdown of results. The results seem to be organized
+by content type e.g. "blogs". The search engine seems to look for the query
+term in the doc title.
+
+.. image:: /_static/aws-quickstart-searchbox-20240218.png
+
+The search results page highlights query matches in bold. Products like
+``Hourglass Smart Test Job Runner`` seem to show the price of the product
+below the title. You can narrow your search by content type (``Documentation``,
+``AWS Blogs``, etc.). You can sort by relevance, title, or date. The results
+page shows you how many query matches there were and it lets you choose whether
+to show 25, 50, or 100 results per page.
