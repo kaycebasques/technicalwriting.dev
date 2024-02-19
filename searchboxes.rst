@@ -16,6 +16,8 @@ This page contains my `field research`_ around the following questions:
 
 See :ref:`methodology` for background on my research approach.
 
+I conducted this research in February 2024.
+
 -------
 Summary
 -------
