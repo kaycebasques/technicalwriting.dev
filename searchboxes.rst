@@ -85,7 +85,7 @@ The quickstart page has the same search box UI as the homepage.
 .. image:: /_static/react-quickstart-20240218.png
 
 Focusing the search box presents a modal. Typing ``test`` into the search box
-yields a list of matches. The section headings (e.g. ``REACT V18.``) are the
+yields a list of matches. The section headings (e.g. ``REACT V18.0``) are the
 doc titles. The query matches are highlighted in the brand color. The search
 engine is powered by Algolia. An ``X`` icon shows up in the search box after
 you enter text.
@@ -118,11 +118,11 @@ book.
 cURL
 ----
 
-The cURL homepage doesn't have a search box:
+The cURL homepage doesn't have a search box.
 
 .. image:: /_static/curl-home-20240218.png
 
-Neither does the quickstart page:
+Neither does the quickstart page.
 
 .. image:: /_static/curl-quickstart-20240218.png
 
