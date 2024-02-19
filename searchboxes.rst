@@ -24,7 +24,8 @@ Summary
   varies. Some sites have it in the center. Others have it on the right. None
   had it on the left. Some have it take up the entire header.
 * Most sites keep the position of the search box consistent across pages.
-* There's usually a magnifying glass icon in the search box.
+* Not all sites put an icon in their search box, but when they do, it's
+  **always** a magnifying glass.
 * The placeholder text varies a lot. Some search boxes have no placeholder
   text. The single word ``Search`` is the greatest common denominator.
 * Search boxes often expand when you focus them.
