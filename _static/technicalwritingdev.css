@@ -1,5 +1,11 @@
 /* TODO: Struggle with CSS here */
 
+:root {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 a.headerlink {
     margin-left: 0.25em;
 }
