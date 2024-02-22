@@ -100,9 +100,46 @@ Focusing the search box presents a modal. Typing ``test`` into the search box
 yields a list of matches. The section headings (e.g. ``REACT V18.0``) are the
 doc titles. The query matches are highlighted in the brand color. The search
 engine is powered by Algolia. An ``X`` icon shows up in the search box after
-I enter text.
+I enter text. The modal takes up about 33% of the screen's width. :kbd:`Esc`
+is the keyboard shortcut to close the modal and the keyboard shortcuts for
+navigating the modal are also shown.
 
 .. image:: /_static/react-searchbox-20240218.png
+
+HuggingFace Transformers
+------------------------
+
+HuggingFace is a platform, but their Transformers product is more akin to a
+library. The Transformers homepage has two search boxes: one in the header and
+one above the site nav.
+
+The search box in the header seems to be a platform-wide search. The
+placeholder text is ``Search models, datasets, users...``. There's a magnifying
+glass icon on the left side of the search box. No keyboard shortcut is
+mentioned.
+
+The search box above the site nav seems to be restricted to the Transformers
+docs. The placeholder text is ``Search documentation``. The magnifying glass
+icon is in the same position as the other search box. This time a keyboard
+shortcut is mentioned: :kbd:`Ctrl+K`.
+
+.. image:: /_static/transformers-home-20240221.png
+
+(Quickstart page was skipped.)
+
+Typing ``test`` into the header's search box shows results grouped by models,
+datasets, spaces, organizations, and users. At the bottom of the modal there
+is a ``Try Full-text search`` option.
+
+.. image:: /_static/transformers-searchbox1-20240221.png
+
+Typing ``test`` into the search box above the site nav shows a modal. The
+results are indeed limited to the Transformers docs. :kbd:`Esc` is the keyboard
+shortcut to close the modal. The keyboard shortuts for navigating the results
+and selecting a result are also shown. The modal seems to take up about 20%
+of the screen's width.
+
+.. image:: /_static/transformers-searchbox2-20240221.png
 
 CLI tools
 =========
@@ -277,6 +314,7 @@ Typing ``test`` into the search box yields a search results modal. It seems
 to always return 7 results max. Below the results there's a single code
 example and a link to view more code examples. There's no dedicated SERP.
 An ``X`` icon shows up in the far right of the search box after I enter text.
+The modal takes up a little less than 33% of the screen's width.
 
 .. image:: /_static/stripe-searchbox-20240217.png
 
