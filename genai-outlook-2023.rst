@@ -1,0 +1,144 @@
+.. _genai-outlook-2023:
+
+==========================================
+GenAI Outlook (For Technical Writers) 2023
+==========================================
+
+2023 Mar 24
+
+A lot of people are talking about how generative AI is a gamechanger for
+documentation. This post summarizes what's going on.
+
+----------------
+Potential threat
+----------------
+
+The threat is simple: `generative
+AI <https://en.wikipedia.org/wiki/Generative_artificial_intelligence>`__
+has the potential to reduce the demand for technical writers because
+it’s getting pretty good at our job.
+
+Take `ChatGPT <https://en.wikipedia.org/wiki/ChatGPT>`__ for example.
+You ask it questions in a familiar chat UI and it responds with answers
+that have been synthesized from a variety of sources. A lot of these
+answers are actually relevant and helpful. It can respond in text,
+`code <https://twitter.com/emollick/status/1637961568238411776>`__, and
+`image <https://twitter.com/emollick/status/1639094707795165184>`__.
+
+If it’s any consolation, the generative AI community does not have a
+vendetta against technical writers in particular. It is potentially a
+`general purpose technology that may affect most
+jobs <https://twitter.com/emollick/status/1637790373689917441>`__.
+
+ChatGPT’s take
+==============
+
+This is how ChatGPT (GPT-4) responded to the following question: “What
+parts of technical writing are most likely to be automated by ChatGPT?”
+
+   As an AI language model, ChatGPT can potentially automate several
+   aspects of technical writing, making the process more efficient and
+   less time-consuming for human writers. Some areas that are most
+   likely to be automated include:
+
+   Basic content generation: ChatGPT can generate paragraphs or sections
+   based on given topics or outlines, providing a starting point for
+   technical writers. This can speed up the content creation process and
+   help maintain consistency in writing.
+
+   Data analysis and interpretation: AI can analyze large datasets and
+   generate summaries, trends, or insights that can be incorporated into
+   technical documents.
+
+   Formatting and template creation: AI can automatically apply
+   formatting and styling rules to documents, ensuring they adhere to
+   specific guidelines or templates.
+
+   Grammar and spell-checking: ChatGPT can identify and correct
+   grammatical errors, spelling mistakes, and other language
+   inconsistencies, leading to higher-quality content.
+
+   Terminology consistency: AI can help maintain the use of consistent
+   terminology and phrases throughout a document, reducing confusion for
+   readers.
+
+   Content summarization: ChatGPT can create concise summaries or
+   abstracts of longer, more complex documents, making them more
+   accessible to a wider audience.
+
+   Content translation: AI language models can translate technical
+   content into multiple languages, helping to disseminate information
+   globally.
+
+   Frequently Asked Questions (FAQ) generation: AI can identify common
+   questions related to a topic and generate clear, concise answers.
+
+   Metadata generation: AI can automatically generate metadata for
+   technical documents, such as keywords, tags, and descriptions,
+   improving searchability and discoverability.
+
+   Plagiarism detection: AI can identify potential plagiarism cases in
+   technical writing and suggest alternative content to maintain
+   originality.
+
+   However, it is important to note that ChatGPT and similar AI models
+   are not perfect and may still require human supervision, especially
+   in highly specialized or complex fields. Human writers will continue
+   to play a critical role in the technical writing process, ensuring
+   accuracy, relevance, and context in the content produced by AI.
+
+Potential productivity boon
+===========================
+
+Long story short, I can imagine a future where generative AI does not
+replace technical writers but is instead just a powerful new tool that
+increases our productivity. There are lots of possibilities in this
+regard, but I will focus on only one for now.
+
+Take the age-old “never enough time to document everything” problem for
+example. Once I become proficient in the technical domain I’m
+documenting, I often realize how little of that domain I will ever be
+able to document. There simply is never enough time to cover everything.
+Generative AI has the potentially to dramatically speed up the research
+and content creation process, so it has the potential to help me finally
+make progress on the “never enough time” problem. Generative AI doesn’t
+really seem like a threat to me in this context for a few reasons:
+
+-  It’s work that I never previously had time to get to anyways.
+-  It may still be more efficient to have a technical writer in the mix
+   than to try to automate everything completely. After all, as xkcd so
+   brilliantly summarized in `Automation <https://m.xkcd.com/1319/>`__,
+   the funny thing about automation is that you do it because you think
+   it will save you time when in reality it’s often the opposite.
+-  You may still need someone who is proficient in technical writing and
+   the technical domain in order to effectively orchestrate the
+   generative AI.
+
+The jury is still out
+=====================
+
+I caution against taking either side at this point. It’s simply too soon
+to know yet.
+
+Summary of this post from ChatGPT
+=================================
+
+Here is how ChatGPT summarized this post:
+
+ChatGPT (GPT-4):
+
+   Generative AI, like ChatGPT, is seen as both a potential threat and a
+   productivity boon to technical writers. While it could reduce the
+   demand for writers as AI becomes increasingly proficient at their
+   tasks, it could also be a valuable tool to enhance productivity by
+   speeding up research and content creation. In this context, AI could
+   help address the “never enough time” problem in documentation.
+   However, technical writers might still be needed to effectively
+   orchestrate generative AI. It is too early to determine the exact
+   impact of generative AI on the field of technical writing.
+
+Here was the prompt I provided:
+
+   Please summarize the following text in 100 words or less: ``<content>``
+
+Where ``<content>`` was the blog post you just read.
