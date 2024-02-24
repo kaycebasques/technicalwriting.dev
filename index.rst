@@ -2,15 +2,20 @@
 technicalwriting.dev
 ====================
 
-A research blog focused on the development, design, UI, and UX of real-world
-documentation websites.
+Boots-on-the-ground reporting from the frontier of technical writing.
 
---------------
-Field research
---------------
+------------------
+Design || UI || UX
+------------------
 
 * :ref:`Methodology <methodology>`
 * :ref:`Search boxes <searchboxes>`
+
+--------
+AI || ML
+--------
+
+* :ref:`stateful-assistants`
 
 --------
 About me
@@ -23,8 +28,15 @@ About me
        <p style="flex: 1; margin: 0 0 0 1em;">
            Hello! My name is <a href="https://kayce.basqu.es">Kayce</a> but you
            can call me... Kayce... I've been a professional technical writer
-           for ~12 years. I'm currently docs lead for
-           <a href="https://pigweed.dev">pigweed.dev</a>.
+           for ~12 years. I started out at an internet of things startup,
+           building out all their docs and docs-as-code infra. Then I moved on
+           to Google's Web DevRel team. Noteworthy experiences include: writing
+           all the original Lighthouse docs, doing all DevRel for Chrome
+           DevTools (docs, videos, conferences, outreach, etc.), and being
+           content lead for web.dev and developer.chrome.com. Then I took a
+           1-year "sabbatical" from work. Then I came back to Google, did a
+           brief stint on fuchsia.dev, and that finally brings us today, where
+           I'm currently docs lead for pigweed.dev.
        </p>
     </div>
 
