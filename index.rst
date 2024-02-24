@@ -2,7 +2,7 @@
 technicalwriting.dev
 ====================
 
-Boots-on-the-ground reporting from the frontiers of technical writing.
+Boots-on-the-ground reporting from the frontier(s?) of technical writing.
 
 ------------------
 Design || UI || UX
@@ -34,15 +34,16 @@ About me
        <p style="flex: 1; margin: 0 0 0 1em;">
            Hello! My name is <a href="https://kayce.basqu.es">Kayce</a> but you
            can call me... Kayce... I've been a professional technical writer
-           for ~12 years. I got my start at a ~10-person internet of things startup,
-           building out all their docs and docs-as-code infra. Then I moved on
-           to Google's Web DevRel team. Noteworthy experiences include: writing
-           all the original Lighthouse docs, doing all DevRel for Chrome
-           DevTools (docs, videos, conferences, outreach, etc.), and being
-           content lead for web.dev and developer.chrome.com. Then I took a
-           1-year "sabbatical" from work. After that I came back to Google, did
-           a brief stint on fuchsia.dev, and switched over to pigweed.dev,
-           where I've been docs lead for over a year now.
+           for ~12 years. I got my start at a ~10-person internet of things
+           startup, building out all their docs and docs-as-code infra. After 3
+           years there I moved on to Google's Web DevRel team. Noteworthy
+           experiences from that role include writing all the original
+           Lighthouse docs, doing all DevRel for Chrome DevTools (docs, videos,
+           conferences, support, etc.), and being content lead for web.dev and
+           developer.chrome.com. After 6 years on Web DevRel I took a 1-year
+           "sabbatical" from work. Then I came back to Google, did a brief
+           stint on fuchsia.dev, and finally switched over to pigweed.dev. I've
+           been docs lead for pigweed.dev for over a year now.
        </p>
     </div>
 
