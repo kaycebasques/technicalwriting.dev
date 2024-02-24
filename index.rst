@@ -34,3 +34,4 @@ About me
 
    methodology
    searchboxes
+   stateful-assistants
