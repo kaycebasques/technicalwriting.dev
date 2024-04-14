@@ -14,6 +14,15 @@ description: >
   persuade ChatGPT to do so by documenting your API effectively.
 ---
 
+[my ongoing series]: /tags/generative-ai/
+.. _ChatGPT Plugins: https://openai.com/blog/chatgpt-plugins
+.. _Plugin flow: https://platform.openai.com/docs/plugins/introduction/plugin-flow
+.. _OpenAPI specification: https://swagger.io/specification/
+.. _Best practices: https://platform.openai.com/docs/plugins/getting-started/best-practices
+.. _impact: https://technicalwriting.tools/posts/generative-ai/
+.. _Introduction: https://platform.openai.com/docs/plugins/introduction
+.. _Defining Well-Known URIs: https://www.ietf.org/rfc/rfc5785.txt
+
 <p>{frontmatter.description}</p>
 
 This post is part of [my ongoing series] to explore [the potential impact of
@@ -114,11 +123,4 @@ The API reference section of the plugin manifest must conform to the OpenAPI
 specification. The `.well-known` part of the example plugin manifest URL that
 you saw earlier is an IETF standard: [Defining Well-Known URIs]
 
-[my ongoing series]: /tags/generative-ai/
-[ChatGPT Plugins]: https://openai.com/blog/chatgpt-plugins
-[Plugin flow]: https://platform.openai.com/docs/plugins/introduction/plugin-flow
-[OpenAPI specification]: https://swagger.io/specification/
-[Best practices]: https://platform.openai.com/docs/plugins/getting-started/best-practices
-[impact]: https://technicalwriting.tools/posts/generative-ai/
-[Introduction]: https://platform.openai.com/docs/plugins/introduction
-[Defining Well-Known URIs]: https://www.ietf.org/rfc/rfc5785.txt
+

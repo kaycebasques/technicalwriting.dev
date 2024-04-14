@@ -1,43 +1,52 @@
----
-author: Kayce Basques
-pubDatetime: 2023-04-21T11:11:11Z
-title: Response to Tom's "10 principles for writing for AI"
-postSlug: ten-principles-response
-tags:
-  - generative-ai
-description: >
-  This post continues the discussion on how docs strategy might need to
-  change in order to take full advantage of generative AI.
----
+.. _principles:
+
+==============================================
+Response to "10 principles for writing for AI"
+==============================================
+
+2023 Apr 21
+
+.. _10 principles for writing for AI: https://idratherbewriting.com/blog/ai-chat-interfaces-are-the-new-user-interface-for-docs#10-principles-for-writing-for-ai
+.. _Supabase Clippy: https://supabase.com/blog/chatgpt-supabase-docs
+[Positioning your docs to play nicely with generative AI]: /posts/playing-nicely-with-generative-ai/
+[Positioning your docs...]: /posts/playing-nicely-with-generative-ai/
+.. _Text Embeddings Visually Explained: https://txt.cohere.com/text-embeddings/
+.. _Markprompt: https://markprompt.com
+[The role of web service API reference documentation in ChatGPT Plugins]: /posts/chatgpt-plugins
+[A crash course on context injection]: /posts/playing-nicely-with-generative-ai/#crash-course
+.. _minimal, reproducible examples: https://stackoverflow.com/help/minimal-reproducible-example
 
 This post continues my exploration into how docs strategy might need to adjust
 in order take full advantage of generative AI. In this post I respond to Tom Johnson's
-[10 principles for writing for AI], one by one.
+`10 principles for writing for AI`_, one by one.
 
 (I ran this post idea by Tom and he heartily encouraged it. He has not
 reviewed the content. Hopefully it's clear from my tone that I respect Tom and
 intend for this post to be a friendly and professional discussion of important
 ideas. It's more fun to figure this stuff out together through dialogue!)
 
-## Disclaimers & disclosures
+-------------------
+Discl{aimer,osure}s
+-------------------
 
 These are early ideas. I am not an AI expert. I have only prototyped AI-powered
 documentation features. This space is moving quickly; therefore this post may be
 irrelevant in a year. Tom and I both work at Google as technical writers but we
 do not work on anything together. Google of course is heavily invested in AI but
 everything in the post is completely my own view only. I am completely basing my
-ideas off of open source work that others are doing (like [Supabase Clippy]).
+ideas off of open source work that others are doing (like `Supabase Clippy`_).
 
-## We only have potential principles right now
+---------------------------------------------
+We only have *potential* principles right now
+---------------------------------------------
 
-This might sound like a bit of a nitpick but it's not. I'll explain why in a moment.
 At this early stage, there aren't actually any principles for writing for AI. We collectively
 have not figured them out yet. Only when we have a lot of rigorous evidence and methodology
 can we call something a principle. For now, we just have hypotheses about potential principles.
 Based on the quote from Tom below it's clear that he's also talking about possibilites
 and is not claiming that these are tried-and-true:
 
-> How do you write your documentation to be consumed by an AI? While I’m not an expert,
+  How do you write your documentation to be consumed by an AI? While I’m not an expert,
   and many are still scratching their heads about how AI chats work, the responses from
   Phind, ChatGPT, and Bard suggest that the same principles of writing good documentation
   for end users might apply to writing for AI too. (Sorry for the lack of more authoritative
@@ -48,13 +57,16 @@ I'm highlighting this idea because we (the technical writer community at large) 
 and faster if we openly share our "lessons learned" in a spirit of exploration and experimentation.
 I don't know the answers. Tom doesn't know the answers. That's OK! Let's figure them out together!
 
-## Responses
+---------
+Responses
+---------
 
 OK, let's dig in! Each section begins with the direct quote from Tom's post.
 
-<h3 id="headings-and-subheadings">"Headings and subheadings galore"</h3>
+"Headings and subheadings galore"
+=================================
 
-> Chunk information into headings and subheadings to keep the information clear and identifiable.
+  Chunk information into headings and subheadings to keep the information clear and identifiable.
   Subheadings help keep the writing focused and on point. The semantic tagging of headings with h1,
   h2, h3, h4 tags elevates the hierarchy and importance of the content, signaling to AI that this
   content is a high-level description of the section. Headings serve as a quick summary of what
@@ -76,9 +88,10 @@ writers are thinking about the needs of the humans. Maybe it will be the same dy
 LLMO (Large Language Model Optimization) practitioners and technical writers. Our job is to find
 harmony between the needs of the machines and the needs of the humans.
 
-### "Semantic tags"
+"Semantic tags"
+===============
 
-> Similar to heading tags, AI can infer information from semantic tagging. Is the information
+  Similar to heading tags, AI can infer information from semantic tagging. Is the information
   set off as a note, a blockquote, a code sample, a variable, a section, or something else?
   Better yet, does the information conform to the OpenAPI specification? Machines operate well
   when information conforms to specifications. This is why almost every CCMS is XML-based—because
@@ -91,10 +104,12 @@ Actually, I do have one firsthand insight. ChatGPT Plugins must conform to the O
 See [The role of web service API reference documentation in ChatGPT Plugins].
 Technical writers with OpenAPI expertise will probably see sustained or increased demand.
 
-### "Code samples"
+"Code samples"
+==============
 
-> Code samples are also a way AI can understand content, since code operates according to programming
-  language rules. AI can infer the inner workings of a system by analyzing the meaning and syntax of the code.
+  Code samples are also a way AI can understand content, since code operates according to programming
+  language rules. AI can infer the inner workings of a system by analyzing the meaning and syntax of
+  the code.
 
 No insights here. It sounds reasonable. For fine-tuning there may be increased emphasis on
 [minimal, reproducible examples]. AI is all about prediction. Given this temperature, this wind,
@@ -105,9 +120,10 @@ could be your inputs. Whether or not the code builds could be your output. Or ma
 code block should be the output? This is why I keep saying that applying fine-tuning to docs
 is tricky. What are the inputs and outputs?
 
-### "Fewer images"
+"Fewer images"
+==============
 
-> Images might be an anti-pattern for AI consumption and processing. If you’ve ever checked an image
+  Images might be an anti-pattern for AI consumption and processing. If you’ve ever checked an image
   (a binary file) in Git and looked at a diff, you’ll see the gibberish-like code behind that image.
   Machines don’t process this code well, so if the documentation is visually based, this could lead
   to less AI processing and understanding. If you use images, add detailed captions below them.
@@ -123,9 +139,10 @@ diagram is not accessible to people who rely on assistive technology. LLMs offer
 of auto-generating useful `alt` descriptions. I have experimented with this and have seen some
 promising results.
 
-### "Longer pages with context and modularity"
+"Longer pages with context and modularity"
+==========================================
 
-> Having more fully developed pages with sufficient context and modularity will help AI tools
+  Having more fully developed pages with sufficient context and modularity will help AI tools
   better understand the coherence of information. By context and modularity, I mean the content
   should be able to stand on its own, without supporting content (aka “Every Page Is Page One’’
   content models). Docs that are sharded into a hundred different topics connected through a
@@ -149,9 +166,10 @@ Remember, also, that token limits are a constraint right now. You can only provi
 characters of input to GPT-3.5. Will the situation improve? Surely. But still, it's a real limitation
 right now.
 
-### "Consistent terms"
+"Consistent terms"
+==================
 
-> Consistent terms, especially matching the user’s query, are important in connecting the user’s
+  Consistent terms, especially matching the user’s query, are important in connecting the user’s
   query with the AI chat response. Although AI tools can likely interpret synonyms and make this
   connection, it’s better if the terms match.
 
@@ -161,9 +179,10 @@ using consistent terminology will make the LLM's job easier.
 ([Text Embeddings Visually Explained] is a very satisfying rabbit hole for building intuition
 about the statistical nature of LLMs.)
 
-### "Cross-references"
+"Cross-references"
+==================
 
-> Cross-references can enable AI to make sense of similar information. Cross-references help build
+  Cross-references can enable AI to make sense of similar information. Cross-references help build
   a better web of information to power relationships through a semantic connection. AIs work
   fundamentally by prediction, by associating the most likely way to fill in the blank. Cross-references
   help associate topics with each other, teaching AI tools that the information is related and similar,
@@ -175,9 +194,10 @@ to inject into the prompt. It seems like Tom is suggesting a manual process wher
 markup the associations between docs. It could work, but we already have another approach that
 is easier to automate: embeddings.
 
-### "Plain language"
+"Plain language"
+================
 
-> Sentence structures should be easy for AI to parse. This means avoiding long sentence structures
+  Sentence structures should be easy for AI to parse. This means avoiding long sentence structures
   or ambiguous constructions. Documentation that consists of clear, almost staccato-like sentences
   will probably be interpreted better, even if it’s not as eloquent. We might balk a string of short
   constructions, but the prime consideration in docs is always intelligibility. Plain language and
@@ -186,9 +206,10 @@ is easier to automate: embeddings.
 
 This also seems likely.
 
-### "More documentation, not less"
+"More documentation, not less"
+==============================
 
-> Previous trends toward minimalism, with the concern that too much documentation might overwhelm
+  Previous trends toward minimalism, with the concern that too much documentation might overwhelm
   the user, might not be applicable. More detail, more documentation, and more information seem to
   lead to better AI experiences. Almost all AI training involves an extensive set of data (the large
   language model). With enough training, the AI can more intelligently respond to the variety of user
@@ -198,9 +219,10 @@ Strongly agree. This is what I'm most excited about. I'm sorry for the cliffhang
 take too long to flesh out all my thoughts on this topic so you'll just have to stay tuned for a
 full post later.
 
-### "Glossaries"
+"Glossaries"
+============
 
-> A comprehensive glossary can help AI explain confusing components. For example, if the AI says to
+  A comprehensive glossary can help AI explain confusing components. For example, if the AI says to
   “implement a recursive pattern,” but it doesn’t know what recursive means in the context of the
   application, the AI’s responses will be limited or potentially wrong. A glossary could allow AI to
   break down confusing language and jargon for users. It could also help with synonyms.
@@ -216,13 +238,3 @@ the meaning of the term correctly. For example, one time the prompt was `Ninja`.
 injection the LLM correctly inferred that we were talking about the software build system, whereas
 the out-of-the-box LLM reply (without context injection) assumed that we were talking about
 the black-robed assassins from Japanese history.
-
-[10 principles for writing for AI]: https://idratherbewriting.com/blog/ai-chat-interfaces-are-the-new-user-interface-for-docs#10-principles-for-writing-for-ai
-[Positioning your docs to play nicely with generative AI]: /posts/playing-nicely-with-generative-ai/
-[Positioning your docs...]: /posts/playing-nicely-with-generative-ai/
-[Supabase Clippy]: https://supabase.com/blog/chatgpt-supabase-docs
-[Text Embeddings Visually Explained]: https://txt.cohere.com/text-embeddings/
-[Markprompt]: https://markprompt.com
-[The role of web service API reference documentation in ChatGPT Plugins]: /posts/chatgpt-plugins
-[A crash course on context injection]: /posts/playing-nicely-with-generative-ai/#crash-course
-[minimal, reproducible examples]: https://stackoverflow.com/help/minimal-reproducible-example
