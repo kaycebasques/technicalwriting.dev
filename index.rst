@@ -5,7 +5,7 @@ technicalwriting.dev
 Boots-on-the-ground reporting from the frontier(s?) of technical writing.
 
 ------------------
-Design || UI || UX
+Design, UI, and UX
 ------------------
 
 * :ref:`methodology`. Background context for my field research.
@@ -13,9 +13,9 @@ Design || UI || UX
   What placeholder text should it contain? What should happen when I type stuff
   into it? What should the search results look like?
 
---------
-AI || ML
---------
+---------
+AI and ML
+---------
 
 * :ref:`stateful-assistants`. GenAI chatbot assistants might be very useful if
   they can serve as companions for the entire journey that readers take when
@@ -51,7 +51,8 @@ About me
    :maxdepth: 1
    :hidden:
 
+   genai-outlook-2023
    methodology
    searchboxes
    stateful-assistants
-   genai-outlook-2023
+   zephyr
