@@ -26,6 +26,12 @@ Machine learning
 * :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 
+--------------------------
+Search engine optimization
+--------------------------
+
+* :ref:`discovered-not-indexed`
+
 --------
 About me
 --------
@@ -54,6 +60,7 @@ About me
    :maxdepth: 1
    :hidden:
 
+   discovered-not-indexed
    genai-outlook-2023
    methodology
    playing-nicely
