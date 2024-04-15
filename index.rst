@@ -20,6 +20,8 @@ Machine learning
 * :ref:`stateful-assistants`. GenAI chatbot assistants might be very useful if
   they can serve as companions for the entire journey that readers take when
   visiting my docs sites.
+* :ref:`play`.
+* :ref:`plugins`.
 * :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 
@@ -53,6 +55,8 @@ About me
 
    genai-outlook-2023
    methodology
+   playing-nicely
+   plugins
    searchboxes
    stateful-assistants
    zephyr

@@ -13,8 +13,6 @@ exclude_patterns = [
     '_build',
     'boostrap.sh',
     'mdx',
-    'play.rst',
-    'plugins.rst',
     'principles.rst',
     'requirements.txt',
     'venv'
