@@ -4,9 +4,9 @@ technicalwriting.dev
 
 Boots-on-the-ground reporting from the frontier(s?) of technical writing.
 
----------------------------
-User {interface,experience}
----------------------------
+---------------
+User experience
+---------------
 
 * :ref:`methodology`. Background context for my field research.
 * :ref:`searchboxes`. Where should I put the search box on my docs site?
