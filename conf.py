@@ -13,7 +13,6 @@ exclude_patterns = [
     '_build',
     'boostrap.sh',
     'mdx',
-    'principles.rst',
     'requirements.txt',
     'venv'
 ]

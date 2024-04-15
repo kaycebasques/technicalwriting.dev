@@ -1,4 +1,4 @@
-.. _play:
+.. _playing-nicely:
 
 =========================
 Playing nicely with GenAI

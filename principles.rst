@@ -8,12 +8,8 @@ Response to "10 principles for writing for AI"
 
 .. _10 principles for writing for AI: https://idratherbewriting.com/blog/ai-chat-interfaces-are-the-new-user-interface-for-docs#10-principles-for-writing-for-ai
 .. _Supabase Clippy: https://supabase.com/blog/chatgpt-supabase-docs
-[Positioning your docs to play nicely with generative AI]: /posts/playing-nicely-with-generative-ai/
-[Positioning your docs...]: /posts/playing-nicely-with-generative-ai/
 .. _Text Embeddings Visually Explained: https://txt.cohere.com/text-embeddings/
 .. _Markprompt: https://markprompt.com
-[The role of web service API reference documentation in ChatGPT Plugins]: /posts/chatgpt-plugins
-[A crash course on context injection]: /posts/playing-nicely-with-generative-ai/#crash-course
 .. _minimal, reproducible examples: https://stackoverflow.com/help/minimal-reproducible-example
 
 This post continues my exploration into how docs strategy might need to adjust
@@ -66,6 +62,8 @@ Responses
 
 OK, let's dig in! Each section begins with the direct quote from Tom's post.
 
+.. _galore:
+
 "Headings and subheadings galore"
 =================================
 
@@ -80,8 +78,8 @@ OK, let's dig in! Each section begins with the direct quote from Tom's post.
 I think this is spot-on but for different reasons than what Tom mentions. In
 order for context injection to work you basically need a database of your
 content chunked into logical sections.  All of the content in each section must
-be closely related due to how embeddings work.  See [A crash course on context
-injection] for a detailed explanation of my thinking here.  Rigorous, methodical
+be closely related due to how embeddings work.  See :ref:`crash-course`
+for a detailed explanation of my thinking here.  Rigorous, methodical
 use of headings positions your docs well for logical chunking.
 
 Regarding "the semantic tagging... elevates the hierarchy and importance of the
@@ -107,13 +105,11 @@ between the needs of the machines and the needs of the humans.
   tagged content you can manipulate programmatically.
 
 I don't have any firsthand insights here but my hunch is that this will turn out
-to be correct.  The most obvious candidates to me are DITA, DocBook, and
-Schema.org.
+to be correct. The most obvious candidates to me are DITA, DocBook, and Schema.org.
 
 Actually, I do have one firsthand insight. ChatGPT Plugins must conform to the
-OpenAPI specification.  See [The role of web service API reference documentation
-in ChatGPT Plugins].  Technical writers with OpenAPI expertise will probably see
-sustained or increased demand.
+OpenAPI specification. See :ref:`plugins`. Technical writers with OpenAPI expertise
+will probably see sustained or increased demand.
 
 "Code samples"
 ==============
@@ -123,7 +119,7 @@ sustained or increased demand.
   system by analyzing the meaning and syntax of the code.
 
 No insights here. It sounds reasonable. For fine-tuning there may be increased
-emphasis on [minimal, reproducible examples]. AI is all about prediction. Given
+emphasis on `minimal, reproducible examples`_. AI is all about prediction. Given
 this temperature, this wind, this day of the year, what is the chance of rain?
 Temperature, wind, and date are your inputs. Chance of rain is your desired
 output. Now, try to apply this same type of thinking towards documentation. What
@@ -147,11 +143,11 @@ OK, now we can finally get a little spicy! I disagree with this one. We already
 have multimodal LLMs that can input/output images. It seems like generative AI
 can handle images just fine.  If anything, I feel *more optimistic* about the
 future of using images in documentation.  Take for example the age-old problem
-of terrible `alt` descriptions. It breaks my heart when someone puts an
-intricate diagram in a doc with a lot of important information yet the `alt`
+of terrible ``alt`` descriptions. It breaks my heart when someone puts an
+intricate diagram in a doc with a lot of important information yet the ``alt``
 description only says "diagram". All of the important information conveyed
 through the diagram is not accessible to people who rely on assistive
-technology. LLMs offer the possibility of auto-generating useful `alt`
+technology. LLMs offer the possibility of auto-generating useful ``alt``
 descriptions. I have experimented with this and have seen some promising
 results.
 
@@ -168,12 +164,12 @@ results.
   users than machine-friendly. With this fragmented model, AI tools would need a
   thread weaving together all the different topics.
 
-In [Positioning your docs to play nicely with generative AI] my hunch was the
+In :ref:`playing-nicely` my hunch was the
 opposite. I thought small pages were more likely to work well with generative AI
-than long pages for reasons related to what I just said in ["Headings and
-subheadings galore"](#headings-and-subheadings). But now I'm not so sure. We've
+than long pages for reasons related to what I just said in :ref:`galore`
+But now I'm not so sure. We've
 been debating this in the Write The Docs Slack. Tom brought up the good point
-that if you're providing a UI like [phind.com](https://phind.com) which shows
+that if you're providing a UI like `phind.com <https://phind.com>`_ which shows
 sources alongside the generated answers, then lots of small pages will mean
 having to sift through lots of results in the sources UI.
 
@@ -196,7 +192,7 @@ Surely. But still, it's a real limitation right now.
 Agreed. The inner workings of LLMs are profoundly statistical. It seems very
 likely to me that using consistent terminology will make the LLM's job easier.
 
-([Text Embeddings Visually Explained] is a very satisfying rabbit hole for
+(`Text Embeddings Visually Explained`_ is a very satisfying rabbit hole for
 building intuition about the statistical nature of LLMs.)
 
 "Cross-references"
@@ -260,7 +256,7 @@ same thing. Given this word or short phrase (the term), the expected output is
 the definition of the term.
 
 Fine-tuning for terminology may not be necessary, though. As mentioned
-elsewhere, I am prototyping an experience along the lines of [Supabase Clippy].
+elsewhere, I am prototyping an experience along the lines of `Supabase Clippy`_.
 With context injection, the LLM usually infers the meaning of the term
 correctly. For example, one time the prompt was ``Ninja``. With context injection
 the LLM correctly inferred that we were talking about the software build system,
