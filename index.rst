@@ -24,6 +24,7 @@ Machine learning
 * :ref:`playing-nicely`
 * :ref:`plugins`
 * :ref:`principles`
+* :ref:`huggingface`
 * :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 
@@ -64,6 +65,7 @@ About me
    discovered-not-indexed
    evals
    genai-outlook-2023
+   huggingface
    methodology
    playing-nicely
    plugins
