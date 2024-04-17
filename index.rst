@@ -40,6 +40,7 @@ Machine learning
 Search engine optimization
 --------------------------
 
+* :ref:`sentry-overflow`
 * :ref:`discovered-not-indexed`
 
 .. _authoring:
@@ -65,6 +66,7 @@ Authoring
    plugins
    principles
    searchboxes
+   sentry-overflow
    stateful-assistants
    style-guide-fine-tuning
    zephyr
