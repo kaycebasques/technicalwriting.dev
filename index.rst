@@ -41,6 +41,14 @@ Search engine optimization
 
 * :ref:`discovered-not-indexed`
 
+.. _authoring:
+
+---------
+Authoring
+---------
+
+* :ref:`link-text-automation`
+
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -49,6 +57,7 @@ Search engine optimization
    evals
    genai-outlook-2023
    huggingface
+   link-text-automation
    methodology
    offline
    playing-nicely
