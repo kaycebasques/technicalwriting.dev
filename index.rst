@@ -30,6 +30,7 @@ Machine learning
 * :ref:`plugins`
 * :ref:`principles`
 * :ref:`huggingface`
+* :ref:`style-guide-fine-tuning`
 * :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 
@@ -65,4 +66,5 @@ Authoring
    principles
    searchboxes
    stateful-assistants
+   style-guide-fine-tuning
    zephyr
