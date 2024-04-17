@@ -4,6 +4,8 @@ technicalwriting.dev
 
 A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_
 
+.. _ux:
+
 ---------------
 User experience
 ---------------
@@ -13,6 +15,8 @@ User experience
   What placeholder text should it contain? What should happen when I type stuff
   into it? What should the search results look like?
 * :ref:`offline`
+
+.. _ml:
 
 ----------------
 Machine learning
@@ -28,6 +32,8 @@ Machine learning
 * :ref:`huggingface`
 * :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
   technical writing.
+
+.. _seo:
 
 --------------------------
 Search engine optimization
