@@ -50,6 +50,7 @@ Authoring
 ---------
 
 * :ref:`link-text-automation`
+* :ref:`verbatim-wrangling`
 
 .. toctree::
    :maxdepth: 1
@@ -69,4 +70,5 @@ Authoring
    sentry-overflow
    stateful-assistants
    style-guide-fine-tuning
+   verbatim-wrangling
    zephyr
