@@ -56,19 +56,19 @@ Authoring
    :maxdepth: 1
    :hidden:
 
-   discovered-not-indexed
-   evals
-   genai-outlook-2023
-   huggingface
-   link-text-automation
-   methodology
-   offline
-   playing-nicely
-   plugins
-   principles
-   searchboxes
-   sentry-overflow
-   stateful-assistants
-   style-guide-fine-tuning
-   verbatim-wrangling
-   zephyr
+   ml/evals
+   ml/genai-outlook-2023
+   ml/huggingface
+   ml/playing-nicely
+   ml/plugins
+   ml/principles
+   ml/stateful-assistants
+   ml/style-guide-fine-tuning
+   seo/discovered-not-indexed
+   seo/sentry-overflow
+   txt/link-text-automation
+   txt/verbatim-wrangling
+   ux/methodology
+   ux/offline
+   ux/searchboxes
+   ux/zephyr
