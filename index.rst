@@ -57,7 +57,7 @@ Authoring
    :hidden:
 
    ml/evals
-   ml/genai-outlook-2023
+   ml/outlook-2023
    ml/huggingface
    ml/playing-nicely
    ml/plugins
