@@ -66,8 +66,8 @@ Authoring
    ml/style-guide-fine-tuning
    seo/discovered-not-indexed
    seo/sentry-overflow
-   txt/link-text-automation
-   txt/verbatim-wrangling
+   src/link-text-automation
+   src/verbatim-wrangling
    ux/methodology
    ux/offline
    ux/searchboxes
