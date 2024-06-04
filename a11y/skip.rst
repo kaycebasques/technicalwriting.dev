@@ -14,6 +14,12 @@ move my right hand from my keyboard to my mouse hundreds or thousands of times
 per day just to do basic navigation tasks like changing tabs, scrolling the
 screen, etc.
 
+Discussions:
+
+* https://news.ycombinator.com/item?id=40569458
+* https://lobste.rs/s/vbp8wa
+* https://www.reddit.com/r/technicalwriting/comments/1d7kg2k
+
 ----------
 Background
 ----------
@@ -21,14 +27,17 @@ Background
 I personally am learning keyboard-based navigation for "power user" reasons:
 I've heard that keyboard-only navigation is faster. But more importantly,
 `keyboard compatibility <https://www.w3.org/WAI/perspective-videos/keyboard/>`_
-is a P0 website accessibility feature.
+is a P0 (top priority) website accessibility feature. (I don't know if this
+"skip to main content" feature per se should be considered P0, but keyboard
+navigation in general definitely should be.)
 
 ------------
 How it works
 ------------
 
 On day 1 of this journey I realized how important the ``Tab`` key is for
-website navigation. ``Tab`` lets you jump between focusable elements
+website navigation. Pressing ``Tab`` on my Linux machine (macOS and Windows
+people, see next section), lets me jump between focusable elements
 such as links and buttons. If you're viewing this page from a computer with
 a keyboard you can try it now:
 
@@ -40,6 +49,21 @@ a keyboard you can try it now:
 3. Keep pressing ``Tab`` and notice how the focus moves from link to link.
 
 (To actually navigate to a focused link you press ``Enter``.)
+
+macOS and Windows
+=================
+
+.. _comments: https://news.ycombinator.com/item?id=40569458
+
+Browser/OS compatibility notes from Hacker News `comments`_:
+
+* macOS
+  * Safari: The shortcut is ``Option``+``Tab``
+  * Firefox: Enable **System Settings** > **Keyboard** > **Keyboard Navigation**
+    and then ``Tab`` should work.
+* Windows
+  * Firefox: ``Tab`` should work "out-of-the-box" but it sounds like my
+    implementation doesn't work as expected.
 
 -----------
 The problem
@@ -72,7 +96,54 @@ The fix
 This issue doesn't seem hard-to-fix. Here's the change I just put in for
 Pigweed: https://pwrev.dev/213659
 
-(a11y/webdev people: let me know if I implemented incorrectly/suboptimally.)
+(a11y/webdev people: let me know if I implemented incorrectly/suboptimally.
+Edit: a comment from Hacker News suggests that my implementation doesn't work
+correctly on Windows.)
 
 And here's an issue I just created to fix this across Sphinx's core themes:
 https://github.com/sphinx-doc/sphinx/issues/12407
+
+Implementation
+==============
+
+1. Add the skip link as the very first element after ``<body>``. It should
+   be the very first element to ensure that it's the first thing that
+   receives focus.
+
+   .. code-block:: html
+
+      ...
+      <body>
+        <a id="skip" href="#skip-target">Skip to main content</a>
+        ...
+
+2. Add the ``skip-target`` ID to an element near your main content. You can
+   add an empty ``<span>`` or you can add the ID to an existing element.
+
+   .. code-block:: html
+
+      ...
+      <span id="skip-target"></span>
+      <main>
+      ...
+
+   When the "skip to main content" link is focused and you press ``Enter``,
+   you navigate to the element with the ``skip-target`` ID. Since it's
+   an in-page link, this basically just jumps focus to the ``skip-target``
+   element.
+
+3. Style the skip link so that it's hidden by default (by pushing it far outside
+   of the visible viewport) and then is shown in the top-left corner when it receives focus:
+
+   .. code-block:: css
+
+      #skip {
+        position: absolute;
+        top: -1000%;
+        left: -1000%;
+      }
+
+      #skip:focus {
+        top: 10px;
+        left: 10px;
+      }
