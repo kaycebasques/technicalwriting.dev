@@ -59,7 +59,7 @@ macOS and Windows
 Browser/OS compatibility notes from Hacker News `comments`_:
 
 * macOS
-  * Safari: The shortcut is ``Option``+``Tab``
+  * Safari: The shortcut is ``Option`` + ``Tab``
   * Firefox: Enable **System Settings** > **Keyboard** > **Keyboard Navigation**
     and then ``Tab`` should work.
 * Windows
@@ -98,7 +98,7 @@ This issue doesn't seem hard-to-fix. Here's the change I just put in for
 Pigweed: https://pwrev.dev/213659
 
 (a11y/webdev people: let me know if I implemented incorrectly/suboptimally.
-Edit: a comment from Hacker News suggests that my implementation doesn't work
+A comment from Hacker News suggests that my implementation doesn't work
 correctly on Windows.)
 
 And here's an issue I just created to fix this across Sphinx's core themes:
