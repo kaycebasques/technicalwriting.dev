@@ -1,4 +1,4 @@
-.. _skip:
+.. _skip-to-main-content:
 
 =======================================================
 Please support "skip to main content" on your docs site

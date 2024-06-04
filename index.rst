@@ -10,7 +10,7 @@ A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_
 Accessibility
 -------------
 
-* :ref:`skip`
+* :ref:`skip-to-main-content`
 
 .. _ux:
 
