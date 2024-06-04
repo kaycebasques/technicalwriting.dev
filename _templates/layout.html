@@ -14,12 +14,14 @@
         <meta property="twitter:image" content="https://technicalwriting.dev/_static/logo.png">
     </head>
     <body>
+        <a id="skip" href="#skip-target">Skip to main content</a>
         <nav>
             <ul>
                 <li><a href="{{ pathto('index.html', 1) }}">Home</a></li>
                 <li><a href="{{ pathto('rss.xml', 1) }}">RSS</a></li>
             </ul>
 	</nav>
+	<span id="skip-target"></span>
         {% block body %}{{ body() }}{% endblock %}
 	<footer>
 	    <p>© 2024 <a href="https://kayce.basqu.es">Kayce Basques</a></p>

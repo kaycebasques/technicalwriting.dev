@@ -4,6 +4,14 @@ technicalwriting.dev
 
 A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_
 
+.. _a11y:
+
+-------------
+Accessibility
+-------------
+
+* :ref:`skip`
+
 .. _ux:
 
 ---------------
@@ -56,6 +64,7 @@ Authoring
    :maxdepth: 1
    :hidden:
 
+   a11y/skip
    ml/evals
    ml/outlook-2023
    ml/huggingface
