@@ -59,10 +59,14 @@ macOS and Windows
 Browser/OS compatibility notes from Hacker News `comments`_:
 
 * macOS
+
   * Safari: The shortcut is ``Option`` + ``Tab``
+
   * Firefox: Enable **System Settings** > **Keyboard** > **Keyboard Navigation**
     and then ``Tab`` should work.
+
 * Windows
+
   * Firefox: ``Tab`` should work "out-of-the-box" but it sounds like my
     implementation doesn't work as expected.
 
