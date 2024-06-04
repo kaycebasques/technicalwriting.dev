@@ -14,10 +14,18 @@ move my right hand from my keyboard to my mouse hundreds or thousands of times
 per day just to do basic navigation tasks like changing tabs, scrolling the
 screen, etc.
 
+----------
+Background
+----------
+
 I personally am learning keyboard-based navigation for "power user" reasons:
 I've heard that keyboard-only navigation is faster. But more importantly,
 `keyboard compatibility <https://www.w3.org/WAI/perspective-videos/keyboard/>`_
 is a P0 website accessibility feature.
+
+------------
+How it works
+------------
 
 On day 1 of this journey I realized how important the ``Tab`` key is for
 website navigation. ``Tab`` lets you jump between focusable elements
@@ -33,6 +41,10 @@ a keyboard you can try it now:
 
 (To actually navigate to a focused link you press ``Enter``.)
 
+-----------
+The problem
+-----------
+
 On day 2 of my journey I realized that a lot of docs sites suck at
 ``Tab``-based navigation, including the one I work on, ``pigweed.dev``. They don't
 give you a ``Skip to main content`` link, like the one you just saw. You have
@@ -42,12 +54,20 @@ is probably in the main content. Big docs sites often have hundreds of links in 
 site nav, which means you have to tab hundreds of times before the main content
 is in focus! ༼ ༎ຶ ෴ ༎ຶ༽
 
+-----------------------
+Keyboard-friendly sites
+-----------------------
+
 Here are examples of professional sites that implement this feature. These sites
 probably "have their shit together" when it comes to accessibility:
 
 * https://www.google.com/search?q=accessibility
 * https://en.wikipedia.org/wiki/Accessibility
 * https://www.w3.org/WAI/fundamentals/accessibility-intro/
+
+-------
+The fix
+-------
 
 This issue doesn't seem hard-to-fix. Here's the change I just put in for
 Pigweed: https://pwrev.dev/213659
