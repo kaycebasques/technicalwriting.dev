@@ -37,8 +37,10 @@ On day 2 of my journey I realized that a lot of docs sites suck at
 ``Tab``-based navigation, including the one I work on, ``pigweed.dev``. They don't
 give you a ``Skip to main content`` link, like the one you just saw. You have
 to tab through the header, site nav, and searchbox before focus lands on the main
-content. Big docs sites often have hundreds of links in the site nav, which means you
-have to tab hundreds of times before the main content is in focus! ༼ ༎ຶ ෴ ༎ຶ༽
+content. In practice, the link/button/etc. that you actually want to interact with
+is probably in the main content. Big docs sites often have hundreds of links in the
+site nav, which means you have to tab hundreds of times before the main content
+is in focus! ༼ ༎ຶ ෴ ༎ຶ༽
 
 Here are examples of professional sites that implement this feature. These sites
 probably "have their shit together" when it comes to accessibility:
