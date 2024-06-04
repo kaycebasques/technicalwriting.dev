@@ -4,16 +4,26 @@
         <title>technicalwriting.dev</title>
         <link>https://technicalwriting.dev</link>
 	<description>
-            A research blog focused on the development, design, UI, and UX of
-            real-world documentation websites.
+            A blog about technical writing by Kayce Basques.
 	</description>
         <language>en-us</language>
-	<pubDate>Mon, 19 Feb 2024 14:37:03 +0000</pubDate>
+	<pubDate>Mon, 2 Jun 2024 17:48:00 +0000</pubDate>
 	<atom:link href="https://technicalwriting.dev/rss.xml" rel="self"
-                type="application/rss+xml"/>
+		type="application/rss+xml"/>
+        <item>
+            <title>Please support “skip to main content” on your docs site</title>
+	    <link>https://technicalwriting.dev/a11y/skip.html</link>
+	    <description>
+                I'm trying to become proficient at keyboard-only navigation and
+                have learned that a lot of docs sites aren't friendly to people
+                who rely on Tab...
+            </description>
+	    <pubDate>Mon, 2 Jun 2024 17:48:00 +0000</pubDate>
+	    <guid>https://technicalwriting.dev/a11y/skip.html</guid>
+        </item>
         <item>
             <title>Field research: search boxes</title>
-	    <link>https://technicalwriting.dev/searchboxes.html</link>
+	    <link>https://technicalwriting.dev/ux/searchboxes.html</link>
 	    <description>
                 Where should I put the search box on my documentation site?
                 What text should I put inside the search box? What should
@@ -21,7 +31,7 @@
                 search results page look like?
             </description>
 	    <pubDate>Mon, 19 Feb 2024 14:37:03 +0000</pubDate>
-	    <guid>https://technicalwriting.dev/searchboxes.html</guid>
+	    <guid>https://technicalwriting.dev/ux/searchboxes.html</guid>
         </item>
     </channel>
 </rss>
