@@ -29,7 +29,8 @@ I've heard that keyboard-only navigation is faster. But more importantly,
 `keyboard compatibility <https://www.w3.org/WAI/perspective-videos/keyboard/>`_
 is a P0 (top priority) website accessibility feature. (I don't know if this
 "skip to main content" feature per se should be considered P0, but keyboard
-navigation in general definitely should be.)
+navigation in general definitely should be. C-Loftus on Hacker News shared this
+helpful survey on screen reader user preferences: https://webaim.org/projects/screenreadersurvey/)
 
 ------------
 How it works
