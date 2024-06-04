@@ -14,12 +14,6 @@ move my right hand from my keyboard to my mouse hundreds or thousands of times
 per day just to do basic navigation tasks like changing tabs, scrolling the
 screen, etc.
 
-Discussions:
-
-* https://news.ycombinator.com/item?id=40569458
-* https://lobste.rs/s/vbp8wa
-* https://www.reddit.com/r/technicalwriting/comments/1d7kg2k
-
 ----------
 Background
 ----------
@@ -152,3 +146,11 @@ Implementation
         top: 10px;
         left: 10px;
       }
+
+-----------
+Discussions
+-----------
+
+* https://news.ycombinator.com/item?id=40569458
+* https://lobste.rs/s/vbp8wa
+* https://www.reddit.com/r/technicalwriting/comments/1d7kg2k
