@@ -7,9 +7,19 @@
             A blog about technical writing by Kayce Basques.
 	</description>
         <language>en-us</language>
-	<pubDate>Mon, 2 Jun 2024 17:48:00 +0000</pubDate>
+	<pubDate>Thu, 11 Jul 2024 09:01:07 -0700</pubDate>
 	<atom:link href="https://technicalwriting.dev/rss.xml" rel="self"
 		type="application/rss+xml"/>
+        <item>
+            <title>You can deeplink to a specific PDF page</title>
+	    <link>https://technicalwriting.dev/www/pdf.html</link>
+	    <description>
+		Just append #page=X to your URL, where X is the page you
+		want to deeplink to.
+            </description>
+	    <pubDate>Thu, 11 Jul 2024 09:01:07 -0700</pubDate>
+	    <guid>https://technicalwriting.dev/www/pdf.html</guid>
+        </item>
         <item>
             <title>Please support “skip to main content” on your docs site</title>
 	    <link>https://technicalwriting.dev/a11y/skip.html</link>
@@ -18,7 +28,7 @@
                 have learned that a lot of docs sites aren't friendly to people
                 who rely on Tab...
             </description>
-	    <pubDate>Mon, 2 Jun 2024 17:48:00 +0000</pubDate>
+	    <pubDate>Mon, 2 Jun 2024 17:48:00 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/a11y/skip.html</guid>
         </item>
         <item>
@@ -30,7 +40,7 @@
                 happen when I type stuff into the search box? What should the
                 search results page look like?
             </description>
-	    <pubDate>Mon, 19 Feb 2024 14:37:03 +0000</pubDate>
+	    <pubDate>Mon, 19 Feb 2024 14:37:03 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/ux/searchboxes.html</guid>
         </item>
     </channel>

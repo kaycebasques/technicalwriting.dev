@@ -60,6 +60,14 @@ Authoring
 * :ref:`link-text-automation`
 * :ref:`verbatim-wrangling`
 
+.. _www:
+
+--------------
+World wide web
+--------------
+
+* :ref:`pdf`
+
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -81,3 +89,4 @@ Authoring
    ux/offline
    ux/searchboxes
    ux/zephyr
+   www/pdf
