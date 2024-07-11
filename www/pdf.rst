@@ -15,6 +15,10 @@ https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf#page=70
 ------------------------
 Browser/OS compatibility
 ------------------------
+.. _PDF navigation features: https://pdfa.org/pdf-fragment-identifiers/#Browser_support_for_basic_PDF_navigation_features
+
+`evilpie <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_36prye>`_
+linked me to a comprehensive report on the state of `PDF navigation features`_.
 
 .. raw:: html
 
