@@ -31,6 +31,7 @@ Browser/OS compatibility
 .. csv-table::
    :header: "Browser", "OS", "Works?", "Source"
 
+   "Firefox", "Android", "Yes", "`crmsnbleyd <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_ntwysl>`_"
    "Chrome 126", "gLinux", "Yes", "Me"
    "Firefox 115", "gLinux", "Yes", "Me"
    "Safari", "iOS", "No", "`rodaine <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_ipxulb>`_"
