@@ -36,3 +36,6 @@ Browser/OS compatibility
    "Firefox 115", "gLinux", "Yes", "Me"
    "Safari", "iOS", "No", "`rodaine <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_ipxulb>`_"
    "Safari", "macOS 14.5", "Yes", "`hoistbypetard <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_3zs0tn>`_"
+   "Edge 103", "Windows 10", "Yes", "`ine <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_jk0wl7>`_\*\*"
+
+\*\* update yer machine :P
