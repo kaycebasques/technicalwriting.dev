@@ -12,9 +12,9 @@ jump you to page 70 of the Raspberry Pi Pico getting started guide. You should
 see a section titled ``Debug with a second Pico``:
 https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf#page=70
 
--------------------------------
-Browser/OS compatibility matrix
--------------------------------
+------------------------
+Browser/OS compatibility
+------------------------
 
 .. raw:: html
 
