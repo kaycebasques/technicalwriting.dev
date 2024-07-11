@@ -31,6 +31,7 @@ Browser/OS compatibility
 .. csv-table::
    :header: "Browser", "OS", "Works?", "Source"
 
-   "Chrome", "gLinux", "Yes", "Me"
-   "Firefox", "gLinux", "Yes", "Me"
+   "Chrome 126", "gLinux", "Yes", "Me"
+   "Firefox 115", "gLinux", "Yes", "Me"
    "Safari", "iOS", "No", "`rodaine <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_ipxulb>`_"
+   "Safari", "macOS 14.5", "Yes", "`hoistbypetard <https://lobste.rs/s/arffew/you_can_deeplink_specific_pdf_page#c_3zs0tn>`_"
