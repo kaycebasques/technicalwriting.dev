@@ -23,6 +23,7 @@ User experience
   What placeholder text should it contain? What should happen when I type stuff
   into it? What should the search results look like?
 * :ref:`offline`
+* :ref:`pdf`
 
 .. _ml:
 
@@ -60,14 +61,6 @@ Authoring
 * :ref:`link-text-automation`
 * :ref:`verbatim-wrangling`
 
-.. _www:
-
---------------
-World wide web
---------------
-
-* :ref:`pdf`
-
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -87,6 +80,6 @@ World wide web
    src/verbatim-wrangling
    ux/methodology
    ux/offline
+   ux/pdf
    ux/searchboxes
    ux/zephyr
-   www/pdf
