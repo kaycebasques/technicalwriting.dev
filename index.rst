@@ -12,6 +12,12 @@ Accessibility
 
 * :ref:`skip-to-main-content`
 
+-------------
+Build systems
+-------------
+
+* :ref:`bazel`
+
 .. _ux:
 
 ---------------
@@ -66,6 +72,7 @@ Authoring
    :hidden:
 
    a11y/skip
+   build/bazel
    ml/evals
    ml/outlook-2023
    ml/huggingface
