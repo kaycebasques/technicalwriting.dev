@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>technicalwriting.dev</title>
-        <link>https://technicalwriting.dev</link>
-	<description>
-            A blog about technical writing by Kayce Basques.
-	</description>
-        <language>en-us</language>
-	<pubDate>Thu, 11 Jul 2024 09:01:07 -0700</pubDate>
-	<atom:link href="https://technicalwriting.dev/rss.xml" rel="self"
-		type="application/rss+xml"/>
-        <item>
-            <title>You can deeplink to a specific PDF page</title>
+  <channel>
+    <title>technicalwriting.dev</title>
+    <link>https://technicalwriting.dev</link>
+	  <description>
+      A blog about technical writing by Kayce Basques.
+	  </description>
+    <language>en-us</language>
+	  <pubDate>Wed, 25 Sep 2024 11:50:34 -0700</pubDate>
+	  <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Development log: Migrating pigweed.dev to Bazel</title>
+	    <link>https://technicalwriting.dev/build/bazel.html</link>
+	    <description>
+        I have been tasked with the fascinating and somewhat-overwhelming
+        project of migrating pigweed.dev's build system from GN to Bazel.
+        These are my notes on the project.
+      </description>
+	    <pubDate>Wed, 25 Sep 2024 11:50:34 -0700</pubDate>
+	    <guid>https://technicalwriting.dev/build/bazel.html</guid>
+    </item>
+    <item>
+      <title>You can deeplink to a specific PDF page</title>
 	    <link>https://technicalwriting.dev/www/pdf.html</link>
 	    <description>
-		Just append #page=X to your URL, where X is the page you
-		want to deeplink to.
-            </description>
+        Just append #page=X to your URL, where X is the page you
+		    want to deeplink to.
+      </description>
 	    <pubDate>Thu, 11 Jul 2024 09:01:07 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/www/pdf.html</guid>
-        </item>
-        <item>
-            <title>Please support “skip to main content” on your docs site</title>
+    </item>
+    <item>
+      <title>Please support “skip to main content” on your docs site</title>
 	    <link>https://technicalwriting.dev/a11y/skip.html</link>
 	    <description>
-                I'm trying to become proficient at keyboard-only navigation and
-                have learned that a lot of docs sites aren't friendly to people
-                who rely on Tab...
-            </description>
+        I'm trying to become proficient at keyboard-only navigation and
+        have learned that a lot of docs sites aren't friendly to people
+        who rely on Tab...
+      </description>
 	    <pubDate>Mon, 2 Jun 2024 17:48:00 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/a11y/skip.html</guid>
-        </item>
-        <item>
-            <title>Field research: search boxes</title>
+    </item>
+    <item>
+      <title>Field research: search boxes</title>
 	    <link>https://technicalwriting.dev/ux/searchboxes.html</link>
 	    <description>
-                Where should I put the search box on my documentation site?
-                What text should I put inside the search box? What should
-                happen when I type stuff into the search box? What should the
-                search results page look like?
-            </description>
+        Where should I put the search box on my documentation site?
+        What text should I put inside the search box? What should
+        happen when I type stuff into the search box? What should the
+        search results page look like?
+      </description>
 	    <pubDate>Mon, 19 Feb 2024 14:37:03 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/ux/searchboxes.html</guid>
-        </item>
-    </channel>
+    </item>
+  </channel>
 </rss>
