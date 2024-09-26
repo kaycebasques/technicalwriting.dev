@@ -4,9 +4,9 @@
 Development log: Migrating pigweed.dev to Bazel
 ===============================================
 
-I have been charged with the fascinating and sometimes-overwhelming task
-of migrating pigweed.dev's build system from GN to Bazel. These are my
-chronological notes on the project.
+I have been tasked with the fascinating and somewhat-overwhelming
+project of migrating pigweed.dev's build system from GN to Bazel.
+These are my notes on the project.
 
 .. _bazel-20240924:
 
@@ -15,7 +15,7 @@ Tue Sep 24 2024
 ---------------
 
 I wrote a design doc today summarizing the project and plan. Here's the
-gist of the design doc.
+gist.
 
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 
