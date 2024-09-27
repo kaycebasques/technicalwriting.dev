@@ -1,5 +1,5 @@
 [[ -d _build ]] && rm -rf _build
-source venv/bin/activate
+. venv/bin/activate.fish
 python3 -m pip install -r requirements.txt
 make html
 deactivate

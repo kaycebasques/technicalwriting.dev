@@ -79,3 +79,77 @@ this as an error and stops the build. There's probably a way to downgrade this
 particular error to just a warning where Sphinx complains about the problem
 but continues building the site. My main point is that there are lots of things
 like this that make incremental migration difficult.
+
+.. _bazel-20240927:
+
+---------------
+Fri Sep 24 2027
+---------------
+
+Dependency Hell
+===============
+
+.. figure:: https://sourcegraphstatic.com/blog/nine-circles-of-dependency-hell.jpg
+
+   Credit: `The Nine Circles of Dependency Hell <https://sourcegraph.com/blog/nine-circles-of-dependency-hell>`_
+
+Yesterday I made an unexpected visit to `Dependency Hell <https://en.wikipedia.org/wiki/Dependency_hell>`_.
+
+`rules_python/sphinx`_ is going to be the foundation of our Bazel-based build
+system. The Sphinx features in rules_python that I need are brand new. They were introduced
+in the last release, v0.36.0. Upgrading the Pigweed repo to v0.36.0 was a simple
+one-line change. But then all (dependency) hell broke loose. ``sphinx_build.py``
+(the script in rules_python that starts the Sphinx build process) started having
+fatal errors around unexpected arguments. Eventually I figured out that
+rules_python v0.36.0 was developed against Sphinx v8, whereas we're on Sphinx v7. So I tried updating
+the Pigweed repo to use Sphinx v8 and eventually hit a wall. Some of the Sphinx
+Extensions that we use in turn have dependencies on other PyPI libraries, and
+those dependencies don't support Sphinx v8 yet. Luckily I figured out that I
+could just upgrade the Pigweed repo to the last v7 version that was released.
+We were on Sphinx v7.1.2 (released over a year ago); I updated us to Sphinx
+v7.4.7 (released two months ago). This unblocked me from using rules_python
+v0.36.0 within the Pigweed repo.
+
+Once rules_python v0.36.0 started working I hit another snag:
+
+.. code-block:: text
+
+   kayce@kayce0 ~/p/pigweed (pw_docgen)> bazelisk build //pw_docgen/...
+   WARNING: Option 'remote_default_platform_properties' is deprecated: --remote_default_platform_properties has been deprecated in favor of --remote_default_exec_properties.
+   WARNING: Option 'remote_default_platform_properties' is deprecated: --remote_default_platform_properties has been deprecated in favor of --remote_default_exec_properties.
+   ERROR: /home/kayce/.cache/bazel/_bazel_kayce/9659373b1552c281136de1c8eeb3080d/external/rules_python++pip+python_packages/sphinx/BUILD.bazel:10:6: in alias rule @@rules_python++pip+python_packages//sphinx:pkg: cycle in dependency graph:
+       //pw_docgen:_docs_html (8bf5217cd2199c4037e0ca161ab823102dd08eb93eeb7d4325e1d09666f3d863)
+       //pw_docgen:_docs_html (2ccb10a0925868f764725cd74e410c636f5bbc18edb2d446d5c2ff1eb85e7e25)
+       //pw_docgen:docs (2ccb10a0925868f764725cd74e410c636f5bbc18edb2d446d5c2ff1eb85e7e25)
+       //pw_docgen:sphinx-build (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+       @@rules_python++pip+python_packages//pydata_sphinx_theme:pydata_sphinx_theme (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+       @@rules_python++pip+python_packages//pydata_sphinx_theme:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+       @@rules_python++pip+python_packages_311_pydata_sphinx_theme//:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   .-> @@rules_python++pip+python_packages//sphinx:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   |   @@rules_python++pip+python_packages_311_sphinx//:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   |   @@rules_python++pip+python_packages//sphinxcontrib_serializinghtml:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   |   @@rules_python++pip+python_packages_311_sphinxcontrib_serializinghtml//:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   `-- @@rules_python++pip+python_packages//sphinx:pkg (bef2812dd1082aa39f3bcaa89343101b37ad5ee2cf77f8448d2ef909b33c5108)
+   Target //pw_docgen:_docs/_sources up-to-date:
+     bazel-bin/pw_docgen/_docs/_sources/pw_docgen/conf.py
+     bazel-bin/pw_docgen/_docs/_sources/pw_docgen/index.rst
+   ERROR: Analysis of target '//pw_docgen:_docs_html' failed; build aborted
+   INFO: Elapsed time: 0.124s, Critical Path: 0.01s
+   INFO: 1 process: 1 internal.
+   ERROR: Build did NOT complete successfully
+
+This problem was beyond my pay grade so I asked my resident Bazel expert, Ted
+Pudlik, for help. Ted pointed me to this issue:
+`Circular dependencies between Sphinx and sphinxcontrib-* <https://github.com/sphinx-doc/sphinx/issues/11567>`_
+
+And the rules_python docs on 
+`circular dependencies <https://rules-python.readthedocs.io/en/latest/pypi-dependencies.html#circular-dependencies>`_.
+
+The fixes here were also pretty easy. I mainly just needed to upgrade
+``sphinxcontrib-serializinghtml`` to v1.1.10 to eliminate the circular
+dependency. And then I had to bump the minor revisions on ``babel`` and
+``pygments``.
+
+After that, my unexpected tour of Dependency Hell was finished
+(for now?) and I was able to proceed with my prototyping. Phew.
+
