@@ -153,3 +153,63 @@ dependency. And then I had to bump the minor revisions on ``babel`` and
 After that, my unexpected tour of Dependency Hell was finished
 (for now?) and I was able to proceed with my prototyping. Phew.
 
+.. _bazel-20240930:
+
+---------------
+Mon Sep 30 2027
+---------------
+
+We have a custom Sphinx extension that pulls in a data file from a
+different, faraway directory. In the GN build it's easy to access the
+data file from my Python script:
+
+.. code-block:: py
+
+   with open(f'{os.environ["PW_ROOT"]}/docs/module_metadata.json', 'r') as f:
+
+``PW_ROOT`` gives you the absolute path to the Pigweed repo. Bazel on the
+other hand uses `sandboxing <https://bazel.build/docs/sandboxing>`_ so you
+can't access absolute paths like this. Well, maybe it's not related to
+sandboxing; I'm not sure about those details. All I know is that the
+simple approach that works in GN doesn't work in our Bazel system.
+
+The Bazel solution is also not too bad, but I definitely would not have
+figured it out without Ted's help again. You just add the files to the
+``data`` list in your ``py_library`` rule and depend on
+`bazel-runfiles <https://github.com/bazelbuild/rules_python/tree/main/python/runfiles>`_:
+
+.. code-block::
+
+   py_library(
+       # ...
+       data = [
+           "//:PIGWEED_MODULES",
+           "//docs:module_metadata.json",
+       ],
+       # ...
+       deps = [
+           "@rules_python//python/runfiles",
+       ],
+   )
+
+And then you add a little conditional logic in your Python script that
+changes the paths to the data files depending on whether you're in the
+GN build or the Bazel build:
+
+.. code-block::
+
+   try:  # Bazel location for the data
+       from python.runfiles import runfiles  # type: ignore
+       r = runfiles.Create()
+       modules_file = r.Rlocation('pigweed/PIGWEED_MODULES')
+       r = runfiles.Create()
+       metadata_file = r.Rlocation('pigweed/docs/module_metadata.json')
+   except ImportError:  # GN location for the data
+       modules_file = f'{os.environ["PW_ROOT"]}/PIGWEED_MODULES'
+       metadata_file = f'{os.environ["PW_ROOT"]}/docs/module_metadata.json'
+   with open(modules_file, 'r') as f:
+       # The complete, authoritative list of modules.
+       complete_pigweed_modules_list = f.read().splitlines()
+   with open(metadata_file, 'r') as f:
+       # Module metadata such as supported languages and status.
+       metadata = json.load(f)
