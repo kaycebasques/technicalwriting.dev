@@ -159,9 +159,11 @@ After that, my unexpected tour of Dependency Hell was finished
 Mon Sep 30 2027
 ---------------
 
-We have a custom Sphinx extension that pulls in a data file from a
-different, faraway directory. In the GN build it's easy to access the
-data file from my Python script:
+We have a custom Sphinx extension that pulls in data from a file in
+a faraway directory. E.g. the script is at
+``//pw_docgen/py/py_docgen/sphinx/modules_index.py`` and it needs data
+from ``//docs/module_metadata.json``. In the GN build it's easy to access
+the data file from ``modules_index.py``:
 
 .. code-block:: py
 
@@ -174,7 +176,7 @@ sandboxing; I'm not sure about those details. All I know is that the
 simple approach that works in GN doesn't work in our Bazel system.
 
 The Bazel solution is also not too bad, but I definitely would not have
-figured it out without Ted's help again. You just add the files to the
+figured it out without Ted's help again. You just add the data files to the
 ``data`` list in your ``py_library`` rule and depend on
 `bazel-runfiles <https://github.com/bazelbuild/rules_python/tree/main/python/runfiles>`_:
 
@@ -192,9 +194,9 @@ figured it out without Ted's help again. You just add the files to the
        ],
    )
 
-And then you add a little conditional logic in your Python script that
-changes the paths to the data files depending on whether you're in the
-GN build or the Bazel build:
+And then you tweak your Python script so that it changes the path
+to the data files depending on whether the script is getting
+executed from a Bazel build or a GN build:
 
 .. code-block::
 
