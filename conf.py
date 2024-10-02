@@ -3,10 +3,11 @@ copyright = '2024, Kayce Basques'
 exclude_patterns = [
     '.github',
     '.gitignore',
+    '_build',
     'Makefile',
     'README.md',
-    '_build',
     'boostrap.sh',
+    'dad/index.rst',
     'mdx',
     'requirements.txt',
     'venv'

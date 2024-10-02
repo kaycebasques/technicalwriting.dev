@@ -2,7 +2,7 @@
 technicalwriting.dev
 ====================
 
-A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_
+A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_.
 
 .. _a11y:
 
@@ -18,18 +18,22 @@ Build systems
 
 * :ref:`bazel`
 
-.. _ux:
+.. _dac:
 
----------------
-User experience
----------------
+------------------
+Docs-as-Code (DaC)
+------------------
 
-* :ref:`methodology`. Background context for my field research.
-* :ref:`searchboxes`. Where should I put the search box on my docs site?
-  What placeholder text should it contain? What should happen when I type stuff
-  into it? What should the search results look like?
-* :ref:`offline`
-* :ref:`pdf`
+* :ref:`link-text-automation`
+* :ref:`verbatim-wrangling`
+
+.. _dad:
+
+------------------
+Docs-as-Data (DaD)
+------------------
+
+* :ref:`intertwingularity`
 
 .. _ml:
 
@@ -58,14 +62,18 @@ Search engine optimization
 * :ref:`sentry-overflow`
 * :ref:`discovered-not-indexed`
 
-.. _authoring:
+.. _ux:
 
----------
-Authoring
----------
+---------------
+User experience
+---------------
 
-* :ref:`link-text-automation`
-* :ref:`verbatim-wrangling`
+* :ref:`methodology`. Background context for my field research.
+* :ref:`searchboxes`. Where should I put the search box on my docs site?
+  What placeholder text should it contain? What should happen when I type stuff
+  into it? What should the search results look like?
+* :ref:`offline`
+* :ref:`pdf`
 
 .. toctree::
    :maxdepth: 1
@@ -73,6 +81,7 @@ Authoring
 
    a11y/skip
    build/bazel
+   dad/intertwingularity
    ml/evals
    ml/outlook-2023
    ml/huggingface

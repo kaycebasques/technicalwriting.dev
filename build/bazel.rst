@@ -95,7 +95,7 @@ Dependency Hell
 
 Yesterday I made an unexpected visit to `Dependency Hell <https://en.wikipedia.org/wiki/Dependency_hell>`_.
 
-`rules_python/sphinx`_ is going to be the foundation of our Bazel-based build
+`rules_python/sphinxdocs`_ is going to be the foundation of our Bazel-based build
 system. The Sphinx features in rules_python that I need are brand new. They were introduced
 in the last release, v0.36.0. Upgrading the Pigweed repo to v0.36.0 was a simple
 one-line change. But then all (dependency) hell broke loose. ``sphinx_build.py``
