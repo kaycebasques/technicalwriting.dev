@@ -4,6 +4,8 @@
 Exploring the intertwingularity of a docs site
 ==============================================
 
+.. figure:: /_static/singularity.png
+
 .. _Ted Nelson: https://en.wikipedia.org/wiki/Ted_Nelson
 .. _link: https://en.wikipedia.org/wiki/Hyperlink
 .. _Computer Lib/Dream Machines: https://en.wikipedia.org/wiki/Computer_Lib/Dream_Machines
@@ -98,9 +100,3 @@ To be continued
 ---------------
 
 This post is a work in progress.
-
-----------
-Bonus meme
-----------
-
-.. figure:: /_static/singularity.png
