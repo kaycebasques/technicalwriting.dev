@@ -55,9 +55,9 @@ fundamental questions of technical writing:
 
 As a technical writer I think about this question a lot because of one
 simple law of nature: the rate of change in a project's
-data/metadata/information/knowledge/wisdom\ :sup:`1` often far exceeds the
+data/metadata/information/knowledge/wisdom often far exceeds the
 resources allocated for maintaining all that
-data/metadata/information/knowlege/wisdom\ :sup:`2`. I.e. I can't give
+data/metadata/information/knowlege/wisdom. I.e. I can't give
 every page of my docs site the same level of tender loving care (TLC). I must
 decide which ones get more TLC and which ones get less.
 
@@ -69,7 +69,7 @@ approaches that provide *partial* answers.
 
 Pageviews is one such approach. Your website analytics tell you what pages
 are visited the most. You infer that the most-visited pages are important
-because this is where your users literally spend the most time.\ :sup:`3`
+because this is where your users literally spend the most time.
 Pageviews, however, can't tell you anthing about how the ideas embedded in
 your pages relate to each other and ideas from the world wide web at large.
 `Every Page Is Page One`_ calls this "subject affinity":
@@ -83,19 +83,6 @@ Links are the means for figuring out subject affinities:
   Web organization is always local... Each page has its own set of
   associations and affinities... The page locates itself in a semantic
   cluster formed by links and keywords.
-
-:sup:`1` E.g. a 700-page docs site.
-
-:sup:`2` E.g. the one technical writer in a 100-person startup
-who gets paid 50-75% of the SWEs and who is expected to keep all
-700 pages of the docs site accurate and up-to-date at all times...
-
-:sup:`3` The least-visited pages can also provide useful signal.
-Suppose that one of your least-visited pages contains critical
-information that lots of users would probably like to know about.
-The fact that no one is visiting this page is a yellow flag. Maybe
-the links to this page are broken. Maybe the site UI is burying this
-page and making it hard to find. Etc.
 
 ---------------
 To be continued
