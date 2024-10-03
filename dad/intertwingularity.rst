@@ -55,11 +55,10 @@ fundamental questions of technical writing:
 
 As a technical writer I think about this question a lot because of one
 simple law of nature: the rate of change in a project's
-data/metadata/information/knowledge/wisdom often far exceeds the
-resources allocated for maintaining all that
-data/metadata/information/knowlege/wisdom. I.e. I can't give
-every page of my docs site the same level of tender loving care (TLC). I must
-decide which ones get more TLC and which ones get less.
+data/metadata/information/knowledge/wisdom ("knowledge" for short) often far
+exceeds the resources allocated for maintaining all that knowledge. I.e. I
+can't give every page the same level of tender loving care (TLC).
+I must decide which ones get more TLC and which ones get less.
 
 There is no single approach that can *fully* answer the fundamental question
 ("what pages of my docs site are important?"). There are, however, lots of
@@ -70,19 +69,29 @@ approaches that provide *partial* answers.
 Pageviews is one such approach. Your website analytics tell you what pages
 are visited the most. You infer that the most-visited pages are important
 because this is where your users literally spend the most time.
-Pageviews, however, can't tell you anthing about how the ideas embedded in
-your pages relate to each other and ideas from the world wide web at large.
+
+Pageviews, however, can't tell you much about how your pages relate to each
+other. This is where links and web crawlers come in. Think of each page as
+a set of ideas. Links let that page connect itself to other related ideas.
 `Every Page Is Page One`_ calls this "subject affinity":
 
   You should be thinking of links not as citations or references but
   as the natural expression of every significant subject affinity in
   your content.
 
-Links are the means for figuring out subject affinities:
+Links are the tangible manifestation of subject affinities:
 
   Web organization is always local... Each page has its own set of
   associations and affinities... The page locates itself in a semantic
   cluster formed by links and keywords.
+
+.. _PageRank: https://en.wikipedia.org/wiki/PageRank
+
+Short story long, I'm building a web crawler so that I can meticulously
+track how the pages of my docs site link to each other and to the outside
+web more broadly. E.g. if all of my docs pages link to some particular
+page, then that page is probably very important. `PageRank`_ Lite,
+basically, except with much more focus on intra-site links.
 
 ---------------
 To be continued
