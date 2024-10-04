@@ -81,7 +81,7 @@ User experience
 
    a11y/skip
    build/bazel
-   dad/intertwingularity
+   data/intertwingularity
    ml/evals
    ml/outlook-2023
    ml/huggingface
