@@ -57,24 +57,25 @@ fundamental questions of technical writing:
 
 As a technical writer I think about this question a lot because of one
 simple law of nature: the rate of change in a project's
-data/metadata/information/knowledge/wisdom ("knowledge" for short) often far
-exceeds the resources allocated for maintaining all that knowledge. I.e. I
-can't give every page the same level of tender loving care (TLC).
-I must decide which ones get more TLC and which ones get less.
+data / metadata / information / knowledge / wisdom ("knowledge" for short)
+often far exceeds the resources allocated for maintaining all that knowledge.
+I.e. I can't give every page on my docs site the same level of tender loving
+care (TLC). I must decide which pages get more TLC and which ones get less.
 
-There is no single approach that can *fully* answer the fundamental question
-("what pages of my docs site are important?"). There are, however, lots of
+There is no single approach that can *fully* answer the fundamental question,
+"what pages of my docs site are important?" There are, however, lots of
 approaches that provide *partial* answers.
 
 .. _Every Page Is Page One: https://everypageispageone.com/the-book/
 
-Pageviews is one such approach. Your website analytics tell you what pages
+Studying pageviews is one such approach. Your website analytics tell you what pages
 are visited the most. You infer that the most-visited pages are important
 because this is where your users literally spend the most time.
 
-Pageviews, however, can't tell you much about how your pages relate to each
-other. This is where links and web crawlers come in. Think of each page as
-a set of ideas. Links let that page connect itself to other related ideas.
+Pageviews, however, can't tell you much about how your pages relate to *each
+other*. Links can. Think of each docs page as a jumble of knowledge. When
+a docs page links to another page, it's really just one jumble of knowledge
+connecting itself to another jumble of knowledge located elsewhere.
 `Every Page Is Page One`_ calls this "subject affinity":
 
   You should be thinking of links not as citations or references but
