@@ -1,5 +1,5 @@
 :root {
-    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -19,7 +19,7 @@ blockquote {
 }
 
 code {
-    font-family: "Noto Sans Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 div.highlight {
