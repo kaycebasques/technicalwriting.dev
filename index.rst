@@ -75,12 +75,25 @@ User experience
 * :ref:`offline`
 * :ref:`pdf`
 
+-------------------
+ignore this section
+-------------------
+
+i'm building stuff
+
+`example 1 <https://technicalwriting.dev/index.html>`_
+
+`example 2 <https://technicalwriting.dev/data/>`_
+
+`example 3 <https://technicalwriting.dev/data/index.html>`_
+
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    a11y/skip
    build/bazel
+   data/index
    data/intertwingularity
    ml/evals
    ml/outlook-2023
