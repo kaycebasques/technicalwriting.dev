@@ -91,6 +91,10 @@ p code {
     left: 10px;
 }
 
+table {
+    width: 100%;
+}
+
 .toctree-l1 {
     padding-bottom: 1em;
 }
