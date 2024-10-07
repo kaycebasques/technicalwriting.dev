@@ -26,7 +26,7 @@ links enable us to get closer to the intertwingled nature of knowledge:
   acknowledged—people keep pretending they can make things hierarchical,
   categorizable and sequential when they can't.
 
-After reading that quote, one thing became very clear to me:
+After reading those quotes, it was clear what I must do:
 
 .. figure:: /_static/boat.png
    :alt: I should build a web crawler.
@@ -46,8 +46,8 @@ broadly. If a lot of my docs pages link to some particular page, then
 that page is probably important. `PageRank`_ Lite, basically, except
 with much more focus on intra-site `backlinks`_.
 
-Why care about links
-====================
+Importance
+==========
 
 .. _technical writer: https://en.wikipedia.org/wiki/Technical_writer
 .. _pigweed.dev: https://pigweed.dev
@@ -61,8 +61,9 @@ I can't give every page on my docs site the same level of tender loving
 care. I must decide which pages get more of my time and energy and which ones
 get less.
 
-There is no single approach that provides a full answer to the question.
-There are, however, lots of approaches that provide *partial* answers.
+There is no single approach that provides a *full* answer to the fundametal
+question. There are, however, lots of approaches that provide *partial*
+answers.
 
 Pageviews
 ---------
@@ -72,33 +73,55 @@ Pageviews
 Pageviews is a `goto`_ approach for deciding what pages are important.
 My website analytics tell me what pages are visited the most. I infer that
 the most-visited pages are important because this is where my users literally
-spend the most time. So I review the top 10 most-visited pages, making sure
-they're all high-quality. But then I face a problem. The next 50 pages all
-have roughly the same amount of pageviews. I don't have time to review all
-50 of these pages. How do I decide which ones are important?
+spend the most time. But what if each of the top 10 pages has the same amount
+of pageviews and I only have time to review 5? Which 5 do I prioritize?
+
+.. csv-table::
+   :header: "Page ID", "Pageviews"
+
+   "Q", "1000"
+   "R", "1000"
+   "S", "1000"
+   "T", "1000"
+   "U", "1000"
+   "V", "1000"
+   "W", "1000"
+   "X", "1000"
+   "Y", "1000"
+   "Z", "1000"
 
 Backlinks
 ---------
 
 .. _load-bearing: https://en.wikipedia.org/wiki/Load-bearing_wall
-.. _triangulated: https://en.wikipedia.org/wiki/Triangulation_(social_science)
 
 When the pageview data is ambiguous, links can help me determine which
 pages have the most `load-bearing`_ content. Suppose that Pages A, B, and
 C all link to Page D. There's probably some important content on Page D.
 Pages with more backlinks (e.g. Page D) should probably be prioritized
-above pages with less backlinks.
+above pages with less backlinks. Think about it in terms of user journey.
+Users on Pages A, B, and C all have a chance of ending up on Page D.
+
+.. _triangulate: https://en.wikipedia.org/wiki/Triangulation_(social_science)
+
+Revisiting the "top 10 pages all have the same amount of pageviews and
+I only have time to review 5" problem, when I `triangulate`_ the pageview
+data with the backlink data, it becomes easier to decide which 5 to
+prioritize:
 
 .. csv-table::
    :header: "Page ID", "Pageviews", "Backlinks"
 
-   "X", "1000", "17"
-   "Y", "1000", "4"
-   "Z", "1000", "36"
-
-Given only the pageviews data, it's hard to tell whether to prioritize
-X, Y, or Z. When the pageviews data is `triangulated`_ with the backlink
-data it's easy to tell that Z should be the top priority.
+   "Q", "1000", "4"
+   "R", "1000", "11"
+   "S", "1000", "17"
+   "T", "1000", "2"
+   "U", "1000", "26"
+   "V", "1000", "20"
+   "W", "1000", "15"
+   "X", "1000", "31"
+   "Y", "1000", "3"
+   "Z", "1000", "1"
 
 .. ---------
 .. Prior art
