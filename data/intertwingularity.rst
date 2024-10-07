@@ -90,7 +90,7 @@ Pages with more backlinks (e.g. Page D) should probably be prioritized
 above pages with less backlinks.
 
 .. csv-table::
-   :header: "Page ID", "Number of pageviews", "Number of backlinks"
+   :header: "Page ID", "Pageviews", "Backlinks"
 
    "X", "1000", "17"
    "Y", "1000", "4"
