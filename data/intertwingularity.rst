@@ -26,24 +26,16 @@ links enable us to get closer to the intertwingled nature of knowledge:
   acknowledged—people keep pretending they can make things hierarchical,
   categorizable and sequential when they can't.
 
-My first thought after readin gthat
-
-Now, I don't know about you, but when I read stuff like that, my mind
-immediately jumps to one conclusion:
+After reading that quote, one thing became very clear to me:
 
 .. figure:: /_static/boat.png
    :alt: I should build a web crawler.
 
-.. _intertwingularity-mesh:
+.. _intertwingularity-background:
 
-------------------
-Why crawl the Mesh
-------------------
-
-.. _Mesh: https://www.w3.org/History/1989/proposal.html
-
-(`Mesh`_ was Tim Berners-Lee's original name for the world wide web.
-Mesh computing is dead, long live mesh computing!)
+----------
+Background
+----------
 
 .. _PageRank: https://en.wikipedia.org/wiki/PageRank
 .. _backlinks: https://en.wikipedia.org/wiki/Backlink
@@ -106,19 +98,19 @@ above pages with less backlinks.
 
 Given only the pageviews data, it's hard to tell whether to prioritize
 X, Y, or Z. When the pageviews data is `triangulated`_ with the backlink
-data it's easy to tell that Z should get prioritized, then X, then Y.
+data it's easy to tell that Z should be the top priority.
 
----------
-Prior art
----------
-
-* `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
-* `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
-* `Refback <https://en.wikipedia.org/wiki/Refback>`_
-* `Trackback <https://en.wikipedia.org/wiki/Trackback>`_
-* `Pingback <https://en.wikipedia.org/wiki/Pingback>`_
-* `Webmention <https://en.wikipedia.org/wiki/Webmention>`_
-* `Octothorpes <https://octothorp.es/docs>`_
+.. ---------
+.. Prior art
+.. ---------
+.. 
+.. * `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
+.. * `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
+.. * `Refback <https://en.wikipedia.org/wiki/Refback>`_
+.. * `Trackback <https://en.wikipedia.org/wiki/Trackback>`_
+.. * `Pingback <https://en.wikipedia.org/wiki/Pingback>`_
+.. * `Webmention <https://en.wikipedia.org/wiki/Webmention>`_
+.. * `Octothorpes <https://octothorp.es/docs>`_
 
 ---------------
 To be continued
