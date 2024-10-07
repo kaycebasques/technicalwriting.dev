@@ -10,7 +10,7 @@ Exploring the intertwingularity of a docs site
 .. _PDF: https://worrydream.com/refs/Nelson_T_1974_-_Computer_Lib,_Dream_Machines.pdf
 
 `Intertwingularity <https://en.wikipedia.org/wiki/Intertwingularity>`__ is a
-term coined by `Ted Nelson`_, the same guy who coined the term `link`_.
+term coined by `Ted Nelson`_, the same guy who coined the term `link`_.\ :sup:`1`
 In `Computer Lib/Dream Machines`_ (`PDF`_) Nelson explains intertwingularity
 like this:
 
@@ -30,6 +30,13 @@ After reading those quotes, it was clear what I must do:
 
 .. figure:: /_static/boat.png
    :alt: I should build a web crawler.
+
+.. _As We May ThinK: https://dl.acm.org/doi/pdf/10.1145/227181.227186
+.. _Memex: https://en.wikipedia.org/wiki/Memex
+
+:sup:`1` Nelson is credited with coining the term "link" but the underlying
+idea traces back to `As We May Think`_ by Vannevar Bush and his hypothetical
+`Memex`_ device.
 
 .. _intertwingularity-background:
 
