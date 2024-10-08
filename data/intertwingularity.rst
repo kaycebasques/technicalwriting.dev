@@ -53,6 +53,9 @@ broadly. If a lot of my docs pages link to some particular page, then
 that page is probably important. `PageRank`_ Lite, basically, except
 with much more focus on intra-site `backlinks`_.
 
+(Also, I'm building a web crawler because it's a deeply fun and satisfying
+programming challenge. You should try it!)
+
 Importance
 ==========
 
@@ -75,9 +78,7 @@ answers.
 Pageviews
 ---------
 
-.. _goto: https://en.wikipedia.org/wiki/Goto
-
-Pageviews is a `goto`_ approach for deciding what pages are important.
+Pageviews is one such partial-answer approach.
 My website analytics tell me what pages are visited the most. I infer that
 the most-visited pages are important because this is where my users literally
 spend the most time. But what if each of the top 10 pages has the same amount
@@ -130,17 +131,34 @@ prioritize:
    "Y", "1000", "3"
    "Z", "1000", "1"
 
-.. ---------
-.. Prior art
-.. ---------
-.. 
-.. * `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
-.. * `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
-.. * `Refback <https://en.wikipedia.org/wiki/Refback>`_
-.. * `Trackback <https://en.wikipedia.org/wiki/Trackback>`_
-.. * `Pingback <https://en.wikipedia.org/wiki/Pingback>`_
-.. * `Webmention <https://en.wikipedia.org/wiki/Webmention>`_
-.. * `Octothorpes <https://octothorp.es/docs>`_
+Networked knowledge
+===================
+
+.. _Too Big To Know: https://en.wikipedia.org/wiki/Too_Big_to_Know
+
+Beyond the "docs review prioritization" problem I have another motivation
+for studying backlinks. I simply want to know more about how the ideas
+within my docs site relate and connect to each other. The concept of
+*networked knowledge* from `Too Big To Know`_ fascinates me:
+
+  The chance in the infrastructure of knowledge is altering knowledge's
+  shape and nature. As knowledge becomes networked, the smartest person
+  in the room isn't the person at the front lecturing us, and isn't the
+  collective wisdom of those in the room. The smartest person in the
+  room is the room itself: the network that joins the people and ideas
+  in the room, and connects to those outside of it. It's not that the
+  network is becoming a conscious super-brain. Rather knowledge is
+  becoming inextricable from—literally unthinkable without— the network
+  that enables it. Our task is to learn how to build smart rooms—that is,
+  how to build networks that make us smarter...
+
+How exactly does my web crawler relate to networked knowledge? I don't
+know. My thinking here is still very much in the "primordial soup of
+opportunities" phase.
+
+-----------------------------
+Anatomy of a backlink crawler
+-----------------------------
 
 ---------------
 To be continued
@@ -148,8 +166,26 @@ To be continued
 
 This post is a work in progress.
 
------------------
+--------
+Appendix
+--------
+
+Prior art
+=========
+
+There are lot of web platform features and third-party tools related to
+backlinks.
+
+* `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
+* `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
+* `Refback <https://en.wikipedia.org/wiki/Refback>`_
+* `Trackback <https://en.wikipedia.org/wiki/Trackback>`_
+* `Pingback <https://en.wikipedia.org/wiki/Pingback>`_
+* `Webmention <https://en.wikipedia.org/wiki/Webmention>`_
+* `Octothorpes <https://octothorp.es/docs>`_
+* `Ahrefs Backlink Checker <https://ahrefs.com/backlink-checker/>`_
+
 Extra credit meme
------------------
+=================
 
 .. figure:: /_static/singularity.png
