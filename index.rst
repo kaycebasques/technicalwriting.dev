@@ -77,6 +77,14 @@ Search engine optimization
   competing with Stack Overflow.
 * :ref:`discovered-not-indexed`. How I fixed this error for ``pigweed.dev``.
 
+.. _strategy:
+
+--------
+Strategy
+--------
+
+* :ref:`decisions`
+
 .. _ux:
 
 ---------------
@@ -112,6 +120,7 @@ User experience
    seo/sentry-overflow
    src/link-text-automation
    src/verbatim-wrangling
+   strategy/decisions
    ux/methodology
    ux/offline
    ux/pdf
