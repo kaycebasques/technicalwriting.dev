@@ -1,8 +1,8 @@
 .. _evals:
 
-==================================================================
-Evaluating the quality of my retrieval-augmented generation system
-==================================================================
+=================================
+Evaluating quality in RAG systems
+=================================
 
 .. _Strategy\: Test changes systematically: https://platform.openai.com/docs/guides/gpt-best-practices/strategy-test-changes-systematically
 .. _OpenAI's Evals framework: https://github.com/openai/evals

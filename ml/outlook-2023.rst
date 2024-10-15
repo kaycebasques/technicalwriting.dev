@@ -1,13 +1,13 @@
 .. _genai-outlook-2023:
 
-==========================================
-GenAI Outlook (For Technical Writers) 2023
-==========================================
+==================
+GenAI Outlook 2023
+==================
 
 2023 Mar 24
 
 A lot of people are talking about how generative AI is a gamechanger for
-documentation. This post summarizes what's going on.
+the technical writing industry. This post summarizes what's going on.
 
 ----------------
 Potential threat

@@ -1,8 +1,8 @@
 .. _verbatim-wrangling:
 
-=================================================
-Wrangling verbatim text in Doxygen+Breathe+Sphinx
-=================================================
+=======================
+Wrangling verbatim text
+=======================
 
 .. _small CLs: https://google.github.io/eng-practices/review/developer/small-cls.html
 .. _verbatim: https://www.doxygen.nl/manual/commands.html#cmdverbatim

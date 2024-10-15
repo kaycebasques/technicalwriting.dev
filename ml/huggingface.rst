@@ -1,8 +1,8 @@
 .. _huggingface:
 
-==========================================================
-Generating summaries with HuggingFace summarization models
-==========================================================
+============================================
+Generating summaries with HuggingFace models
+============================================
 
 .. _HuggingFace Transformers: https://huggingface.co/docs/transformers/index
 .. _biodigitaljazz.net: https://biodigitaljazz.net

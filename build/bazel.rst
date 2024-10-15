@@ -1,8 +1,8 @@
 .. _bazel:
 
-===============================================
-Development log: Migrating pigweed.dev to Bazel
-===============================================
+==============================
+Migrating pigweed.dev to Bazel
+==============================
 
 I have been tasked with the fascinating and somewhat-overwhelming
 project of migrating pigweed.dev's build system from GN to Bazel.

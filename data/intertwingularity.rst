@@ -26,7 +26,7 @@ links enable us to get closer to the intertwingled nature of knowledge:
   acknowledged—people keep pretending they can make things hierarchical,
   categorizable and sequential when they can't.
 
-After reading those quotes, it was clear what I must do:
+After reading those quotes, my first thought was:
 
 .. figure:: /_static/boat.png
    :alt: I should build a web crawler.
@@ -53,8 +53,7 @@ broadly. If a lot of my docs pages link to some particular page, then
 that page is probably important. `PageRank`_ Lite, basically, except
 with much more focus on intra-site `backlinks`_.
 
-(Also, I'm building a web crawler because it's a deeply fun and satisfying
-programming challenge. You should try it!)
+(Also, I'm building a web crawler because it's fun. Try it!)
 
 Importance
 ==========
@@ -71,8 +70,8 @@ I can't give every page on my docs site the same level of tender loving
 care. I must decide which pages get more of my time and energy and which ones
 get less.
 
-There is no single approach that provides a *full* answer to the fundametal
-question. There are, however, lots of approaches that provide *partial*
+There is no single approach that provides a *full* answer to this question.
+There are, however, lots of approaches that provide *partial*
 answers.
 
 Pageviews
@@ -108,14 +107,15 @@ pages have the most `load-bearing`_ content. Suppose that Pages A, B, and
 C all link to Page D. There's probably some important content on Page D.
 Pages with more backlinks (e.g. Page D) should probably be prioritized
 above pages with less backlinks. Think about it in terms of user journey.
-Users on Pages A, B, and C all have a chance of ending up on Page D.
+Users on Pages A, B, and C all have a chance of ending up on Page D. There's
+some idea (or data, or knowledge, or whatever) on Page D that Pages A, B, and
+C all depend on.
 
 .. _triangulate: https://en.wikipedia.org/wiki/Triangulation_(social_science)
 
-Revisiting the "top 10 pages all have the same amount of pageviews and
-I only have time to review 5" problem, when I `triangulate`_ the pageview
-data with the backlink data, it becomes easier to decide which 5 to
-prioritize:
+Returning to the docs review prioritization problem, when I `triangulate`_
+the pageview data with the backlink data, it becomes easier to decide which 5
+to prioritize:
 
 .. csv-table::
    :header: "Page ID", "Pageviews", "Backlinks"
@@ -136,29 +136,39 @@ Networked knowledge
 
 .. _Too Big To Know: https://en.wikipedia.org/wiki/Too_Big_to_Know
 
-Beyond the "docs review prioritization" problem I have another motivation
-for studying backlinks. I simply want to know more about how the ideas
-within my docs site relate and connect to each other. The concept of
-*networked knowledge* from `Too Big To Know`_ fascinates me:
+I have another motivation for studying backlinks. I simply want to know
+more about how the ideas within my docs site relate and connect to each
+other. The concept of *networked knowledge* from `Too Big To Know`_
+fascinates me:
 
-  The chance in the infrastructure of knowledge is altering knowledge's
+  The change in the infrastructure of knowledge is altering knowledge's
   shape and nature. As knowledge becomes networked, the smartest person
   in the room isn't the person at the front lecturing us, and isn't the
   collective wisdom of those in the room. The smartest person in the
   room is the room itself: the network that joins the people and ideas
   in the room, and connects to those outside of it. It's not that the
-  network is becoming a conscious super-brain. Rather knowledge is
+  network is becoming a conscious super-brain\ :sup:`2`. Rather knowledge is
   becoming inextricable from—literally unthinkable without— the network
   that enables it. Our task is to learn how to build smart rooms—that is,
   how to build networks that make us smarter...
 
-How exactly does my web crawler relate to networked knowledge? I don't
-know. My thinking here is still very much in the "primordial soup of
-opportunities" phase.
+:sup:`2` David Weinberger 
 
------------------------------
-Anatomy of a backlink crawler
------------------------------
+---------------------
+Anatomy of my crawler
+---------------------
+
+I got the core crawler logic working in about 200 lines of Python code,
+depending on ``requests`` for HTTP stuff and ``beautifulsoup4`` for scraping
+stuff. Here's the gist of the logic:
+
+* Designate an entrypoint URL, e.g. ``https://technicalwriting.dev``. URLs
+  that start with this entrypoint are considered intra-site. URLs that don't
+  start with the entrypoint are considered external.
+* Grab all links that are found within the main content of the entrypoint.
+* Whenever an intra-site URL is found, visit and scrape that page's links.
+* External URLs just need to be noted and tracked. They don't need to be
+  visited or scraped.
 
 ---------------
 To be continued

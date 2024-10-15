@@ -1,8 +1,8 @@
 .. _skip-to-main-content:
 
-=======================================================
-Please support "skip to main content" on your docs site
-=======================================================
+=====================================
+Please support "skip to main content"
+=====================================
 
 2024 Jun 3
 

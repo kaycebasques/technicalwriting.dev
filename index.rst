@@ -33,7 +33,7 @@ Docs-as-Code (DaC)
 Docs-as-Data (DaD)
 ------------------
 
-* :ref:`intertwingularity`
+* :ref:`intertwingularity`. 
 
 .. _ml:
 

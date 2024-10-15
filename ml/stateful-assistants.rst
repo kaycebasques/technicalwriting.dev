@@ -1,8 +1,8 @@
 .. _stateful-assistants:
 
-===========================================
-Stateful docs site assistants are promising
-===========================================
+=============================
+Stateful docs site assistants
+=============================
 
 2024 Feb 8
 
