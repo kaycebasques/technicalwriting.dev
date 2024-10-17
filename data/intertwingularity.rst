@@ -103,8 +103,8 @@ C all link to Page D. There's probably some important content on Page D.
 Pages with more backlinks (e.g. Page D) should probably be prioritized
 above pages with less backlinks. Think about it in terms of user journey.
 Users on Pages A, B, and C all have a chance of ending up on Page D. There's
-some idea (or data, or knowledge, or whatever) on Page D that Pages A, B, and
-C all depend on.
+some idea (or information, or knowledge, or whatever) on Page D that Pages A, B,
+and C all depend on.
 
 .. _triangulate: https://en.wikipedia.org/wiki/Triangulation_(social_science)
 
@@ -131,7 +131,7 @@ Networked knowledge
 I have another motivation for studying backlinks. I simply want to know
 more about how the ideas within my docs site relate and connect to each
 other. The concept of *networked knowledge* from `Too Big To Know`_
-fascinates me:
+is pretty cool:
 
   The change in the infrastructure of knowledge is altering knowledge's
   shape and nature. As knowledge becomes networked, the smartest person
@@ -148,7 +148,7 @@ fascinates me:
 .. _Common Crawl: https://commoncrawl.org/
 
 :sup:`2` While it's true that the network has not spontaneously developed
-consciousness (as far as I'm aware), networked knowledge played a pivotal
+consciousness (as far as I'm aware), networked knowledge played a major
 role in the rise of large language models. From the `GPT-3 paper`_:
 "the majority of our data is derived from raw `Common Crawl`_ with only quality-based
 filtering"
@@ -158,8 +158,8 @@ Anatomy of my crawler
 ---------------------
 
 I got the core crawler logic working in about 200 lines of Python code,
-depending on ``requests`` for HTTP stuff and ``beautifulsoup4`` for scraping
-stuff. Here's the gist of the logic:
+leaning heavily on ``requests`` for HTTP stuff and ``beautifulsoup4`` for scraping
+stuff. Here's the gist of my crawler's logic:
 
 * Designate an entrypoint URL, e.g. ``https://technicalwriting.dev``. URLs
   that start with this entrypoint are considered intra-site. URLs that don't
@@ -171,7 +171,9 @@ stuff. Here's the gist of the logic:
 
 :sup:`3` Don't scrape the whole page! Your stats will get messed up. E.g.
 every page of your docs site probably includes a header, and that header
-probably always links back to your homepage.
+probably always links back to your homepage. Your homepage will get listed
+as the most load-bearing page, when in reality it's rare for the main content
+of a docs page to link back to the homepage.
 
 --------------------------
 Analyzing a real docs site
@@ -181,9 +183,9 @@ After quite a bit of sighing in frustration and muttering to myself I was able
 to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_, and
 I have to admit: the results are pretty fascinating. There were quite a few surprises.
 I was honestly expecting the conclusion of this experiment to be "yeah… I tried that
-approach and nothing interesting came up."
+backlink approach and nothing interesting came up."
 
-Here are the most load-bearing pages:
+Here are the top 10 most load-bearing pages:
 
 .. csv-table::
    :header: Backlinks, URL
@@ -199,14 +201,20 @@ Here are the most load-bearing pages:
    "17","`/pw_tokenizer/docs.html <https://pigweed.dev/pw_tokenizer/docs.html>`_"
    "17","`/pw_rpc <https://pigweed.dev/pw_rpc>`_"
 
+(``55`` backlinks for ``/pw_protobuf/docs.html`` means that
+55 other pages linked to ``/pw_protobuf/docs.html``.)
+
 Here's what's surprising:
 
 * ``/pw_protobuf/docs.html``, ``/pw_chrono/docs.html``, and ``/pw_function/docs.html`` are fairly
   popular in terms of pageviews but I did not expect them to have top spots in terms of
-  backlinks.
+  backlinks. We have been gradually updating our `module <https://pigweed.dev/docs/glossary.html#module>`_
+  docs to follow our `guidelines <https://pigweed.dev/docs/contributing/docs/modules.html>`_.
+  I did not consider ``pw_chrono`` and ``pw_function`` to be top-priority modules,
+  but this data suggests that maybe I should.
 * An external link (``https://bazel.build/concepts/build-ref``) is
-  one of our most load-bearing pages! It's in my own self-interest to
-  make sure that that external page is high-quality. If I had to persuade
+  one of our most backlinked pages! It's in my own self-interest to
+  make sure that this external doc is high-quality. If I had to persuade
   my manager to let me update that external doc, I could cite this concrete
   data for rationale.
 * ``https://pigweed.dev/pw_rpc`` is one of our most popular pages in
