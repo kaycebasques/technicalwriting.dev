@@ -36,7 +36,7 @@ After reading those quotes, my first thought was:
 
 :sup:`1` Nelson is credited with coining the term "link" but the underlying
 idea traces back to `As We May Think`_ by Vannevar Bush and his hypothetical
-`Memex`_ device.
+`Memex`_ device. (Parts 6 to 8 contain the interesting stuff.)
 
 .. _intertwingularity-background:
 
