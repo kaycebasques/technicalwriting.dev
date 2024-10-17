@@ -7,8 +7,20 @@
       A blog about technical writing by Kayce Basques.
 	  </description>
     <language>en-us</language>
-	  <pubDate>Wed, 25 Sep 2024 11:50:34 -0700</pubDate>
+	  <pubDate>Wed, 16 Oct 2024 22:02:44 -0700</pubDate>
 	  <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Exploring the intertwingularity of a docs site</title>
+	    <link>https://technicalwriting.dev/data/intertwingularity.html</link>
+	    <description>
+        I’m building a web crawler so that I can track how pages in my docs
+        site link to each other and to the outside web more broadly. If a lot of my docs pages link to
+        some particular page, then that page is probably important. PageRank Lite, basically, except
+        with much more focus on intra-site backlinks.
+      </description>
+	    <pubDate>Wed, 16 Oct 2024 22:02:44 -0700</pubDate>
+	    <guid>https://technicalwriting.dev/data/intertwingularity.html</guid>
+    </item>
     <item>
       <title>Development log: Migrating pigweed.dev to Bazel</title>
 	    <link>https://technicalwriting.dev/build/bazel.html</link>
