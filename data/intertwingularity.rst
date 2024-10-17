@@ -220,11 +220,12 @@ Here's what's surprising:
 
 The plot thickens
 =================
+
 The ``/pw_protobuf/docs.html`` backlinks were suspiciously high so I dug
-into that a bit more. It turns out that there's a bug in how our auto-generated
-API references are created! In the image below notice how the namespace ``pw``
-is a link. All those namespace links are incorrectly pointing back to
-``/pw_protobuf/docs.html``!
+into that a bit more. It turns out that there's a bug in our auto-generated
+API references! In the image below notice how the namespace ``pw`` is a link.
+All these auto-generated ``pw`` links are incorrectly pointing back to the
+``pw_protobuf`` docs!
 
 .. figure:: /_static/namespace.png
 
