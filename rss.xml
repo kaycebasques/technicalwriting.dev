@@ -22,6 +22,16 @@
 	    <guid>https://technicalwriting.dev/data/intertwingularity.html</guid>
     </item>
     <item>
+      <title>Focus on decisions, not tasks</title>
+	    <link>https://technicalwriting.dev/strategy/decisions.html</link>
+	    <description>
+        A quote from Every Page Is Page One that has deeply changed how I
+        approach technical writing.
+      </description>
+	    <pubDate>Tue, 15 Oct 2024 16:16:16 -0700</pubDate>
+	    <guid>https://technicalwriting.dev/strategy/decisions.html</guid>
+    </item>
+    <item>
       <title>Development log: Migrating pigweed.dev to Bazel</title>
 	    <link>https://technicalwriting.dev/build/bazel.html</link>
 	    <description>
