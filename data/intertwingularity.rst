@@ -273,6 +273,7 @@ was just to have fun.
 * `Webmention <https://en.wikipedia.org/wiki/Webmention>`_
 * `Octothorpes <https://octothorp.es/docs>`_
 * `Ahrefs Backlink Checker <https://ahrefs.com/backlink-checker/>`_
+* `Obsidian Backlinks Plugin <https://help.obsidian.md/Plugins/Backlinks>`_ (thanks `Kevin Kuhl <https://www.linkedin.com/in/kevinrkuhl/>`_)
 
 Extra credit meme
 =================
