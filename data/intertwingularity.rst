@@ -55,6 +55,10 @@ with much more focus on intra-site `backlinks`_.
 
 (Also, I'm building a web crawler because it's fun. Try it!)
 
+(Nelson might object that counting backlinks runs counter to the spirit
+of intertwingularity because it's yet another attempt to impose categories
+on knowledge but whatever… my heart is in the right place.)
+
 Importance
 ==========
 
@@ -142,7 +146,7 @@ is pretty cool:
   network is becoming a conscious super-brain\ :sup:`2`. Rather knowledge is
   becoming inextricable from—literally unthinkable without— the network
   that enables it. Our task is to learn how to build smart rooms—that is,
-  how to build networks that make us smarter...
+  how to build networks that make us smarter…
 
 .. _GPT-3 paper: https://arxiv.org/pdf/2005.14165
 .. _Common Crawl: https://commoncrawl.org/
