@@ -7,6 +7,7 @@ exclude_patterns = [
     'Makefile',
     'README.md',
     'boostrap.sh',
+    'data/anchors.rst',
     'mdx',
     'requirements.txt',
     'venv'
