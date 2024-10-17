@@ -181,9 +181,7 @@ Analyzing a real docs site
 
 After quite a bit of sighing in frustration and muttering to myself I was able
 to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_, and
-I have to admit: the results are pretty fascinating. There were quite a few surprises.
-I was honestly expecting the conclusion of this experiment to be "yeah… I tried that
-backlink approach and nothing interesting came up."
+I have to admit: the results are interesting. There were quite a few surprises.
 
 Here are the top 10 most load-bearing pages:
 
@@ -219,6 +217,16 @@ Here's what's surprising:
   data for rationale.
 * ``https://pigweed.dev/pw_rpc`` is one of our most popular pages in
   terms of pageviews yet in terms of backlinks it's only #10.
+
+The plot thickens
+=================
+The ``/pw_protobuf/docs.html`` backlinks were suspiciously high so I dug
+into that a bit more. It turns out that there's a bug in how our auto-generated
+API references are created! In the image below notice how the namespace ``pw``
+is a link. All those namespace links are incorrectly pointing back to
+``/pw_protobuf/docs.html``!
+
+.. figure:: /_static/namespace.png
 
 --------
 Appendix
