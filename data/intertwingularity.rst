@@ -173,6 +173,41 @@ stuff. Here's the gist of the logic:
 every page of your docs site probably includes a header, and that header
 probably always links back to your homepage.
 
+--------------------------
+Analyzing a real docs site
+--------------------------
+
+After quite a bit of head pounding and muttering to myself I was able
+to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_.
+I have to admit: the results are pretty fascinating. There were quite
+a few surprises. Here are the most load-bearing pages:
+
+.. csv-table::
+   :header: Links, URL
+
+   "55","https://pigweed.dev/pw_protobuf/docs.html"
+   "42","https://pigweed.dev/pw_status/reference.html"
+   "36","https://pigweed.dev/docs/module_structure.html"
+   "24","https://pigweed.dev/pw_chrono/docs.html"
+   "23","https://pigweed.dev/pw_function/docs.html"
+   "21","https://pigweed.dev/pw_log/docs.html"
+   "18","https://bazel.build/concepts/build-ref"
+   "17","https://pigweed.dev/pw_log_tokenized/docs.html"
+   "17","https://pigweed.dev/pw_tokenizer/docs.html"
+   "17","https://pigweed.dev/pw_rpc"
+
+Here's what's surprising:
+
+* ``pw_protobuf``, ``pw_chrono``, and ``pw_function`` are popular
+  products but I did not expect them to have top spots.
+* An external link (``https://bazel.build/concepts/build-ref``) is
+  one of our most load-bearing pages! It's in my own self-interest to
+  make sure that that external page is high-quality. If I had to persuade
+  my manager to let me do this work, I could cite this concrete data
+  for rationale.
+* ``https://pigweed.dev/pw_rpc`` is one of our most popular pages in
+  terms of pageviews yet here it's only spot #10.
+
 --------
 Appendix
 --------
