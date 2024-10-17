@@ -235,6 +235,23 @@ All these auto-generated ``pw`` links are incorrectly pointing back to the
 
 .. figure:: /_static/namespace.png
 
+Fundamental APIs
+================
+
+After discussing the high backlink counts for ``pw_chrono`` and ``pw_function`` with my
+teammate `Taylor <https://www.linkedin.com/in/taylor-cramer-6160019a/>`_ it now makes sense
+why ``pw_chrono`` and ``pw_function`` have high backlink counts. These are fundamental
+APIs that lots of other Pigweed modules depend on. I knew this was the case for
+``pw_status`` but I didn't realize that ``pw_chrono`` and ``pw_function`` are also very
+load-bearing in this way.
+
+Boilerplate links
+=================
+
+I have a clearer idea now on why the external page ``https://bazel.build/concepts/build-ref``
+has so many backlinks. Basically a lot of our modules have very similar "get started"
+content, and all those "get started" sections link to this ``bazel.build`` page.
+
 --------
 Appendix
 --------
@@ -247,6 +264,7 @@ backlinks. I didn't see anything out there that provided what I needed.
 I still would have built my own web crawler because part of the goal here
 was just to have fun.
 
+* `Project Xanadu <https://en.wikipedia.org/wiki/Project_Xanadu>`_
 * `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
 * `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
 * `Refback <https://en.wikipedia.org/wiki/Refback>`_
