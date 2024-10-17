@@ -6,12 +6,12 @@ Exploring the intertwingularity of a docs site
 
 .. _Ted Nelson: https://en.wikipedia.org/wiki/Ted_Nelson
 .. _link: https://en.wikipedia.org/wiki/Hyperlink
-.. _Computer Lib/Dream Machines: https://en.wikipedia.org/wiki/Computer_Lib/Dream_Machines
+.. _Computer Lib / Dream Machines: https://en.wikipedia.org/wiki/Computer_Lib/Dream_Machines
 .. _PDF: https://worrydream.com/refs/Nelson_T_1974_-_Computer_Lib,_Dream_Machines.pdf
 
 `Intertwingularity <https://en.wikipedia.org/wiki/Intertwingularity>`__ is a
 term coined by `Ted Nelson`_, the same guy who coined the term `link`_.\ :sup:`1`
-In `Computer Lib/Dream Machines`_ (`PDF`_) Nelson explains intertwingularity
+In `Computer Lib / Dream Machines`_ (`PDF`_) Nelson explains intertwingularity
 like this:
 
   EVERYTHING IS DEEPLY INTERTWINGLED. In an important sense there are no
@@ -67,8 +67,8 @@ fundamental questions of technical writing:
   **What pages of my docs site are important?**
 
 I can't give every page on my docs site the same level of tender loving
-care. I must decide which pages get more of my time and energy and which ones
-get less.
+care. Especially now that I'm soon to be a first-time dad (!!) I must decide
+which pages get more of my time and energy and which ones get less.
 
 There is no single approach that provides a *full* answer to this question.
 There are, however, lots of approaches that provide *partial*
@@ -177,36 +177,37 @@ probably always links back to your homepage.
 Analyzing a real docs site
 --------------------------
 
-After quite a bit of head pounding and muttering to myself I was able
-to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_.
-I have to admit: the results are pretty fascinating. There were quite
-a few surprises. Here are the most load-bearing pages:
+After quite a bit of sighing in frustration and muttering to myself I was able
+to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_ and
+I have to admit: the results are pretty fascinating. There were quite a few surprises.
+Here are the most load-bearing pages:
 
 .. csv-table::
-   :header: Links, URL
+   :header: Backlinks, URL
 
-   "55","https://pigweed.dev/pw_protobuf/docs.html"
-   "42","https://pigweed.dev/pw_status/reference.html"
-   "36","https://pigweed.dev/docs/module_structure.html"
-   "24","https://pigweed.dev/pw_chrono/docs.html"
-   "23","https://pigweed.dev/pw_function/docs.html"
-   "21","https://pigweed.dev/pw_log/docs.html"
+   "55","`/pw_protobuf/docs.html <https://pigweed.dev/pw_protobuf/docs.html>`_"
+   "42","`/pw_status/reference.html <https://pigweed.dev/pw_status/reference.html>`_"
+   "36","`/docs/module_structure.html <https://pigweed.dev/docs/module_structure.html>`_"
+   "24","`/pw_chrono/docs.html <https://pigweed.dev/pw_chrono/docs.html>`_"
+   "23","`/pw_function/docs.html <https://pigweed.dev/pw_function/docs.html>`_"
+   "21","`/pw_log/docs.html <https://pigweed.dev/pw_log/docs.html>`_"
    "18","https://bazel.build/concepts/build-ref"
-   "17","https://pigweed.dev/pw_log_tokenized/docs.html"
-   "17","https://pigweed.dev/pw_tokenizer/docs.html"
-   "17","https://pigweed.dev/pw_rpc"
+   "17","`/pw_log_tokenized/docs.html <https://pigweed.dev/pw_log_tokenized/docs.html>`_"
+   "17","`/pw_tokenizer/docs.html <https://pigweed.dev/pw_tokenizer/docs.html>`_"
+   "17","`/pw_rpc <https://pigweed.dev/pw_rpc>`_"
 
 Here's what's surprising:
 
-* ``pw_protobuf``, ``pw_chrono``, and ``pw_function`` are popular
-  products but I did not expect them to have top spots.
+* ``/pw_protobuf/docs.html``, ``/pw_chrono/docs.html``, and ``/pw_function/docs.html`` are fairly
+  popular in terms of pageviews but I did not expect them to have top spots in terms of
+  backlinks.
 * An external link (``https://bazel.build/concepts/build-ref``) is
   one of our most load-bearing pages! It's in my own self-interest to
   make sure that that external page is high-quality. If I had to persuade
-  my manager to let me do this work, I could cite this concrete data
-  for rationale.
+  my manager to let me update that external doc, I could cite this concrete
+  data for rationale.
 * ``https://pigweed.dev/pw_rpc`` is one of our most popular pages in
-  terms of pageviews yet here it's only spot #10.
+  terms of pageviews yet in terms of backlinks it's only #10.
 
 --------
 Appendix
@@ -216,7 +217,9 @@ Prior art
 =========
 
 There are lot of web platform features and third-party tools related to
-backlinks.
+backlinks. I didn't see anything out there that provided what I needed.
+I still would have built my own web crawler because part of the goal here
+was just to have fun.
 
 * `Linkback <https://en.wikipedia.org/wiki/Linkback>`_
 * `Referer <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer>`_
