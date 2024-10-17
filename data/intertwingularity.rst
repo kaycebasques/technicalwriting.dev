@@ -178,8 +178,11 @@ Analyzing a real docs site
 --------------------------
 
 After quite a bit of sighing in frustration and muttering to myself I was able
-to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_ and
+to fully crawl the docs site that I work on, `pigweed.dev <https://pigweed.dev>`_, and
 I have to admit: the results are pretty fascinating. There were quite a few surprises.
+I was honestly expecting the conclusion of this experiment to be "yeah… I tried that
+approach and nothing interesting came up."
+
 Here are the most load-bearing pages:
 
 .. csv-table::
