@@ -83,7 +83,8 @@ Search engine optimization
 Strategy
 --------
 
-* :ref:`decisions`
+* :ref:`decisions`. A quote from *Every Page Is Page One* that has deeply
+  changed how I approach technical writing.
 
 .. _ux:
 
