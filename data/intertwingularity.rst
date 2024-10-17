@@ -80,17 +80,12 @@ Pageviews
 Pageviews is one such partial-answer approach.
 My website analytics tell me what pages are visited the most. I infer that
 the most-visited pages are important because this is where my users literally
-spend the most time. But what if each of the top 10 pages has the same amount
-of pageviews and I only have time to review 5? Which 5 do I prioritize?
+spend the most time. But what if each of the top 5 pages has the same amount
+of pageviews and I only have time to review 3? Which 3 do I prioritize?
 
 .. csv-table::
    :header: "Page ID", "Pageviews"
 
-   "Q", "1000"
-   "R", "1000"
-   "S", "1000"
-   "T", "1000"
-   "U", "1000"
    "V", "1000"
    "W", "1000"
    "X", "1000"
@@ -114,22 +109,19 @@ C all depend on.
 .. _triangulate: https://en.wikipedia.org/wiki/Triangulation_(social_science)
 
 Returning to the docs review prioritization problem, when I `triangulate`_
-the pageview data with the backlink data, it becomes easier to decide which 5
+the pageview data with the backlink data, it becomes easier to decide which 3
 to prioritize:
 
 .. csv-table::
    :header: "Page ID", "Pageviews", "Backlinks"
 
-   "Q", "1000", "4"
-   "R", "1000", "11"
-   "S", "1000", "17"
-   "T", "1000", "2"
-   "U", "1000", "26"
    "V", "1000", "20"
    "W", "1000", "15"
    "X", "1000", "31"
    "Y", "1000", "3"
    "Z", "1000", "1"
+
+(The correct answer in this example is pages X, V, and W, in that order.)
 
 Networked knowledge
 ===================
@@ -152,7 +144,14 @@ fascinates me:
   that enables it. Our task is to learn how to build smart rooms—that is,
   how to build networks that make us smarter...
 
-:sup:`2` David Weinberger 
+.. _GPT-3 paper: https://arxiv.org/pdf/2005.14165
+.. _Common Crawl: https://commoncrawl.org/
+
+:sup:`2` While it's true that the network has not spontaneously developed
+consciousness (as far as I'm aware), networked knowledge played a pivotal
+role in the rise of large language models. From the `GPT-3 paper`_:
+"the majority of our data is derived from raw `Common Crawl`_ with only quality-based
+filtering"
 
 ---------------------
 Anatomy of my crawler
@@ -165,16 +164,14 @@ stuff. Here's the gist of the logic:
 * Designate an entrypoint URL, e.g. ``https://technicalwriting.dev``. URLs
   that start with this entrypoint are considered intra-site. URLs that don't
   start with the entrypoint are considered external.
-* Grab all links that are found within the main content of the entrypoint.
+* Grab all links that are found within the main content\ :sup:`3` of the entrypoint.
 * Whenever an intra-site URL is found, visit and scrape that page's links.
 * External URLs just need to be noted and tracked. They don't need to be
   visited or scraped.
 
----------------
-To be continued
----------------
-
-This post is a work in progress.
+:sup:`3` Don't scrape the whole page! Your stats will get messed up. E.g.
+every page of your docs site probably includes a header, and that header
+probably always links back to your homepage.
 
 --------
 Appendix
