@@ -67,8 +67,8 @@ fundamental questions of technical writing:
   **What pages of my docs site are important?**
 
 I can't give every page on my docs site the same level of tender loving
-care. Especially now that I'm soon to be a first-time dad (!!) I must decide
-which pages get more of my time and energy and which ones get less.
+care. I must decide which pages get more of my time and energy and which
+ones get less. Especially now that I'm about to be a first-time dad!!
 
 There is no single approach that provides a *full* answer to this question.
 There are, however, lots of approaches that provide *partial*
