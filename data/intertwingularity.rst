@@ -36,7 +36,9 @@ After reading those quotes, my first thought was:
 
 :sup:`1` Nelson is credited with coining the term "link" but the underlying
 idea traces back to `As We May Think`_ by Vannevar Bush and his hypothetical
-`Memex`_ device. (Parts 6 to 8 contain the interesting stuff.)
+`Memex`_ device. (Parts 6 to 8 contain the interesting stuff.) Also check out
+this `video <https://youtu.be/En_2T7KH6RA>`_ of Nelson demo'ing Xanadu (thanks
+`Armando <https://www.linkedin.com/in/armando-montanez/>`_).
 
 .. _intertwingularity-background:
 
