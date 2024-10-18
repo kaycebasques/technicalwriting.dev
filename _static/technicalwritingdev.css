@@ -80,6 +80,15 @@ p code {
     padding: 0.1em;
 }
 
+pre {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
 #skip {
     position: absolute;
     top: -1000%;
@@ -92,11 +101,43 @@ p code {
 }
 
 table {
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
     width: 100%;
 }
 
-td, th {
-    text-align: center;
+tbody {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+thead {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+td {
+    margin: 0;
+    padding: 0.5em;
+    border: 0;
+    overflow-x: clip;
+}
+
+th {
+    margin: 0;
+    padding: 0.5em;
+    border: 0;
+    overflow-x: clip;
+}
+
+tr {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 .toctree-l1 {
