@@ -32,8 +32,8 @@ Input and output
 ================
 
 Someone asks you to "make some embeddings". What do you input? You input
-text. You don't need to provide the same amount of text every time. E.g.
-sometimes your input is a single paragraph while at other times it's
+text.\ :sup:`1` You don't need to provide the same amount of text every time.
+E.g. sometimes your input is a single paragraph while at other times it's
 a few sections, an entire document, or even multiple documents.
 
 .. _array: https://www.geeksforgeeks.org/what-is-array/
@@ -62,6 +62,10 @@ numbers no matter how big or small the input text, **we now have a way to
 mathematically compare any two pieces of arbitrary text to each other**.
 
 But what do those numbers *MEAN*?
+
+:sup:`1` Some embedding models are "multimodal", meaning you can also provide images
+and audio as input. This post focuses on text since that's the medium that we
+work with the most as technical writers.
 
 .. _embeddings-intuition-api:
 
@@ -107,12 +111,12 @@ Is it terrible for the environment?
 I don't know. After the model has been created (trained), I'm pretty sure that
 generating embeddings is much less computationally intensive than generating
 text. But it also seems to be the case that embedding models are trained in
-similar ways as text generation models\ :sup:`1`, with all the energy usage
+similar ways as text generation models\ :sup:`2`, with all the energy usage
 that implies. I'll update this section when I find out more.
 
 .. _You Should Probably Pay Attention to Tokenizers: https://cybernetist.com/2024/10/21/you-should-probably-pay-attention-to-tokenizers/
 
-:sup:`1` From `You Should Probably Pay Attention to Tokenizers`_: "Embeddings
+:sup:`2` From `You Should Probably Pay Attention to Tokenizers`_: "Embeddings
 are byproduct of transformer training and are actually trained on the heaps of
 tokenized texts. It gets better: embeddings are what is actually fed as the
 input to LLMs when we ask it to generate text."
@@ -235,7 +239,7 @@ to cast it aside, because embeddings operate in hundreds or thousands
 of dimensions. It's impossible for us lowly 3-dimensional creatures to
 visualize what "distance" looks like in 1000 dimensions. Also, we don't know
 what each dimension represents, hence the section heading "Very weird
-multi-dimensional space".\ :sup:`2` One dimension might represent something
+multi-dimensional space".\ :sup:`3` One dimension might represent something
 close to color. The ``king - man + woman ≈ queen`` anecdote suggests that these
 models contain a dimension with some notion of gender. And so on.
 `Well Dude, we just don't know <https://youtu.be/7ZYqjaLaK08>`_.
@@ -247,7 +251,7 @@ complex, as you might imagine. They are teaching *machines* to *LEARN*, after al
 `The Illustrated Word2vec`_ is a good way to start your journey down that
 rabbithole.
 
-:sup:`2` I borrowed this phrase from `Embeddings: What they are why they
+:sup:`3` I borrowed this phrase from `Embeddings: What they are why they
 matter <https://simonwillison.net/2023/Oct/23/embeddings/>`_.
 
 Comparing embeddings
