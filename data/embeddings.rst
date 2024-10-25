@@ -63,9 +63,10 @@ mathematically compare any two pieces of arbitrary text to each other**.
 
 But what do those numbers *MEAN*?
 
-:sup:`1` Some embedding models are "multimodal", meaning you can also provide images
+:sup:`1` Some embedding models are "multimodal", meaning you can also provide images, videos,
 and audio as input. This post focuses on text since that's the medium that we
 work with the most as technical writers.
+Haven't seen a multimodal model support taste, touch, or smell yet!
 
 .. _embeddings-intuition-api:
 
