@@ -233,7 +233,7 @@ then add the embedding for ``woman``. When you look around this vicinity of the
 latent space, you find the embedding for ``queen`` nearby. In other words,
 embeddings can represent semantic relationships in ways that feel intuitive
 to us humans. If you asked a human "what's the female equivalent
-of a king?" that human would probably answer "queen", the same answer we get from embeddings.
+of a king?" that human would probably answer "queen", the same answer we get from embeddings. For more explanation of the underlying theories, see `Distributional semantics <https://en.m.wikipedia.org/wiki/Distributional_semantics>`.
 
 The 2D map analogy was a nice stepping stone for building intuition but now we need
 to cast it aside, because embeddings operate in hundreds or thousands
