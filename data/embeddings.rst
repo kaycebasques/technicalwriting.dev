@@ -145,8 +145,8 @@ input size\ :sup:`3`:
 
 For my particular use cases as a technical writer, large input size is an
 important factor. However, your use cases may not need large input size, or
-there may be other factors that are more important. See the **Retrieval**
-section of the `MTEB leaderboard <https://huggingface.co/spaces/mteb/leaderboard>`_.
+there may be other factors that are more important. See the **Retrieval Average**
+column of the `MTEB leaderboard <https://huggingface.co/spaces/mteb/leaderboard>`_.
 
 :sup:`3` These input limits are based on `tokens`_, and each service calculates
 tokens differently, so don't put too much weight into these exact numbers. E.g.
