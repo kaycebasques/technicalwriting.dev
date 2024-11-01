@@ -128,19 +128,33 @@ What model is best?
 Ideally, your embedding model can accept a huge amount of input text,
 so that you can generate embeddings for complete pages. If you try to
 provide more input than a model can handle, you usually get an error.
-As of October 2024 ``voyage-3`` is the clear winner.
+As of October 2024 ``voyage-3`` seems to the clear winner in terms of 
+input size\ :sup:`3`:
 
 .. _Tokens: https://seantrott.substack.com/p/tokenization-in-large-language-models
 
 .. csv-table::
-   :header: Organization, Model Name, Input Limit (`Tokens`_)
+   :header: Organization, Model name, Input limit (`tokens`_)
 
    Voyage AI, `voyage-3 <https://docs.voyageai.com/docs/embeddings>`_, 32000
    Nomic, `Embed <https://www.nomic.ai/blog/posts/nomic-embed-text-v1>`__, 8192
+   OpenAI, `text-embedding-3-large <https://platform.openai.com/docs/guides/embeddings/#embedding-models>`_, 8191\ :sup:`4`
    Mistral, `Embed <https://docs.mistral.ai/getting-started/models/models_overview/#premier-models>`__, 8000
-   OpenAI, `text-embedding-3-large <https://platform.openai.com/docs/models/embeddings>`_, 3072
    Google, `text-embedding-004`_, 2048
    Cohere, `embed-english-v3.0 <https://docs.cohere.com/v2/docs/models#embed>`_, 512
+
+For my particular use cases as a technical writer, large input size is an
+important factor. However, your use cases may not need large input size, or
+there may be other factors that are more important. See the **Retrieval**
+section of the `MTEB leaderboard <https://huggingface.co/spaces/mteb/leaderboard>`_.
+
+:sup:`3` These input limits are based on `tokens`_, and each service calculates
+tokens differently, so don't put too much weight into these exact numbers. E.g.
+a token for one model may be approximately 3 characters, whereas for another one
+it may be approximately 4 characters.
+
+:sup:`4` Previously, I incorrectly listed this model's input limit as 3072. Sorry
+for the mistake.
 
 .. _embeddings-intuition-meaning:
 
@@ -240,7 +254,7 @@ to cast it aside, because embeddings operate in hundreds or thousands
 of dimensions. It's impossible for us lowly 3-dimensional creatures to
 visualize what "distance" looks like in 1000 dimensions. Also, we don't know
 what each dimension represents, hence the section heading "Very weird
-multi-dimensional space".\ :sup:`3` One dimension might represent something
+multi-dimensional space".\ :sup:`5` One dimension might represent something
 close to color. The ``king - man + woman ≈ queen`` anecdote suggests that these
 models contain a dimension with some notion of gender. And so on.
 `Well Dude, we just don't know <https://youtu.be/7ZYqjaLaK08>`_.
@@ -252,7 +266,7 @@ complex, as you might imagine. They are teaching *machines* to *LEARN*, after al
 `The Illustrated Word2vec`_ is a good way to start your journey down that
 rabbithole.
 
-:sup:`3` I borrowed this phrase from `Embeddings: What they are why they
+:sup:`5` I borrowed this phrase from `Embeddings: What they are and why they
 matter <https://simonwillison.net/2023/Oct/23/embeddings/>`_.
 
 Comparing embeddings
