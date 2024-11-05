@@ -10,9 +10,9 @@ These are my notes on the project.
 
 .. _bazel-20240924:
 
----------------
-Tue Sep 24 2024
----------------
+--------
+20240924
+--------
 
 I wrote a design doc today summarizing the project and plan. Here's the
 gist.
@@ -82,9 +82,9 @@ like this that make incremental migration difficult.
 
 .. _bazel-20240927:
 
----------------
-Fri Sep 24 2027
----------------
+--------
+20240927
+--------
 
 Dependency Hell
 ===============
@@ -155,9 +155,9 @@ After that, my unexpected tour of Dependency Hell was finished
 
 .. _bazel-20240930:
 
----------------
-Mon Sep 30 2027
----------------
+--------
+20240930
+--------
 
 We have a custom Sphinx extension that pulls in data from a file in
 a faraway directory. E.g. the script is at
@@ -215,3 +215,17 @@ executed from a Bazel build or a GN build:
    with open(metadata_file, 'r') as f:
        # Module metadata such as supported languages and status.
        metadata = json.load(f)
+
+.. _bazel-20241104:
+
+--------
+20241104
+--------
+
+Didn't make much progress on this work in October. I had other stuff
+to focus on. Also, I was a bit blocked. When we upgraded the upstream Pigweed
+repo to Sphinx v7 and rules_python v0.36.0, a few of our integration tests
+broke. Luckily my teammate Dave Roth was available to fix all the tests.
+I'm not sure if I would have been able to figure it out myself.
+
+As of https://pwrev.dev/240703 the basic logic is working now.
