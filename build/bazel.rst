@@ -229,3 +229,11 @@ broke. Luckily my teammate Dave Roth was available to fix all the tests.
 I'm not sure if I would have been able to figure it out myself.
 
 As of https://pwrev.dev/240703 the basic logic is working now.
+
+.. _bazel-20241106:
+
+--------
+20241106
+--------
+
+Doxygen is showing some signs of life! https://pwrev.dev/247192
