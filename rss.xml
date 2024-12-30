@@ -11,7 +11,7 @@
 	  <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Embeddings are underrated</title>
-	    <link>https://technicalwriting.dev/data/embeddings.html</link>
+	    <link>https://technicalwriting.dev/embeddings/overview.html</link>
 	    <description>
         Machine learning (ML) has the potential to advance the state of the art
         in technical writing. No, I'm not talking about text generation models.
@@ -20,7 +20,7 @@
         ability to discover connections between texts at previously impossible scales.
       </description>
 	    <pubDate>Mon, 21 Oct 2024 09:09:03 -0700</pubDate>
-	    <guid>https://technicalwriting.dev/data/embeddings.html</guid>
+	    <guid>https://technicalwriting.dev/embeddings/overview.html</guid>
     </item>
     <item>
       <title>Exploring the intertwingularity of a docs site</title>

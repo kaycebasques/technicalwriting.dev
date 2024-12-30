@@ -8,7 +8,6 @@ exclude_patterns = [
     'README.md',
     'boostrap.sh',
     'data/anchors.rst',
-    # 'data/embeddings.rst',
     'mdx',
     'requirements.txt',
     'venv'
@@ -25,6 +24,7 @@ html_static_path = ['_static']
 project = 'technicalwriting.dev'
 pygments_style = 'sphinx'
 redirects = {
+    'data/embeddings': '../embeddings/overview.html',
     'www/pdf': '../ux/pdf.html'
 }
 release = '0.0.0'

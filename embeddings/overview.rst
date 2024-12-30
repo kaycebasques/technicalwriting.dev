@@ -1,4 +1,4 @@
-.. _embeddings:
+.. _underrated:
 
 =========================
 Embeddings are underrated
@@ -16,7 +16,7 @@ having the biggest impact on technical writing is **embeddings**.
    writers is <b><i>the ability to discover connections between texts at
    previously impossible scales</i></b>.
 
-.. _embeddings-intuition:
+.. _underrated-intuition:
 
 -----------------------------------
 Building intuition about embeddings
@@ -26,7 +26,7 @@ Here's an overview of how you use embeddings and how they work.
 It's geared towards technical writers who are learning about
 embeddings for the first time.
 
-.. _embeddings-intuition-i/o:
+.. _underrated-intuition-i/o:
 
 Input and output
 ================
@@ -68,7 +68,7 @@ and audio as input. This post focuses on text since that's the medium that we
 work with the most as technical writers.
 Haven't seen a multimodal model support taste, touch, or smell yet!
 
-.. _embeddings-intuition-api:
+.. _underrated-intuition-api:
 
 First, how to literally make the embeddings
 ===========================================
@@ -156,7 +156,7 @@ it may be approximately 4 characters.
 :sup:`4` Previously, I incorrectly listed this model's input limit as 3072. Sorry
 for the mistake.
 
-.. _embeddings-intuition-meaning:
+.. _underrated-intuition-meaning:
 
 Very weird multi-dimensional space
 ==================================
@@ -299,7 +299,7 @@ I learned the basics from `Linear Algebra for Machine Learning and Data Science`
 The big math and ML libraries like `NumPy`_ and `scikit-learn`_ can do the
 heavy lifting for you (i.e. very little math code on your end).
 
-.. _embeddings-applications:
+.. _underrated-applications:
 
 ------------
 Applications
@@ -333,8 +333,8 @@ change when the page's content changes.
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 
 I ran this experiment on the `Sphinx`_ docs. The results were pretty good.
-:ref:`embeddings-appendix-implementation` and
-:ref:`embeddings-appendix-results` have the details.
+:ref:`underrated-appendix-implementation` and
+:ref:`underrated-appendix-results` have the details.
 
 .. _Related content using embeddings: https://simonwillison.net/2023/Oct/23/embeddings/#related-content-using-embeddings
 
@@ -364,13 +364,13 @@ Order-of-magnitude improvements in our ability to maintain our docs
 may very well still be possible after all… perhaps we just need
 an order-of-magnitude-more dimensions!!
 
-.. _embeddings-appendix:
+.. _underrated-appendix:
 
 --------
 Appendix
 --------
 
-.. _embeddings-appendix-implementation:
+.. _underrated-appendix-implementation:
 
 Implementation
 ==============
@@ -517,7 +517,7 @@ As you may have noticed, I did not actually implement the recommendation
 UI in this experiment. My main goal was to get basic data on whether
 the embeddings approach generates decent recommendations or not.
 
-.. _embeddings-appendix-results:
+.. _underrated-appendix-results:
 
 Results
 =======

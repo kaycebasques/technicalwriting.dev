@@ -4,6 +4,8 @@ technicalwriting.dev
 
 A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_.
 
+I'm currently focused on :ref:`embeddings`.
+
 .. _a11y:
 
 -------------
@@ -42,7 +44,7 @@ Docs-as-Data (DaD)
   site link to each other and to the outside web more broadly. If a lot of my docs pages link to
   some particular page, then that page is probably important. PageRank Lite, basically, except
   with much more focus on intra-site backlinks.
-* :ref:`embeddings`. Machine learning (ML) has the potential to
+* :ref:`underrated`. Machine learning (ML) has the potential to
   advance the state of the art in technical writing. No, I'm not talking
   about text generation models. The ML technology that might end up having the biggest
   impact on technical writing is **embeddings**. What embeddings offer to technical writers is
@@ -71,7 +73,7 @@ Machine learning
   models.
 * :ref:`style-guide-fine-tuning`. How and why one might fine-tune a generative
   model into a style guide editor.
-* :ref:`embeddings`. Machine learning (ML) has the potential to greatly
+* :ref:`underrated`. Machine learning (ML) has the potential to greatly
   advance the state of the art in technical writing. No, I'm not talking
   about Claude Opus, Gemini Pro, LLaMa, etc. The ML technology that might end up
   having the biggest impact on technical writing is **embeddings**.
@@ -116,9 +118,9 @@ User experience
 
    a11y/skip
    build/bazel
-   data/embeddings
    data/index
    data/intertwingularity
+   embeddings/index
    ml/evals
    ml/outlook-2023
    ml/huggingface
