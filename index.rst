@@ -123,6 +123,7 @@ User experience
    embeddings/index
    ml/evals
    ml/outlook-2023
+   ml/outlook-2024
    ml/huggingface
    ml/playing-nicely
    ml/plugins
