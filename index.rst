@@ -94,8 +94,8 @@ Search engine optimization
 Strategy
 --------
 
-* :ref:`decisions`. A quote from *Every Page Is Page One* that has deeply
-  changed how I approach technical writing.
+* :ref:`decisions`. Docs should aim to help people decide what to do.
+  Only documenting procedures is usually not enough.
 
 .. _ux:
 
