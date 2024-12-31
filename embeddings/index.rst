@@ -4,10 +4,13 @@
 Embeddings
 ==========
 
-* :ref:`underrated`. What are embeddings? How can we apply them to technical writing?
+* :ref:`underrated`. If you don't know anything about embeddings, start here.
+
+* :ref:`embeddings-bookmarks`. Embeddings-related papers, projects, etc.
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    overview
+   bookmarks

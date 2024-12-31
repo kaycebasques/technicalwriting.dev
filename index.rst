@@ -4,7 +4,7 @@ technicalwriting.dev
 
 A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_.
 
-I'm currently focused on :ref:`embeddings`.
+My current research focus is :ref:`embeddings`.
 
 .. _a11y:
 
