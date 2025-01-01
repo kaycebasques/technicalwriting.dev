@@ -1,41 +1,52 @@
 .. _genai-outlook-2024:
 
-==================
-GenAI Outlook 2024
-==================
+================================================================
+2024 Machine Learning Review & Forecasts (For Technical Writing)
+================================================================
 
 2024 Dec 31
 
 Back in March 2023 I published :ref:`genai-outlook-2023`.
 With less than 12 hours remaining in 2024 I have managed to keep
-my yearly streak going. Here's my 2024 outlook regarding the
-impact of generative AI on my field, technical writing.
+my yearly streak going. This post recaps how much (or little)
+the ideas mentioned in :ref:`genai-outlook-2023` have panned
+out, and then discusses future trends that I'm monitoring.
+
+.. note::
+
+   This year's post is called ``Machine Learning Review`` rather than
+   ``GenAI Outlook`` to reflect the widening scope of discussion that
+   I want to have. GenAI is a subset of machine learning (ML), and
+   machine learning is a subset of artificial intelligence (AI). Over the
+   past year as I've been doing various crash courses on ML, I've realized
+   that there are lots of ways that ML and technical writing interact,
+   outside of the narrow subfield of GenAI.
 
 ----------------------
 Review of 2023 outlook
 ----------------------
 
-Here's the current status of each of the ideas mentioned in
-:ref:`genai-outlook-2023`.
+First, status updates on the ideas mentioned in :ref:`genai-outlook-2023`.
 
 Job loss
 ========
 
-Back in March 2023 (when I wrote the outlook), a lot of technical writers
-were worried that GenAI would automate our (very enjoyable!) jobs away. This
+When I wrote the 2023 outlook, a lot of technical writers
+were worried that GenAI would automate away our (very enjoyable!) jobs. This
 has not objectively happened at scale so far. I am aware of only one case
 where a technical writer *maybe* lost their job because of GenAI.
 
 Automation
 ==========
 
-In the 2023 outlook I had GPT-4 brainstorm ways that LLMs might automate
-aspects of technical writing. Here's a quick summary of how much each of
-those ideas has been adopted up until now.
+.. _LLMs: https://en.wikipedia.org/wiki/Large_language_model
 
-(If I say "no one is doing this" but you are in fact doing that thing,
-aou're welcome to send me a message and I will update the post to
-mention your work.)
+In the early days of the GenAI explosion, remember how seemingly every
+blog post included verbatim Q&A discussion with ChatGPT? "Here's what
+ChatGPT has to say on the matter." I did that in my 2023 outlook. I asked
+GPT-4 to list out what parts of technical writing are potentially automatable
+with `LLMs`_. Here's a quick summary of how much each of those ideas has
+been adopted to date.
 
 Basic content generation
 ------------------------
@@ -50,7 +61,10 @@ Basic content generation
 There's a lot of this happening. Tom Johnson has been using a prompt
 engineering approach to `automate release notes authoring`_. I have also
 automated some of my changelog process with moderate success. Manny Silva
-is `extensively automating all first draft work`_.
+is `extensively automating all first draft work`_. I can think of many
+more examples along these lines.
+
+It's an open secret that writing is hard, even for technical writers.
 
 Data analysis and interpretation
 --------------------------------
@@ -60,10 +74,10 @@ Data analysis and interpretation
 
 .. _context window: https://www.ibm.com/think/topics/context-window
 
-Summarization is covered below.
+More on summarization later.
 
 Regarding trends, I'm not aware of anyone using LLMs for this task
-and I actually don't even know what this would look like.
+and I actually don't even know what "generating trends" would look like.
 
 Regarding insights, I can recall some one-off instances of
 technical writers using large `context window`_ models to help
@@ -92,9 +106,10 @@ Grammar and spell-checking
 I have heard of technical writers using LLMs for one-off editing tasks.
 E.g. they were given the first draft of a new doc written by a software
 engineer (or product manager, or whatever) and were told that the doc
-must be published in a couple hours. The first draft had lots of grammatical
-errors and typos. The technical writers just fed the first draft through an
-LLM to quickly fix all the flagrant issues.
+must be published in a couple hours. The first draft was riddled with grammatical
+errors and typos. To meet the ridiculous deadline (pro tip: don't give your
+technical writers ridiculous deadlines) the writers fed the first draft through
+an LLM to quickly fix the most flagrant issues.
 
 Terminology consistency
 -----------------------
@@ -103,6 +118,11 @@ Terminology consistency
   a document, reducing confusion for readers.
 
 This still sounds feasible, but I haven't heard of anyone using LLMs for this task.
+It may require a lot of upfront work around defining the preferred terms and
+phrases. Simply identifying potential terminology inconsistency might be a lower
+hanging fruit. E.g. the model produces a report telling you that you used
+``foo`` on line 32 and ``bar`` on line 64 yet ``foo`` and ``bar`` seem to
+relate to the same concept.
 
 Content summarization
 ---------------------
@@ -124,11 +144,17 @@ Content translation
   AI language models can translate technical content into multiple languages,
   helping to disseminate information globally.
 
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
+
 I haven't seen a big uptick in more docs sites being translated into
 multiple languages. I do think that LLMs have made it more feasible but I
 imagine that the main constraint now is engineering resources. E.g. you need
 to dedicate engineers to building out the automated translation pipeline for
-your docs site.
+your docs site. Maybe the static site generators and content management systems
+will start solving this for us. E.g. just give `Sphinx`_ an API key to your
+favorite GenAI service, and it will take care of the end-to-end translation
+pipeline: determining what docs need to be updated, using the GenAI service
+to translate the doc, etc.
 
 FAQ generation
 --------------
@@ -136,7 +162,8 @@ FAQ generation
   AI can identify common questions related to a topic and generate clear,
   concise answers.
 
-Not aware of anyone doing this.
+Not aware of anyone doing this. I still think that Q&A will become
+increasingly important over time. More on that below.
 
 Metadata generation
 -------------------
@@ -154,3 +181,67 @@ Plagiarism detection
   writing and suggest alternative content to maintain originality.
 
 Ditto again, not aware of anyone doing this.
+
+----------------------
+Review of other trends
+----------------------
+
+My initial 2023 outlook left out some important stuff. I want to
+provide status updates on those things now.
+
+RAG chatbots have not taken over the docs world
+===============================================
+
+.. _retrieval-augmented generation: https://en.wikipedia.org/wiki/Retrieval-augmented_generation
+
+Gather a list of 1000 docs sites from any domain (or a mix of domains). You will find
+that a supermajority (+75%) of them have not shipped a companion `retrieval-augmented generation`_
+(RAG) chatbot to supplement the traditional web-based docs experience. Even the
+OpenAI docs don't have one.
+
+I actually think that RAG chatbots can be very valuable, and I have heard
+a few stories of companies enjoying significant productivity boosts thanks
+to their internal RAG chatbots. But the objective fact remains: 
+most docs sites have not shipped a RAG chatbot.
+
+Policy is a nightmare
+=====================
+
+I will venture to say that a simple majority (+50%) of technical writers
+are not interested in integrating GenAI into their work practices for
+a variety of reasons: fear of accidentally automating themselves out of a
+job, environmental concerns, copyright ethics, etc.
+
+For the minority of technical writers that are interested, confusing policy
+seems to be a significant obstacle to adoption. Questions like these come
+up all the time:
+
+* "What GenAI services are we even approved to use?"
+* "Can we really trust GenAI service XYZ with our non-public data?"
+
+--------------
+2025 forecasts
+--------------
+
+Supervised learning
+===================
+
+There are *so many* areas in technical writing where a supervised
+learning approach can provide significant improvement over the status
+quo.
+
+.. _fine-tuning: https://platform.openai.com/docs/guides/fine-tuning
+
+If you're a technical writer and you don't know what I mean by
+supervised learning, take this as a suggestion to do some self-study.
+Hint: `fine-tuning`_ is a form of supervised learning.
+
+FAQs, Q&A, etc.
+===============
+
+TBD
+
+Translation pipelines solved for us
+===================================
+
+TBD
