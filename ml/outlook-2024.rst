@@ -207,21 +207,60 @@ most docs sites have not shipped a RAG chatbot.
 Policy is a nightmare
 =====================
 
-I will venture to say that a simple majority (+50%) of technical writers
-are not interested in integrating GenAI into their work practices for
-a variety of reasons: fear of accidentally automating themselves out of a
-job, environmental concerns, copyright ethics, etc.
-
-For the minority of technical writers that are interested, confusing policy
-seems to be a significant obstacle to adoption. Questions like these come
-up all the time:
+For the minority of technical writers that are interested in seriously adopting GenAI
+into their workflows, confusing policy seems to be a significant
+obstacle to adoption. Across many companies I have heard technical writers
+say that their conversations revolve around these questions:
 
 * "What GenAI services are we even approved to use?"
 * "Can we really trust GenAI service XYZ with our non-public data?"
+* "Are we setting our company up for copyright issues in the future?"
 
 --------------
 2025 forecasts
 --------------
+
+Technical writers will continue to ignore GenAI at their own peril
+==================================================================
+
+I will venture to say that a simple majority (+50%) of technical writers
+are not interested in integrating GenAI into their work practices for
+a variety of reasons: fear of accidentally automating themselves out of a
+job, environmental concerns, copyright ethics, etc. So I expect adoption
+of GenAI in technical writing to continue to be slow for that reason alone.
+
+Technical writers ignore GenAI at their own peril, though. Here's a potential
+playbook for a lot of unnecessary pain in the future:
+
+#. Technical writing team at company XYZ hates anything that even smells of GenAI.
+   As a consequence they do not pay any attention to the space and definitely do
+   not do any experimentation.
+
+#. Some desperate Y Combinator startup ABC has pivoted for the 3rd time into
+   documentation automation.
+
+#. Startup ABC's product is not anywhere close to being able to actually
+   fully automate documentation work, but their sales team is very good.
+
+#. The very persuasive sales team at startup ABC convinces company XYZ
+   leadership that its product can replace the technical writing team. Company
+   XYZ leadership duly lays off its technical writing team.
+
+#. 9 months later, company XYZ can conclusively state that relying on
+   startup ABC's "fully automated documentation solution" has been a
+   disaster. Company XYZ also learned, however, that those introverted,
+   non-unionized technical writers who never seem to be able to prove the
+   exact ROI of their work can be hired back at much less cost as temps
+   and contractors.
+
+Don't let startup ABC determine your future. Make an earnest effort
+to adopt GenAI where it brings true value, establishing yourself as a
+forward-thinking expert in the eyes of your company leadership in the process.
+As you do your own experimentation and see firsthand how inadequate or
+cost-prohibitive GenAI is for a certain task, show your leaders. "Yes, I
+tried that. Here's the demo. See for yourself; the results are pretty bad.
+I estimate it will take a full-time SWE 3 months to make this bulletproof.
+Is the ROI still worth it?"
 
 Supervised learning
 ===================
