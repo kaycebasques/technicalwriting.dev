@@ -41,3 +41,4 @@ the years. The most recent ones I'm aware of are `Riona McNamara`_ and
 :sup:`2` I am aware that the word ``discoverability`` exists. You can direct
 your ire for ``discoveryness`` to Strunk & White (`Express co-ordinate ideas
 in similar form <https://faculty.washington.edu/heagerty/Courses/b572/public/StrunkWhite.pdf#page=14>`_).
+In other words, ``discoveryness`` is just a joke. RELAX :P
