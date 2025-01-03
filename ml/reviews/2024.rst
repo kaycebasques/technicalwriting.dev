@@ -253,10 +253,10 @@ integrating GenAI into their work practices for a variety of reasons:
 * Fear of accidentally automating themselves out of a job
 * Environmental concerns
 * Copyright issues
+* A deep disdain for hallucination
 
 I expect adoption of GenAI in technical writing to continue to be slow
-in 2025, because I don't think the three concerns listed above will be
-solved in 2025.
+in 2025 because I don't think these issues will be solved in 2025.
 
 Jobs still safe for another year
 ================================
@@ -264,35 +264,18 @@ Jobs still safe for another year
 I'm not seeing the type of massive, systematic automation that would be
 needed to eliminate the role of technical writer. There are faint hints
 of it in :ref:`ml-reviews-2024-content` but this is only 1 of like 10
-or more things that would need to be extensively and reliably automated.
-This extensive automation is still possible for 2026 and beyond.
+or more things that would need to be extensively and reliably automated
+in many different products. This extensive automation (and therefore job
+loss) is still possible for 2026 and beyond.
 
 Progress on the intractable challenges
 ======================================
 
-There are a few widely recognized :ref:`intractable challenges <challenges>`\ :sup:`3`
-in technical writing:
-
-.. _all the kinds of documentation: https://diataxis.fr/start-here/
-
-* **Completeness**. It's hard to comprehensively document *all* new features
-  in a timely fashion and it's hard to comprehensively deliver
-  `all the kinds of documentation`_ that users may actually need to succeed.
-
-* **Correctness**. As the system changes, it's hard to keep the docs *always*
-  synchronized with the new reality of the system.
-
-* **Discoveryness**. Even if the needed content exists, it's hard to
-  *guarantee* that users will find it.
+I think combining these ML technologies and approaches will help us tangible
+progress in 2025 on the :ref:`intractable challenges <challenges>` of technical writing:
 
 .. _supervised learning: https://cloud.google.com/discover/what-is-supervised-learning
 .. _fine-tuning: https://platform.openai.com/docs/guides/fine-tuning
-
-I have come to the conclusion that these challenges are not solvable with
-the practices and technologies of the 2010s. The only way we'll make
-further progress on the intractable challenges is to augment what we
-figured out in the 2010s with new tools and approaches. I think these
-ML technologies and approaches will help us make more progress:
 
 * `Supervised learning`_ (`fine-tuning`_ is a form of supervised learning)
 * :ref:`Embeddings <underrated>`
@@ -301,30 +284,30 @@ ML technologies and approaches will help us make more progress:
 .. _defensive publication: https://www.tdcommons.org/
 
 I have a `defensive publication`_ in the works that demonstrates how
-we can use these new tools to make progress on the correctness problem.
-Hopefully it will be published in the next few months.
-
-.. _Riona McNamara: https://www.linkedin.com/in/rionam
-.. _Aaron Gillies: https://www.linkedin.com/in/aaron-gillies-19a3755
-
-:sup:`3` Many people have discussed these intractable challenges over
-the years. The most recent ones I'm aware of are `Riona McNamara`_ and
-`Aaron Gillies`_.
+we can combine embeddings and generation models to make progress on the
+correctness problem.
 
 Q&A renaissance
 ===============
 
-This is a primordial soup of an idea.
+This is a primordial soup of an idea. I have a hunch that Q&A
+(questions & answers) will become more and more important. Q&A is
+everywhere:
 
-I have a hunch that Q&A (questions & answers) will become more and more important.
-When language models are trained or fine-tuned, the data is often
-structured as question and answer. When I interact with Gemini,
-Claude, etc. through a chat UI, the conversation is often Q&A-style.
-Stack Overflow was an invaluable resource for human developers in
-the 2010s, and it's all about Q&A. Reddit threads often take the
-form of Q&A, where the OP provides a prompt (the question) and the
-follow-up questions are basically answers. The theme of Q&A keeps
-coming up.
+* When language models are trained or fine-tuned, the data is often
+  structured as Q&A.
+
+* When I interact with Gemini, Claude, etc. through a chat UI,
+  the conversation is often Q&A-style.
+
+* Stack Overflow was an invaluable resource for human developers in
+  the 2010s, and it's all about Q&A.
+
+* Reddit threads often take the form of Q&A, where the OP provides
+  a prompt (the question) and the follow-up questions are basically
+  answers.
+
+The theme of Q&A keeps coming up.
 
 Translation pipelines solved for us
 ===================================
