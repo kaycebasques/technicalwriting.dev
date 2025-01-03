@@ -56,7 +56,7 @@ Docs-as-Data (DaD)
 Machine learning
 ----------------
 
-* :ref:`genai-outlook-2023`. My initial thoughts on how GenAI might affect
+* :ref:`ml-outlooks-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 * :ref:`stateful-assistants`. GenAI chatbot assistants might be very useful if
   they can serve as companions for the entire journey that readers take when
@@ -122,8 +122,8 @@ User experience
    data/intertwingularity
    embeddings/index
    ml/evals
-   ml/outlook-2023
-   ml/outlook-2024
+   ml/outlooks/2023
+   ml/outlooks/2024
    ml/huggingface
    ml/playing-nicely
    ml/plugins
