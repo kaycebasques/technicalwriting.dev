@@ -16,7 +16,7 @@ in technical writing:
 * **Correctness**. As the system changes, it's hard to keep the docs *always*
   synchronized with the new reality of the system.
 
-* **Discoveryness**. Even if the needed content exists, it's hard to
+* **Discoveryness**.\ :sup:`2` Even if the needed content exists, it's hard to
   *guarantee* that users will find it.
 
 .. _supervised learning: https://cloud.google.com/discover/what-is-supervised-learning
@@ -37,3 +37,7 @@ foundation.
 :sup:`1` Many people have discussed these intractable challenges over
 the years. The most recent ones I'm aware of are `Riona McNamara`_ and
 `Aaron Gillies`_.
+
+:sup:`2` I am aware that the word ``discoverability`` exists. You can direct
+your ire for ``discoveryness`` to Strunk & White (`Express co-ordinate ideas
+in similar form <https://faculty.washington.edu/heagerty/Courses/b572/public/StrunkWhite.pdf#page=14>`_).
