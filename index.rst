@@ -56,7 +56,8 @@ Docs-as-Data (DaD)
 Machine learning
 ----------------
 
-* :ref:`ml-outlooks-2023`. My initial thoughts on how GenAI might affect
+* :ref:`ml-reviews-2024`. The sequel to :ref:`ml-reviews-2023`.
+* :ref:`ml-reviews-2023`. My initial thoughts on how GenAI might affect
   technical writing.
 * :ref:`stateful-assistants`. GenAI chatbot assistants might be very useful if
   they can serve as companions for the entire journey that readers take when
@@ -94,6 +95,9 @@ Search engine optimization
 Strategy
 --------
 
+* :ref:`challenges`. There are 3 intractable challenges in technical writing.
+  I do not believe we will ever be able to completely solve these challenges
+  using only the practices and technologies of the 2010s.
 * :ref:`decisions`. Docs should aim to help people decide what to do.
   Only documenting procedures is usually not enough.
 
@@ -122,8 +126,8 @@ User experience
    data/intertwingularity
    embeddings/index
    ml/evals
-   ml/outlooks/2023
-   ml/outlooks/2024
+   ml/reviews/2023
+   ml/reviews/2024
    ml/huggingface
    ml/playing-nicely
    ml/plugins
@@ -134,6 +138,7 @@ User experience
    seo/sentry-overflow
    src/link-text-automation
    src/verbatim-wrangling
+   strategy/challenges
    strategy/decisions
    ux/methodology
    ux/offline

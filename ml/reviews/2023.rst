@@ -1,4 +1,4 @@
-.. _ml-outlooks-2023:
+.. _ml-reviews-2023:
 
 ==================
 GenAI Outlook 2023

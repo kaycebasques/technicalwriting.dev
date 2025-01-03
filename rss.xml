@@ -3,12 +3,33 @@
   <channel>
     <title>technicalwriting.dev</title>
     <link>https://technicalwriting.dev</link>
-	  <description>
+    <description>
       A blog about technical writing by Kayce Basques.
-	  </description>
+    </description>
     <language>en-us</language>
-	  <pubDate>Mon, 21 Oct 2024 09:09:03 -0700</pubDate>
-	  <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 3 Jan 2025 12:41:04 -0700</pubDate>
+    <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>2024 Machine Learning Review (For Technical Writers)</title>
+      <link>https://technicalwriting.dev/ml/reviews/2024.html</link>
+      <description>
+        A review of how much (or little) the ideas from GenAI Outlook 2023 have panned
+        out, and a discussion of potential future trends in 2025.
+      </description>
+      <pubDate>Fri, 3 Jan 2025 12:41:04 -0700</pubDate>
+      <guid>https://technicalwriting.dev/ml/reviews/2024.html</guid>
+    </item>
+    <item>
+      <title>The intractable challenges of technical writing</title>
+      <link>https://technicalwriting.dev/strategy/challenges.html</link>
+      <description>
+        There are 3 intractable challenges in technical writing.
+        I do not believe we will ever be able to completely solve these challenges
+        using only the practices and technologies of the 2010s.
+      </description>
+      <pubDate>Fri, 3 Jan 2025 12:41:04 -0700</pubDate>
+      <guid>https://technicalwriting.dev/strategy/challenges.html</guid>
+    </item>
     <item>
       <title>Embeddings are underrated</title>
 	    <link>https://technicalwriting.dev/embeddings/overview.html</link>
