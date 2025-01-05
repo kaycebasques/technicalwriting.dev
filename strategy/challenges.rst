@@ -19,9 +19,6 @@ in technical writing:
 * **Discoveryness**.\ :sup:`2` Even if the needed content exists, it's hard to
   *guarantee* that users will find it.
 
-.. _supervised learning: https://cloud.google.com/discover/what-is-supervised-learning
-.. _fine-tuning: https://platform.openai.com/docs/guides/fine-tuning
-
 I have come to the conclusion that these challenges are not solvable with
 the practices and technologies of the 2010s. To be clear, I'm
 not saying that we should throw out the tools and practices from the 2010s
@@ -30,6 +27,15 @@ we will never be able to solve the intractable challenges using *only* the
 tools and practices of the 2010s. To make further progress on the intractable
 challenges, we need to incorporate new tools and practices into our 2010s
 foundation.
+
+Why did I write this post? Because I would like to hear from my
+fellow technical writers whether they agree that these are some of the
+most important unsolved problems in our field. The best way to advance
+the art and science of any field is to focus on the most important problems
+in that field. I am not putting forward any particular solutions
+to these problems because I don't want to steer the conversation in any
+particular direction. Also, if these problems already had clear and obvious
+solutions, then they wouldn't be "intractable challenges"!
 
 .. _Riona McNamara: https://www.linkedin.com/in/rionam
 .. _Aaron Gillies: https://www.linkedin.com/in/aaron-gillies-19a3755
