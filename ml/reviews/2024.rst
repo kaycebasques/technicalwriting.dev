@@ -47,6 +47,8 @@ that GenAI would automate our profession out of existence. This has not
 objectively happened at scale so far. I am aware of only one case where
 a technical writer *maybe* lost their job because of GenAI.
 
+.. TODO: https://www.reddit.com/r/technicalwriting/comments/1fuz4m6
+
 Automation
 ==========
 
