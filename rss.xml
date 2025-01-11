@@ -66,17 +66,6 @@
 	    <guid>https://technicalwriting.dev/strategy/decisions.html</guid>
     </item>
     <item>
-      <title>Development log: Migrating pigweed.dev to Bazel</title>
-	    <link>https://technicalwriting.dev/build/bazel.html</link>
-	    <description>
-        I have been tasked with the fascinating and somewhat-overwhelming
-        project of migrating pigweed.dev's build system from GN to Bazel.
-        These are my notes on the project.
-      </description>
-	    <pubDate>Wed, 25 Sep 2024 11:50:34 -0700</pubDate>
-	    <guid>https://technicalwriting.dev/build/bazel.html</guid>
-    </item>
-    <item>
       <title>You can deeplink to a specific PDF page</title>
 	    <link>https://technicalwriting.dev/www/pdf.html</link>
 	    <description>

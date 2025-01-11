@@ -16,13 +16,6 @@ Accessibility
   user-friendly to people who don't use mouses and only navigate with
   keyboards.
 
--------------
-Build systems
--------------
-
-* :ref:`bazel`. Development log of my journey to migrate a docs site from a
-  GN-based build system to a Bazel-based one.
-
 .. _dac:
 
 ------------------
@@ -31,8 +24,6 @@ Docs-as-Code (DaC)
 
 * :ref:`link-text-automation`. A killer feature from Sphinx that more docs systems
   should adopt.
-* :ref:`verbatim-wrangling`. My struggles to get a plaintext diagram rendering correctly
-  on a docs site that uses Sphinx, Breathe, and Doxygen.
 
 .. _dad:
 
@@ -49,6 +40,15 @@ Docs-as-Data (DaD)
   about text generation models. The ML technology that might end up having the biggest
   impact on technical writing is **embeddings**. What embeddings offer to technical writers is
   **the ability to discover connections between texts at previously impossible scales**.
+
+.. _links:
+
+-----
+Links
+-----
+
+* :ref:`pdf`. Just append ``#page=X`` to your URL, where ``X`` is a placeholder
+  for the page you want to link to.
 
 .. _ml:
 
@@ -113,18 +113,16 @@ User experience
   into it? What should the search results look like?
 * :ref:`offline`. There seems to be unmet demand for viewing documentation websites
   without an internet connection.
-* :ref:`pdf`. Just append ``#page=X`` to your URL, where ``X`` is a placeholder
-  for the page you want to link to.
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    a11y/skip
-   build/bazel
    data/index
    data/intertwingularity
    embeddings/index
+   links/pdf
    ml/evals
    ml/reviews/2023
    ml/reviews/2024
@@ -137,11 +135,9 @@ User experience
    seo/discovered-not-indexed
    seo/sentry-overflow
    src/link-text-automation
-   src/verbatim-wrangling
    strategy/challenges
    strategy/decisions
    ux/methodology
    ux/offline
-   ux/pdf
    ux/searchboxes
    ux/zephyr

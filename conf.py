@@ -1,5 +1,5 @@
 author = 'Kayce Basques'
-copyright = '2024, Kayce Basques'
+copyright = '2025, Kayce Basques'
 exclude_patterns = [
     '.github',
     '.gitignore',
@@ -25,7 +25,9 @@ project = 'technicalwriting.dev'
 pygments_style = 'sphinx'
 redirects = {
     'data/embeddings': '../embeddings/overview.html',
-    'www/pdf': '../ux/pdf.html'
+    'src/verbatim-wrangling': 'https://web.archive.org/web/20240724083629/https://technicalwriting.dev/src/verbatim-wrangling.html',
+    'ux/pdf': '../links/pdf.html',
+    'www/pdf': '../links/pdf.html'
 }
 release = '0.0.0'
 templates_path = ['_templates']
