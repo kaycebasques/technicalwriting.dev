@@ -15,4 +15,5 @@ Embeddings
    :hidden:
 
    overview
+   vectors
    bookmarks
