@@ -4,6 +4,8 @@
 Vectors
 =======
 
+(This post is a work in progress.)
+
 :ref:`Embeddings <underrated>` may be an important new tool for technical
 writers. An embedding provides a numerical representation of a text's
 semantics. We can mathematically compare the embedding of one text
@@ -11,13 +13,17 @@ against the embedding of another text and determine whether they're
 semantically similar. This has many potential applications in technical
 writing.
 
+----------
+Motivation
+----------
+
 But what does it mean to "represent a text's semantics as numbers"?
 And how exactly does the mathematical comparison of one embedding
 against another embedding work? If I'm going to seriously adopt
 embeddings in my work as a technical writer, I should be able to
 provide detailed answers to these questions. Also, having a deeper
-understanding of the math behind embeddings will probably help me
-use embeddings more effectively.
+understanding of the math behind embeddings is almost guaranteed
+to help me use embeddings more effectively.
 
 Where to begin my journey to understand the math behind embeddings?
 Vectors seem like a good place to start.
@@ -27,11 +33,48 @@ Why focus on vectors?
 ---------------------
 
 Because embeddings typically\ :sup:`1` *are* vectors. Vectors are a math
-(and physics) concept. Embeddings are an application of that math concept.
+(and physics) concept. Embeddings are an application of the concept.
 
-:sup:`1` Non-vector embeddings are also possible, hence why I said
+:sup:`1` Non-vector embeddings are also possible, hence the
 "typically". In practice it seems like embeddings are almost always
 vector-based.
+
+-----------------------------
+What do embeddings look like?
+-----------------------------
+
+You input some text, and you get back a long array of numbers.
+Here's how you generate an embedding with the Gemini API:
+
+.. code-block:: pycon
+
+   >>> import google.generativeai as gemini
+   >>> gemini.configure(api_key='…')
+   >>> text = 'Hello, world!'
+   >>> response = gemini.embed_content(
+   ...     model='models/text-embedding-004',
+   ...     content=text,
+   ...     task_type='SEMANTIC_SIMILARITY'
+   ... )
+   >>> embedding = response['embedding']
+   >>> embedding
+   [-0.029905086, 0.008915291, -0.07544613, …, 0.011311127]
+   >>> len(embedding)
+   768
+
+No matter the size of your input text, you always get back an
+array of the same length. E.g. in the previous code block, suppose that
+the value of the ``text`` variable is the complete text of an entire
+document rather than a short sentence (``Hello, world!``). The Gemini
+embedding model will still return a list of 768 numbers.
+
+Each particular number in the list will always be within a particular
+range. E.g. the Gemini embedding model always returns a number between
+-1 and +1.
+
+Even if you still have no idea what an embedding is (see
+:ref:`underrated-intuition`) you are hopefully starting to see
+how embeddings make it possible to mathematically analyze docs.
 
 -----------------
 What is a vector?
@@ -39,8 +82,13 @@ What is a vector?
 
 .. _Linear Algebra For Dummies: https://www.dummies.com/book/academics-the-arts/math/algebra/linear-algebra-for-dummies-282354/
 
-According to `Linear Algebra For Dummies`_\ :sup:`1`, a vector
+According to `Linear Algebra For Dummies`_\ :sup:`2`, a vector
 is just an ordered collection of numbers.
+
+:sup:`2` I know that some people are turned off by the "Dummies"
+name but this is the best book I've found on the topic yet. By
+"best" I mean it provides a lot of context, gives a lot of examples,
+and walks through each example in detail.
 
 ------------------------------------------
 Why are embeddings represented as vectors?
@@ -50,7 +98,10 @@ Why are embeddings represented as vectors?
 
 Because machine learning (ML) researchers decided to use vectors.
 That may sound like a `cop out`_, but I think it's useful 
-to remember where all this stuff comes from.
+to remember where all this stuff comes from. We can probably
+trace the invention of vector-based embeddings back to specific
+research papers. Those research papers probably provide rationale
+for 
 
 But why did ML researchers choose vectors?
 ==========================================
