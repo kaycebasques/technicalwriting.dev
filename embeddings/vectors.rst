@@ -4,31 +4,53 @@
 Vectors
 =======
 
-I want to understand the math behind :ref:`embeddings <underrated>`
-more deeply. Vectors seem like a good place to start. 
+:ref:`Embeddings <underrated>` may be an important new tool for technical
+writers. An embedding provides a numerical representation of a text's
+semantics. We can mathematically compare the embedding of one text
+against the embedding of another text and determine whether they're
+semantically similar. This has many potential applications in technical
+writing.
+
+But what does it mean to "represent a text's semantics as numbers"?
+And how exactly does the mathematical comparison of one embedding
+against another embedding work? If I'm going to seriously adopt
+embeddings in my work as a technical writer, I should be able to
+provide detailed answers to these questions. Also, having a deeper
+understanding of the math behind embeddings will probably help me
+use embeddings more effectively.
+
+Where to begin my journey to understand the math behind embeddings?
+Vectors seem like a good place to start.
 
 ---------------------
 Why focus on vectors?
 ---------------------
 
-Vectors seem to be the mathematical foundation of embeddings.
-All embeddings are vectors (but not all vectors are embeddings).
-Maybe I should say "most embeddings are vectors", not "all embeddings
-are vectors". Maybe there are some niche types of embeddings that
-are not represented as vectors. It seems safe to assume that
-the great majority (over 90%) of embeddings are vectors.
+Because embeddings typically\ :sup:`1` *are* vectors. Vectors are a math
+(and physics) concept. Embeddings are an application of that math concept.
+
+:sup:`1` Non-vector embeddings are also possible, hence why I said
+"typically". In practice it seems like embeddings are almost always
+vector-based.
+
+-----------------
+What is a vector?
+-----------------
+
+.. _Linear Algebra For Dummies: https://www.dummies.com/book/academics-the-arts/math/algebra/linear-algebra-for-dummies-282354/
+
+According to `Linear Algebra For Dummies`_\ :sup:`1`, a vector
+is just an ordered collection of numbers.
 
 ------------------------------------------
 Why are embeddings represented as vectors?
 ------------------------------------------
 
+.. _cop out: https://www.etymonline.com/word/cop%20out
+
 Because machine learning (ML) researchers decided to use vectors.
-That may sound like a superficial answer, but I think it's important
-to remember the deeply academic foundation of ML. This academic
-foundation makes my quest to understand vectors easier. I can probably trace back the
-first usage of the term "embeddings" to a specific research paper.
-And that research paper probably makes a clear case for why embeddings
-need to be vectors.
+That may sound like a `cop out`_, but I think it's useful 
+to remember where all this stuff comes from.
 
 But why did ML researchers choose vectors?
 ==========================================
