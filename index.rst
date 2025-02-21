@@ -85,8 +85,6 @@ Machine learning
 Search engine optimization
 --------------------------
 
-* :ref:`sentry-overflow`. Sentry, the app monitoring company, appears to be
-  competing with Stack Overflow.
 * :ref:`discovered-not-indexed`. How I fixed this error for ``pigweed.dev``.
 
 .. _strategy:
@@ -117,6 +115,7 @@ User experience
    :hidden:
 
    a11y/skip
+   archives/seo/sentry-overflow
    archives/ux/offline
    data/index
    data/intertwingularity
@@ -133,7 +132,6 @@ User experience
    ml/stateful-assistants
    ml/style-guide-fine-tuning
    seo/discovered-not-indexed
-   seo/sentry-overflow
    src/link-text-automation
    strategy/challenges
    strategy/decisions
