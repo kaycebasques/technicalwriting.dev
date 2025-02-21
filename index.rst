@@ -118,6 +118,7 @@ User experience
    data/index
    data/intertwingularity
    embeddings/index
+   links/automation
    links/pdf
    ml/evals
    ml/reviews/2023
@@ -130,7 +131,6 @@ User experience
    ml/stateful-assistants
    ml/style-guide-fine-tuning
    seo/discovered-not-indexed
-   src/link-text-automation
    strategy/challenges
    strategy/decisions
    ux/methodology
