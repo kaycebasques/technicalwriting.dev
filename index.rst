@@ -128,6 +128,7 @@ User experience
    ml/huggingface
    ml/playing-nicely
    ml/plugins
+   ml/products
    ml/principles
    ml/stateful-assistants
    ml/style-guide-fine-tuning
