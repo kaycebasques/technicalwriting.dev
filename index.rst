@@ -14,12 +14,6 @@ Accessibility
   user-friendly to people who don't use mouses and only navigate with
   keyboards.
 
-.. _dac:
-
-------------------
-Docs-as-Code (DaC)
-------------------
-
 .. _dad:
 
 ------------------
