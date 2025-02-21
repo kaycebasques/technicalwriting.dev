@@ -26,6 +26,7 @@ pygments_style = 'sphinx'
 redirects = {
     'data/embeddings': '../embeddings/overview.html',
     'src/verbatim-wrangling': 'https://web.archive.org/web/20240724083629/https://technicalwriting.dev/src/verbatim-wrangling.html',
+    'ux/offline': '../archive/ux/offline.html',
     'ux/pdf': '../links/pdf.html',
     'www/pdf': '../links/pdf.html'
 }

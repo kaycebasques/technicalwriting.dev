@@ -111,14 +111,13 @@ User experience
 * :ref:`searchboxes`. Where should I put the search box on my docs site?
   What placeholder text should it contain? What should happen when I type stuff
   into it? What should the search results look like?
-* :ref:`offline`. There seems to be unmet demand for viewing documentation websites
-  without an internet connection.
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    a11y/skip
+   archives/ux/offline
    data/index
    data/intertwingularity
    embeddings/index
@@ -138,6 +137,5 @@ User experience
    strategy/challenges
    strategy/decisions
    ux/methodology
-   ux/offline
    ux/searchboxes
    ux/zephyr
