@@ -73,14 +73,6 @@ Embeddings
   impact on technical writing is **embeddings**. What embeddings offer to technical writers is
   **the ability to discover connections between texts at previously impossible scales**.
 
-.. _seo:
-
---------------------------
-Search engine optimization
---------------------------
-
-* :ref:`discovered-not-indexed`. How I fixed this error for ``pigweed.dev``.
-
 .. _strategy:
 
 --------
@@ -111,6 +103,7 @@ User experience
    :hidden:
 
    a11y/skip
+   archives/seo/discovered-not-indexed
    archives/seo/sentry-overflow
    archives/ux/offline
    data/index
@@ -128,7 +121,6 @@ User experience
    ml/principles
    ml/stateful-assistants
    ml/style-guide-fine-tuning
-   seo/discovered-not-indexed
    strategy/challenges
    strategy/decisions
    ux/methodology
