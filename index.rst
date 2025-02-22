@@ -51,9 +51,6 @@ Machine learning
 * :ref:`playing-nicely`. Early ideas about how to author docs that work well with
   generative models.
 
-* :ref:`plugins`. You can't control when ChatGPT uses your plugin. You can only maximize
-  the chance that ChatGPT uses your plugin by describing your API effectively.
-
 * :ref:`principles`. My response to Tom Johnson's "10 principles for writing for AI"
   post.
 
