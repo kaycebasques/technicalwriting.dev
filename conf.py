@@ -25,6 +25,7 @@ project = 'technicalwriting.dev'
 pygments_style = 'sphinx'
 redirects = {
     'data/embeddings': '../embeddings/overview.html',
+    'data/intertwingularity': '../links/intertwingularity.html',
     'seo/sentry-overflow': '../archives/seo/sentry-overflow.html',
     'src/link-text-automation': '../links/automation.html',
     'src/verbatim-wrangling': 'https://web.archive.org/web/20240724083629/https://technicalwriting.dev/src/verbatim-wrangling.html',

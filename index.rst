@@ -14,23 +14,6 @@ Accessibility
   user-friendly to people who don't use mouses and only navigate with
   keyboards.
 
-.. _dad:
-
-------------------
-Docs-as-Data (DaD)
-------------------
-
-* :ref:`intertwingularity`. I’m building a web crawler so that I can track how pages in my docs
-  site link to each other and to the outside web more broadly. If a lot of my docs pages link to
-  some particular page, then that page is probably important. PageRank Lite, basically, except
-  with much more focus on intra-site backlinks.
-
-* :ref:`underrated`. Machine learning (ML) has the potential to
-  advance the state of the art in technical writing. No, I'm not talking
-  about text generation models. The ML technology that might end up having the biggest
-  impact on technical writing is **embeddings**. What embeddings offer to technical writers is
-  **the ability to discover connections between texts at previously impossible scales**.
-
 .. _links:
 
 -----
@@ -42,6 +25,11 @@ Links
 
 * :ref:`pdf`. Just append ``#page=X`` to your URL, where ``X`` is a placeholder
   for the page you want to link to.
+
+* :ref:`intertwingularity`. I’m building a web crawler so that I can track how pages in my docs
+  site link to each other and to the outside web more broadly. If a lot of my docs pages link to
+  some particular page, then that page is probably important. PageRank Lite, basically, except
+  with much more focus on intra-site backlinks.
 
 .. _ml:
 
@@ -76,10 +64,14 @@ Machine learning
 * :ref:`style-guide-fine-tuning`. How and why one might fine-tune a generative
   model into a style guide editor.
 
-* :ref:`underrated`. Machine learning (ML) has the potential to greatly
+Embeddings
+==========
+
+* :ref:`underrated`. Machine learning (ML) has the potential to
   advance the state of the art in technical writing. No, I'm not talking
-  about Claude Opus, Gemini Pro, LLaMa, etc. The ML technology that might end up
-  having the biggest impact on technical writing is **embeddings**.
+  about text generation models. The ML technology that might end up having the biggest
+  impact on technical writing is **embeddings**. What embeddings offer to technical writers is
+  **the ability to discover connections between texts at previously impossible scales**.
 
 .. _seo:
 
@@ -122,9 +114,9 @@ User experience
    archives/seo/sentry-overflow
    archives/ux/offline
    data/index
-   data/intertwingularity
    embeddings/index
    links/automation
+   links/intertwingularity
    links/pdf
    ml/evals
    ml/reviews/2023
