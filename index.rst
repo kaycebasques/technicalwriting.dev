@@ -28,8 +28,7 @@ Links
 
 * :ref:`intertwingularity`. I’m building a web crawler so that I can track how pages in my docs
   site link to each other and to the outside web more broadly. If a lot of my docs pages link to
-  some particular page, then that page is probably important. PageRank Lite, basically, except
-  with much more focus on intra-site backlinks.
+  some particular page, then that page is probably important.
 
 .. _ml:
 
