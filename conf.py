@@ -26,6 +26,7 @@ pygments_style = 'sphinx'
 redirects = {
     'data/embeddings': '../embeddings/overview.html',
     'data/intertwingularity': '../links/intertwingularity.html',
+    'ml/plugins': '../archives/ml/plugins.html',
     'seo/discovered-not-indexed': '../archives/seo/discovered-not-indexed.html',
     'seo/sentry-overflow': '../archives/seo/sentry-overflow.html',
     'src/link-text-automation': '../links/automation.html',
