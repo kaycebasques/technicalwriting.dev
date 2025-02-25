@@ -1,5 +1,5 @@
 :root {
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Chivo", serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -53,7 +53,7 @@ footer pre code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Chivo", serif;
 }
 
 img {

@@ -4,9 +4,9 @@
 technicalwriting.dev
 ====================
 
-A blog about technical writing by `Kayce Basques <https://kayce.basqu.es>`_.
+A blog about technical writing.
 
-Blog posts by category:
+Categories:
 
 * :ref:`links`
 * :ref:`ml`
