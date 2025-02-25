@@ -1,4 +1,4 @@
-.. _embeddings-bookmarks:
+.. _bookmarks:
 
 =========
 Bookmarks

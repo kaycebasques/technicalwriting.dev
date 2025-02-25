@@ -24,8 +24,10 @@ html_static_path = ['_static']
 project = 'technicalwriting.dev'
 pygments_style = 'sphinx'
 redirects = {
+    'a11y/skip': '../archives/a11y/skip.html',
     'data/embeddings': '../embeddings/overview.html',
     'data/intertwingularity': '../links/intertwingularity.html',
+    'embeddings/overview': '../ml/embeddings/overview.html',
     'ml/plugins': '../archives/ml/plugins.html',
     'seo/discovered-not-indexed': '../archives/seo/discovered-not-indexed.html',
     'seo/sentry-overflow': '../archives/seo/sentry-overflow.html',
@@ -33,6 +35,8 @@ redirects = {
     'src/verbatim-wrangling': 'https://web.archive.org/web/20240724083629/https://technicalwriting.dev/src/verbatim-wrangling.html',
     'ux/offline': '../archives/ux/offline.html',
     'ux/pdf': '../links/pdf.html',
+    'ux/methodology': '../archives/ux/methodology.html',
+    'ux/searchboxes': '../archives/ux/searchboxes.html',
     'www/pdf': '../links/pdf.html'
 }
 release = '0.0.0'
