@@ -1,5 +1,6 @@
 :root {
-    font-family: "Chivo", serif;
+    font-family: "Atkinson Hyperlegible Next", serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
@@ -81,6 +82,7 @@ p code {
 }
 
 pre {
+    font-family: "IBM Plex Mono", monospace;
     overflow-x: auto;
     scrollbar-width: none;
 }
