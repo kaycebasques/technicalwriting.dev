@@ -27,3 +27,4 @@ Categories:
    links/index
    ml/index
    strategy/index
+   tutorials/sphinx-bazel
