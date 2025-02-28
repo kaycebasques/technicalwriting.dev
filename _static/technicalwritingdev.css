@@ -21,12 +21,13 @@ blockquote {
 
 code {
     font-family: "IBM Plex Mono", monospace;
+    font-size: 0.9em;
 }
 
 div.highlight {
-    background-color: lightgrey;
-    margin: 1em 0 0 0;
-    padding: 1em;
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0.75em;
 }
 
 div.highlight pre {
@@ -77,7 +78,7 @@ nav ul {
 }
 
 p code {
-    background-color: lightgrey;
+    background-color: #eeeeee;
     padding: 0.1em;
 }
 
@@ -85,6 +86,9 @@ pre {
     font-family: "IBM Plex Mono", monospace;
     overflow-x: auto;
     scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
 }
 
 pre::-webkit-scrollbar {
