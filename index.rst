@@ -16,6 +16,7 @@ Categories:
    :maxdepth: 1
    :hidden:
 
+   about
    archives/a11y/skip
    archives/ml/plugins
    archives/seo/discovered-not-indexed
