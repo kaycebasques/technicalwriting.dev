@@ -1,8 +1,8 @@
 .. _sphazel-context:
 
-=====================================================================
-Everything you need to know about managing Sphinx projects with Bazel
-=====================================================================
+======================================
+Why manage Sphinx projects with Bazel?
+======================================
 
 This :ref:`decision guide <decisions>` aims to help you determine whether or
 not it's worthwhile to manage your Sphinx projects with Bazel.
@@ -35,12 +35,6 @@ productivity.
 
 .. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/
 
-I am phrasing the topic as "**managing** Sphinx projects with Bazel" rather than
-"**building** Sphinx projects with Bazel" because Bazel is not just about building
-software. You can run lots of other workflows through it. For example, the
-`Tour of Pigweed`_ demo uses Bazel to run tests, start a simulator, connect
-to a console, flash an embedded device, and more. 
-
 .. _sphazel-context-background-personal:
 
 Personal experience with Sphinx and Bazel
@@ -50,7 +44,7 @@ Personal experience with Sphinx and Bazel
 
 I have about 5 years of professional experience with Sphinx. In my first
 technical writing job, I migrated my employer's docs from Microsoft Word
-to Sphinx. For the last few years I have been leading `pigweed.dev`_
+to Sphinx. For the last few years I have been leading `pigweed.dev`_,
 which is powered by Sphinx.
 
 .. _migrating pigweed.dev to Bazel: https://pigweed.dev/docs/blog/08-bazel-docgen.html
@@ -78,7 +72,7 @@ The good
 --------
 
 Through the experience of migrating `pigweed.dev`_ to Bazel I learned that
-Bazel can simplify many core Sphinx project workflows.
+Bazel can streamline many common workflows related to developing Sphinx projects.
 
 .. _sphazel-context-good-setup:
 
@@ -92,7 +86,14 @@ this:
 
    $ git clone https://github.com/technicalwriting/dev.git
    $ cd dev
-   $ ./bazelisk-linux build //:docs
+   $ ./bazelisk build //:docs
+
+.. _technicalwriting.dev: https://technicalwriting.dev
+
+(This example works. You're welcome to try it. `technicalwriting.dev`_ is a
+Sphinx project and I actually do manage it with Bazel now. If you're on macOS
+use ``./bazelisk-mac`` instead of ``./bazelisk``. For Windows, use
+``./bazelisk-windows``.)
 
 When Bazel attempts to build the ``//:docs`` target it detects that it
 doesn't have all the tools and dependencies it needs to build the target.
@@ -111,8 +112,8 @@ No more fiddling with virtual environments
 .. _reproducible builds: https://reproducible-builds.org/docs/definition/
 
 One of the main problems that Bazel solves for software engineers is
-the `works on my machine`_ problem. The source code compiles for teammate
-A. The exact same source code doesn't compile for teammate B. Many hours of
+the `works on my machine`_ problem. E.g. the source code compiles for teammate
+A, yet the exact same source code doesn't compile for teammate B. Many hours of
 debugging ensue to pinpoint the difference in their development environments.
 Through `hermeticity`_ Bazel can guarantee that a given set of inputs always
 produce the exact same outputs for all teammates. This is also known as
@@ -133,10 +134,63 @@ from an isolated sandbox so there's no need to also spin up a virtual environmen
 Sidecar friendly
 ================
 
+.. _sidecar: https://passo.uno/docs-as-code-topologies/#sidecar-docs-and-code-living-together
+
+In terms of docs-as-code topologies, a `sidecar`_ is when your docs live in the same
+repo as the rest of your source code. This is a powerful setup because it increases the
+chances that software engineers keep their docs up-to-date. In my experience most software
+engineers are actually fine with updating docs, so long as its easy to find the relevant
+docs. If an engineer changes an API in ``//src/module_a/lib.cpp`` and they see ``docs.rst``
+right next to ``lib.cpp``, it's very obvious that ``docs.rst`` might also need an update.
+On the other hand, if the relevant doc lives at ``//docs/guides/logs/docs.rst``, then it's not
+obvious that the change to ``//src/module_a/lib.cpp`` affected the doc.
+
+Bazel makes it easier to put your docs right next to the source code that they're related to.
+
+For example, in the Pigweed repo we structure our docs and source code like this:
+
+.. code-block:: text
+
+   .
+   ├── a
+   │   ├── a.cpp
+   │   └── a.rst
+   ├── b
+   │   ├── b.cpp
+   │   └── b.rst
+   └── docs
+       ├── conf.py
+       └── index.rst
+
+Sphinx, however, expects a structure like this:
+
+.. code-block:: text
+
+   .
+   ├── a
+   │   └── a.cpp
+   ├── b
+   │   └── b.cpp
+   └── docs
+       ├── a
+       │   └── a.rst
+       ├── b
+       │   └── b.rst
+       ├── conf.py
+       └── index.rst
+
+By default, Sphinx considers the directory containing ``conf.py`` to
+be the root docs directory. All ``*.rst`` (reST) files should be at or
+below the root docs directory.
+
+In the old GN-based system we had to hack together this reorganization
+logic ourselves. Bazel has built-in support for source reorganization via
+its ``prefix`` and ``strip_prefix`` features.
+
 .. _sphazel-context-good-ecosystem:
 
-Decent developer ecosystem
-==========================
+Surprisingly robust ecosystem
+=============================
 
 .. _bzlmod: https://bazel.build/external/overview#bzlmod
 .. _rules_python: https://rules-python.readthedocs.io/en/latest/
@@ -146,7 +200,19 @@ modules with others. When I migrated pigweed.dev to Bazel I was surprised to
 discover that most of the features I needed were already available through community
 modules. For example, `rules_python`_ has extensive support for building Sphinx
 projects, including a built-in workflow for spinning up a server so that you can
-locally preview the HTML output in a browser.
+locally preview the HTML output in a browser. This is the main reason the
+`pigweed.dev`_ migration went faster than expected.
+
+.. _sphazel-context-good-cli:
+
+Unified CLI for all development workflows
+=========================================
+
+I am phrasing the topic as "*managing* Sphinx projects with Bazel" rather than
+"*building* Sphinx projects with Bazel" because Bazel is not just about building
+software. You can run lots of other workflows through it. For example, the
+`Tour of Pigweed`_ demo uses Bazel to run tests, start a simulator, connect
+to a console, flash an embedded device, and more.
 
 .. _sphazel-context-bad:
 
@@ -163,43 +229,38 @@ Explicit build graphs
 
 As explained in :ref:`sphazel-context-good-virtualenv`, Bazel builds your
 Sphinx project in an isolated sandbox. I'm not sure if this is technically correct,
-but I think of it as if Bazel copies the source code into a separate directory,
-builds everything based off the copies, and then deletes all the copies. For this reason,
+but I imagine Bazel copying the source code into a separate directory, building
+everything based off the copies, and then deleting all the copies. For this reason,
 everything that the Sphinx project depends on must be declared explicitly in Bazel files.
 If you don't declare something, it won't get copied over to the isolated sandbox.
+This can take a while to set up.
 
 .. _sphazel-context-bad-indirection:
 
 More indirection
 ================
 
-Bazel naturally introduces more complexity into the Sphinx project because
-there's a new layer of indirection.
+Bazel necessarily introduces more complexity into a Sphinx project because
+it introduces new layers of indirection.
 
-Suppose that you build the HTML docs directly like this:
+Suppose that you previously built the HTML docs directly like this:
 
 .. code-block:: console
 
    $ sphinx-build -M html ./src ./_build
 
-The generated HTML is easy to inspect. It's at ``./_build/html/…``.
+The generated HTML is easy to find: ``./_build/html/…``
 
 When you build through the HTML docs through Bazel with a command like this:
 
 .. code-block:: console
 
-   $ ./bazelisk-linux build //:docs
+   $ ./bazelisk build //:docs
 
-You can still inspect the generated HTML. But it's at a much more convoluted
-and non-obvious path.
+You can still inspect the generated HTML. But it's at a more convoluted
+and non-obvious path: ``./bazel-bin/docs/_build/html/…``
 
-
-.. _sphazel-context-bad-hermeticity:
-
-Hermeticity (redux)
-===================
-
-…
+This is just one of many ways that Bazel introduces more indirection into the project.
 
 .. _sphazel-context-ugly:
 
@@ -213,7 +274,7 @@ Lack of incremental builds
 ==========================
 
 Suppose you have a medium-sized Sphinx project. You build the HTML docs directly
-with Sphinx's build command, like this:
+with Sphinx's build command, using the same command as before:
 
 .. code-block:: console
 
@@ -232,9 +293,3 @@ change one line of code in the docs source.
 
 Sphinx and Bazel both have robust support for incremental builds so I'm hopeful that
 there's a solution here. But it definitely doesn't work out-of-the-box as far as I can tell.
-
---------------
-More resources
---------------
-
-…

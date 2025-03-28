@@ -1,8 +1,8 @@
 .. _sphazel-tutorial:
 
-========================================
-How to manage Sphinx projects with Bazel
-========================================
+=================================
+Manage Sphinx projects with Bazel
+=================================
 
 This tutorial shows you how to manage core Sphinx workflows such as
 building the docs and locally previewing the docs through Bazel.
