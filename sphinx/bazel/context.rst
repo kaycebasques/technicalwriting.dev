@@ -1,11 +1,11 @@
 .. _sphazel-context:
 
-===============================
-Sphinx and Bazel decision guide
-===============================
+======================================
+Why manage Sphinx projects with Bazel?
+======================================
 
-This post aims to help you decide whether or not using managing Sphinx
-projects through Bazel is right for you. If you're already sold on the
+This post aims to help you decide whether or not using Bazel to manage
+Sphinx projects is right for you. If you're already sold on the
 idea, check out :ref:`sphazel-tutorial`.
 
 .. _sphazel-context-background:
@@ -39,11 +39,13 @@ run lots of other workflows through it. For example, the `Tour of Pigweed`_
 project uses Bazel to run tests, start a simulator, connect to a console, flash
 an embedded device, and more. 
 
-.. _sphazel-context-good:
+Personal background
+===================
 
---------
-The good
---------
+I have many years of professional experience with Sphinx. In my first
+technical writing job, I migrated my employer's docs from Microsoft Word
+to Sphinx. For the last few years I have been leading ``pigweed.dev``,
+which is powered by Sphinx.
 
 .. _migrating pigweed.dev to Bazel: https://pigweed.dev/docs/blog/08-bazel-docgen.html
 .. _GN: https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md
@@ -59,8 +61,18 @@ all of the Pigweed codebase except the docs had been migrated to Bazel.
 Managing the docs in one build system (GN) and everything else in another build
 system (Bazel) was slowing us down.
 
-However, through this experience I learned that Bazel can streamline many
-core Sphinx project workflows, such as:
+With over 600 pages of content and integrations with 3 different API reference
+auto-generation pipelines (Doxygen, rustdoc, and autodoc), it's very possible
+that ``pigweed.dev`` is the largest and most complex production Sphinx project
+being managed with Bazel today.
+
+.. _sphazel-context-good:
+
+--------
+The good
+--------
+
+Bazel can streamline many core Sphinx project workflows.
 
 .. _sphazel-context-good-setup:
 
