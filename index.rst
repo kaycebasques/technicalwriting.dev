@@ -26,5 +26,5 @@ Categories:
    data/index
    links/index
    ml/index
+   sphinx/index
    strategy/index
-   tutorials/sphazel

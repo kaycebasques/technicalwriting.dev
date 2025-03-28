@@ -1,4 +1,4 @@
-.. _sphazel-tutorial:
+.. _sphazel:
 
 =================================
 Manage Sphinx projects with Bazel
@@ -7,11 +7,11 @@ Manage Sphinx projects with Bazel
 This post shows you how to use Bazel to run core Sphinx workflows like
 building the docs and locally previewing the docs.
 
-The next section, :ref:`sphazel-tutorial-context`, helps you decide whether
+The next section, :ref:`sphazel-context`, helps you decide whether
 or not using Bazel with Sphinx is right for you. If you're already sold on the
-idea, skip ahead to :ref:`sphazel-tutorial-sphinx`.
+idea, skip ahead to :ref:`sphazel-sphinx`.
 
-.. _sphazel-tutorial-context:
+.. _sphazel-context:
 
 -------
 Context
@@ -76,7 +76,7 @@ core Sphinx project workflows, such as:
   It automatically fetches them, sets them all up, and then proceeds with the build.
 
   (Think of ``bazelisk`` as the way you run Bazel from the CLI. You'll learn
-  more about it in :ref:`sphazel-tutorial-bazelisk`. Also, I'm a cheating a
+  more about it in :ref:`sphazel-bazelisk`. Also, I'm a cheating a
   little by assuming that the ``bazelisk`` executable is checked into the repo,
   which is not a common practice.)
 
@@ -89,6 +89,7 @@ core Sphinx project workflows, such as:
   projects that's not much of a concern, but Bazel's hermeticity does provide another
   tangible benefit: no more need to fiddle around with Python virtual environments.
 
+.. _bzlmod: https://bazel.build/external/overview#bzlmod
 .. _rules_python: https://rules-python.readthedocs.io/en/latest/
 
 * Surprisingly robust developer ecosystem. `bzlmod`_ is the main mechanism for sharing your
@@ -115,7 +116,7 @@ There's one very big developer experience problem:
   caching so I'm confident that I'll eventually figure out how to get incremental builds
   working. But it definitely doesn't work out-the-box.
 
-.. _sphazel-tutorial-sphinx:
+.. _sphazel-sphinx:
 
 -----------------------
 Set up a Sphinx project
@@ -164,7 +165,7 @@ First, we spin up a minimal Sphinx project.
 
       Hello, Sphinx + Bazel!
 
-.. _sphazel-tutorial-deps:
+.. _sphazel-deps:
 
 -------------------------------
 Set up third-party dependencies
@@ -233,7 +234,7 @@ explicitly.
 
       $ rm -rf venv
 
-.. _sphazel-tutorial-bazel:
+.. _sphazel-bazel:
 
 ------------
 Set up Bazel
@@ -292,7 +293,7 @@ Set up Bazel
 
       8.1.1
 
-.. _sphazel-tutorial-bazelisk:
+.. _sphazel-bazelisk:
 
 ---------------
 Set up Bazelisk
@@ -310,7 +311,7 @@ Set up Bazelisk
 
       $ chmod +x bazelisk-linux-amd64
 
-.. _sphazel-tutorial-build:
+.. _sphazel-build:
 
 --------------
 Build the docs
@@ -336,7 +337,7 @@ Build the docs
       INFO: 8 processes: 7 internal, 1 linux-sandbox.
       INFO: Build completed successfully, 8 total actions
 
-.. _sphazel-tutorial-inspect:
+.. _sphazel-inspect:
 
 --------------------------
 Inspect the generated HTML
@@ -346,13 +347,13 @@ Inspect the generated HTML
 
 https://linux.die.net/man/1/xdg-open
 
-.. _sphazel-tutorial-preview:
+.. _sphazel-preview:
 
 ------------------------
 Locally preview the docs
 ------------------------
 
-.. _sphazel-tutorial-git:
+.. _sphazel-git:
 
 -----------------------
 Check the code into Git
