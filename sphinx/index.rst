@@ -4,9 +4,13 @@
 Sphinx
 ======
 
-* :ref:`sphazel`
+* :ref:`sphazel-context`
+
+* :ref:`sphazel-tutorial`
+
 
 .. toctree::
    :hidden:
 
-   bazel
+   bazel/tutorial
+   bazel/context
