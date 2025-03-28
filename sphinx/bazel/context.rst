@@ -1,8 +1,8 @@
 .. _sphazel-context:
 
-======================================
-Why manage Sphinx projects with Bazel?
-======================================
+===============================
+Sphinx and Bazel decision guide
+===============================
 
 This post aims to help you decide whether or not using managing Sphinx
 projects through Bazel is right for you. If you're already sold on the
