@@ -80,7 +80,7 @@ doesn't have all the tools and dependencies it needs to build the target.
 It automatically fetches them, sets them all up, and then proceeds with the build.
 
 (Think of ``bazelisk`` as the way you run Bazel from the CLI. You'll learn
-more about it in :ref:`sphazel-bazelisk`. Also, I'm a cheating a
+more about it in :ref:`sphazel-tutorial-bazelisk`. Also, I'm a cheating a
 little by assuming that the ``bazelisk`` executable is checked into the repo,
 which is not a common practice.)
 
