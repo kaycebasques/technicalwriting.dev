@@ -1,14 +1,26 @@
 .. _sphazel-context:
 
-======================================
-Why manage Sphinx projects with Bazel?
-======================================
+==============================================================
+The good, bad, and ugly of managing Sphinx projects with Bazel
+==============================================================
 
-This :ref:`decision guide <decisions>` aims to help you determine whether or
-not it's worthwhile to manage your Sphinx projects with Bazel.
+In the spirit of :ref:`decisions` I would like to share my experience of
+managing Sphinx projects with Bazel. My goal is to make it easier for others
+to decide whether this setup is worthwhile for them.
 
-If you're already sold on the idea and just need guidance on setting everything up,
-check out :ref:`sphazel-tutorial`.
+.. _pigweed.dev: https://pigweed.dev
+.. _migrating pigweed.dev to Bazel: https://pigweed.dev/docs/blog/08-bazel-docgen.html
+
+I have about 5 years of professional experience with Sphinx. In my first
+technical writing job, I migrated my employer's docs from Microsoft Word to
+Sphinx. For the last few years I have been leading `pigweed.dev`_, which is
+powered by Sphinx. I spent most of Q4 2024 `migrating pigweed.dev to Bazel`_.
+The site has over 600 pages of content and integrates with 3 different API
+reference auto-generation pipelines so I've got a pretty good sense of what
+it's like to manage a real, production Sphinx project with Bazel.
+
+If you're already sold on the idea of managing your Sphinx project with Bazel
+and just need setup guidance, check out :ref:`sphazel-tutorial`.
 
 .. _sphazel-context-background:
 
@@ -33,37 +45,35 @@ information from tools like `Doxygen`_.
 use it for a `variety of reasons`_ that mostly revolve around improving team
 productivity.
 
-.. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/
+"Managing a Sphinx project with Bazel" means orchestrating core Sphinx workflows
+(such as transforming the docs into HTML) through Bazel's build system.
 
-.. _sphazel-context-background-personal:
+.. _sphazel-context-build-system:
 
-Personal experience with Sphinx and Bazel
-=========================================
+------------------------------
+Why use a build system at all?
+------------------------------
 
-.. _pigweed.dev: https://pigweed.dev
+.. _sphinx-build: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
 
-I have about 5 years of professional experience with Sphinx. In my first
-technical writing job, I migrated my employer's docs from Microsoft Word
-to Sphinx. For the last few years I have been leading `pigweed.dev`_,
-which is powered by Sphinx.
+Many Sphinx projects don't use a build system whatsoever. They just run
+`sphinx-build`_ directly from the root directory of the docs (e.g. ``//docs``)
+and the output gets generated alongside the source (e.g. ``//docs/_build``).
 
 .. _migrating pigweed.dev to Bazel: https://pigweed.dev/docs/blog/08-bazel-docgen.html
 .. _GN: https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md
 .. _adopted Bazel as its primary build system: https://pigweed.dev/seed/0111.html
 .. _significantly improve embedded developer productivity: https://blog.bazel.build/2024/08/08/bazel-for-embedded.html
+.. _sidecar: https://passo.uno/docs-as-code-topologies/#sidecar-docs-and-code-living-together
 
-I spent most of Q4 2024 `migrating pigweed.dev to Bazel`_. The switch from
-`GN`_ to Bazel was not motivated by any particular failing of the old GN-based
-docs build system. Pigweed `adopted Bazel as its primary build system`_
-back in Q3 2023 because it can `significantly improve embedded developer
-productivity`_. Eventually everything in the Pigweed codebase was powered by
-Bazel except for the docs. Managing the docs in GN and everything else in Bazel
-was slowing us down and creating needless complexity.
-
-With over 600 pages of content and integrations with 3 different API reference
-auto-generation pipelines (Doxygen, rustdoc, and autodoc), it's very possible
-that `pigweed.dev`_ is the largest and most complex production Sphinx project
-being managed with Bazel today.
+In the case of `pigweed.dev`_, the switch from `GN`_ to Bazel was not motivated
+by any particular failing of the old GN-based docs build system. Pigweed
+`adopted Bazel as its primary build system`_ back in Q3 2023 because it can
+`significantly improve embedded developer productivity`_. Eventually everything
+in the Pigweed codebase was powered by Bazel except for the docs. (Pigweed uses
+a `sidecar`_ docs-as-code topology, where the docs live alongside the code in a
+single repo.) Managing the docs in GN and everything else in Bazel was slowing
+us down and creating needless complexity.
 
 .. _sphazel-context-good:
 
@@ -71,8 +81,23 @@ being managed with Bazel today.
 The good
 --------
 
+Here are the ways that Bazel seemingly improves productivity 
+
 Through the experience of migrating `pigweed.dev`_ to Bazel I learned that
 Bazel can streamline many common workflows related to developing Sphinx projects.
+
+.. _sphazel-context-good-cli:
+
+A single CLI entrypoint for all development workflows
+=====================================================
+
+.. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/
+
+I am phrasing the topic as "*managing* Sphinx projects with Bazel" rather than
+"*building* Sphinx projects with Bazel" because Bazel is not just about building
+software. You can run lots of other workflows through it. For example, the
+`Tour of Pigweed`_ demo uses Bazel to run tests, start a simulator, connect
+to a console, flash an embedded device, and more.
 
 .. _sphazel-context-good-setup:
 
@@ -202,17 +227,6 @@ modules. For example, `rules_python`_ has extensive support for building Sphinx
 projects, including a built-in workflow for spinning up a server so that you can
 locally preview the HTML output in a browser. This is the main reason the
 `pigweed.dev`_ migration went faster than expected.
-
-.. _sphazel-context-good-cli:
-
-Unified CLI for all development workflows
-=========================================
-
-I am phrasing the topic as "*managing* Sphinx projects with Bazel" rather than
-"*building* Sphinx projects with Bazel" because Bazel is not just about building
-software. You can run lots of other workflows through it. For example, the
-`Tour of Pigweed`_ demo uses Bazel to run tests, start a simulator, connect
-to a console, flash an embedded device, and more.
 
 .. _sphazel-context-bad:
 

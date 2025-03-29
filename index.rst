@@ -17,14 +17,6 @@ Categories:
    :hidden:
 
    about
-   archives/a11y/skip
-   archives/ml/plugins
-   archives/seo/discovered-not-indexed
-   archives/seo/sentry-overflow
-   archives/ux/offline
-   archives/ux/methodology
-   archives/ux/searchboxes
-   data/index
    links/index
    ml/index
    sphinx/index

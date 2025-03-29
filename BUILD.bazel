@@ -1,0 +1,64 @@
+load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
+
+sphinx_build_binary(
+    name = "sphinx",
+    deps = [
+        "@pypi//matplotlib",
+        "@pypi//networkx",
+        "@pypi//sphinx",
+        "@pypi//sphinx_reredirects",
+    ]
+)
+
+sphinx_docs_library(
+    name = "sources",
+    srcs = [
+        "_static/boat.png",
+        "_static/linter.jpg",
+        "_static/mindblown.gif",
+        "_static/namespace.png",
+        "_static/singularity.png",
+        "_static/supabase-ai.png",
+        "_static/supabase-ai-answer.png",
+        "_static/supabase-ai-question.png",
+        "about.rst",
+        "index.rst",
+        "links/automation.rst",
+        "links/index.rst",
+        "links/intertwingularity.rst",
+        "links/pdf.rst",
+        "ml/embeddings/bookmarks.rst",
+        "ml/embeddings/overview.rst",
+        "ml/embeddings/vectors.rst",
+        "ml/evals.rst",
+        "ml/huggingface.rst",
+        "ml/index.rst",
+        "ml/playing-nicely.rst",
+        "ml/principles.rst",
+        "ml/products.rst",
+        "ml/reviews/2023.rst",
+        "ml/reviews/2024.rst",
+        "ml/stateful-assistants.rst",
+        "ml/style-guide-fine-tuning.rst",
+        "rss.xml",
+        "sphinx/index.rst",
+        "sphinx/bazel/context.rst",
+        "sphinx/bazel/tutorial.rst",
+        "strategy/challenges.rst",
+        "strategy/decisions.rst",
+        "strategy/index.rst",
+    ],
+)
+
+sphinx_docs(
+    name = "docs",
+    config = "conf.py",
+    formats = [
+        "html",
+    ],
+    sphinx = ":sphinx",
+    deps = [
+        ":sources",
+    ]
+)

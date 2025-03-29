@@ -46,6 +46,8 @@ see in this post might be irrelevant in a year.
 Summary
 -------
 
+.. _plugins: https://web.archive.org/web/20250222025828/https://technicalwriting.dev/ml/plugins.html
+
 * Docs search infrastructure is still important and may become more important.
   In order to get useful answers from generative AI, you need to preprocess the
   query by finding docs related to that query, and then "inject that context"
@@ -64,7 +66,7 @@ Summary
 * If the architecture pioneered by ChatGPT Plugins takes off then web service API
   references should conform to the OpenAPI specification and should be targeted
   towards end users and generative AI rather than developers. See
-  :ref:`plugins`.
+  `plugins`_.
 
 ------------------------------------
 Context injection versus fine-tuning

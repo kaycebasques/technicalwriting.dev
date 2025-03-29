@@ -16,7 +16,9 @@ this setup is worthwhile for you.
 Set up a Sphinx project
 -----------------------
 
-First, we spin up a minimal Sphinx project.
+First, we spin up a barebones Sphinx project.
+
+TODO: Keep sphinx-reredirects here but move matplotlib to a later section
 
 #. Create a directory for your project:
 
@@ -41,9 +43,16 @@ First, we spin up a minimal Sphinx project.
       exclude_patterns = [
           '.gitignore',
           'requirements.txt',
-          'requirements.lock',
+          'requirements.lock'
+      ]
+      extensions = [
+          'matplotlib.sphinxext.plot_directive',
+          'sphinx_reredirects'
       ]
       pygments_style = 'sphinx'
+      redirects = {
+          'example': 'https://example.com'
+      }
 
    The files listed in ``exclude_patterns`` don't exist yet. You'll create them later.
 
@@ -59,6 +68,18 @@ First, we spin up a minimal Sphinx project.
 
       Hello, Sphinx + Bazel!
 
+      .. plot::
+
+         import matplotlib.pyplot as plt
+
+         x_values = [1, 2, 3, 4, 5]
+         y_values = [2, 3, 5, 7, 11]
+
+         plt.plot(x_values, y_values, marker='o')
+         plt.xlabel("X values")
+         plt.ylabel("Y values")
+         plt.title("Example plot")
+
 .. _sphazel-tutorial-deps:
 
 -------------------------------
@@ -66,6 +87,8 @@ Set up third-party dependencies
 -------------------------------
 
 .. _hermetically: https://bazel.build/basics/hermeticity
+
+.. _both direct and transitive dependencies: https://fossa.com/blog/direct-dependencies-vs-transitive-dependencies/
 
 Bazel will build your Sphinx project `hermetically`_.
 
@@ -76,7 +99,9 @@ explicitly.
 
    .. code-block:: text
 
+      matplotlib==3.9.2
       sphinx==8.2.3
+      sphinx-reredirects==0.1.5
 
 #. Create a virtual environment:
 
@@ -115,6 +140,10 @@ explicitly.
    .. code-block:: console
 
       $ python3 -m pip freeze > requirements.lock
+
+   The difference between ``requirements.txt`` and ``requirements.lock``
+   is that the first file only specifies direct dependencies whereas
+   the second file specifies `both direct and transitive dependencies`_.
 
 #. Deactivate your virtual environment:
 
@@ -158,7 +187,9 @@ Set up Bazel
       sphinx_build_binary(
           name = "sphinx",
           deps = [
+              "@pypi//matplotlib",
               "@pypi//sphinx",
+              "@pypi//sphinx_reredirects",
           ]
       )
 
@@ -230,6 +261,11 @@ Build the docs
       INFO: Elapsed time: 13.725s, Critical Path: 2.62s
       INFO: 8 processes: 7 internal, 1 linux-sandbox.
       INFO: Build completed successfully, 8 total actions
+
+Missing deps
+============
+
+TODO: Comment out the sphinx-reredirects and matplotlib directives
 
 .. _sphazel-tutorial-inspect:
 

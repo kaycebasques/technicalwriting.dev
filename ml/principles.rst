@@ -97,6 +97,8 @@ between the needs of the machines and the needs of the humans.
 "Semantic tags"
 ===============
 
+.. _plugins: https://web.archive.org/web/20250222025828/https://technicalwriting.dev/ml/plugins.html
+
   Similar to heading tags, AI can infer information from semantic tagging. Is the
   information set off as a note, a blockquote, a code sample, a variable, a
   section, or something else?  Better yet, does the information conform to the
@@ -108,7 +110,7 @@ I don't have any firsthand insights here but my hunch is that this will turn out
 to be correct. The most obvious candidates to me are DITA, DocBook, and Schema.org.
 
 Actually, I do have one firsthand insight. ChatGPT Plugins must conform to the
-OpenAPI specification. See :ref:`plugins`. Technical writers with OpenAPI expertise
+OpenAPI specification. See `plugins`_. Technical writers with OpenAPI expertise
 will probably see sustained or increased demand.
 
 "Code samples"
