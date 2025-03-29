@@ -25,13 +25,13 @@ First, let's create a bare-bones Sphinx project.
 
    .. code-block:: console
 
-      $ mkdir sphazel
+      mkdir sphazel
 
 #. Make the project directory your working directory:
 
    .. code-block:: console
 
-      $ cd sphazel
+      cd sphazel
 
 #. Create ``conf.py`` and add the following content to it:
 
@@ -76,7 +76,7 @@ Set up Bazel
       pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
       pip.parse(
           hub_name = "pypi",
-          python_version = "3.12",
+          python_version = "3.11",
           requirements_lock = "//:requirements.lock",
       )
       use_repo(pip, "pypi")
@@ -154,7 +154,7 @@ the way we're supposed to do it.
 
    .. code-block:: console
 
-      $ curl -L -O https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
+      curl -L -O https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
 
    This is the executable for Linux running on x86-64. See `v1.25.0`_ for links to other
    platforms. E.g. if you're using macOS on Apple Silicon, then you need to download
@@ -164,7 +164,7 @@ the way we're supposed to do it.
 
    .. code-block:: console
 
-      $ chmod +x bazelisk-linux-amd64
+      chmod +x bazelisk-linux-amd64
 
 In my own projects I personally just check in the Bazelisk executables alongside
 the rest of the code. The more common approach is to have teammates download a 
@@ -184,13 +184,13 @@ That's all you need to start using Bazel.
 
    .. code-block:: console
 
-      $ ./bazelisk-linux-amd64 build //:docs
+      ./bazelisk-linux-amd64 build //:docs
 
    Example of a successful build:
 
    .. code-block:: console
 
-      $ ./bazelisk-linux-amd64 build //:docs
+      ./bazelisk-linux-amd64 build //:docs
 
       INFO: Analyzed target //:docs (120 packages loaded, 6055 targets configured).
       INFO: Found 1 target...
@@ -210,7 +210,7 @@ When I need to inspect the generated HTML, I do this:
 
 .. code-block:: console
 
-   $ xdg-open 
+   xdg-open 
 
 https://linux.die.net/man/1/xdg-open
 
@@ -248,7 +248,7 @@ explicitly.
 
    .. code-block:: console
 
-      $ python3 -m venv venv
+      python3 -m venv venv
 
 #. Activate the virtual environment.
 
@@ -256,31 +256,31 @@ explicitly.
 
    .. code-block:: console
 
-      $ source venv/bin/activate
+      source venv/bin/activate
 
    fish:
 
    .. code-block:: console
 
-      $ . venv/bin/activate.fish
+      . venv/bin/activate.fish
 
 #. Use the latest version of ``pip`` in the virtual environment:
 
    .. code-block:: console
 
-      $ python3 -m pip install --upgrade pip
+      python3 -m pip install --upgrade pip
 
 #. Install your third-party dependencies into the virtual environment:
 
    .. code-block:: console
 
-      $ python3 -m pip install -r requirements.txt
+      python3 -m pip install -r requirements.txt
 
 #. Record your full list of dependencies in a lockfile:
 
    .. code-block:: console
 
-      $ python3 -m pip freeze > requirements.lock
+      python3 -m pip freeze > requirements.lock
 
    The difference between ``requirements.txt`` and ``requirements.lock``
    is that the first file only specifies direct dependencies whereas
@@ -290,13 +290,13 @@ explicitly.
 
    .. code-block:: console
 
-      $ deactivate
+      deactivate
 
 #. Delete the virtual environment:
 
    .. code-block:: console
 
-      $ rm -rf venv
+      rm -rf venv
 
 
 
@@ -409,12 +409,12 @@ Check the code into Git
 
    .. code-block:: console
 
-      $ git add .
+      git add .
 
 #. And commit:
 
    .. code-block:: console
 
-      $ git commit -m 'Init'
+      git commit -m 'Init'
 
 

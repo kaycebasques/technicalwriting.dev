@@ -232,7 +232,7 @@
         "bzlTransitiveDigest": "+D0pesQWVftxFrDIgPJ73YmMFEclIwO1GnRJt0A/vOM=",
         "usagesDigest": "IC7R+ye57rjIAuiEplQeTSHz/olzq+L8RBYxqMNhatg=",
         "recordedFileInputs": {
-          "@@//requirements.lock": "e5449693399b2f66049fa08a219dd64a18ab395b7312154fa3238035a40836b9",
+          "@@//requirements.lock": "d5e1b89e7b1c0eb2af7ae0ff88e254aeb55632b550ec29adf2b34f2e813a49a8",
           "@@protobuf+//python/requirements.txt": "983be60d3cec4b319dcab6d48aeb3f5b2f7c3350f26b3a9e97486c37967c73c5",
           "@@rules_fuzzing+//fuzzing/requirements.txt": "ab04664be026b632a0d2a2446c4f65982b7654f5b6851d2f9d399a19b7242a5b",
           "@@rules_python+//tools/publish/requirements_darwin.txt": "095d4a4f3d639dce831cd493367631cd51b53665292ab20194bac2c0c6458fa8",
@@ -558,6 +558,15 @@
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
               "requirement": "Sphinx==8.0.2"
+            }
+          },
+          "pypi_311_sphinx_copybutton": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "sphinx-copybutton==0.5.2"
             }
           },
           "pypi_311_sphinx_reredirects": {
@@ -2984,6 +2993,7 @@
                 "six": "{\"pypi_311_six\":[{\"version\":\"3.11\"}]}",
                 "snowballstemmer": "{\"pypi_311_snowballstemmer\":[{\"version\":\"3.11\"}]}",
                 "sphinx": "{\"pypi_311_sphinx\":[{\"version\":\"3.11\"}]}",
+                "sphinx_copybutton": "{\"pypi_311_sphinx_copybutton\":[{\"version\":\"3.11\"}]}",
                 "sphinx_reredirects": "{\"pypi_311_sphinx_reredirects\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_applehelp": "{\"pypi_311_sphinxcontrib_applehelp\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_devhelp": "{\"pypi_311_sphinxcontrib_devhelp\":[{\"version\":\"3.11\"}]}",
@@ -3019,6 +3029,7 @@
                 "six",
                 "snowballstemmer",
                 "sphinx",
+                "sphinx_copybutton",
                 "sphinx_reredirects",
                 "sphinxcontrib_applehelp",
                 "sphinxcontrib_devhelp",
