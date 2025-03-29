@@ -14,7 +14,11 @@ exclude_patterns = [
     "requirements.lock",
     "requirements.txt",
 ]
-extensions = ["matplotlib.sphinxext.plot_directive", "sphinx_reredirects"]
+extensions = [
+    "matplotlib.sphinxext.plot_directive",
+    "sphinx_copybutton",
+    "sphinx_reredirects",
+]
 html_extra_path = ["rss.xml"]
 html_permalinks_icon = "#"
 html_static_path = ["_static"]
