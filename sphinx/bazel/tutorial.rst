@@ -63,9 +63,15 @@ First, let's create a bare-bones Sphinx project.
 Set up Bazel
 ------------
 
-.. _Bazel modules: https://bazel.build/external/module
+Next, we set up the Sphinx project to be built with Bazel.
 
+.. _Bazel modules: https://bazel.build/external/module
 .. _BUILD files: https://bazel.build/concepts/build-files
+.. _bazel_dep: https://bazel.build/rules/lib/globals/module#bazel_dep
+.. _rules_python: https://github.com/bazel-contrib/rules_python
+.. _sphinxdocs: https://rules-python.readthedocs.io/en/latest/sphinxdocs/index.html
+.. _pip: https://en.wikipedia.org/wiki/Pip_(package_manager)
+.. _Python Package Index: https://pypi.org/
 
 #. Create ``MODULE.bazel`` and add the following content to it:
 
@@ -81,9 +87,25 @@ Set up Bazel
       )
       use_repo(pip, "pypi")
 
-
    This is how you declare to Bazel that your repo is a Bazel project.
    See `Bazel modules`_.
+
+   The call to `bazel_dep`_ tells Bazel to pull the `rules_python`_
+   module into our project as a dependency. Core Bazel doesn't provide mechanisms
+   for building Sphinx projects, but ``rules_python`` does.
+
+   The rest of the code sets up the project to be able to use `pip`_ to
+   install third-party Python dependencies from the `Python Package Index`_
+   as needed. 
+
+   One important thing to note is that you must pass in
+   ``requirements.lock``, i.e. the full list of direct and transitive
+   dependencies. ``rules_python`` only installs the exact packages that
+   you tell it about. This is different than how the ``pip`` command
+   line interface usually works. Usually, you can run something like
+   ``python3 -m pip install requests``  and ``pip`` will not only install
+   the ``requests`` package but also all the packages that ``requests`` itself
+   depends on. 
 
 #. Create ``BUILD.bazel`` and add the following content to it:
 
@@ -118,8 +140,7 @@ Set up Bazel
           ]
       )
 
-   `BUILD files`_ are the bread and butter of your Bazel-based build.
-   In these files you declare to Bazel how exactly it should build your project.
+   `BUILD files`_ tell Bazel how exactly it should build the project.
 
 #. Create ``.bazelversion`` and add the following content to it:
 
@@ -166,11 +187,12 @@ the way we're supposed to do it.
 
       chmod +x bazelisk-linux-amd64
 
-In my own projects I personally just check in the Bazelisk executables alongside
-the rest of the code. The more common approach is to have teammates download a 
-Bazelisk executable to a typical location (e.g. ``~/.local/bin``) and then set up
-an alias so that they can invoke ``bazelisk`` from any directory. In my approach you
-have to specify the path to the executable when you invoke it.
+In my own projects I personally just check in the Bazelisk executables
+alongside the rest of the code. The more common approach is to have teammates
+download the relevant Bazelisk executable for their machine to a typical
+location (e.g. ``~/.local/bin``) and then set up an alias so that they can
+invoke ``bazelisk`` from any directory. In my approach you have to specify the
+path to the executable when you invoke it.
 
 .. _sphazel-tutorial-build:
 
