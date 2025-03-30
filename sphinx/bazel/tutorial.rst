@@ -72,6 +72,8 @@ Next, we set up the Sphinx project to be built with Bazel.
 .. _sphinxdocs: https://rules-python.readthedocs.io/en/latest/sphinxdocs/index.html
 .. _pip: https://en.wikipedia.org/wiki/Pip_(package_manager)
 .. _Python Package Index: https://pypi.org/
+.. _Bazel Central Registry: https://registry.bazel.build/
+.. _sphinx-build: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
 
 #. Create ``MODULE.bazel`` and add the following content to it:
 
@@ -87,12 +89,12 @@ Next, we set up the Sphinx project to be built with Bazel.
       )
       use_repo(pip, "pypi")
 
-   This is how you declare to Bazel that your repo is a Bazel project.
-   See `Bazel modules`_.
+   ``MODULE.bazel`` is how you set up your Bazel project. See `Bazel modules`_.
 
    The call to `bazel_dep`_ tells Bazel to pull the `rules_python`_
-   module into our project as a dependency. Core Bazel doesn't provide mechanisms
-   for building Sphinx projects, but ``rules_python`` does.
+   module into our project as a dependency. ``rules_python`` gets fetched over the
+   network via the `Bazel Central Registry`_. Core Bazel doesn't provide mechanisms
+   for building Sphinx projects. ``rules_python`` does.
 
    The rest of the code sets up the project to be able to use `pip`_ to
    install third-party Python dependencies from the `Python Package Index`_
@@ -101,8 +103,8 @@ Next, we set up the Sphinx project to be built with Bazel.
    One important thing to note is that you must pass in
    ``requirements.lock``, i.e. the full list of direct and transitive
    dependencies. ``rules_python`` only installs the exact packages that
-   you tell it about. This is different than how the ``pip`` command
-   line interface usually works. Usually, you can run something like
+   you tell it about. This is different than how ``pip``
+   usually works. When you run
    ``python3 -m pip install requests``  and ``pip`` will not only install
    the ``requests`` package but also all the packages that ``requests`` itself
    depends on. 
@@ -114,18 +116,18 @@ Next, we set up the Sphinx project to be built with Bazel.
       load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
       load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
 
-      sphinx_build_binary(
-          name = "sphinx",
-          deps = [
-              "@pypi//sphinx",
-          ]
-      )
-
       sphinx_docs_library(
           name = "sources",
           srcs = [
               "index.rst",
           ],
+      )
+
+      sphinx_build_binary(
+          name = "sphinx",
+          deps = [
+              "@pypi//sphinx",
+          ]
       )
 
       sphinx_docs(
@@ -141,6 +143,19 @@ Next, we set up the Sphinx project to be built with Bazel.
       )
 
    `BUILD files`_ tell Bazel how exactly it should build the project.
+
+   The ``load`` functions import the core mechanisms for building the
+   Sphinx project: ``sphinx_build_binary``, ``sphinx_docs``, and
+   ``sphinx_docs_library``. All of these rules come from ``rules_python``.
+
+   The ``sphinx_docs_library`` rule is where we declare all of the source files
+   of the Sphinx project.
+
+   ``sphinx_build_binary`` sets up the `sphinx-build`_ binary. Note how
+   third-party PyPI packages (such as ``sphinx``) are passed as dependencies
+   to this rule.
+
+   ``sphinx_docs`` is where the Sphinx build actually happens.
 
 #. Create ``.bazelversion`` and add the following content to it:
 
