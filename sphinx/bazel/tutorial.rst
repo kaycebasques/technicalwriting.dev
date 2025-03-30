@@ -475,9 +475,7 @@ and just show you the YAML.
             - name: configure
               uses: actions/configure-pages@v5
             - name: build
-              run: |
-                cd ${{github.workspace}}
-                ./bazelisk-linux-amd64 build //:docs
+              run: ${{github.workspace}}/bazelisk-linux-amd64 build //:docs
             - name: upload
               uses: actions/upload-pages-artifact@v3
               with:
