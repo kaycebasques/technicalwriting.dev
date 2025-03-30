@@ -23,6 +23,8 @@ sphinx_docs_library(
         "_static/supabase-ai.png",
         "_static/supabase-ai-answer.png",
         "_static/supabase-ai-question.png",
+        "_static/technicalwritingdev.css",
+        "_templates/layout.html",
         "about.rst",
         "index.rst",
         "links/automation.rst",
