@@ -454,6 +454,10 @@ My projects use them heavily. Here's how to add one to the Bazel build.
 
       # …
 
+If you navigate to ``http://0.0.0.0:<port>/example.html`` (where ``<port>`` is a
+placeholder for whatever actual port your :ref:`local server <sphazel-tutorial-preview>`
+is running on) you should get redirected to ``https://example.com``.
+
 .. _sphazel-tutorial-pages:
 
 ------------------------
