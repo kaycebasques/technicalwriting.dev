@@ -5,8 +5,8 @@ The good, bad, and ugly of managing Sphinx projects with Bazel
 ==============================================================
 
 In the spirit of :ref:`decisions` I would like to share my experience of
-managing Sphinx projects with Bazel. My goal is to make it easier for others
-to decide whether this setup is worthwhile for them.
+managing Sphinx projects with Bazel. My goal is to make it easier for you
+to decide whether this setup is worthwhile for you or not.
 
 If you're already sold on the idea of managing your Sphinx project with Bazel
 and just need setup guidance, check out :ref:`sphazel-tutorial`.
@@ -27,12 +27,6 @@ Background
 `reStructuredText`_ or `Markdown`_ and then use Sphinx to transform the docs into
 HTML and other output formats. You can also hook in auto-generated API reference
 information from tools like `Doxygen`_.
-
-.. _sphinx-build: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
-
-Many Sphinx projects don't use a build system whatsoever. They just run
-`sphinx-build`_ directly from the root directory of the docs (e.g. ``//docs``)
-and the output gets generated alongside the source (e.g. ``//docs/_build``).
 
 .. _variety of reasons: https://bazel.build/about/why
 
@@ -59,13 +53,53 @@ of content and integrates with 3 different API reference auto-generation
 pipelines. So I think I've got a pretty good sense of what it's like to manage
 a real, production Sphinx project with Bazel.
 
-.. _migrating pigweed.dev to Bazel: https://pigweed.dev/docs/blog/08-bazel-docgen.html
+.. _sphazel-context-none:
+
+------------------------------
+Why use a build system at all?
+------------------------------
+
+.. _sphinx-build: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
+.. _sphinx-quickstart: https://www.sphinx-doc.org/en/master/man/sphinx-quickstart.html
+
+Many Sphinx projects don't use a build system whatsoever. They just invoke
+`sphinx-build`_ directly or have custom shell scripts that invoke it and do a few
+other things. Or they use the minimal ``Makefile`` that `sphinx-quickstart`_ generates.
+
+.. _kayce.basqu.es: https://kayce.basqu.es
+
+In my own small Sphinx projects (such as this site and `kayce.basqu.es`_)
+I'm actually finding a Bazel-based build to be less work to maintain than the
+usual custom shell scripts that I previously cobbled together. I like not
+needing to futz around with :ref:`virtual environments <sphazel-context-good-virtualenv>`
+anymore. And I like that I'm continuing to build up experience with Bazel
+because it has :ref:`more momentum than I realized <sphazel-context-good-ecosystem>`.
+
+In medium-to-large Sphinx projects that have a lot of contributors I think
+the :ref:`sphazel-context-good-setup` and the ability to structure the docs
+as a :ref:`sidecar <sphazel-context-good-sidecar>` are pretty compelling Bazel
+features.
+
+.. _sphazel-context-other:
+
+------------------------------------
+Why not use some other build system?
+------------------------------------
+
+I'm not really trying to push Bazel in particular. It's not like I've done
+a systematic review of every build system and concluded that Bazel is the best.
+I just happen to know a fair bit about managing Sphinx projects with Bazel now
+because my work required me to migrate `pigweed.dev`_ from a GN-based build to a Bazel one.
+
+.. _What went well: https://pigweed.dev/docs/blog/08-bazel-docgen.html#what-went-well
 .. _GN: https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md
 .. _adopted Bazel as its primary build system: https://pigweed.dev/seed/0111.html
 .. _significantly improve embedded developer productivity: https://blog.bazel.build/2024/08/08/bazel-for-embedded.html
 .. _sidecar: https://passo.uno/docs-as-code-topologies/#sidecar-docs-and-code-living-together
 
-In the case of `pigweed.dev`_, the switch from `GN`_ to Bazel was not motivated
+Well, I guess I do have an opinion on GN versus Bazel. If given a choice, I would
+choose Bazel over GN for the reasons mentioned in `What went well`_. However,
+the switch from `GN`_ to Bazel was not motivated
 by any particular failing of the old GN-based docs build system. Pigweed
 `adopted Bazel as its primary build system`_ back in Q3 2023 because it can
 `significantly improve embedded developer productivity`_. Eventually everything
@@ -118,8 +152,8 @@ checked into the repo, which is an uncommon practice.)
 
 .. _sphazel-context-good-virtualenv:
 
-No more fiddling with virtual environments
-==========================================
+No need for virtual environments
+===============================
 
 .. _works on my machine: https://medium.com/@josetecangas/but-it-works-on-my-machine-cc8cca80660c
 .. _hermeticity: https://bazel.build/basics/hermeticity
