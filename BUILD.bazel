@@ -16,6 +16,7 @@ sphinx_docs_library(
     name = "sources",
     srcs = [
         "_static/boat.png",
+        "_static/favicon.svg",
         "_static/linter.jpg",
         "_static/main.css",
         "_static/mindblown.gif",
