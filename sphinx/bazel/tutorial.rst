@@ -14,14 +14,23 @@ You'll learn how to:
 * Build the Sphinx docs
 * Inspect the built docs
 * Spin up a local server to preview the docs
-* Add an extension
+* Add a Sphinx extension to the Bazel build
 * Deploy to GitHub Pages
 
 Check out :ref:`sphazel-context` for help deciding whether or not
 this setup is worthwhile for you.
 
-I'm going to assume that you're familiar with Sphinx but not familiar with
-Bazel. I.e. Sphinx concepts will not be explained whereas Bazel ones will.
+.. _sphazel-tutorial-assumptions:
+
+===========
+Assumptions
+===========
+
+The tutorial assumes you're on a Linux machine and running commands
+through a Bash shell. Everything should be supported on macOS and Windows
+but you'll need to tweak the instructions. It assumes you're familiar with
+Sphinx but not familiar with Bazel. I.e. Sphinx concepts aren't explained but
+Bazel ones are.
 
 .. _sphazel-tutorial-hermeticity:
 
@@ -35,13 +44,13 @@ A key Bazel concept
 it can guarantee that a certain set of inputs always produces the same
 output(s). You must explicitly declare to Bazel all the inputs (i.e. source
 files, tools, and third-party dependencies) that your Sphinx project needs.
-Bazel basically copies all the inputs into a temporary directory, locks down
+Bazel basically symlinks all the inputs into a temporary directory, locks down
 the directory from reading anything outside of it, resets all OS environment
 variables, and then builds the project under those controlled conditions.
 
 This is the most important concept to understand because you will inevitably
-forget to declare an input to Bazel and you will see an ``<input> not found`` error
-of one sort or another.
+forget to declare an input to Bazel and you will see an ``X not found`` error
+of one sort or another, where ``X`` is an input.
 
 .. _sphazel-tutorial-sphinx:
 
@@ -59,7 +68,7 @@ First, let's create a bare-bones Sphinx project.
 
       mkdir sphazel
 
-#. Make the project directory your working directory:
+#. ``cd`` into the directory.
 
    .. code-block:: console
 
@@ -111,11 +120,11 @@ First, let's create a bare-bones Sphinx project.
    .. code-block:: console
 
       python3 -m venv venv &&
-          . venv/bin/activate &&
-          python3 -m pip install -r requirements.txt && 
-          python3 -m pip freeze > requirements.lock &&
-          deactivate &&
-          rm -rf venv
+      . venv/bin/activate &&
+      python3 -m pip install -r requirements.txt && 
+      python3 -m pip freeze > requirements.lock &&
+      deactivate &&
+      rm -rf venv
 
    Here we spin up a temporary virtual environment, install the dependencies
    into the virtual environment, record the full list of dependencies into
@@ -161,7 +170,7 @@ Next, we set up the Bazel build system.
    ``MODULE.bazel`` is the only valid name for this file, which makes it easy to
    discover. See `Bazel modules`_. 
 
-   The call to `bazel_dep`_ tells Bazel to pull the `rules_python`_ module into
+   The call to `bazel_dep`_ tells Bazel to pull the `rules_python`_ third-party module into
    our project as a dependency. ``rules_python`` provides most of the mechanisms
    for managing our Sphinx project. Bazel fetches ``rules_python``
    over the network via the `Bazel Central Registry`_. 
@@ -175,7 +184,7 @@ Next, we set up the Bazel build system.
    ``rules_python`` only installs the exact packages that you tell it about.
    This is different than how ``pip`` usually works. For example, when you run
    ``python3 -m pip install requests``  usually ``pip`` will not only install
-   the ``requests`` package that you explicitly requested (pun intended) but
+   the ``requests`` package that you explicitly *requested* (pun intended) but
    also all the packages that ``requests`` itself depends on. When using
    ``pip`` from Bazel there is no attempt to resolve transitive dependencies
    for you.
@@ -229,8 +238,10 @@ Next, we set up the Bazel build system.
 
    ``sphinx_docs`` is where the Sphinx build actually happens. Note the colon
    (``:``) before ``:sphinx`` and ``:sources``. This indicates that the thing
-   you're passing in is an `artifact`_ that is produced somewhere in
+   you're passing in is an `artifact`_ that is produced elsewhere in
    the Bazel build.
+
+   See also :ref:`sphazel-tutorial-examples`.
 
 #. Create ``.bazelversion`` and add the following content to it:
 
@@ -256,14 +267,7 @@ Set up Bazelisk
 `Bazelisk`_ is kinda hard to explain. It's basically how you're supposed to run
 Bazel from the command line. It downloads the Bazel CLI executable that you
 specify in ``.bazelversion`` but then you also use it to run all your
-command-line Bazel workflows. It's like if `nvm`_ and ``npm`` were combined
-into a single program. It's honestly kinda needlessly convoluted. It seems like
-``bazelisk`` should be called ``bazel`` and it should be the only way to use
-Bazel from the command line. And the thing currently called ``bazel`` should be
-an implementation detail.
-
-Anyways, we need a way to run Bazel from the command line, and ``bazelisk`` is
-the way we're supposed to do it.
+command-line Bazel workflows.
 
 #. Download Bazelisk:
 
@@ -291,7 +295,9 @@ download the relevant Bazelisk executable for their machine to a typical
 location (e.g. ``~/.local/bin``) and then set up an alias so that they can
 invoke ``bazelisk`` from any directory. In my approach you have to specify the
 path to the executable when you invoke it but you eliminate the need for each
-teammate to manually set up Bazel on their own machine.
+teammate to manually set up Bazel on their own machine. And since Bazel is all about
+tightly controlling inputs, it makes sense to me to have all teammates use the exact
+same version of Bazelisk.
 
 .. _sphazel-tutorial-build:
 
@@ -408,11 +414,11 @@ My projects use them heavily. Here's how to add one to the Bazel build.
    .. code-block:: console
 
       python3 -m venv venv &&
-          . venv/bin/activate &&
-          python3 -m pip install -r requirements.txt && 
-          python3 -m pip freeze > requirements.lock &&
-          deactivate &&
-          rm -rf venv
+      . venv/bin/activate &&
+      python3 -m pip install -r requirements.txt && 
+      python3 -m pip freeze > requirements.lock &&
+      deactivate &&
+      rm -rf venv
 
 #. Update ``conf.py`` to use the extension:
 
@@ -447,49 +453,50 @@ My projects use them heavily. Here's how to add one to the Bazel build.
 Deploy with GitHub Pages
 ------------------------
 
-I'll assume that you're familiar with setting up Pages via the GitHub web UI
-and just show you the YAML.
+.. _using a custom GitHub Action to publish a site: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#creating-a-custom-github-actions-workflow-to-publish-your-site
 
-#. Create ``.github/workflows/deploy.yml`` and add the following
-   content to it:
+I'll assume that you're familiar with `using a custom GitHub Action to publish a site`_.
+Here's the YAML:
 
-   .. code-block:: yaml
+.. code-block:: yaml
 
-      name: deploy
-      on:
-        push:
-          branches: ['main']
-        workflow_dispatch:
-      permissions:
-        contents: read
-        pages: write
-        id-token: write
-      jobs:
-        deploy:
-          environment:
-            name: github-pages
-            url: ${{steps.deployment.outputs.page_url}}
-          runs-on: ubuntu-latest
-          steps:
-            - name: checkout
-              uses: actions/checkout@v4
-            - name: configure
-              uses: actions/configure-pages@v5
-            - name: build
-              run: ${{github.workspace}}/bazelisk-linux-amd64 build //:docs
-            - name: upload
-              uses: actions/upload-pages-artifact@v3
-              with:
-                path: ${{github.workspace}}/bazel-out/k8-fastbuild/bin/docs/_build/html
-            - name: deploy
-              id: deployment
-              uses: actions/deploy-pages@v4
+   name: deploy
+   on:
+     push:
+       branches: ['main']
+     workflow_dispatch:
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
+   jobs:
+     deploy:
+       environment:
+         name: github-pages
+         url: ${{steps.deployment.outputs.page_url}}
+       runs-on: ubuntu-latest
+       steps:
+         - name: checkout
+           uses: actions/checkout@v4
+         - name: configure
+           uses: actions/configure-pages@v5
+         - name: build
+           run: ${{github.workspace}}/bazelisk-linux-amd64 build //:docs
+         - name: upload
+           uses: actions/upload-pages-artifact@v3
+           with:
+             path: ${{github.workspace}}/bazel-out/k8-fastbuild/bin/docs/_build/html
+         - name: deploy
+           id: deployment
+           uses: actions/deploy-pages@v4
 
 .. _sphazel-tutorial-examples:
 
--------------
-More examples
--------------
+------------------------------------------------
+Real-world BUILD.bazel files for Sphinx projects
+------------------------------------------------
 
-* `Main BUILD.bazel file for technicalwriting.dev <https://github.com/technicalwriting/dev/blob/main/BUILD.bazel>`_
-* `Main BUILD.bazel file for pigweed.dev <https://cs.opensource.google/pigweed/pigweed/+/main:docs/BUILD.bazel>`_ 
+Here are some real-world ``BUILD.bazel`` files for Sphinx projects:
+
+* Simple: `technicalwriting.dev <https://github.com/technicalwriting/dev/blob/main/BUILD.bazel>`_ 
+* Complex: `pigweed.dev <https://cs.opensource.google/pigweed/pigweed/+/main:docs/BUILD.bazel>`_ 
