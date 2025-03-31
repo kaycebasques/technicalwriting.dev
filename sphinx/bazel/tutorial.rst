@@ -25,9 +25,9 @@ Bazel. I.e. Sphinx concepts will not be explained whereas Bazel ones will.
 
 .. _sphazel-tutorial-hermeticity:
 
------------------------------------
-One essential concept to understand
------------------------------------
+-------------------
+A key Bazel concept
+-------------------
 
 .. _Hermeticity: https://bazel.build/basics/hermeticity
 
@@ -40,7 +40,7 @@ the directory from reading anything outside of it, resets all OS environment
 variables, and then builds the project under those controlled conditions.
 
 This is the most important concept to understand because you will inevitably
-forget to declare an input to Bazel and you will see an ``X not found`` error
+forget to declare an input to Bazel and you will see an ``<input> not found`` error
 of one sort or another.
 
 .. _sphazel-tutorial-sphinx:

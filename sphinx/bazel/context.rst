@@ -157,7 +157,7 @@ checked into the repo, which is an uncommon practice.)
 .. _sphazel-context-good-virtualenv:
 
 No need for virtual environments
-===============================
+================================
 
 .. _works on my machine: https://medium.com/@josetecangas/but-it-works-on-my-machine-cc8cca80660c
 .. _hermeticity: https://bazel.build/basics/hermeticity

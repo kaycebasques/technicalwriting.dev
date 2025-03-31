@@ -63,6 +63,10 @@ img {
     border: 1px solid grey;
 }
 
+ol {
+    /* padding-left: 0.1em; */
+}
+
 nav {
     margin: 0;
 }
@@ -148,6 +152,10 @@ tr {
 
 .toctree-l1 {
     padding-bottom: 1em;
+}
+
+ul {
+    /* padding-left: 0.1em; */
 }
 
 ul li p {
