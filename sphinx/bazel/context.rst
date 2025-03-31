@@ -1,8 +1,8 @@
 .. _sphazel-context:
 
-==============================================================
-The good, bad, and ugly of managing Sphinx projects with Bazel
-==============================================================
+======================================================================
+The good, the bad, and the ugly of managing Sphinx projects with Bazel
+======================================================================
 
 In the spirit of :ref:`decisions` I would like to share my experience of
 managing Sphinx projects with Bazel. My goal is to make it easier for you to

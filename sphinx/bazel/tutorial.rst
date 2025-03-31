@@ -1,8 +1,8 @@
 .. _sphazel-tutorial:
 
-=================================
-Manage Sphinx projects with Bazel
-=================================
+=================================================
+A tutorial on managing Sphinx projects with Bazel
+=================================================
 
 .. _Sphinx: https://www.sphinx-doc.org
 .. _Bazel: https://bazel.build
