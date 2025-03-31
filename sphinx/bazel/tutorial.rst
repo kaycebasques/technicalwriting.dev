@@ -20,6 +20,11 @@ You'll learn how to:
 Check out :ref:`sphazel-context` for help deciding whether or not
 this setup is worthwhile for you.
 
+.. _github.com/kaycebasques/sphazel: https://github.com/kaycebasques/sphazel
+
+The final code is available as a template repository here:
+`github.com/kaycebasques/sphazel`_
+
 .. _sphazel-tutorial-assumptions:
 
 ===========
@@ -330,16 +335,18 @@ That's all you need to start using Bazel.
       INFO: 8 processes: 7 internal, 1 linux-sandbox.
       INFO: Build completed successfully, 8 total actions
 
-Debug the docs build
-====================
-
-If your Sphinx project has errors and you're building the project hermetically,
-the output can be pretty noisy and hard-to-read. You can sometimes trim away
-the noise by building the Sphinx project non-hermetically:
-
-.. code-block:: console
-
-   bazelisk run //docs:docs.run
+.. .. _sphazel-tutorial-debug:
+.. 
+.. Debug the docs build
+.. ====================
+.. 
+.. If your Sphinx project has errors and you're building the project hermetically,
+.. the output can be pretty noisy and hard-to-read. You can sometimes trim away
+.. the noise by building the Sphinx project non-hermetically:
+.. 
+.. .. code-block:: console
+.. 
+..    ./bazelisk-linux-amd64 run //:docs.run
 
 .. _sphazel-tutorial-inspect:
 
@@ -496,7 +503,6 @@ Here's the YAML:
 Real-world BUILD.bazel files for Sphinx projects
 ------------------------------------------------
 
-Here are some real-world ``BUILD.bazel`` files for Sphinx projects:
-
 * Simple: `technicalwriting.dev <https://github.com/technicalwriting/dev/blob/main/BUILD.bazel>`_ 
+
 * Complex: `pigweed.dev <https://cs.opensource.google/pigweed/pigweed/+/main:docs/BUILD.bazel>`_ 
