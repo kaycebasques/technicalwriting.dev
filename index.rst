@@ -4,19 +4,19 @@
 technicalwriting.dev
 ====================
 
-A blog about technical writing.
+Field notes from the frontier of technical writing.
 
 Categories:
 
 * :ref:`links`
 * :ref:`ml`
+* :ref:`sphinx`
 * :ref:`strategy`
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
-   about
    links/index
    ml/index
    sphinx/index
