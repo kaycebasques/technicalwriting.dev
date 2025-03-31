@@ -6,7 +6,7 @@ The good, the bad, and the ugly of managing Sphinx projects with Bazel
 
 In the spirit of :ref:`decisions` I would like to share my experience of
 managing Sphinx projects with Bazel. My goal is to make it easier for you to
-decide whether this setup is worthwhile for you or not.
+decide whether or not this setup is worthwhile for you.
 
 If you're already sold on the idea of managing your Sphinx project with Bazel
 and just need setup guidance, check out :ref:`sphazel-tutorial`.
@@ -25,8 +25,9 @@ Background
 
 `Sphinx`_ is a tool for authoring documentation. You write your docs in
 `reStructuredText`_ or `Markdown`_ and then use Sphinx to transform the docs
-into HTML and other output formats. You can also hook in auto-generated API
-reference information from tools like `Doxygen`_.
+into HTML and other output formats. It's also common to hook in auto-generated
+API reference docs from tools like `Doxygen`_ alongside the reStructuredText
+or Markdown docs.
 
 .. _variety of reasons: https://bazel.build/about/why
 
@@ -51,8 +52,8 @@ job, I migrated my employer's docs from Microsoft Word to Sphinx. For the last
 few years I've been leading `pigweed.dev`_, which is powered by Sphinx. I spent
 most of Q4 2024 `migrating pigweed.dev to Bazel`_. The site has over 600 pages
 of content and integrates with 3 different API reference auto-generation
-pipelines. So I think I've got a pretty good sense of what it's like to manage
-a real, production Sphinx project with Bazel.
+pipelines. I.e. I've got a pretty good sense of managing a non-trivial Sphinx
+project with Bazel.
 
 .. _sphazel-context-none:
 
@@ -63,10 +64,9 @@ Why use a build system at all?
 .. _sphinx-build: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
 .. _sphinx-quickstart: https://www.sphinx-doc.org/en/master/man/sphinx-quickstart.html
 
-Many Sphinx projects don't use a build system whatsoever. They just invoke
-`sphinx-build`_ directly or have custom shell scripts that invoke it and do a
-few other things. Or they use the minimal ``Makefile`` that
-`sphinx-quickstart`_ generates.
+Many Sphinx projects don't use a build system whatsoever. They just have a little
+custom shell script that invokes `sphinx-build`_ directly. Or they use the minimal
+``Makefile`` that `sphinx-quickstart`_ generates.
 
 .. _kayce.basqu.es: https://kayce.basqu.es
 
@@ -79,9 +79,10 @@ because it has :ref:`more momentum than I realized
 <sphazel-context-good-ecosystem>`.
 
 In medium-to-large Sphinx projects that have a lot of contributors I think the
-:ref:`sphazel-context-good-setup` and the ability to structure the docs as a
-:ref:`sidecar <sphazel-context-good-sidecar>` are pretty compelling Bazel
-features.
+:ref:`sphazel-context-good-setup`, :ref:`sphazel-context-good-cli`, and the ability
+to :ref:`keep docs close to their relevant code <sphazel-context-good-sidecar>` are
+pretty compelling features. They probably improve productivity by making it much
+easier to contribute to the project.
 
 .. _sphazel-context-other:
 
@@ -89,11 +90,13 @@ features.
 Why not use some other build system?
 ------------------------------------
 
+.. _global minimum: https://mohitmishra786687.medium.com/the-curse-of-local-minima-how-to-escape-and-find-the-global-minimum-fdabceb2cd6a
+
 I'm not really trying to push Bazel in particular. It's not like I've done a
-systematic review of every build system and concluded that Bazel is the best. I
-just happen to know a fair bit about managing Sphinx projects with Bazel now
-because my work required me to migrate `pigweed.dev`_ from a GN-based build to
-a Bazel one.
+systematic review of every build system and concluded that Bazel is the `global
+minimum`_. I just happen to know a fair bit about managing Sphinx projects with
+Bazel now because my work required me to migrate `pigweed.dev`_ from a GN-based
+build to a Bazel one.
 
 .. _What went well: https://pigweed.dev/docs/blog/08-bazel-docgen.html#what-went-well
 .. _GN: https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md
@@ -106,11 +109,8 @@ would choose Bazel over GN for the reasons mentioned in `What went well`_.
 However, the switch from `GN`_ to Bazel was not motivated by any particular
 failing of the old GN-based docs build system. Pigweed `adopted Bazel as its
 primary build system`_ back in Q3 2023 because it can `significantly improve
-embedded developer productivity`_. Eventually everything in the Pigweed
-codebase was powered by Bazel except for the docs. (Pigweed uses a `sidecar`_
-docs-as-code topology, where the docs live alongside the code in a single
-repo.) Managing the docs in GN but everything else in Bazel was slowing us down
-and creating needless complexity.
+embedded developer productivity`_. Our strategy is to dogfood every aspect of
+embedded devleopment in Bazel, including our docs.
 
 .. _sphazel-context-good:
 
@@ -122,8 +122,8 @@ Here's what I like about managing Sphinx projects with Bazel.
 
 .. _sphazel-context-good-cli:
 
-A single CLI entrypoint for all development workflows
-=====================================================
+Unified CLI
+===========
 
 .. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/
 
@@ -135,8 +135,8 @@ to a console, flash an embedded device, and more.
 
 .. _sphazel-context-good-setup:
 
-Simplified development environment setup
-========================================
+Easier development environment setup
+====================================
 
 With Bazel, building the docs can become a literal three-step process like
 this:
@@ -193,16 +193,19 @@ same repo as the rest of your source code. This is a powerful setup because it
 increases the chances that software engineers keep their docs up-to-date. In my
 experience most software engineers are actually fine with updating docs, so
 long as its easy to find the relevant docs. If an engineer changes an API in
-``//src/module_a/lib.cpp`` and they see ``docs.rst`` right next to ``lib.cpp``,
+``//src/logger/lib.cpp`` and they see ``docs.rst`` right next to ``lib.cpp``,
 it's very obvious that ``docs.rst`` might also need an update. On the other
-hand, if the relevant doc lives at ``//docs/guides/logs/docs.rst``, then it's
-not obvious that the change to ``//src/module_a/lib.cpp`` affected the doc.
+hand, if the relevant doc lives at ``//docs/guides/logging/docs.rst``, then there's
+less of a chance that the engineer will remember to update the doc. Out of sight,
+out of mind.
 
 .. _Built-in support for reorganizing sources: https://pigweed.dev/docs/blog/08-bazel-docgen.html#built-in-support-for-reorganizing-sources
+.. _information architecture: https://en.wikipedia.org/wiki/Information_architecture
 
-Bazel makes it easier to put your docs right next to the source code that
-they're related to. I explain how in `Built-in support for reorganizing
-sources`_.
+See `Built-in support for reorganizing sources`_ for more explanation of how
+Bazel makes it easier to keep your docs in sight. The gist of the idea is to
+prioritize keeping your docs right next to the code, and then use Bazel's features
+to reorganize the docs into a usable `information architecture`_ on the docs website.
 
 .. _sphazel-context-good-ecosystem:
 
@@ -210,18 +213,20 @@ Surprisingly robust ecosystem
 =============================
 
 .. _bzlmod: https://bazel.build/external/overview#bzlmod
+.. _rules: https://bazel.build/extending/rules
 .. _rules_python: https://rules-python.readthedocs.io/en/latest/
 .. _rickeylev: https://github.com/rickeylev
 .. _TendTo: https://github.com/TendTo
 
 `bzlmod`_ ("Bazel mod") is the main mechanism for sharing your Bazel
-"libraries" A.K.A. modules with others. When I migrated `pigweed.dev`_ to Bazel
-I was surprised to discover that most of the features I needed were already
+`rules`_ (i.e. libraries) with others. When I migrated `pigweed.dev`_ to Bazel
+I was surprised to discover that most of the rules I needed were already
 available through community modules. For example, `rules_python`_ has extensive
 support for building Sphinx projects, including a built-in workflow for
 spinning up a server so that you can locally preview the HTML output in a
 browser. This is the main reason the `pigweed.dev`_ migration went faster than
-expected. People like `rickeylev`_ had already built the features I needed.
+expected. People like `rickeylev`_ and `TendTo`_ had already built most everything
+I needed.
 
 .. _sphazel-context-bad:
 
@@ -229,7 +234,8 @@ expected. People like `rickeylev`_ had already built the features I needed.
 The bad
 -------
 
-Adopting Bazel requires some upfront investment and creates more complexity.
+Adopting Bazel requires some upfront investment and creates more complexity
+for docs authors.
 
 .. _sphazel-context-bad-explicit:
 
@@ -240,11 +246,11 @@ As explained in :ref:`sphazel-context-good-virtualenv` and
 :ref:`sphazel-tutorial-hermeticity`, Bazel builds your
 Sphinx project in an isolated sandbox. You need to explicitly
 declare all inputs in the build system. This can take a while to
-set up correctly.
+set up correctly and wrap your head around.
 
 It's not quite right to call this "bad". I actually really like declaring the
 entire build graph explicitly. But it does take time and I imagine that some
-teammates won't like it.
+teammates will never "get it" and will find it needlessly complex.
 
 .. _sphazel-context-bad-indirection:
 
@@ -297,12 +303,12 @@ Sphinx builds everything and caches the outputs somewhere. This command takes
 
 Now suppose that you change one line in your docs and run ``sphinx-build``
 again. This subsequent build takes only 1 second. It's fast because Sphinx only
-rebuilds the changed content. This is what I mean by incremental builds.
+rebuilds the changed content and went to its cache for the rest. This is what I
+mean by incremental builds.
 
 Incremental builds don't work out-the-box when managing Sphinx projects through
 Bazel. Continuing with the example, every docs build takes 10 seconds, even if
 you only change one line of code in the docs source.
 
-Sphinx and Bazel both have robust support for incremental builds so I'm hopeful
-that there's a solution here. But it definitely doesn't work out-of-the-box as
-far as I can tell.
+Sphinx and Bazel both support caching so I'm hopeful that there's a solution
+here. But it definitely doesn't work out-of-the-box as far as I can tell.
