@@ -11,11 +11,11 @@ This tutorial shows you how to manage core `Sphinx`_ workflows through `Bazel`_.
 You'll learn how to: 
 
 * Set up the Bazel build system
-* Build the docs
+* Build the Sphinx docs
 * Inspect the built docs
 * Spin up a local server to preview the docs
 * Add an extension
-* Deploy the site with GitHub Pages
+* Deploy to GitHub Pages
 
 Check out :ref:`sphazel-context` for help deciding whether or not
 this setup is worthwhile for you.
@@ -157,15 +157,14 @@ Next, we set up the Bazel build system.
       )
       use_repo(pip, "pypi")
 
-   ``MODULE.bazel`` is how we declare to the world that this directory, and
-   everything below it, is a Bazel project. See `Bazel modules`_. ``MODULE.bazel``
-   is the only valid name for this file, which makes it easy to discover and
-   recognize.
+   ``MODULE.bazel`` is how we declare to the world that this is a Bazel project.
+   ``MODULE.bazel`` is the only valid name for this file, which makes it easy to
+   discover. See `Bazel modules`_. 
 
    The call to `bazel_dep`_ tells Bazel to pull the `rules_python`_ module into
    our project as a dependency. ``rules_python`` provides most of the mechanisms
    for managing our Sphinx project. Bazel fetches ``rules_python``
-   fetches over the network via the `Bazel Central Registry`_. 
+   over the network via the `Bazel Central Registry`_. 
 
    The rest of the code sets up the project to be able to use `pip`_ to
    install third-party Python dependencies from the `Python Package Index`_
@@ -174,11 +173,12 @@ Next, we set up the Bazel build system.
    One important thing to note is that you must pass in ``requirements.lock``,
    i.e. the full list of `direct and transitive dependencies`_.
    ``rules_python`` only installs the exact packages that you tell it about.
-   This is different than how ``pip`` usually works. For example, when you run ``python3 -m
-   pip install requests``  usually ``pip`` will not only install the
-   ``requests`` package that you explicitly requested but also all the packages
-   that ``requests`` itself depends on. When using ``pip`` from Bazel there is
-   no attempt to figure out transitive dependencies for you.
+   This is different than how ``pip`` usually works. For example, when you run
+   ``python3 -m pip install requests``  usually ``pip`` will not only install
+   the ``requests`` package that you explicitly requested (pun intended) but
+   also all the packages that ``requests`` itself depends on. When using
+   ``pip`` from Bazel there is no attempt to resolve transitive dependencies
+   for you.
 
 #. Create ``BUILD.bazel`` and add the following content to it:
 
@@ -213,8 +213,8 @@ Next, we set up the Bazel build system.
           ]
       )
 
-   `BUILD files`_ tell Bazel how exactly it should build the project. Bazel
-   only allows these files to be called ``BUILD`` or ``BUILD.bazel``.
+   `BUILD files`_ tell Bazel how exactly it should build the project. The only
+   allowed names for these files are ``BUILD`` or ``BUILD.bazel``.
 
    The ``load`` functions import the core mechanisms for building the
    Sphinx project: ``sphinx_build_binary``, ``sphinx_docs``, and
@@ -251,15 +251,16 @@ Set up Bazelisk
 
 .. _v1.25.0: https://github.com/bazelbuild/bazelisk/releases/tag/v1.25.0
 
-.. _NVM: https://github.com/nvm-sh/nvm
+.. _nvm: https://github.com/nvm-sh/nvm
 
 `Bazelisk`_ is kinda hard to explain. It's basically how you're supposed to run
 Bazel from the command line. It downloads the Bazel CLI executable that you
-specify in ``.bazelversion`` (similar to `NVM`_) but then you also use it to run
-all your command-line Bazel workflows (unsimilar to NVM).
-It's honestly kinda needlessly convoluted. It seems like ``bazelisk`` should be
-called ``bazel`` and it should be the only way to use Bazel from the command line.
-And the thing currently called ``bazel`` should be an implementation detail.
+specify in ``.bazelversion`` but then you also use it to run all your
+command-line Bazel workflows. It's like if `nvm`_ and ``npm`` were combined
+into a single program. It's honestly kinda needlessly convoluted. It seems like
+``bazelisk`` should be called ``bazel`` and it should be the only way to use
+Bazel from the command line. And the thing currently called ``bazel`` should be
+an implementation detail.
 
 Anyways, we need a way to run Bazel from the command line, and ``bazelisk`` is
 the way we're supposed to do it.
@@ -308,7 +309,7 @@ That's all you need to start using Bazel.
 
    In plain English this command is saying "build the artifact named ``docs`` that
    is defined in the ``BUILD.bazel`` (or ``BUILD``) file in the root directory of
-   the Bazel project". 
+   this Bazel project". 
 
    Example output from a successful build:
 
@@ -483,3 +484,12 @@ and just show you the YAML.
             - name: deploy
               id: deployment
               uses: actions/deploy-pages@v4
+
+.. _sphazel-tutorial-examples:
+
+-------------
+More examples
+-------------
+
+* `Main BUILD.bazel file for technicalwriting.dev <https://github.com/technicalwriting/dev/blob/main/BUILD.bazel>`_
+* `Main BUILD.bazel file for pigweed.dev <https://cs.opensource.google/pigweed/pigweed/+/main:docs/BUILD.bazel>`_ 
