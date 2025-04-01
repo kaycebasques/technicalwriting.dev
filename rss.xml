@@ -10,6 +10,28 @@
     <pubDate>Fri, 3 Jan 2025 12:41:04 -0700</pubDate>
     <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>The good, the bad, and the ugly of managing Sphinx projects with Bazel</title>
+      <link>https://technicalwriting.dev/sphinx/bazel/context.html</link>
+      <description>
+        My experience of managing Sphinx projects with Bazel.
+      </description>
+      <pubDate>Tue, 1 Apr 2025 16:43:36 -0700</pubDate>
+      <guid>https://technicalwriting.dev/sphinx/bazel/context.html</guid>
+    </item>
+    <item>
+      <title>A tutorial on managing Sphinx projects with Bazel</title>
+      <link>https://technicalwriting.dev/sphinx/bazel/tutorial.html</link>
+      <description>
+        This tutorial shows you how to manage core Sphinx workflows through
+        Bazel. You'll learn how to: set up the Bazel build system, build the
+        Sphinx docs, inspect the built docs, spin up a local server to preview
+        the docs, add a Sphinx extension to the Bazel build, and deploy to
+        GitHub Pages.
+      </description>
+      <pubDate>Tue, 1 Apr 2025 16:42:35 -0700</pubDate>
+      <guid>https://technicalwriting.dev/sphinx/bazel/tutorial.html</guid>
+    </item>
+    <item>
       <title>2024 Machine Learning Review (For Technical Writers)</title>
       <link>https://technicalwriting.dev/ml/reviews/2024.html</link>
       <description>

@@ -49,11 +49,11 @@ My experience with Sphinx and Bazel
 
 I have about 5 years of experience with Sphinx. In my first technical writing
 job, I migrated my employer's docs from Microsoft Word to Sphinx. For the last
-few years I've been leading `pigweed.dev`_, which is powered by Sphinx. I spent
-most of Q4 2024 `migrating pigweed.dev to Bazel`_. The site has over 600 pages
-of content and integrates with 3 different API reference auto-generation
-pipelines. I.e. I've got a pretty good sense of managing a non-trivial Sphinx
-project with Bazel.
+few years I've been leading the docs for Pigweed. Our main site,
+`pigweed.dev`_, is powered by Sphinx. I spent most of Q4 2024 `migrating
+pigweed.dev to Bazel`_. The site has over 600 pages of content and integrates
+with 3 different API reference auto-generation pipelines. I.e. I've got a
+pretty good sense of managing a non-trivial Sphinx project with Bazel.
 
 .. _sphazel-context-none:
 
