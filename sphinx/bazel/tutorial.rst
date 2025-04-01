@@ -18,7 +18,7 @@ You'll learn how to:
 * Deploy to GitHub Pages
 
 Check out :ref:`sphazel-context` for help deciding whether or not
-this setup is worthwhile for you.
+Bazel is worthwhile for your Sphinx project.
 
 .. _github.com/kaycebasques/sphazel: https://github.com/kaycebasques/sphazel
 

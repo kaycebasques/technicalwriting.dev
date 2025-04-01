@@ -286,7 +286,7 @@ project.
 The ugly
 --------
 
-There's one major issue related to developer experience.
+These are the ways I've seen Bazel noticeably worsen developer experience.
 
 Lack of incremental builds
 ==========================
@@ -312,3 +312,28 @@ you only change one line of code in the docs source.
 
 Sphinx and Bazel both support caching so I'm hopeful that there's a solution
 here. But it definitely doesn't work out-of-the-box as far as I can tell.
+
+Possibly incomplete docs
+========================
+
+.. _Core utilities were hard to find: https://pigweed.dev/docs/blog/08-bazel-docgen.html#core-utilities-were-hard-to-find
+.. _how-to guides: https://diataxis.fr/how-to-guides/
+.. _references: https://diataxis.fr/reference/
+
+The experience that I describe in the `Core utilities were hard to find`_ section
+of the `pigweed.dev`_ migration blog post suggests to me that the Bazel docs might
+be missing essential `how-to guides`_ and `references`_.
+
+The Starlark guessing game
+==========================
+
+.. _Starlark: https://en.wikipedia.org/wiki/Bazel_(software)#Starlark_language
+.. _Uncanny valley experiences with Starlark: https://pigweed.dev/docs/blog/08-bazel-docgen.html#uncanny-valley-experiences-with-starlark
+.. _Differences with Python: https://bazel.build/rules/language#differences_with_python
+
+If you ever need to write a custom rule, you'll need to do so in `Starlark`_.
+Starlark is a dialect of Python, meaning that it only supports a subset of
+Python syntax. `Differences with Python`_ explains how Starlark diverges from Python
+pretty clearly, but in practice I would write some code, it would silently fail,
+and then I'd eventually figure out that I was trying to use a Python-ism that Starlark
+doesn't support. See `Uncanny valley experiences with Starlark`_ for an example.
