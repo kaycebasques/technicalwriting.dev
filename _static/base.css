@@ -64,8 +64,8 @@ img {
 }
 
 .literal {
-    margin: 0;
-    padding: 0 0.3em 0 0.3em;
+    font-weight: bold;
+    padding: 0 0.5em;
 }
 
 ol {

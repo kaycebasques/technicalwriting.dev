@@ -69,13 +69,13 @@ First, let's create a bare-bones Sphinx project.
 
 #. Create a directory for your project:
 
-   .. code-block:: console
+   .. code-block:: text
 
       mkdir sphazel
 
 #. ``cd`` into the directory.
 
-   .. code-block:: console
+   .. code-block:: text
 
       cd sphazel
 
@@ -122,7 +122,7 @@ First, let's create a bare-bones Sphinx project.
 #. Freeze your `direct and transitive dependencies`_ into a new file called
    ``requirements.lock``:
 
-   .. code-block:: console
+   .. code-block:: text
 
       python3 -m venv venv &&
       . venv/bin/activate &&
@@ -276,7 +276,7 @@ command-line Bazel workflows.
 
 #. Download Bazelisk:
 
-   .. code-block:: console
+   .. code-block:: text
 
       curl -L -O https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
 
@@ -290,7 +290,7 @@ command-line Bazel workflows.
 
 #. Make the file executable:
 
-   .. code-block:: console
+   .. code-block:: text
 
       chmod +x bazelisk-linux-amd64
 
@@ -314,7 +314,7 @@ That's all you need to start using Bazel.
 
 #. Build the docs:
 
-   .. code-block:: console
+   .. code-block:: text
 
       ./bazelisk-linux-amd64 build //:docs
 
@@ -324,7 +324,7 @@ That's all you need to start using Bazel.
 
    Example output from a successful build:
 
-   .. code-block:: console
+   .. code-block:: text
 
       Starting local Bazel server (8.1.1) and connecting to it...
       INFO: Analyzed target //:docs (122 packages loaded, 6072 targets configured).
@@ -344,7 +344,7 @@ That's all you need to start using Bazel.
 .. the output can be pretty noisy and hard-to-read. You can sometimes trim away
 .. the noise by building the Sphinx project non-hermetically:
 .. 
-.. .. code-block:: console
+.. .. code-block:: text
 .. 
 ..    ./bazelisk-linux-amd64 run //:docs.run
 
@@ -356,7 +356,7 @@ Inspect the generated HTML
 
 When I need to inspect the generated HTML, I just do something like this:
 
-.. code-block:: console
+.. code-block:: text
 
    vim bazel-bin/docs/_build/html/index.html
 
@@ -369,7 +369,7 @@ Locally preview the docs
 One very cool thing about ``rules_python`` is that it also has a
 built-in local server for previewing the docs:
 
-.. code-block:: console
+.. code-block:: text
 
    ./bazelisk-linux-amd64 run //:docs.serve
 
@@ -410,7 +410,7 @@ My projects use them heavily. Here's how to add one to the Bazel build.
 #. Update ``requirements.txt`` to indicate that you're going to use
    `sphinx-reredirects`_ to generate client-side redirects.
 
-   .. code-block:: console
+   .. code-block:: text
 
       sphinx==8.2.3
       sphinx-reredirects==0.1.5
@@ -418,7 +418,7 @@ My projects use them heavily. Here's how to add one to the Bazel build.
 #. Update your lockfile again to capture the new direct and
    transitive dependencies:
 
-   .. code-block:: console
+   .. code-block:: text
 
       python3 -m venv venv &&
       . venv/bin/activate &&

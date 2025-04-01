@@ -23,7 +23,7 @@ html_extra_path = ["rss.xml"]
 html_permalinks_icon = "#"
 html_static_path = ["_static"]
 project = "technicalwriting.dev"
-pygments_style = "one-dark"
+pygments_style = "github-dark"
 redirects = {
     "a11y/skip": "https://web.archive.org/web/20250225001215/https://technicalwriting.dev/a11y/skip.html",
     "data/embeddings": "../embeddings/overview.html",
