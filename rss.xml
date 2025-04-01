@@ -97,28 +97,5 @@
 	    <pubDate>Thu, 11 Jul 2024 09:01:07 -0700</pubDate>
 	    <guid>https://technicalwriting.dev/www/pdf.html</guid>
     </item>
-    <item>
-      <title>Please support “skip to main content” on your docs site</title>
-	    <link>https://technicalwriting.dev/a11y/skip.html</link>
-	    <description>
-        I'm trying to become proficient at keyboard-only navigation and
-        have learned that a lot of docs sites aren't friendly to people
-        who rely on Tab...
-      </description>
-	    <pubDate>Sun, 2 Jun 2024 17:48:00 -0700</pubDate>
-	    <guid>https://technicalwriting.dev/a11y/skip.html</guid>
-    </item>
-    <item>
-      <title>Field research: search boxes</title>
-	    <link>https://technicalwriting.dev/ux/searchboxes.html</link>
-	    <description>
-        Where should I put the search box on my documentation site?
-        What text should I put inside the search box? What should
-        happen when I type stuff into the search box? What should the
-        search results page look like?
-      </description>
-	    <pubDate>Mon, 19 Feb 2024 14:37:03 -0700</pubDate>
-	    <guid>https://technicalwriting.dev/ux/searchboxes.html</guid>
-    </item>
   </channel>
 </rss>
