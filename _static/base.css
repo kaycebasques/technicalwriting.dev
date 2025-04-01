@@ -25,17 +25,12 @@ code {
 }
 
 div.highlight {
-    background-color: #eeeeee;
     margin: 0;
     padding: 0.75em;
 }
 
 div.highlight pre {
     overflow-x: scroll;
-}
-
-#favicon {
-    fill: black;
 }
 
 footer {
@@ -64,7 +59,13 @@ h1, h2, h3, h4, h5, h6 {
 
 img {
     max-width: 100%;
-    border: 1px solid grey;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.literal {
+    margin: 0;
+    padding: 0 0.3em 0 0.3em;
 }
 
 ol {
@@ -73,20 +74,40 @@ ol {
 
 nav {
     margin: 0;
-}
-
-nav li {
-    display: inline;
-    margin-right: 1em;
+    padding: 0;
 }
 
 nav ul {
+    align-items: center;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    column-gap: 1em;
+}
+
+nav ul li {
+    align-items: center;
+    display: inline-flex;
+    height: 1.75em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    height: 1.25em;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li img {
+    border: none;
+    height: 1.5em;
     margin: 0;
     padding: 0;
 }
 
 p code {
-    background-color: #eeeeee;
     padding: 0.1em;
 }
 
@@ -165,10 +186,4 @@ ul {
 ul li p {
     margin-top: 0.5em;
     margin-bottom: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-    #favicon {
-        fill: white;
-    }
 }

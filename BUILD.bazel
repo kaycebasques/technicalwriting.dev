@@ -15,10 +15,11 @@ sphinx_build_binary(
 sphinx_docs_library(
     name = "sources",
     srcs = [
+        "_static/base.css",
         "_static/boat.png",
-        "_static/favicon.svg",
+        "_static/dark.css",
         "_static/linter.jpg",
-        "_static/main.css",
+        "_static/logo.svg",
         "_static/mindblown.gif",
         "_static/namespace.png",
         "_static/singularity.png",

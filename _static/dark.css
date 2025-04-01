@@ -1,0 +1,21 @@
+:root {
+  background-color: #262626;
+  color: #f2f2f2;
+}
+
+a {
+  color: lightskyblue;
+}
+
+a:visited {
+  color: violet;
+}
+
+img {
+  border-color: grey;
+}
+
+.literal {
+  background-color: #f2f2f2;
+  color: #262626;
+}

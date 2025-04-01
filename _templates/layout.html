@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title }}</title>
-        <link id="favicon" rel="icon" href="{{ pathto('/_static/favicon.svg', 1) }}" sizes="any" type="image/svg+xml">
-        <link rel="stylesheet" type="text/css" href="{{ pathto('_static/main.css', 1) }}">
-        <link rel="stylesheet" type="text/css" href="{{ pathto('_static/pygments.css', 1) }}">
-        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="https://technicalwriting.dev/rss.xml"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900" rel="stylesheet">
-    </head>
-    <body>
-        <a id="skip" href="#main">Skip to main content</a>
-        <nav>
-            <ul>
-                <li><a href="{{ pathto('index.html', 1) }}">Home</a></li>
-                <li><a href="{{ pathto('rss.xml', 1) }}">RSS</a></li>
-            </ul>
-        </nav>
-        <main id="main">
-            {% block body %}{{ body() }}{% endblock %}
-        </main>
-        <footer>
-            <p>© 2025 <a href="https://kayce.basqu.es">Kayce Basques</a></p>
-        </footer>
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link id="favicon" rel="icon" href="{{ pathto('_static/logo.svg', 1) }}" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" type="text/css" href="{{ pathto('_static/base.css', 1) }}">
+    <link id="theme" rel="stylesheet" type="text/css" href="{{ pathto('_static/dark.css', 1) }}">
+    <link rel="stylesheet" type="text/css" href="{{ pathto('_static/pygments.css', 1) }}">
+    <link rel="alternate" type="application/rss+xml" title="RSS feed" href="https://technicalwriting.dev/rss.xml"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  </head>
+  <body>
+    <a id="skip" href="#main">Skip to main content</a>
+    <nav>
+      <ul>
+        <li><img src="{{ pathto('_static/logo.svg', 1) }}"/></li>
+        <li><a href="{{ pathto('index.html', 1) }}">Home</a></li>
+        <li><a href="{{ pathto('rss.xml', 1) }}">RSS</a></li>
+      </ul>
+    </nav>
+    <main id="main">
+      {% block body %}{{ body() }}{% endblock %}
+    </main>
+    <footer>
+      <p>© 2025 <a href="https://kayce.basqu.es">Kayce Basques</a></p>
+    </footer>
+  </body>
 </html>

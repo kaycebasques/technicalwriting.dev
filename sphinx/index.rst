@@ -1,16 +1,9 @@
-.. _sphinx:
-
 ======
 Sphinx
 ======
 
-* :ref:`sphazel-context`
-
-* :ref:`sphazel-tutorial`
-
-
 .. toctree::
-   :hidden:
+   :maxdepth: 1
 
    bazel/tutorial
    bazel/context
