@@ -44,3 +44,4 @@ release = "0.0.0"
 templates_path = ["_templates"]
 # https://matplotlib.org/stable/api/sphinxext_plot_directive_api.html#configuration-options
 plot_html_show_formats = False
+copybutton_prompt_text = "$ "

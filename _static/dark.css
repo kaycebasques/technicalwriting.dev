@@ -11,6 +11,10 @@ a:visited {
   color: violet;
 }
 
+.hll {
+  border-right-color: seagreen;
+}
+
 img {
   border-color: grey;
 }

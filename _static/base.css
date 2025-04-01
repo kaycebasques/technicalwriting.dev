@@ -19,11 +19,6 @@ blockquote {
     font-style: italic;
 }
 
-code {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.9em;
-}
-
 div.highlight {
     margin: 0;
     padding: 0.75em;
@@ -57,6 +52,12 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Chivo", serif;
 }
 
+.hll {
+    border-right-width: 1em;
+    border-right-style: solid;
+    padding-right: 1em;
+}
+
 img {
     max-width: 100%;
     border-width: 1px;
@@ -64,6 +65,8 @@ img {
 }
 
 .literal {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.9em;
     font-weight: bold;
     padding: 0 0.5em;
 }

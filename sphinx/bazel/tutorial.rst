@@ -55,7 +55,7 @@ variables, and then builds the project under those controlled conditions.
 
 This is the most important concept to understand because you will inevitably
 forget to declare an input to Bazel and you will see an ``X not found`` error
-of one sort or another, where ``X`` is an input.
+of one sort or another.
 
 .. _sphazel-tutorial-sphinx:
 
@@ -69,15 +69,15 @@ First, let's create a bare-bones Sphinx project.
 
 #. Create a directory for your project:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      mkdir sphazel
+      $ mkdir sphazel
 
 #. ``cd`` into the directory.
 
-   .. code-block:: text
+   .. code-block:: console
 
-      cd sphazel
+      $ cd sphazel
 
 #. Create ``conf.py`` and configure the Sphinx project:
 
@@ -122,14 +122,14 @@ First, let's create a bare-bones Sphinx project.
 #. Freeze your `direct and transitive dependencies`_ into a new file called
    ``requirements.lock``:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      python3 -m venv venv &&
-      . venv/bin/activate &&
-      python3 -m pip install -r requirements.txt && 
-      python3 -m pip freeze > requirements.lock &&
-      deactivate &&
-      rm -rf venv
+      $ python3 -m venv venv && \
+          . venv/bin/activate && \
+          python3 -m pip install -r requirements.txt && \
+          python3 -m pip freeze > requirements.lock && \
+          deactivate && \
+          rm -rf venv
 
    Here we spin up a temporary virtual environment, install the dependencies
    into the virtual environment, record the full list of dependencies into
@@ -276,9 +276,9 @@ command-line Bazel workflows.
 
 #. Download Bazelisk:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      curl -L -O https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
+      $ curl -L -O https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
 
    This is the executable for Linux running on x86-64. See `v1.25.0`_ for links to other
    platforms. E.g. if you're using macOS on Apple Silicon, then you need to download
@@ -290,9 +290,9 @@ command-line Bazel workflows.
 
 #. Make the file executable:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      chmod +x bazelisk-linux-amd64
+      $ chmod +x bazelisk-linux-amd64
 
 In my own projects I personally just check in the Bazelisk executables
 alongside the rest of the code. The more common approach is to have teammates
@@ -314,9 +314,9 @@ That's all you need to start using Bazel.
 
 #. Build the docs:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      ./bazelisk-linux-amd64 build //:docs
+      $ ./bazelisk-linux-amd64 build //:docs
 
    In plain English this command is saying "build the artifact named ``docs`` that
    is defined in the ``BUILD.bazel`` (or ``BUILD``) file in the root directory of
@@ -344,9 +344,9 @@ That's all you need to start using Bazel.
 .. the output can be pretty noisy and hard-to-read. You can sometimes trim away
 .. the noise by building the Sphinx project non-hermetically:
 .. 
-.. .. code-block:: text
+.. .. code-block:: console
 .. 
-..    ./bazelisk-linux-amd64 run //:docs.run
+..    $ ./bazelisk-linux-amd64 run //:docs.run
 
 .. _sphazel-tutorial-inspect:
 
@@ -356,9 +356,9 @@ Inspect the generated HTML
 
 When I need to inspect the generated HTML, I just do something like this:
 
-.. code-block:: text
+.. code-block:: console
 
-   vim bazel-bin/docs/_build/html/index.html
+   $ vim bazel-bin/docs/_build/html/index.html
 
 .. _sphazel-tutorial-preview:
 
@@ -369,9 +369,9 @@ Locally preview the docs
 One very cool thing about ``rules_python`` is that it also has a
 built-in local server for previewing the docs:
 
-.. code-block:: text
+.. code-block:: console
 
-   ./bazelisk-linux-amd64 run //:docs.serve
+   $ ./bazelisk-linux-amd64 run //:docs.serve
 
 It should output a ``localhost`` URL where you can preview the docs:
 
@@ -413,46 +413,71 @@ My projects use them heavily. Here's how to add one to the Bazel build.
    .. code-block:: text
 
       sphinx==8.2.3
-      sphinx-reredirects==0.1.5
+      sphinx-reredirects==0.1.5  # new
 
 #. Update your lockfile again to capture the new direct and
    transitive dependencies:
 
-   .. code-block:: text
+   .. code-block:: console
 
-      python3 -m venv venv &&
-      . venv/bin/activate &&
-      python3 -m pip install -r requirements.txt && 
-      python3 -m pip freeze > requirements.lock &&
-      deactivate &&
-      rm -rf venv
+      $ python3 -m venv venv && \
+          . venv/bin/activate && \
+          python3 -m pip install -r requirements.txt && \
+          python3 -m pip freeze > requirements.lock && \
+          deactivate && \
+          rm -rf venv
 
 #. Update ``conf.py`` to use the extension:
 
    .. code-block:: py
-      :emphasize-lines: 2, 4
+      :emphasize-lines: 9, 11
 
-      # …
-      extensions = ["sphinx_reredirects"]
+      project = 'sphazel'
+      author = 'sphazel'
+      copyright = f'2025, Hank Venture'
+      release = '0.0.0'
+      exclude_patterns = [
+          '**/*bazel*',
+          'requirements.*',
+      ]
+      extensions = ["sphinx_reredirects"]  # new
       pygments_style = 'sphinx'
-      redirects = {'example': 'https://example.com'}
+      redirects = {'example': 'https://example.com'}  # new
 
 #. Declare the dependency to Bazel by updating ``BUILD.bazel``:
 
    .. code-block:: py
-      :emphasize-lines: 7
+      :emphasize-lines: 15
 
-      # …
+      load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+      load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
+
+      sphinx_docs_library(
+          name = "sources",
+          srcs = [
+              "index.rst",
+          ],
+      )
 
       sphinx_build_binary(
           name = "sphinx",
           deps = [
               "@pypi//sphinx",
-              "@pypi//sphinx_reredirects",
+              "@pypi//sphinx_reredirects",  # new
           ]
       )
 
-      # …
+      sphinx_docs(
+          name = "docs",
+          config = "conf.py",
+          formats = [
+              "html",
+          ],
+          sphinx = ":sphinx",
+          deps = [
+              ":sources",
+          ]
+      )
 
 If you navigate to ``http://0.0.0.0:<port>/example.html`` (where ``<port>`` is a
 placeholder for whatever actual port your :ref:`local server <sphazel-tutorial-preview>`
