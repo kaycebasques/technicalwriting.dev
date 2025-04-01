@@ -411,6 +411,7 @@ My projects use them heavily. Here's how to add one to the Bazel build.
    `sphinx-reredirects`_ to generate client-side redirects.
 
    .. code-block:: text
+      :emphasize-lines: 2
 
       sphinx==8.2.3
       sphinx-reredirects==0.1.5  # new
