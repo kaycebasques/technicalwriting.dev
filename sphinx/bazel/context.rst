@@ -6,7 +6,7 @@ The good, the bad, and the ugly of managing Sphinx projects with Bazel
 
 In the spirit of :ref:`decisions` I would like to share my experience of
 managing Sphinx projects with Bazel. My goal is to make it easier for you to
-decide whether or not this setup is worthwhile for you.
+decide whether or not Bazel would actually benefit your Sphinx project.
 
 If you're already sold on the idea of managing your Sphinx project with Bazel
 and just need setup guidance, check out :ref:`sphazel-tutorial`.
@@ -122,8 +122,8 @@ Here's what I like about managing Sphinx projects with Bazel.
 
 .. _sphazel-context-good-cli:
 
-Unified CLI
-===========
+Unified CLI for a project
+=========================
 
 .. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/
 
@@ -148,7 +148,7 @@ this:
    $ ./bazelisk build //:docs
 
 When Bazel attempts to build the ``//:docs`` target it detects that it doesn't
-have all the tools and dependencies it needs to build the target, automatically
+have all the tools and dependencies it needs, automatically
 fetches them, sets them all up, and then proceeds with the build.
 
 (I'm a cheating a little by assuming that the ``bazelisk`` executable is
@@ -322,7 +322,8 @@ Possibly incomplete docs
 
 The experience that I describe in the `Core utilities were hard to find`_ section
 of the `pigweed.dev`_ migration blog post suggests to me that the Bazel docs might
-be missing essential `how-to guides`_ and `references`_.
+be missing essential `how-to guides`_ and `references`_. I haven't thoroughly reviewed
+the Bazel docs though, so I don't know for sure.
 
 The Starlark guessing game
 ==========================
@@ -334,6 +335,6 @@ The Starlark guessing game
 If you ever need to write a custom rule, you'll need to do so in `Starlark`_.
 Starlark is a dialect of Python, meaning that it only supports a subset of
 Python syntax. `Differences with Python`_ explains how Starlark diverges from Python
-pretty clearly, but in practice I would write some code, it would silently fail,
-and then I'd eventually figure out that I was trying to use a Python-ism that Starlark
-doesn't support. See `Uncanny valley experiences with Starlark`_ for an example.
+pretty clearly, but in practice I would write some code, scratch my head as I watched
+it silently fail, and then eventually figure out that I was trying to use a Python-ism
+that Starlark doesn't support. See `Uncanny valley experiences with Starlark`_ for an example.
