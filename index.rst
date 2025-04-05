@@ -58,7 +58,7 @@ Embeddings
 .. _ml-reviews:
 
 Yearly reviews
---------------
+==============
 
 * :ref:`ml-reviews-2024`.
 
