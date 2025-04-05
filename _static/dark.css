@@ -1,25 +1,9 @@
 :root {
-  background-color: #262626;
-  color: #f2f2f2;
-}
-
-a {
-  color: lightskyblue;
-}
-
-a:visited {
-  color: violet;
-}
-
-.hll {
-  border-right-color: seagreen;
-}
-
-img {
-  border-color: grey;
-}
-
-.literal {
-  background-color: #0d1117;
-  color: #E6EDF3;
+  --background-primary: #262626;
+  --foreground-primary: #f2f2f2;
+  --background-secondary: #0d1117;
+  --foreground-secondary: #e6edf3;
+  --link-unvisited: lightskyblue;
+  --link-visited: violet;
+  --new-code: seagreen;
 }

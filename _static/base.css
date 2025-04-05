@@ -1,12 +1,38 @@
 :root {
-    font-family: "Atkinson Hyperlegible Next", serif;
+    font-family: "JetBrains Mono", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    line-height: 1.5em;
+    background-color: var(--background-primary);
+    color: var(--foreground-primary);
+}
+
+a {
+    text-decoration: underline solid var(--link-unvisited);
+    text-underline-offset: 0.3em;
+    color: var(--link-unvisited);
 }
 
 a.headerlink {
     margin-left: 0.25em;
+    color: var(--link-unvisited);
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: var(--link-unvisited);
+    color: var(--foreground-primary);
+}
+
+a:visited {
+    text-decoration: underline solid var(--link-visited);
+    color: var(--link-visited);
+}
+
+a:visited:hover {
+    background-color: var(--link-visited);
+    color: var(--foreground-primary);
 }
 
 body {
@@ -49,13 +75,39 @@ footer pre code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Chivo", serif;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.1em;
+}
+
+h1::before {
+    content: "# ";
+}
+
+h2::before {
+    content: "## ";
+}
+
+h3::before {
+    content: "### ";
+}
+
+h4::before {
+    content: "#### ";
+}
+
+h5::before {
+    content: "##### ";
+}
+
+h6::before {
+    content: "###### ";
 }
 
 .hll {
     border-right-width: 1em;
     border-right-style: solid;
     padding-right: 1em;
+    border-right-color: var(--new-code);
 }
 
 img {
@@ -65,10 +117,12 @@ img {
 }
 
 .literal {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 0.9em;
     font-weight: bold;
     padding: 0 0.5em;
+    background-color: var(--background-secondary);
+    color: var(--foreground-secondary);
 }
 
 ol {
@@ -115,7 +169,7 @@ p code {
 }
 
 pre {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "JetBrains Mono", monospace;
     overflow-x: auto;
     scrollbar-width: none;
     margin: 0;

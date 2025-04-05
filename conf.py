@@ -20,7 +20,7 @@ extensions = [
     "sphinx_reredirects",
 ]
 html_extra_path = ["rss.xml"]
-html_permalinks_icon = "#"
+html_permalinks_icon = "§"
 html_static_path = ["_static"]
 project = "technicalwriting.dev"
 pygments_style = "github-dark"
