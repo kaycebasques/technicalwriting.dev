@@ -1,0 +1,172 @@
+# Chapter 2: Board struct
+
+Following our introduction to the `microbit` and `microbit-v2` crates in [microbit V1 and V2 Crates](01_microbit_v1_and_v2_crates_.md), this chapter delves into the `Board` struct, a cornerstone abstraction that simplifies micro:bit firmware development.
+
+## Motivation: Centralized Hardware Access
+
+Imagine you're building a weather station application for your micro:bit. You need to access various peripherals like the temperature sensor, humidity sensor (if you add one!), the LED display, and the buttons. Without a centralized approach, you'd have to manage each peripheral individually, leading to verbose and potentially error-prone code.
+
+The `Board` struct solves this problem by providing a single, unified point of access to all the micro:bit's peripherals and pins. It encapsulates the complexities of initializing and managing these hardware components, allowing you to focus on the application logic.
+
+**Use Case:** Let's say you want to display the temperature reading on the LED matrix.  The `Board` struct makes this straightforward by providing access to both the temperature sensor (through I2C, SPI, or ADC, depending on the sensor) and the `display`.
+
+## Key Concepts
+
+1.  **Peripheral Aggregation:** The `Board` struct groups all the micro:bit's peripherals into a single struct. This includes the display, buttons, accelerometer, radio (Bluetooth), and GPIO pins.
+
+2.  **Initialization:** The `Board::new(p, cp)` function initializes the board. It takes the peripherals (`p`) and core peripherals (`cp`) as arguments, which are obtained from the `nrf51-hal` (for V1) or `nrf52833-hal` (for V2) crates. This function performs the necessary hardware initialization steps, such as clock setup and pin configuration.
+
+3.  **High-Level Interface:** The `Board` struct exposes a high-level interface for interacting with the micro:bit's features.  For example, you can access the LED display through `board.display`, the buttons through `board.buttons`, and individual pins through `board.pins`.
+
+## Using the Board Struct
+
+Let's illustrate how to use the `Board` struct with a simple example: toggling an LED using one of the buttons.
+
+```rust
+#![no_std]
+#![no_main]
+
+use panic_halt as _; // panic handler
+
+#[cfg(feature = "v1")]
+use microbit::{Board, hal::prelude::*, hal::gpio::Level};
+
+#[cfg(feature = "v2")]
+use microbit_v2::{Board, hal::prelude::*, hal::gpio::Level};
+
+use cortex_m_rt::entry;
+
+#[entry]
+fn main() -> ! {
+    #[cfg(feature = "v1")]
+    let mut board = {
+        let peripherals = microbit::hal::pac::Peripherals::take().unwrap();
+        let core_peripherals = cortex_m::Peripherals::take().unwrap();
+        Board::new(peripherals, core_peripherals)
+    };
+
+    #[cfg(feature = "v2")]
+    let mut board = {
+        let peripherals = microbit_v2::hal::pac::Peripherals::take().unwrap();
+        let core_peripherals = cortex_m::Peripherals::take().unwrap();
+        Board::new(peripherals, core_peripherals)
+    };
+
+    // Get a handle to button A
+    #[cfg(feature = "v1")]
+    let button_a = board.buttons.button_a;
+
+    #[cfg(feature = "v2")]
+    let button_a = board.buttons.button_a;
+
+    // Configure the LED pin as output.
+    #[cfg(feature = "v1")]
+    let mut led_pin = board.display.col1;
+
+    #[cfg(feature = "v2")]
+    let mut led_pin = board.led_matrix.col1;
+
+    loop {
+        // Check if button A is pressed.
+        if button_a.is_low().unwrap() {
+            // Toggle the LED.
+            if led_pin.is_high().unwrap() {
+                led_pin.set_low().unwrap();
+            } else {
+                led_pin.set_high().unwrap();
+            }
+        }
+    }
+}
+```
+
+*Explanation:*
+
+1.  The `Board::new(peripherals, core_peripherals)` function initializes the `Board` struct. We obtain the `peripherals` and `core_peripherals` using the `take()` method, ensuring that they are only initialized once.
+2.  `board.buttons.button_a` provides direct access to the button A peripheral through the `Board` struct.
+3.  `board.display.col1` (V1) or `board.led_matrix.col1` (V2) similarly exposes the LED pin.
+4.  The code then enters a loop, checking the state of button A and toggling the LED accordingly. The `is_low()` and `is_high()` calls read the GPIO state. The `set_high()` and `set_low()` writes the GPIO state.
+
+*Example Input/Output:* Pressing button A will toggle the LED on and off. Releasing button A will do nothing.
+
+## Internal Implementation
+
+The `Board` struct acts as a central hub, delegating calls to the appropriate peripheral drivers. Let's break down what happens when `Board::new()` is called.
+
+```mermaid
+sequenceDiagram
+    participant User Code
+    participant Board::new()
+    participant HAL (nrf51-hal or nrf52833-hal)
+    participant Peripheral Drivers (display, buttons, etc.)
+
+    User Code->>Board::new(): Call Board::new(p, cp)
+    Board::new()->>HAL: HAL::gpio::Parts::new(p0, p1) (Initialize GPIO pins)
+    HAL-->>Board::new(): Return GPIO pin instances
+    Board::new()->>Peripheral Drivers: Initialize display, buttons, etc., using GPIO pins and other peripherals
+    Peripheral Drivers-->>Board::new(): Return initialized driver instances
+    Board::new()->>User Code: Return Board struct with initialized peripherals
+```
+
+*Explanation of Sequence Diagram:*
+
+1.  User code calls the `Board::new()` function, passing in the peripherals and core peripherals.
+2.  `Board::new()` initializes the GPIO pins using `HAL::gpio::Parts::new()`.
+3.  `Board::new()` then initializes the peripheral drivers (display, buttons, etc.), passing in the appropriate GPIO pins and other peripherals.
+4.  The peripheral drivers return initialized instances.
+5.  `Board::new()` returns the `Board` struct, containing all the initialized peripherals.
+
+Now, let's look at the code again, but this time focusing on the `Board::new()` function.  This example is taken from `microbit-v2/src/lib.rs`, but the structure is similar for V1.
+
+```rust
+impl Board {
+    pub fn new(peripherals: hal::pac::Peripherals, core_peripherals: hal::pac::CorePeripherals) -> Self {
+        // Implementation details for initializing the board
+        // (clock setup, peripheral configuration, etc.) are omitted here
+        // ...
+        let pins = hal::gpio::Parts::new(peripherals.P0, peripherals.P1);
+
+        let display = display::Display::new(pins.p0_13.degrade(), pins.p0_14.degrade(), pins.p0_15.degrade(), pins.p0_16.degrade(), pins.p0_19.degrade(), pins.p0_20.degrade(), pins.p0_21.degrade(), pins.p0_22.degrade());
+
+        let buttons = buttons::Buttons::new(pins.p0_14.degrade(), pins.p0_23.degrade());
+
+        let i2c1 = i2c::I2c1::new(peripherals.TWIM1, pins.p0_12, pins.p0_11);
+
+        let accelerometer = accelerometer::Accelerometer::new(i2c1);
+
+        let speaker = speaker::Speaker::new(pins.p0_00.degrade());
+
+        let adc = adc::ADC::new(peripherals.SAADC, core_peripherals);
+
+        Board {
+            display,
+            buttons,
+            accelerometer,
+            i2c1,
+            speaker,
+            pins,
+            adc,
+        }
+    }
+}
+```
+
+*Explanation:*
+
+1.  The `hal::gpio::Parts::new()` function creates a `Parts` struct containing all the available GPIO pins, consuming the `P0` and `P1` peripherals. You can explore the [GPIO Module](04_gpio_module_.md) in a later chapter for more information on GPIO.
+2.  The `display::Display::new()` function initializes the LED display, taking the appropriate GPIO pins as arguments. The `degrade()` call converts the pin types to a more generic type, allowing them to be used by the display driver.
+3.  Similarly, the `buttons::Buttons::new()` function initializes the buttons, and so on for other peripherals.
+4.  Finally, a `Board` struct is created with all the initialized peripherals and returned.
+
+The `Board` struct greatly simplifies access to hardware components, allowing higher level software modules to interact with hardware in a simpler way. For example, the [Non-Blocking Display](03_non_blocking_display_.md) can be made using the `Board` struct.
+
+## Conclusion
+
+In this chapter, you learned about the `Board` struct, its purpose, and how it centralizes access to the micro:bit's peripherals. You saw how to initialize the `Board` struct and use it to interact with the LED display and buttons.  This knowledge will be crucial as you delve deeper into the `microbit` codebase.
+
+In the next chapter, we will explore the [Non-Blocking Display](03_non_blocking_display_.md), building upon your understanding of the `Board` struct.
+
+
+---
+
+Generated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)

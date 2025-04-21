@@ -1,0 +1,231 @@
+# Chapter 3: Non-Blocking Display
+
+Following our exploration of the [Board struct](02_board_struct_.md), this chapter focuses on the Non-Blocking Display, a crucial component for creating responsive micro:bit applications.
+
+## Motivation: Keeping Your Micro:bit Responsive
+
+Imagine you're building a game on your micro:bit. You want to display a score, player position, and enemy locations on the LED matrix, *while* simultaneously reading button presses to control the player. If the display update process blocks (i.e., halts the program's execution while it updates the LEDs), the game will become laggy and unresponsive. Button presses might be missed, making the game unplayable.
+
+The Non-Blocking Display solves this problem by allowing you to update the LED matrix in the background, without interrupting the rest of your program. This ensures that your micro:bit remains responsive, even when the display is being updated.
+
+**Use Case:** A simple game where the user moves a pixel around the screen using buttons. The display needs to update frequently to show the pixel's movement smoothly, but the program also needs to constantly check for button presses. A blocking display would make the game feel sluggish.
+
+## Key Concepts
+
+1.  **Double Buffering:** The non-blocking display uses double buffering. This means there are two separate memory areas (buffers) for the display.  The program draws to the "back buffer" while the display hardware reads from the "front buffer". When drawing is complete, the buffers are swapped. This avoids flickering and tearing artifacts that can occur if the display is updated directly.
+
+2.  **Interrupts:** Display updates are driven by interrupts.  A timer triggers an interrupt at a regular interval. Within the interrupt handler, the display updates one row of the LED matrix. This happens automatically in the background.
+
+3.  **Critical Sections:** Accessing the display's buffers requires protection from data races.  If the main program tries to modify the back buffer at the same time the interrupt handler is swapping buffers, the display can become corrupted.  Critical sections are used to ensure exclusive access to shared resources like the display buffers. Disabling interrupts creates a critical section.
+
+4.  **Configurable Refresh Rate:** The refresh rate determines how often the display is updated.  A higher refresh rate results in a smoother display, but it also consumes more CPU time.  A lower refresh rate reduces CPU usage, but it can lead to flickering. The ideal refresh rate is a balance between these two factors.
+
+## Using the Non-Blocking Display
+
+Here's a basic example of how to use the non-blocking display to show a simple pattern:
+
+```rust
+#![no_std]
+#![no_main]
+
+use panic_halt as _;
+
+#[cfg(feature = "v1")]
+use microbit::{Board, display::nonblocking::Display};
+
+#[cfg(feature = "v2")]
+use microbit_v2::{Board, display::nonblocking::Display};
+
+
+use cortex_m_rt::entry;
+use embedded_hal::delay::DelayNs;
+
+#[entry]
+fn main() -> ! {
+    #[cfg(feature = "v1")]
+    let mut board = {
+        let peripherals = microbit::hal::pac::Peripherals::take().unwrap();
+        let core_peripherals = cortex_m::Peripherals::take().unwrap();
+        Board::new(peripherals, core_peripherals)
+    };
+
+    #[cfg(feature = "v2")]
+    let mut board = {
+        let peripherals = microbit_v2::hal::pac::Peripherals::take().unwrap();
+        let core_peripherals = cortex_m::Peripherals::take().unwrap();
+        Board::new(peripherals, core_peripherals)
+    };
+
+    let mut delay = cortex_m::delay::Delay::new(board.core.SYST, board.core.clock);
+
+    // Initialize the non-blocking display.
+    let mut display = Display::new(board.display);
+
+    // Define a simple image.
+    let image = [
+        [1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1],
+        [1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1],
+    ];
+
+    loop {
+        // Update the display with the image (within a critical section).
+        cortex_m::interrupt::free(|cs| {
+            display.show(cs, &image).unwrap();
+        });
+
+        // Do some other work (e.g., read button presses).
+        delay.delay_ms(500);
+    }
+}
+```
+
+*Explanation:*
+
+1.  We initialize the `Board` struct as described in the previous chapter.
+2.  We create a `Display` instance with `Display::new(board.display)`. This takes the blocking display from the board struct and converts it into the non-blocking display.
+3.  The `image` variable defines the LED pattern we want to display.
+4.  The `cortex_m::interrupt::free(|cs| { ... })` block creates a critical section.  Inside this block, we call `display.show(cs, &image).unwrap()`.  The `cs` argument is a critical section token, which is required by `display.show()` to ensure safe access to the display buffers.
+5.  After updating the display, the program waits for 500 milliseconds before repeating the process. This simulates other work being done by the micro:bit.
+
+*Example Output:* The LED matrix will display a filled-in square with a lit pixel in the center.  The rest of the program will continue to execute concurrently, so button presses (if you added code to handle them) would still be detected during the display update.
+
+## Internal Implementation
+
+The non-blocking display relies on a timer interrupt to update the LED matrix row by row. Here's a simplified sequence diagram:
+
+```mermaid
+sequenceDiagram
+    participant Main Loop
+    participant Display::show()
+    participant Interrupt Handler
+    participant Timer
+    participant Display Driver
+
+    Main Loop->>Display::show(): show(&image, cs) (within critical section)
+    Display::show()->>Display Driver: Update back buffer with image data
+    Main Loop->>Main Loop: Other tasks...
+    Timer->>Interrupt Handler: Timer interrupt
+    Interrupt Handler->>Display Driver: Update one row on the LED matrix from front buffer
+    Display Driver->>Hardware: Updates LEDs
+    Interrupt Handler->>Display Driver: Swap front and back buffers (conditionally)
+    Interrupt Handler->>Timer: Reset timer
+    Interrupt Handler->>Main Loop: Return from interrupt
+
+```
+
+*Explanation:*
+
+1.  The main loop calls `display.show()` within a critical section, providing the image data and the critical section token.
+2.  `display.show()` copies the image data into the back buffer.
+3.  The main loop continues executing other tasks.
+4.  The timer triggers an interrupt.
+5.  The interrupt handler updates one row of the LED matrix from the front buffer using the `Display Driver`.
+6.  The display driver directly manipulates the hardware to light up the LEDs.
+7.  After updating all rows, the interrupt handler swaps the front and back buffers, making the updated image visible.
+8.  The timer is reset, and the interrupt handler returns.
+
+Let's examine code snippets from the `microbit-v2/src/display/nonblocking.rs` (or `microbit/src/display/nonblocking.rs` for V1) file to understand the internal implementation:
+
+```rust
+// microbit-v2/src/display/nonblocking.rs (simplified)
+
+use crate::display::{Display as BlockingDisplay, WIDTH, HEIGHT};
+use nrf52833_hal::pac::{TIMER0, interrupt};
+use cortex_m::interrupt::{Mutex, CriticalSection};
+use core::cell::RefCell;
+use crate::hal::prelude::*;
+
+pub struct Display {
+    display: BlockingDisplay,
+    buffer: Mutex<RefCell<[[u8; WIDTH]; HEIGHT]>>,
+    // ... other fields ...
+}
+
+impl Display {
+    pub fn new(display: BlockingDisplay) -> Self {
+        // Initialize the non-blocking display
+
+        let buffer = Mutex::new(RefCell::new([[0; WIDTH]; HEIGHT]));
+        // ... timer setup (omitted for brevity) ...
+
+        Display {
+            display,
+            buffer,
+            // ...
+        }
+    }
+
+    pub fn show(&self, cs: &CriticalSection, image: &[[u8; WIDTH]; HEIGHT]) -> Result<(), ()> {
+        // Copy the image data to the back buffer
+        cortex_m::interrupt::free(|_| {
+            let mut buf = self.buffer.borrow(cs).borrow_mut();
+            *buf = *image;
+        });
+
+        Ok(())
+    }
+
+    //Interrupt handler responsible for refreshing the display is not shown
+}
+```
+
+*Explanation:*
+
+*   The `Display` struct contains the underlying `BlockingDisplay`, a buffer (`buffer`) to store the image, and other fields.  The `Mutex` and `RefCell` allow safe access to the buffer from both the main thread and the interrupt handler.
+*   The `Display::new()` function initializes the non-blocking display. It sets up the timer and configures the interrupt. Details of the timer setup are skipped for brevity.
+*   The `Display::show()` function copies the image data into the back buffer. The `cortex_m::interrupt::free(|_| { ... })` block creates a critical section to ensure exclusive access to the buffer.
+
+Now, let's add some detail to the interrupt handler. Note, again, this is a simplified example:
+
+```rust
+// microbit-v2/src/display/nonblocking.rs (simplified, cont.)
+
+impl Display {
+    // ... new and show methods ...
+
+}
+
+#[cfg(feature = "v2")]
+#[interrupt]
+fn TIMER0() {
+    // update one row and swap buffers if necessary
+    // ...
+}
+```
+
+*Explanation:*
+
+*   `TIMER0` is the interrupt handler function. This is an interrupt service routine (ISR) that is triggered every time the timer expires.
+
+**Important Note on Critical Sections:**
+
+As mentioned previously, accessing shared resources like the display buffers requires careful synchronization.  The `display.show()` method *must* be called from within a critical section. This ensures that the main program doesn't try to modify the buffer while the interrupt handler is updating the display.  Failing to use a critical section can lead to data races and corrupted display output.
+
+## Contributing Code
+
+Now that you understand the non-blocking display, you're ready to contribute code to the `microbit` project. Here's a potential contribution opportunity:
+
+**Challenge:** Implement a function to scroll text horizontally across the LED matrix using the non-blocking display.
+
+Here's how you might approach this challenge:
+
+1.  **Create a new function:** Add a new function to the `microbit-v2/src/display/nonblocking.rs` (or `microbit/src/display/nonblocking.rs` for V1) file called `scroll_text()`. This function should take a `&str` as input and scroll the text horizontally across the display.
+2.  **Implement the scrolling logic:** Inside the `scroll_text()` function, implement the logic to shift the text one column at a time. You'll need to convert the text to a bitmap representation (e.g., using a font library). Then, shift the bitmap data one column to the left on each iteration.
+3.  **Use the non-blocking display:** Use the `display.show()` function within a critical section to update the display with the scrolled text.
+4.  **Add an example:** Create a new example in the `examples/` directory that demonstrates how to use the `scroll_text()` function.
+
+Remember to follow the existing code style and include comments to explain your code.  Test your code thoroughly before submitting a pull request.
+
+## Conclusion
+
+In this chapter, you learned about the non-blocking display, its purpose, and how it works. You saw how to use it to update the LED matrix without blocking the rest of your program.  You also learned about the importance of critical sections for protecting shared resources.  Finally, you were presented with a challenge to contribute code to the `microbit` project.
+
+In the next chapter, we will explore the [GPIO Module](04_gpio_module_.md), delving into the details of how to control the general-purpose input/output pins on the micro:bit.
+
+
+---
+
+Generated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
