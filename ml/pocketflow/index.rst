@@ -32,7 +32,7 @@ gives you hands-on experience in building up a specific skill. You start from
 a very specific point A and end at a very specific point B. I believe that
 most technical writers agree on this definition but I know that other roles
 (e.g. software engineers) use different definitions. See `Optimize website speed`_
-and `Tour of Pigweed`_ for examples of tutorials (written by yours truly!).
+and `Tour of Pigweed`_ for examples of tutorials, written by yours truly!
 
 The ``explaining exactly how the code works`` part of the description suggests
 that TCK is specifically intended to help onboard new codebase contributors.
@@ -304,8 +304,8 @@ Pros:
   contributors, such as the fact that the v1 and v2 boards use different MCUs
   and cross-compilation toolchains. (I haven't fact-checked that.)
 * There's an end-user-focused section on how to use the crates, but I actually
-  think it's appropriate to ground new codebase contributors in the expected
-  usage of the codebase. "Focus on the user" etc.
+  think it's appropriate to ground new codebase contributors in how end users
+  are expected to get value from the codebase. "Focus on the user" etc.
 * The implementation section is grounded in real code now.
 
 Cons:
@@ -352,8 +352,8 @@ structure can aid learning. But it can also become boring.
 
 Pros:
 
-* This seems like a topic that is relevant to new codebase contributors.
-  The previous iteration did not cover this topic.
+* This seems like a topic that is relevant to new codebase contributors
+  that was not covered in the first generated tutorial.
 * This time, TCK correctly states that this is the end of the "tutorial".
 
 Conclusions
@@ -362,13 +362,36 @@ Conclusions
 The writing style and content is markedly improved. It's much more geared
 towards new codebase contributors.
 
-However, TCK still did not produce a tutorial, even though I defined that
-term pretty clearly in the prompts. This "book" is more of an architectural
-overview of the codebase. Which could be super valuable! But the fact remains
-that this workflow did not generate a hands-on learning experience with
-specific start and stop points.
+However, TCK still did not produce a tutorial, even though I defined that term
+pretty clearly in the prompts. This "book" is more of an architectural overview
+of the codebase. Which could still be super valuable! But the fact remains that
+this workflow did not generate a hands-on learning experience with specific
+start and stop points.
+
+So, short story long, Pocket Flow looks quite promising for bona fide
+documentation automation.
 
 --------------
 Open questions
 --------------
 
+.. _requests: https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Requests/
+.. _how-to guides: https://diataxis.fr/how-to-guides/
+
+* How does TCK perform on a truly unknown codebase? It's hard to evaluate
+  TCK against a codebase like `requests`_ because ``requests`` is an extremely
+  popular library. The underlying language model has been trained on lots of
+  content related to proper ``requests`` usage.
+
+* How does TCK perform with more powerful models? Remember that I used
+  ``gemini-2.0-flash`` for both of my attempts. The result in the second
+  attempt is already pretty promising. How much better will it be with the
+  new hotness known as Gemini 2.5 Pro??
+
+* I didn't manipulate the nodes or graph at all. Is it easy? Will it dramatically
+  change the generated output as expected?
+
+* Currently, it can only generate codebase architecture overviews. Can
+  we actually get it to generate proper `tutorials`_ and `how-to guides`_?
+
+* What the heck does "pocket flow" mean????
