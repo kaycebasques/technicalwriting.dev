@@ -39,6 +39,7 @@ sphinx_docs_library(
         "ml/huggingface.rst",
         "ml/index.rst",
         "ml/playing-nicely.rst",
+        "ml/pocketflow/index.rst",
         "ml/principles.rst",
         "ml/products.rst",
         "ml/reviews/2023.rst",
