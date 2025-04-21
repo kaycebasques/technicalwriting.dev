@@ -6,8 +6,10 @@ First impressions of Pocket Flow's tutorial generator
 
 .. _Tutorial-Codebase-Knowledge: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
 .. _Pocket Flow: https://the-pocket.github.io/PocketFlow/
+.. _Show HN\: I built an AI that turns GitHub codebases into easy tutorials: https://news.ycombinator.com/item?id=43739456
 
 These are my initial notes on `Tutorial-Codebase-Knowledge`_ (TCK) by `Pocket Flow`_.
+See also `Show HN: I built an AI that turns GitHub codebases into easy tutorials`_.
 
 ----------
 Background
