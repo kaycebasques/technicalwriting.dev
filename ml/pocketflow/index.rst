@@ -22,12 +22,15 @@ In its `README`_, TCK describes itself like this:
   and creates beginner-friendly tutorials explaining exactly how the code works.
 
 .. _tutorials: https://diataxis.fr/tutorials/
+.. _Optimize website speed: https://developer.chrome.com/docs/devtools/lighthouse
+.. _Tour of Pigweed: https://pigweed.dev/docs/showcases/sense/tutorial/
 
 As a technical writer, I have a specific understanding of `tutorials`_. A tutorial
 gives you hands-on experience in building up a specific skill. You start from
 a very specific point A and end at a very specific point B. I believe that
 most technical writers agree on this definition but I know that other roles
-(e.g. software engineers) use different definitions.
+(e.g. software engineers) use different definitions. See `Optimize website speed`_
+and `Tour of Pigweed`_ for examples of tutorials (written by yours truly!).
 
 The ``explaining exactly how the code works`` part of the description suggests
 that TCK is specifically intended to help onboard new codebase contributors.
@@ -281,7 +284,87 @@ Everything else was the same. I'm still using ``gemini-flash-2.0``.
 Evaluation
 ==========
 
-I'm not going to do another detailed pros and cons 
+`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/index.md>`_
+
+Pros:
+
+* The summary looks completely correct now.
+
+Cons:
+
+* The diagram is a lot more confusing now.
+
+`Chapter 1: microbit V1 and V2 crates <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/1.md>`_
+
+Pros:
+
+* There are some new technical details that are very relevant for new codebase
+  contributors, such as the fact that the v1 and v2 boards use different MCUs
+  and cross-compilation toolchains. (I haven't fact-checked that.)
+* There's an end-user-focused section on how to use the crates, but I actually
+  think it's appropriate to ground new codebase contributors in the expected
+  usage of the codebase. "Focus on the user" etc.
+* The implementation section is grounded in real code now.
+
+Cons:
+
+* This tutorial is supposed to introduce the most important concepts first.
+  It's debatable whether the v1 and v2 hardware editions is the most important
+  concept.
+* The cited implementation file is incorrect. TCK mentions ``microbit-v2/src/lib.rs``
+  but the code seems to actually exist in ``microbit-common/src/v2/board.rs``.
+
+`Chapter 2: Board struct <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+
+Pros:
+
+* The motivation sections seem to provide the kind of context that new codebase contributors would need.
+* The "using the board struct" code example looks complete.
+
+Cons:
+
+* TCK seemed to generate incorrect Mermaid diagram code again.
+* It got the file path wrong again.
+
+`Chapter 3: Non-Blocking Display <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+
+Pros:
+
+* It's very cool that TCK is now suggesting ways for the reader to contribute code.
+
+`Chapter 4: GPIO Module <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+
+Cons:
+
+* The "Contributing Code" section is light on details regarding the actual
+  mechanics of contributing code. E.g. it says to follow existing code style
+  but doesn't tell you how to auto-format and lint your code.
+
+`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+
+By now it's very clear that each chapter of a TCK-generated tutorial will follow
+a very specific structure i.e. template. That is both a pro and a con. Predictable
+structure can aid learning. But it can also become boring.
+
+`Chapter 6: RTIC (Real-Time Interrupt-driven Concurrency) Integration <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+
+Pros:
+
+* This seems like a topic that is relevant to new codebase contributors.
+  The previous iteration did not cover this topic.
+* This time, TCK correctly states that this is the end of the "tutorial".
+
+Conclusions
+===========
+
+The writing style and content is markedly improved. It's much more geared
+towards new codebase contributors.
+
+However, TCK still did not produce a tutorial, even though I defined that
+term pretty clearly in the prompts. This "book" is more of an architectural
+overview of the codebase. Which could be super valuable! But the fact remains
+that this workflow did not generate a hands-on learning experience with
+specific start and stop points.
 
 --------------
 Open questions

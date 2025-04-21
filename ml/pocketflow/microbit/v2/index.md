@@ -30,17 +30,17 @@ flowchart TD
 ## Chapters
 
 1. [microbit V1 and V2 Crates
-](01_microbit_v1_and_v2_crates_.md)
+](1.md)
 2. [Board struct
-](02_board_struct_.md)
+](2.md)
 3. [Non-Blocking Display
-](03_non_blocking_display_.md)
+](3.md)
 4. [GPIO Module
-](04_gpio_module_.md)
+](4.md)
 5. [HAL (Hardware Abstraction Layer)
-](05_hal__hardware_abstraction_layer__.md)
+](5.md)
 6. [RTIC (Real-Time Interrupt-driven Concurrency) Integration
-](06_rtic__real_time_interrupt_driven_concurrency__integration_.md)
+](6.md)
 
 
 ---

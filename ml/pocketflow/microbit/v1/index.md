@@ -27,15 +27,15 @@ flowchart TD
 ## Chapters
 
 1. [microbit (crate)
-](01_microbit__crate__.md)
+](1.md)
 2. [Board
-](02_board_.md)
+](2.md)
 3. [Display
-](03_display_.md)
+](3.md)
 4. [GPIO (General Purpose Input/Output) Pins
-](04_gpio__general_purpose_input_output__pins_.md)
+](4.md)
 5. [HAL (Hardware Abstraction Layer)
-](05_hal__hardware_abstraction_layer__.md)
+](5.md)
 
 
 ---
