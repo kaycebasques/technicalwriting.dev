@@ -46,7 +46,7 @@ Let's start with the `Sphinx`_ codebase. I use Sphinx in most of my docs project
 One of my top goals this year is to contribute to the upstream Sphinx codebase
 more.
 
-Spinning up TCK is easy:
+I like the simple setup process:
 
 .. code-block:: console
 
@@ -57,11 +57,10 @@ Spinning up TCK is easy:
    $ git clone https://github.com/The-Pocket/Tutorial-Codebase-Knowledge.git
    $ cd Tutorial-Codebase-Knowledge
    # Edit utils/call_llm.py to use your API key.
-   # The model can also be configured from this file.
+   # The language model can also be configured from this file.
    $ python3 -m venv venv
    $ . venv/bin/activate.fish
    $ python3 -m pip install -r requirements.txt
-   # Note that I'm including all files whereas the 
    $ time python main.py --dir ../sphinx
 
 The default model is ``gemini-2.5-pro-exp-03-25``. I quickly hit rate limits
