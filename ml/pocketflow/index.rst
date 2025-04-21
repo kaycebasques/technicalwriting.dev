@@ -159,7 +159,7 @@ Evaluation
 
 Here are my notes about each generated chapter.
 
-`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/index.md>`_
+`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/index.md>`__
 
 .. _RTOS: https://en.wikipedia.org/wiki/Real-time_operating_system
 .. _examples: https://github.com/nrf-rs/microbit/tree/main/examples
@@ -232,7 +232,7 @@ Cons:
 
 * The content is definitely not geared towards codebase contributors.
 
-`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/5.md>`_
+`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/5.md>`__
 
 Pros:
 
@@ -284,7 +284,7 @@ Everything else was the same. I'm still using ``gemini-flash-2.0``.
 Evaluation
 ==========
 
-`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/index.md>`_
+`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/index.md>`__
 
 Pros:
 
@@ -340,7 +340,7 @@ Cons:
   mechanics of contributing code. E.g. it says to follow existing code style
   but doesn't tell you how to auto-format and lint your code.
 
-`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`_
+`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v2/.md>`__
 
 By now it's very clear that each chapter of a TCK-generated tutorial will follow
 a very specific structure i.e. template. That is both a pro and a con. Predictable
