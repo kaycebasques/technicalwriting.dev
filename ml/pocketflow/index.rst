@@ -5,7 +5,7 @@ First impressions of Pocket Flow's tutorial generator
 =====================================================
 
 .. _Tutorial-Codebase-Knowledge: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
-.. _Pocket Flow: https://github.com/The-Pocket/PocketFlow
+.. _Pocket Flow: https://the-pocket.github.io/PocketFlow/
 
 These are my initial notes on `Tutorial-Codebase-Knowledge`_ (TCK) by `Pocket Flow`_.
 
@@ -36,15 +36,18 @@ React codebase, I expect to get a tutorial that teaches me how to contribute
 bug fixes or new features to the React codebase, not how to build websites
 with React.
 
-----------------
-First evaluation
-----------------
+-------------
+First attempt
+-------------
 
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 
 Let's start with the `Sphinx`_ codebase. I use Sphinx in most of my docs projects.
 One of my top goals this year is to contribute to the upstream Sphinx codebase
 more.
+
+Setup
+=====
 
 I like the simple setup process:
 
@@ -148,20 +151,12 @@ This time it worked:
       usr time  575.98 millis  998.00 micros  574.99 millis
       sys time   57.69 millis  256.00 micros   57.43 millis
 
-You can view all of the generated docs here:
+Evaluation
+==========
 
-* `Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/01_microbit__crate__.md>`_
-* `Chapter 2 <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/02_board_.md>`_
-* `Chapter 3 <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/03_display_.md>`_
-* `Chapter 4 <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/04_gpio__general_purpose_input_output__pins_.md>`_
-* `Chapter <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/05_hal__hardware_abstraction_layer__.md>`_
+Here are my notes about each generated chapter.
 
-(TCK did not generate a first chapter. It goes straight from the index to the second chapter.)
-
-The next few sections are my notes about each generated chapter.
-
-Index
-=====
+`Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/index.md>`_
 
 .. _RTOS: https://en.wikipedia.org/wiki/Real-time_operating_system
 .. _examples: https://github.com/nrf-rs/microbit/tree/main/examples
@@ -187,13 +182,12 @@ Cons:
   page I have a sense of what the codebase does, but I'm still not sure about
   what I'll accomplish by the end of the tutorial.
 
-Chapter 2
-=========
+`Chapter 1: microbit (crate) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/1.md>`_
 
 Pros:
 
-* The fact that it calls out the 2 versions of the micro:bit upfront is great.
-* It generated a timing diagram! Very cool and promising.
+* It calls out the 2 versions of the micro:bit upfront.
+* It generated a timing diagram!
 
 Cons:
 
@@ -201,14 +195,9 @@ Cons:
   seem appropriate for codebase contributors.
 * The first code example is incomplete. There should be more indication that
   this code won't work.
-* Where is chapter 1? It goes straight from index to chapter 2.
+* The ``display_character`` code example is useless.
 
-Chapter 3
-=========
-
-Pros:
-
-* The key concepts section seems like a good overview.
+`Chapter 2: Board <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/2.md>`_
 
 Cons:
 
@@ -217,15 +206,19 @@ Cons:
   was able to render the other Mermaid diagrams, I presume that TCK
   itself generated incorrect Mermaid code.
 * The simplified internal implementation seems pretty far removed from
-  the actualy real implementation. I get the desire to start from a simple
-  foundation, but as a new codebase contributor I wonder if this would do
-  more harm than good.
+  the real implementation. If our goal is to onboard new codebase contributors,
+  I'm not sure that's a good idea.
 * At this point I'm pretty sure that none of the code examples are actually
   going to work. The lack of ``#![no_main]`` and ``#![no_std]`` is a giveaway
   that none of the code is complete.
 
-Chapter 4
-=========
+`Chapter 3: Display <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/3.md>`_
+
+Pros:
+
+* The key concepts section seems like a good overview.
+
+`Chapter 4: GPIO (General Purpose Input/Output) Pins <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/4.md>`_
 
 Pros:
 
@@ -236,8 +229,7 @@ Cons:
 
 * The content is definitely not geared towards codebase contributors.
 
-Chapter 5
-=========
+`Chapter 5: HAL (Hardware Abstraction Layer) <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/5.md>`_
 
 Pros:
 
@@ -250,18 +242,48 @@ Cons:
 * The page ends by saying ``In the next chapter, we'll explore further concepts.``
   but there is no next chapter. This is the last chapter.
 
------------------
-Second evaluation
------------------
+Conclusions
+===========
+
+The stated goal of the project is to create tutorials that help onboard
+new codebase contributors. The default TCK logic running on ``gemini-2.0-flash``
+does not accomplish this goal. It does not generate tutorials, and the writing
+is not targeted at codebase contributors.
+
+However! I'm not done. It gets very interesting, very quickly.
+
+--------------
+Second attempt
+--------------
 
 .. _nodes.py: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge/blob/main/nodes.py
 
 An exciting thing about this project is that it's all open source and
-the TCK repo itself is quite simple. Let's try to customize TCK to
-fix the issues that we encountered in the first evaluation. The only
-file that we need to touch is `nodes.py`_.
+the TCK repo itself is quite simple. I'm also personally enjoying the "f*ck
+you simplicity" of core Pocket Flow itself. Check the `Pocket Flow`_ docs to
+see what I mean.
 
+Setup
+=====
+
+Let's try to customize TCK to fix the issues that we encountered in the first
+evaluation. The only file that we need to touch is `nodes.py`_. The creation of
+the tutorial happens through a series of tasks ("nodes") in a certain order
+("directed graph"). To start, we don't even need to mess with the tasks or the
+ordering of tasks. We just tweak *some* of the prompting in *some* of the tasks.
 Here's a diff of the prompts that I changed:
 
 .. literalinclude:: microbit/diff.txt
    :language: text
+
+Everything else was the same. I'm still using ``gemini-flash-2.0``.
+
+Evaluation
+==========
+
+I'm not going to do another detailed pros and cons 
+
+--------------
+Open questions
+--------------
+
