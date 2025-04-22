@@ -86,8 +86,8 @@ The default model is ``gemini-2.5-pro-exp-03-25``. I quickly hit rate limits
 with that one. The rate limit error message told me to use
 ``gemini-2.5-pro-preview-03-25`` instead but that one also hit rate limits. I
 then tried ``gemini-2.5-flash-preview-04-17`` but again, rate limits. I finally
-downgraded all the way to ``gemini-2.0-flash`` but that one had a different
-problem: 
+downgraded all the way to ``gemini-2.0-flash``. That resolved the rate limit
+issues but another problem popped up:
 
 .. code-block:: text
 
@@ -170,7 +170,8 @@ This time it worked:
 Evaluation
 ==========
 
-Here are my notes about each generated chapter.
+Here are my notes about each generated chapter. Clicking the link to
+a chapter takes you to the generated Markdown for that page.
 
 `Index <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/index.md>`__
 
@@ -188,8 +189,9 @@ Cons:
 * The first paragraph claims that the crate provides an "operating system"
   for the micro:bit. Considering that this is supposed to be a tutorial for
   codebase contributors, that sounds very misleading. I'm pretty sure this
-  crate gives you bare metal control of the micro:bit. I don't even see any
-  `RTOS`_ usage in the codebase.
+  crate gives you bare metal control of the micro:bit. The micro:bit is
+  not powerful enough to run most full-fledged operating systems. I don't
+  think the crate even uses an `RTOS`_.
 * The diagram seems incomplete. The crate provides `examples`_ of interfacing
   with the micro:bit's ADC, magnetometer, random number generator, serial,
   servo, microphone, and speaker. I would expect some of those to be covered in the
@@ -233,7 +235,7 @@ Cons:
 
 Pros:
 
-* The key concepts section seems like a good overview.
+* The "key concepts" section seems like a decent overview.
 
 `Chapter 4: GPIO (General Purpose Input/Output) Pins <https://github.com/technicalwriting/dev/blob/main/ml/pocketflow/microbit/v1/4.md>`_
 
@@ -286,7 +288,7 @@ Setup
 Let's try to customize TCK to fix the issues that we encountered in the first
 evaluation. The only file that we need to touch is `nodes.py`_. The creation of
 the tutorial happens through a series of tasks ("nodes") in a certain order
-("directed graph"). To start, we don't even need to mess with the tasks or the
+("flow"). To start, we don't even need to mess with the tasks or the
 ordering of tasks. We just tweak *some* of the prompting in *some* of the tasks.
 Here's a diff of the prompts that I changed:
 
