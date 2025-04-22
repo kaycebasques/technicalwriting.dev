@@ -390,6 +390,8 @@ Open questions
 .. _requests: https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Requests/
 .. _how-to guides: https://diataxis.fr/how-to-guides/
 
+* How do I hack TCK to work with large codebases?
+
 * How does TCK perform on a truly unknown codebase? It's hard to evaluate
   TCK against a codebase like `requests`_ because ``requests`` is an extremely
   popular library. The underlying language model has been trained on lots of
