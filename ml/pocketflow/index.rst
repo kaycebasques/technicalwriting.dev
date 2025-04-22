@@ -16,10 +16,10 @@ turns GitHub codebases into easy tutorials`_.
 Summary
 -------
 
-With its default settings, TCK was frankly a fail. It did not produce a
-tutorial, and the writing was not geared towards codebase contributors.
-BUT! With very little tweaking, I was able to get content that is very
-well-suited for codebase contributors. I was not able to get it to produce
+With its default settings, the output from TCK was frankly unusable. It did not
+produce a tutorial, and the writing was not geared towards codebase
+contributors. BUT! With very little tweaking, I was able to get content that is
+very well-suited for codebase contributors. I was not able to get it to produce
 veritable tutorial content, though.
 
 ----------

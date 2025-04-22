@@ -7,8 +7,24 @@
       A blog about technical writing by Kayce Basques.
     </description>
     <language>en-us</language>
-    <pubDate>Fri, 3 Jan 2025 12:41:04 -0700</pubDate>
+    <pubDate>Mon, 21 Apr 2025 17:12:09 -0700</pubDate>
     <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>First impressions of Pocket Flow's tutorial generator</title>
+      <link>https://technicalwriting.dev/ml/pocketflow/index.html</link>
+      <description>
+        Pocket Flow's tutorial generator describes itself as an AI agent
+        that analyzes GitHub repositories and creates beginner-friendly
+        tutorials for codebase contributors. With its default settings,
+        the output from TCK was frankly unusable. It did not produce a
+        tutorial, and the writing was not geared towards codebase contributors.
+        BUT! With very little tweaking, I was able to get content that is very
+        well-suited for codebase contributors. I was not able to get it to
+        produce veritable tutorial content, though.
+      </description>
+      <pubDate>Mon, 21 Apr 2025 17:12:09 -0700</pubDate>
+      <guid>https://technicalwriting.dev/ml/pocketflow/index.html</guid>
+    </item>
     <item>
       <title>The good, the bad, and the ugly of managing Sphinx projects with Bazel</title>
       <link>https://technicalwriting.dev/sphinx/bazel/context.html</link>
