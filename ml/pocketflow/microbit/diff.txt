@@ -44,17 +44,6 @@ index 67ab034..0efa6d1 100644
  Ideally, first explain those that are the most important or foundational, perhaps user-facing concepts or entry points. Then move to more detailed, lower-level implementation details or supporting concepts.
  
 @@ -542,12 +641,14 @@ class WriteChapters(BatchNode):
-             instruction_lang_note = f" (in {lang_cap})"
-             mermaid_lang_note = f" (Use {lang_cap} for labels/text if appropriate)"
-             code_comment_note = f" (Translate to {lang_cap} if possible, otherwise keep minimal English for clarity)"
--            link_lang_note = f" (Use the {lang_cap} chapter title from the structure above)"
-+            link_lang_note = (
-+                f" (Use the {lang_cap} chapter title from the structure above)"
-+            )
-             tone_note = f" (appropriate for {lang_cap} readers)"
- 
--
-         prompt = f"""
 -{language_instruction}Write a very beginner-friendly tutorial chapter (in Markdown format) for the project `{project_name}` about the concept: "{abstraction_name}". This is Chapter {chapter_num}.
 +{language_instruction}Write a tutorial chapter (in Markdown format) for the project `{project_name}` about the concept: "{abstraction_name}". This is Chapter {chapter_num}.
 +The tutorial must walk the user through a guided, hands-on learning experience. The goal is to help new codebase contributors onboard into our codebase. By the end of the chapter they should be able to contribute code to our codebase. You can assume that the reader is a proficient software programmer.

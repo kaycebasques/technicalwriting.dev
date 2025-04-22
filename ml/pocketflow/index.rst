@@ -8,8 +8,19 @@ First impressions of Pocket Flow's tutorial generator
 .. _Pocket Flow: https://the-pocket.github.io/PocketFlow/
 .. _Show HN\: I built an AI that turns GitHub codebases into easy tutorials: https://news.ycombinator.com/item?id=43739456
 
-These are my initial notes on `Tutorial-Codebase-Knowledge`_ (TCK) by `Pocket Flow`_.
-See also `Show HN: I built an AI that turns GitHub codebases into easy tutorials`_.
+These are my initial notes on `Tutorial-Codebase-Knowledge`_ (TCK) by `Pocket
+Flow`_. I first heard about this project here: `Show HN: I built an AI that
+turns GitHub codebases into easy tutorials`_.
+
+-------
+Summary
+-------
+
+With its default settings, TCK was frankly a fail. It did not produce a
+tutorial, and the writing was not geared towards codebase contributors.
+BUT! With very little tweaking, I was able to get content that is very
+well-suited for codebase contributors. I was not able to get it to produce
+veritable tutorial content, though.
 
 ----------
 Background
@@ -181,7 +192,7 @@ Cons:
   `RTOS`_ usage in the codebase.
 * The diagram seems incomplete. The crate provides `examples`_ of interfacing
   with the micro:bit's ADC, magnetometer, random number generator, serial,
-  servo, microphone, and speaker. I would expect those to be covered in the
+  servo, microphone, and speaker. I would expect some of those to be covered in the
   diagram.
 * Usually, tutorials start by declaring what you'll learn. After reading this
   page I have a sense of what the codebase does, but I'm still not sure about
@@ -196,8 +207,9 @@ Pros:
 
 Cons:
 
-* The writing is geared towards extreme beginners. This writing style does not
-  seem appropriate for codebase contributors.
+* The writing is heavily geared towards beginners. This writing style does not
+  seem appropriate for codebase contributors who are usually assumed to be
+  proficient programmers.
 * The first code example is incomplete. There should be more indication that
   this code won't work.
 * The ``display_character`` code example is useless.
@@ -368,8 +380,8 @@ of the codebase. Which could still be super valuable! But the fact remains that
 this workflow did not generate a hands-on learning experience with specific
 start and stop points.
 
-So, short story long, Pocket Flow looks quite promising for bona fide
-documentation automation.
+So, short story long, Pocket Flow has potential for bona fide
+documentation automation!
 
 --------------
 Open questions
