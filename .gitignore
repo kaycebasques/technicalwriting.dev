@@ -1,2 +1,4 @@
-_build
-venv
+bazel-bin
+bazel-dev
+bazel-out
+bazel-testlogs
