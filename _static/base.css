@@ -125,10 +125,6 @@ img {
     color: var(--foreground-secondary);
 }
 
-ol {
-    padding-left: 1.5em;
-}
-
 nav {
     margin: 0;
     padding: 0;
@@ -234,10 +230,6 @@ tr {
 
 .toctree-l1 {
     padding-bottom: 1em;
-}
-
-ul {
-    padding-left: 1.5em;
 }
 
 ul li p {
