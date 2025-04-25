@@ -20,6 +20,14 @@ Categories
 
 * :ref:`strategy`
 
+.. _analytics:
+
+---------
+Analytics
+---------
+
+* :ref:`sheets`
+
 .. _links:
 
 -----
@@ -98,6 +106,7 @@ Strategy
 .. toctree::
    :hidden:
 
+   analytics/index
    links/index
    ml/index
    sphinx/index
