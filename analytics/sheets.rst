@@ -14,8 +14,6 @@ night. There's also a custom menu item within Sheets to update the data
 on-demand. You can also optionally also expose the data over HTTPS to the public
 internet.
 
-.. _pigweed.dev: https://pigweed.dev
-
 .. figure:: /_static/sheets.png
 
    At the end of the tutorial, you'll get a sheet like this. (All values in this example
@@ -35,6 +33,9 @@ internet.
    
    * Average session duration and bounce rate are also provided, but those have been
      cropped out of the screenshot.
+
+.. https://docs.google.com/spreadsheets/d/1Gw8xjbGt728OjAZvd4HTZUgeA0rGYNBcoqdcgH2DvmI/edit?usp=sharing
+.. https://script.google.com/macros/s/AKfycbwGWYR08cI78BhMq_5QWiOnaMMkU-q848PMiekSJ1K12RSWmrzkNAzCeHPuK9TWs5A-rw/exec
 
 -------------
 Prerequisites
@@ -80,9 +81,10 @@ will call this list of icons **Project Control**.
    that your script needs:
 
    .. code-block:: json
+      :emphasize-lines: 3-11,14-18
 
       {
-        "timeZone": "…",
+        "timeZone": "America/Los_Angeles",
         "dependencies": {
           "enabledAdvancedServices": [
             {
@@ -92,8 +94,8 @@ will call this list of icons **Project Control**.
             }
           ]
         },
-        "exceptionLogging": "…",
-        "runtimeVersion": "…",
+        "exceptionLogging": "STACKDRIVER",
+        "runtimeVersion": "V8",
         "oauthScopes": [
           "https://www.googleapis.com/auth/spreadsheets",
           "https://www.googleapis.com/auth/script.external_request",
@@ -125,7 +127,7 @@ Create the script
 
 #. Delete all of the existing code from ``Code.gs``.
 
-#. Copy-paste the following code into ``Code.gs``:
+#. Copy-paste the following code into ``Code.gs``. Make sure to fix all the TODOs!
 
    .. code-block:: js
 
@@ -143,7 +145,12 @@ Create the script
       // License for the specific language governing permissions and limitations under
       // the License.
 
-      // TODO: Replace `TODO` with your real property ID.
+      // TODO: Replace `TODO` with your real Google Analytics property ID.
+      //
+      // To find your property ID, click the **Admin** button at the bottom-left
+      // of the Google Analytics website (assuming you're using a left-to-right
+      // language like English), then expand the **Property** section, then click
+      // **Property details**.
       const PROPERTY_ID = 'properties/TODO';
       // TODO: Replace `TODO` with your real Google Sheets ID.
       // It's the part after `https://docs.google.com/spreadsheets/d/`
@@ -434,6 +441,8 @@ Create the script
         return ContentService.createTextOutput(data).setMimeType(ContentService.MimeType.JSON);
       }
 
+#. Did you remember to fix all the TODOs in ``Code.gs``???
+
 -----------------
 Grant permissions
 -----------------
@@ -469,7 +478,7 @@ Automatically update the data nightly
 
 #. For **Select time of day** select **Midnight to 1am**.
 
-#. For **Failure notification settings** select **Notify me daily**.
+#. For **Failure notification settings** select **Notify me immediately**.
 
 #. Click **Save**.
 
@@ -494,7 +503,10 @@ generate a "top 10 most popular blog posts" page.
 
 #. For **Who has access** select **Anyone**.
 
+#. Click **Deploy**.
+
 #. Copy the **Web app** URL.
 
 #. Paste the web app URL into a browser and verify that the analytics data
    is sent as JSON.
+
