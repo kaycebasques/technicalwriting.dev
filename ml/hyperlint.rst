@@ -35,7 +35,7 @@ There are integrations with Docusaurus, Hugo, Sphinx, MkDocs, React,
 and more. It's unclear to me how these integrations work.
 
 --------------------------------------------
-Style guide issues on home and product pages
+Style guide Issues on Home and Product pages
 --------------------------------------------
 
 There are stylistic issues on the Hyperlint home and product pages. Given that
@@ -72,3 +72,44 @@ I get the need for read/write access to pull requests and issues.
 I don't understand why it wants this access to my checks, code, or
 commit statuses.
 
+-------------------
+Pull request Review
+-------------------
+
+.. _pull request: https://github.com/technicalwriting/dev/pull/2
+
+To get further, I realized I needed to submit a PR for something.
+I committed my progress on this very ``First impressions of Hyperlint``
+blog post and started a `pull request`_ for it.
+
+It was cool to see Hyperlint start automatically doing stuff in the PR,
+as expected.
+
+It added a comment:
+
+
+.. TODO: Fix the link below
+.. figure:: /_static/summar.png
+
+It's unfortunate that the link checks only work on the first 30 links
+and the results are cached. For teammates that iterate rapidly and review/submit
+PRs quickly, it sounds like these limitations would allow broken links to
+still leak into the codebase accidentally.
+
+The link checker ran as an action:
+
+.. figure:: /_static/linkcheck.png
+
+In the `details <https://github.com/technicalwriting/dev/pull/2/checks?check_run_id=41297222489>`_
+of the link check it says ``Issues found in the review`` but then all of the links listed
+below it returned HTTP status code 200…?
+
+.. figure:: /_static/linkcheck-details.png
+
+---------------
+PR review Redux
+---------------
+
+For further evaluation, I tried introducing some mistakes in my content.
+I omitted Oxford commas, broke some links and used inconsistent capitalization
+in headings.
