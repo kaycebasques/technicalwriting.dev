@@ -80,6 +80,7 @@ Miscellaneous
 =============
 
 * :ref:`pocketflow`.
+* :ref:`hyperlint`.
 
 .. _sphinx:
 
