@@ -35,6 +35,7 @@ Machine learning
    reviews/2023
    reviews/2024
    huggingface
+   hyperlint
    playing-nicely
    pocketflow/index
    products
