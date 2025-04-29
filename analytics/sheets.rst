@@ -23,8 +23,7 @@ internet.
 
    * **Views (One Year)** is how many pageviews the page got in the last 365 days.
 
-   * **Views (Last Month)** is the last 30 days. E.g. if today is September 30th,
-     this column tells you all the pageviews between September 1st and September 30th.
+   * **Views (Last Month)** is the last 30 days.
 
    * **Views (Prev. Month)** is the previous 30 days. E.g. if today is September 30th,
      this column tells you all the pageviews between August 2nd and August 31st.
@@ -41,7 +40,7 @@ internet.
 Prerequisites
 -------------
 
-I assume that you're familiar with Google Sheets and JavaScript programming.
+I assume that you're familiar with Google Sheets and JavaScript.
 
 -----
 Setup
