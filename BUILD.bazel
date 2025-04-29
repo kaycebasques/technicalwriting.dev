@@ -44,6 +44,7 @@ sphinx_docs_library(
         "ml/embeddings/overview.rst",
         "ml/embeddings/vectors.rst",
         "ml/evals.rst",
+        "ml/gn.rst",
         "ml/huggingface.rst",
         "ml/hyperlint.rst",
         "ml/index.rst",

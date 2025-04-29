@@ -32,13 +32,14 @@ Machine learning
    embeddings/overview
    embeddings/vectors
    evals
-   reviews/2023
-   reviews/2024
+   gn
    huggingface
    hyperlint
    playing-nicely
    pocketflow/index
    products
    principles
+   reviews/2023
+   reviews/2024
    stateful-assistants
    style-guide-fine-tuning
