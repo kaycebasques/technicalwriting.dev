@@ -34,262 +34,272 @@ handle this task. Also, if this approach works, there are lots of other
 problems that aren't reducible to regex automation where this approach may come
 in handy.
 
---------------
+--------
+Approach
+--------
+
+My general approach was to:
+
+* Grab all source files in the repo.
+* Filter out everything except the ``BUILD.gn`` files.
+* Filter out the ``BUILD.gn`` files that do not use the
+  docgen features.
+* Use Gemini to remove the docgen features from each ``BUILD.gn``
+  file, one-by-one. I.e. one Gemini API invocation for each file.
+
 Implementation
---------------
+==============
 
-In the root directory of the Pigweed repository I created and activated
-a virtual environment:
+#. Create and activate a virtual environment in the root directory
+   of the repository:
 
-.. code-block:: console
+   .. code-block:: console
 
-   python3 -m venv venv
-   . venv/bin/activate.fish
+      python3 -m venv venv
+      . venv/bin/activate.fish
 
-Installed the Gemini Python library:
+#. Install the Gemini Python library:
 
-.. code-block:: console
+   .. code-block:: console
 
-   python3 -m pip install google-genai
+      python3 -m pip install google-genai
 
-Saved this script as ``edit.py``:
+#. Save the following script as ``edit.py``:
 
-.. code-block:: py
+   .. code-block:: py
 
-   from json import dump, load
-   from os import environ, walk
-   from pathlib import Path
-   from subprocess import run
-   from typing import Dict
+      from json import dump, load
+      from os import environ, walk
+      from pathlib import Path
+      from subprocess import run
+      from typing import Dict
 
-   from google.genai import Client
-
-
-   def _is_ignored(root: Path, target: Path, ignored: list[Path]) -> bool:
-       """Check if Git is ignoring the path."""
-       # Ignore Git's directory itself.
-       if str(target).lower().endswith(".git"):
-           return True
-       # Check if this path matches something in ``.gitignore``.
-       command = ["git", "-C", str(root), "check-ignore", str(target)]
-       result = run(command, capture_output=True, text=True)
-       return str(target) in result.stdout
+      from google.genai import Client
 
 
-   def _is_in_ignored_dir(target: Path, ignored: list[Path]):
-       """Check if this path is in an ignored directory."""
-       for maybe_parent_dir in ignored:
-           if str(maybe_parent_dir) in str(target):
-               return True
-       return False
+      def _is_ignored(root: Path, target: Path, ignored: list[Path]) -> bool:
+          """Check if Git is ignoring the path."""
+          # Ignore Git's directory itself.
+          if str(target).lower().endswith(".git"):
+              return True
+          # Check if this path matches something in ``.gitignore``.
+          command = ["git", "-C", str(root), "check-ignore", str(target)]
+          result = run(command, capture_output=True, text=True)
+          return str(target) in result.stdout
 
 
-   def collect_paths(root: Path) -> list[Path]:
-       """ Collect all paths in the repository."""
-       paths: list[Path] = []
-       ignored: list[Path] = []
-       for current_working_dir, _, files in walk(root):
-           cwd = Path(current_working_dir)
-           if _is_in_ignored_dir(cwd, ignored):
-               continue
-           if _is_ignored(Path(root), cwd, ignored):
-               ignored.append(cwd)
-               continue
-           for file in files:
-               path = cwd / Path(file)
-               if _is_ignored(Path(root), path, ignored):
-                   ignored.append(path)
-                   continue
-               paths.append(path)
-       return paths
+      def _is_in_ignored_dir(target: Path, ignored: list[Path]):
+          """Check if this path is in an ignored directory."""
+          for maybe_parent_dir in ignored:
+              if str(maybe_parent_dir) in str(target):
+                  return True
+          return False
 
 
-   def _is_gn_build_file(path: Path) -> bool:
-       """Check if the path is a GN build file."""
-       return str(path).endswith("BUILD.gn")
+      def collect_paths(root: Path) -> list[Path]:
+          """Collect all paths in the repository."""
+          paths: list[Path] = []
+          ignored: list[Path] = []
+          for current_working_dir, _, files in walk(root):
+              cwd = Path(current_working_dir)
+              if _is_in_ignored_dir(cwd, ignored):
+                  continue
+              if _is_ignored(Path(root), cwd, ignored):
+                  ignored.append(cwd)
+                  continue
+              for file in files:
+                  path = cwd / Path(file)
+                  if _is_ignored(Path(root), path, ignored):
+                      ignored.append(path)
+                      continue
+                  paths.append(path)
+          return paths
 
 
-   def _uses_docgen(path: Path) -> bool:
-       """Check if the GN build file has any of the docgen keywords."""
-       with open(path, "r") as f:
-           content = f.read()
-       keywords = ["pw_docgen", "pw_doc_group", "pw_doc_gen"]
-       for keyword in keywords:
-           if keyword in content:
-               return True
-       return False
+      def _is_gn_build_file(path: Path) -> bool:
+          """Check if the path is a GN build file."""
+          return str(path).endswith("BUILD.gn")
 
 
-   def filter_paths(root: Path, paths: list[Path]) -> list[Path]:
-       targets = []
-       for path in paths:
-           if not _is_gn_build_file(path):
-               continue
-           if not _uses_docgen(path):
-               continue
-           if _manually_ignored(root, path):
-               continue
-           targets.append(path)
-       return targets
+      def _uses_docgen(path: Path) -> bool:
+          """Check if the GN build file has any of the docgen keywords."""
+          with open(path, "r") as f:
+              content = f.read()
+          keywords = ["pw_docgen", "pw_doc_group", "pw_size_diff", "pw_doc_gen"]
+          for keyword in keywords:
+              if keyword in content:
+                  return True
+          return False
 
 
-   def _remove_backticks(edits: str) -> str:
-       """Remove the backticks that Gemini adds at the start and end of the output."""
-       lines = edits.splitlines()
-       if lines[0].startswith("```"):
-           lines.pop(0)
-       last = len(lines) - 1
-       if lines[last].startswith("```"):
-           lines.pop(last)
-       return "\n".join(lines)
+      def filter_paths(root: Path, paths: list[Path]) -> list[Path]:
+          targets = []
+          for path in paths:
+              if not _is_gn_build_file(path):
+                  continue
+              if not _uses_docgen(path):
+                  continue
+              targets.append(path)
+          return targets
 
 
-   def remove_docgen_code(prompt: str, target: Path, gemini: Client) -> None:
-       print(f"[info] Editing {str(target)}")
-       with open(target, "r") as f:
-           src = f.read()
-       contents = prompt + src
-       response = gemini.models.generate_content(
-           model="gemini-2.0-flash",
-           contents=contents,
-       )
-       if response.text is None:
-           return
-       edits = _remove_backticks(response.text)
-       with open(target, "w") as f:
-           f.write(edits)
+      def _remove_backticks(edits: str) -> str:
+          """Remove the backticks that Gemini adds at the start and end of the output."""
+          lines = edits.splitlines()
+          if lines[0].startswith("```"):
+              lines.pop(0)
+          last = len(lines) - 1
+          if lines[last].startswith("```"):
+              lines.pop(last)
+          return "\n".join(lines)
 
 
-   def main():
-       root = Path(".")
-       paths = collect_paths(root)
-       targets = filter_paths(root, paths)
-       print(f"[info] {len(targets)} files will be edited")
-       with open("prompt.md", "r") as f:
-           prompt = f.read()
-       gemini = Client(api_key=environ["GEMINI_API_KEY"])
-       for target in targets:
-           remove_docgen_code(prompt, target, gemini)
- 
+      def remove_docgen_code(prompt: str, target: Path, gemini: Client) -> None:
+          print(f"[info] Editing {str(target)}")
+          with open(target, "r") as f:
+              src = f.read()
+          contents = prompt + src
+          response = gemini.models.generate_content(
+              model="gemini-2.0-flash",
+              contents=contents,
+          )
+          if response.text is None:
+              return
+          edits = _remove_backticks(response.text)
+          with open(target, "w") as f:
+              f.write(edits)
 
-   if __name__ == "__main__":
-       main()
 
-(This script assumes that ``git`` is a globally available command.)
+      def main():
+          root = Path(".")
+          paths = collect_paths(root)
+          targets = filter_paths(root, paths)
+          print(f"[info] {len(targets)} files will be edited")
+          with open("prompt.md", "r") as f:
+              prompt = f.read()
+          gemini = Client(api_key=environ["GEMINI_API_KEY"])
+          for target in targets:
+              remove_docgen_code(prompt, target, gemini)
 
-Saved the instructions as ``prompt.md``:
 
-.. code-block:: md
+      if __name__ == "__main__":
+          main()
 
-   # GN DOCS BUILD TURNDOWN
+   (This script assumes that ``git`` is a globally available command.)
 
-   ## BACKGROUND
+#. Save the instructions as ``prompt.md``:
 
-   Previously we built our docs with GN. Now, we build them with Bazel.
-   We no longer need the GN document generation (docgen) features.
+   .. code-block:: md
 
-   ## GOAL
+      # GN DOCS BUILD TURNDOWN
 
-   Your task is to remove the GN docgen features from the GN file that
-   I provide you. You must not modify any other lines in the GN files.
-   You must output the edited GN file with no explanation. The keywords
-   `docs`, `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` indicate docgen features
-   that need to be removed.
+      ## BACKGROUND
 
-   ## EXAMPLE
+      Previously we built our docs with GN. Now, we build them with Bazel.
+      We no longer need the GN document generation (docgen) features.
 
-   When provided a file like this:
+      ## GOAL
 
-   ```
-   # Copyright 2024 The Pigweed Authors
-   #
-   # Licensed under the Apache License, Version 2.0 (the "License"); you may not
-   # use this file except in compliance with the License. You may obtain a copy of
-   # the License at
-   #
-   #     https://www.apache.org/licenses/LICENSE-2.0
-   #
-   # Unless required by applicable law or agreed to in writing, software
-   # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-   # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-   # License for the specific language governing permissions and limitations under
-   # the License.
-   import("//build_overrides/pigweed.gni")
-   import("$dir_pw_docgen/docs.gni")
-   import("$dir_pw_unit_test/test.gni")
-   import("$dir_pw_build/target_types.gni")
-   import("$dir_pw_unit_test/test.gni")
+      Your task is to remove the GN docgen features from the GN file that
+      I provide you. You must not modify any other lines in the GN files.
+      You must output the edited GN file with no explanation. The keywords
+      `docs`, `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` indicate docgen features
+      that need to be removed.
 
-   config("public_include_path") {
-     include_dirs = [ "public" ]
-     visibility = [ ":*" ]
-   }
+      ## EXAMPLE
 
-   pw_source_set("my_library") {
-     public = [ "public/my_library/foo.h" ]
-     deps = [":an", ":unsorted", ":list"]
-     public_configs = [ ":public_include_path",
-     ]
-   }
+      When provided a file like this:
 
-   pw_doc_group("docs") { sources = [ "docs.rst" ] }
+      ```
+      # Copyright 2024 The Pigweed Authors
+      #
+      # Licensed under the Apache License, Version 2.0 (the "License"); you may not
+      # use this file except in compliance with the License. You may obtain a copy of
+      # the License at
+      #
+      #     https://www.apache.org/licenses/LICENSE-2.0
+      #
+      # Unless required by applicable law or agreed to in writing, software
+      # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+      # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+      # License for the specific language governing permissions and limitations under
+      # the License.
+      import("//build_overrides/pigweed.gni")
+      import("$dir_pw_docgen/docs.gni")
+      import("$dir_pw_unit_test/test.gni")
+      import("$dir_pw_build/target_types.gni")
+      import("$dir_pw_unit_test/test.gni")
 
-   pw_test_group("tests") {
-   }
-   ```
+      config("public_include_path") {
+        include_dirs = [ "public" ]
+        visibility = [ ":*" ]
+      }
 
-   You should modify the file like this:
+      pw_source_set("my_library") {
+        public = [ "public/my_library/foo.h" ]
+        deps = [":an", ":unsorted", ":list"]
+        public_configs = [ ":public_include_path",
+        ]
+      }
 
-   ```
-   # Copyright 2024 The Pigweed Authors
-   #
-   # Licensed under the Apache License, Version 2.0 (the "License"); you may not
-   # use this file except in compliance with the License. You may obtain a copy of
-   # the License at
-   #
-   #     https://www.apache.org/licenses/LICENSE-2.0
-   #
-   # Unless required by applicable law or agreed to in writing, software
-   # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-   # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-   # License for the specific language governing permissions and limitations under
-   # the License.
-   import("//build_overrides/pigweed.gni")
-   import("$dir_pw_unit_test/test.gni")
-   import("$dir_pw_build/target_types.gni")
-   import("$dir_pw_unit_test/test.gni")
+      pw_doc_group("docs") { sources = [ "docs.rst" ] }
 
-   config("public_include_path") {
-     include_dirs = [ "public" ]
-     visibility = [ ":*" ]
-   }
+      pw_test_group("tests") {
+      }
+      ```
 
-   pw_source_set("my_library") {
-     public = [ "public/my_library/foo.h" ]
-     deps = [":an", ":unsorted", ":list"]
-     public_configs = [ ":public_include_path",
-     ]
-   }
+      You should modify the file like this:
 
-   pw_test_group("tests") {
-   }
-   ```
+      ```
+      # Copyright 2024 The Pigweed Authors
+      #
+      # Licensed under the Apache License, Version 2.0 (the "License"); you may not
+      # use this file except in compliance with the License. You may obtain a copy of
+      # the License at
+      #
+      #     https://www.apache.org/licenses/LICENSE-2.0
+      #
+      # Unless required by applicable law or agreed to in writing, software
+      # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+      # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+      # License for the specific language governing permissions and limitations under
+      # the License.
+      import("//build_overrides/pigweed.gni")
+      import("$dir_pw_unit_test/test.gni")
+      import("$dir_pw_build/target_types.gni")
+      import("$dir_pw_unit_test/test.gni")
 
-   ## INSTRUCTIONS
+      config("public_include_path") {
+        include_dirs = [ "public" ]
+        visibility = [ ":*" ]
+      }
 
-   Remove the GN docgen features from the following file. Remember that
-   the keywords `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` represent
-   the docgen features that should be deleted. You must output the edited
-   GN file completely, without explanation.
+      pw_source_set("my_library") {
+        public = [ "public/my_library/foo.h" ]
+        deps = [":an", ":unsorted", ":list"]
+        public_configs = [ ":public_include_path",
+        ]
+      }
 
-(In the Python script, the source code of a single ``BUILD.gn`` file
-is appended after these instructions.)
+      pw_test_group("tests") {
+      }
+      ```
 
-Finally, I ran the script:
+      ## INSTRUCTIONS
 
-.. code-block:: console
+      Remove the GN docgen features from the following file. Remember that
+      the keywords `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` represent
+      the docgen features that should be deleted. You must output the edited
+      GN file completely, without explanation.
 
-   python3 edit.py
+   (In the Python script, the source code of a single ``BUILD.gn`` file
+   is appended after these instructions.)
+
+#. Run the script:
+
+   .. code-block:: console
+
+      python3 edit.py
 
 -------
 Results
@@ -354,6 +364,49 @@ a docgen feature. But I did not tell Gemini to remove this code. In this case,
 it worked OK. In a team meeting we decided that the ``pw_size_diff`` code
 should be removed. But in other situations it may be a problem if Gemini
 does not follow my instructions closely.
+
+Following the instructions too closely
+--------------------------------------
+
+In other cases, Gemini followed my instructions too closely. E.g. there was
+an ``if`` block like this:
+
+.. code-block:: gn
+
+   # We depend on emboss, so we can only compute size when emboss is in the build.
+   if (dir_pw_third_party_emboss != "") {
+     pw_size_diff("use_passthrough_proxy_size_report") {
+       title = "pw_bluetooth_proxy Passthrough Size Report"
+       base = "$dir_pw_bloat:bloat_base"
+       binaries = [
+         {
+           target = "size_report:use_passthrough_proxy"
+           label = "Create and use proxy as a simple passthrough"
+         },
+       ]
+     }
+   } else {
+     pw_size_diff("use_passthrough_proxy_size_report") {
+       title = "pw_bluetooth_proxy Passthrough Size Report"
+       base = "$dir_pw_bloat:bloat_base"
+       binaries = [
+         {
+           target = "$dir_pw_bloat:bloat_base"
+           label = "Emboss not configured."
+         },
+       ]
+     }
+   }
+
+Gemini correctly deleted the ``pw_size_diff`` code but left behind a now
+empty and useless ``if`` block:
+
+.. code-block:: gn
+
+   # We depend on emboss, so we can only compute size when emboss is in the build.
+   if (dir_pw_third_party_emboss != "") {
+   } else {
+   }
 
 Newline munging
 ---------------
