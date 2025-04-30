@@ -376,6 +376,10 @@ it worked OK. In a team meeting we decided that the ``pw_size_diff`` code
 should be removed. But in other situations it may be a problem if Gemini
 does not follow my instructions closely.
 
+There was one (and only one!) case where two extra dependencies were added
+to a rule that creates a C++ library. I'm not sure why it happened only once
+in the 235 files that were edited. Pretty weird and disconcerting.
+
 Following the instructions too closely
 --------------------------------------
 
