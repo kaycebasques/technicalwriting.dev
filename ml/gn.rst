@@ -2,8 +2,6 @@
 Automating code deletion with Gemini (and a little Python)
 ==========================================================
 
-(This post is a work in progress.)
-
 .. _Gemini 2.0 Flash: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash
 
 Today I used `Gemini 2.0 Flash`_ and a little Python to automate the process of
@@ -46,6 +44,14 @@ My general approach was to:
   docgen features.
 * Use Gemini to remove the docgen features from each ``BUILD.gn``
   file, one-by-one. I.e. one Gemini API invocation for each file.
+
+.. _Meggin Kearney: https://www.linkedin.com/in/meggin-kearney-553b3373
+
+My former boss `Meggin Kearney`_ calls this the hybrid approach to GenAI.
+For some tasks, such as listing out all files and determining relevant
+files, you're sometimes better off just using "classical automation" e.g.
+a Python script. Only use GenAI for the things that can't be handled by
+classical automation.
 
 Implementation
 ==============
@@ -305,8 +311,10 @@ Implementation
 Results
 -------
 
-230 files were modified. You can view the Gemini-generated changes at
-`https://pwrev.dev/286672 <https://pwrev.dev/286672>`_.
+235 files were modified. Perhaps most miraculously, the build continued
+to work after all of Gemini's removals, modulo a couple minor issues.
+
+Here's the change: `https://pwrev.dev/286672 <https://pwrev.dev/286672>`_
 
 Cost
 ====
@@ -332,7 +340,10 @@ for me to keep the script single-threaded, processing only one file at a time.
 It took me about a day to get the setup working completely.
 Right now, it feels a bit like I fell in xkcd's `Automation`_
 trap. But if I am able to successfully adapt this setup for other
-tasks, then I do think I will start to see some significant time savings.
+tasks with minimal further customization, then I do think I will
+start to see some significant time savings.
+
+Reviewing all 235 modified files took another 30 or 40 minutes.
 
 Accuracy
 ========

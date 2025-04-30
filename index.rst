@@ -80,6 +80,11 @@ Miscellaneous
 =============
 
 * :ref:`pocketflow`.
+
+* :ref:`gn`. Today I used `Gemini 2.0 Flash`_ and a little Python to automate
+  the process of removing code from over 200 GN build files. Here's how it
+  went.
+
 * :ref:`hyperlint`.
 
 .. _sphinx:
