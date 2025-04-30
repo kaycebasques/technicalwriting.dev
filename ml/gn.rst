@@ -1,3 +1,5 @@
+.. _gn:
+
 ==========================================================
 Automating code deletion with Gemini (and a little Python)
 ==========================================================
@@ -361,7 +363,7 @@ Extra backticks
 ---------------
 
 Due to how the prompt is structured, Gemini assumed that it should start and
-end its response with triple backtick characters (``\`\`\```). Writing a little
+end its response with triple backtick characters. Writing a little
 Python to remove the extra backticks was easier than coaxing Gemini to stop
 doing this.
 
