@@ -375,7 +375,8 @@ by removing ``pw_size_diff`` code. This was interesting, because Gemini
 was technically correct to remove this code. ``pw_size_diff`` is basically
 a docgen feature. But I did not tell Gemini to remove this code. In this case,
 it worked OK. In a team meeting we decided that the ``pw_size_diff`` code
-should be removed. But in other situations it may be a problem if Gemini
+should be removed. (I subsequently added ``pw_size_diff`` to the list of docgen
+keywords to look for.) But in other situations it may be a problem if Gemini
 does not follow my instructions closely.
 
 There was one (and only one!) case where two extra dependencies were added
