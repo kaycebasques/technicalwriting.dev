@@ -211,8 +211,8 @@ Implementation
       Your task is to remove the GN docgen features from the GN file that
       I provide you. You must not modify any other lines in the GN files.
       You must output the edited GN file with no explanation. The keywords
-      `docs`, `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` indicate docgen features
-      that need to be removed.
+      `docs`, `pw_docgen`, `pw_doc_group`, `pw_size_diff`, and `pw_doc_gen`
+      indicate docgen features that need to be removed.
 
       ## EXAMPLE
 
@@ -296,9 +296,9 @@ Implementation
       ## INSTRUCTIONS
 
       Remove the GN docgen features from the following file. Remember that
-      the keywords `pw_docgen`, `pw_doc_group`, and `pw_doc_gen` represent
-      the docgen features that should be deleted. You must output the edited
-      GN file completely, without explanation.
+      the keywords `docs`, `pw_docgen`, `pw_doc_group`, `pw_size_diff`, and
+      `pw_doc_gen` represent the docgen features that should be deleted.
+      You must output the edited GN file completely, without explanation.
 
    (In the Python script, the source code of a single ``BUILD.gn`` file
    is appended after these instructions.)
