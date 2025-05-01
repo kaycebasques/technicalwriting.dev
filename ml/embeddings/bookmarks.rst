@@ -11,3 +11,4 @@ Bookmarks
 * `Lossless Compression of Vector IDs for Approximate Nearest Neighbor Search <https://arxiv.org/abs/2501.10479>`_
 * `The Best Way to Use Text Embeddings Portably is With Parquet and Polars <https://minimaxir.com/2025/02/embeddings-parquet/>`_
 * `NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models <https://arxiv.org/abs/2405.17428>`_
+* `Mapping LLM embeddings in three dimensions <https://tomhazledine.com/mapping-llm-embeddings-in-3d/>`_
