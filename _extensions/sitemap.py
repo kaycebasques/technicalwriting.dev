@@ -6,7 +6,7 @@ def generate_sitemap(app: Sphinx, exception: Exception | None) -> None:
     for docname in app.project.docnames:
         urls.append(f"https://technicalwriting.dev/{docname}.html")
     urls.sort()
-    sitemap = "<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n"
+    sitemap = "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
     for url in urls:
         sitemap += f"  <url><loc>{url}</loc></url>\n"
     sitemap += "</urlset>\n"
