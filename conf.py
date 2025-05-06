@@ -1,8 +1,14 @@
+import pathlib
+import sys
+
+sys.path.append(str(pathlib.Path("_extensions").resolve()))
+
 author = "Kayce Basques"
-copyright = "2025, Kayce Basques"
+copyright = f"2025, {author}"
 exclude_patterns = [
     ".github",
     ".gitignore",
+    "_extensions",
     "BUILD.bazel",
     "MODULE.bazel",
     "MODULE.bazel.lock",
@@ -16,6 +22,7 @@ exclude_patterns = [
 ]
 extensions = [
     "matplotlib.sphinxext.plot_directive",
+    "sitemap",
     "sphinx_copybutton",
     "sphinx_reredirects",
 ]

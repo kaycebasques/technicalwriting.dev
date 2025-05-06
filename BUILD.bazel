@@ -15,6 +15,7 @@ sphinx_build_binary(
 sphinx_docs_library(
     name = "sources",
     srcs = [
+        "_extensions/sitemap.py",
         "_static/base.css",
         "_static/boat.png",
         "_static/dark.css",
