@@ -1,7 +1,10 @@
 import pathlib
+import os
 import sys
 
 sys.path.append(str(pathlib.Path("_extensions").resolve()))
+
+os.environ["MPLCONFIGDIR"] = "./.matplotlib"
 
 author = "Kayce Basques"
 copyright = f"2025, {author}"
