@@ -61,6 +61,7 @@ sphinx_docs_library(
         "rss.xml",
         "sphinx/index.rst",
         "sphinx/bazel/context.rst",
+        "sphinx/bazel/incremental.rst",
         "sphinx/bazel/tutorial.rst",
         "strategy/challenges.rst",
         "strategy/decisions.rst",

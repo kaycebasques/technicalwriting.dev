@@ -100,6 +100,8 @@ Sphinx
 
 * :ref:`sphazel-tutorial`.
 
+* :ref:`incremental`.
+
 .. _strategy:
 
 --------

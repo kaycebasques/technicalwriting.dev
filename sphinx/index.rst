@@ -7,3 +7,4 @@ Sphinx
 
    bazel/tutorial
    bazel/context
+   bazel/incremental
