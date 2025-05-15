@@ -45,6 +45,7 @@ sphinx_docs_library(
         "ml/embeddings/bookmarks.rst",
         "ml/embeddings/overview.rst",
         "ml/embeddings/tasks.rst",
+        "ml/embeddings/tasks.py",
         "ml/embeddings/vectors.rst",
         "ml/evals.rst",
         "ml/gn.rst",
