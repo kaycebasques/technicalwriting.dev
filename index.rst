@@ -65,6 +65,8 @@ Embeddings
   impact on technical writing is **embeddings**. What embeddings offer to technical writers is
   **the ability to discover connections between texts at previously impossible scales**.
 
+* :ref:`tasks`.
+
 * :ref:`bookmarks`. Embeddings-related papers, projects, etc.
 
 .. _ml-reviews:

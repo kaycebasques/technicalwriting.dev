@@ -30,6 +30,7 @@ Machine learning
 
    embeddings/bookmarks
    embeddings/overview
+   embeddings/tasks
    embeddings/vectors
    evals
    gn
