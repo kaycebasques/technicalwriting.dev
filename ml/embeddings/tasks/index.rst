@@ -131,7 +131,7 @@ Suppose you invoke the Gemini Embedding API with a task type specified, like thi
    gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
    result = gemini.models.embed_content(
        model="gemini-embedding-exp-03-07",
-       contents="I’m outta here! I’m not gonna play second… banana-fiddle to some stupid old baby.",
+       contents="mango",
        config=types.EmbedContentConfig(task_type="CLUSTERING")
    )
 
