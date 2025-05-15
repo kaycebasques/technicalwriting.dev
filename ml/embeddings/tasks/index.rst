@@ -15,6 +15,10 @@ Understanding task types in the Gemini Embedding API
 .. _python-genai: https://github.com/googleapis/python-genai
 .. _Python client: https://github.com/googleapis/python-genai/blob/copybara/747683395/google/genai/models.py#L604
 .. _discussion: https://news.ycombinator.com/item?id=43964392
+.. _gut check: https://www.merriam-webster.com/dictionary/gut%20check
+.. _Visualizing embeddings with t-SNE: https://github.com/google/generative-ai-docs/blob/main/site/en/gemini-api/tutorials/clustering_with_embeddings.ipynb
+.. _Spruce Goose: https://en.wikipedia.org/wiki/Hughes_H-4_Hercules
+.. _k-means: https://developers.google.com/machine-learning/glossary#k-means
 
 The `models.embedContent`_ method of the Gemini Embedding API supports a
 ``taskType`` parameter.  This parameter lets you specify what kind of task the
@@ -169,15 +173,15 @@ to embed:
 
    # …
 
--------------------------
-Variance for a given term
--------------------------
+--------
+Variance
+--------
 
 Suppose that we generate an embedding for eack task type. The target text
 (``mango``) remains the same. The only difference between the embeddings is the
 task type. How much do each of these embeddings vary from one another?
 
-.. literalinclude:: tasks.py
+.. literalinclude:: variance.py
    :language: py
 
 I was curious about two things:
@@ -241,3 +245,80 @@ Insights:
 * ``CODE_RETRIEVAL_QUERY`` is the least similar task type to ``SEMANTIC_SIMILARITY``,
   which makes intuitive sense to me because code retrieval is a very different type
   of task.
+
+----------
+Clustering
+----------
+
+Let's wrap this up with a `gut check`_ of the ``CLUSTERING`` task type. See
+`Visualizing embeddings with t-SNE`_ if you're not familiar with clustering.
+
+For our experiment, we'll provide a list of related terms (fruit names) and one
+unrelated term (`Spruce Goose`_). We'll use ``mango`` as the baseline again.
+First, we'll generate an embedding for each term, with ``CLUSTERING`` specified
+as the task type. When we calculate the dot product for ``mango`` against all
+the other terms, the dot product should be high for the other fruit terms, and
+much lower for ``Spruce Goose``. We'll run the calculation again, but this time
+we'll use ``CODE_RETRIEVAL_QUERY``. All of the dot products should be much
+lower, because this is not a relevant task type.
+
+This is a very naive, simple experiment. `Visualizing embeddings with t-SNE`_ suggests
+that other algorithms like `k-means`_ are required for clustering tasks, not dot product.
+But nonetheless it seems valid to use dot product here for some very basic
+intuition building.
+
+Here's the experiment:
+
+.. literalinclude:: clusters.py
+   :language: py
+
+And the results:
+
+.. code-block:: output
+
+   ==========
+   CLUSTERING
+   ---
+   Comparing strawberry to mango
+   Dot product: 0.9185685857057041
+   ---
+   Comparing watermelon to mango
+   Dot product: 0.9190111016753526
+   ---
+   Comparing orange to mango
+   Dot product: 0.890292211194551
+   ---
+   Comparing jabuticaba to mango
+   Dot product: 0.8834979090318306
+   ---
+   Comparing feijoa to mango
+   Dot product: 0.8872394629362534
+   ---
+   Comparing Spruce Goose to mango
+   Dot product: 0.809432604102317
+   ==========
+   CODE_RETRIEVAL_QUERY
+   ---
+   Comparing strawberry to mango
+   Dot product: 0.8113004271316064
+   ---
+   Comparing watermelon to mango
+   Dot product: 0.8067946179014334
+   ---
+   Comparing orange to mango
+   Dot product: 0.7946552697681786
+   ---
+   Comparing jabuticaba to mango
+   Dot product: 0.8072596994606935
+   ---
+   Comparing feijoa to mango
+   Dot product: 0.8202925440462843
+   ---
+   Comparing Spruce Goose to mango
+   Dot product: 0.7863710189133477
+
+Hypotheses confirmed. For the ``CLUSTERING`` embeddings, the dot products
+between the fruit terms are between 0.88 and 0.91. Whereas the dot product
+between ``mango`` and ``Spruce Goose`` is noticeably lower at 0.80. And
+the dot products for all the ``CODE_RETRIEVAL_QUERY`` embeddings are all
+noticeably lower than the ``CLUSTERING`` embeddings.

@@ -43,6 +43,6 @@ for task_type in embeddings:
         if baseline_embedding[index] == value:
             n += 1
     print(f"Identical dimensions: {n}")
-    # Magnitude and direction comparison of the two vectors.
+    # Magnitude/direction-wise comparison of the overall vectors.
     dot_product = np.dot(target, baseline_embedding)
     print(f"Dot product: {dot_product}")
