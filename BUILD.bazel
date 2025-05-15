@@ -24,6 +24,7 @@ sphinx_docs_library(
         "_static/linkcheck-details.png",
         "_static/linter.jpg",
         "_static/logo.svg",
+        "_static/mathjax.js",
         "_static/mindblown.gif",
         "_static/namespace.png",
         "_static/sheets.png",

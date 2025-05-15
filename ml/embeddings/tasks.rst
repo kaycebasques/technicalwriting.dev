@@ -72,9 +72,9 @@ each training example includes a task string:
 
   The Gemini Embedding model was trained with a noise-contrastive estimation (NCE)
   loss with inbatch negatives. The exact loss differs slightly depending on the
-  stage of training. In general, a training example includes a query 𝑞\ :sub:`𝑖`,
-  a positive target 𝑝\ :sup:`+`\ :sub:`𝑖` and (optionally) a hard negative target
-  𝑝\ :sup:`−`\ :sub:`𝑖`. Each example also has a prescribed task string 𝑡, for
+  stage of training. In general, a training example includes a query :math:`q_i`,
+  a positive target :math:`p\ \overset{+}{_i}` and (optionally) a hard negative target
+  :math:`p\ \overset{-}{_i}`. Each example also has a prescribed task string :math:`t`, for
   example "question answering" or "fact checking", describing the nature of the task.
 
 Section 1. suggests that the `Gecko paper`_ has more information about task types:
@@ -97,7 +97,7 @@ explicitly prepended as an instruction in the training input:
 Another line from the Gecko paper suggesting that the task type is explicitly
 prepended as an instruction:
 
-  We first prepend a dataset-specific task feature 𝑡 before each
+  We first prepend a dataset-specific task feature :math:`t` before each
   query, so each query is informed of which task is being optimized.
 
 .. _unlabeled: https://en.wikipedia.org/wiki/Labeled_data
@@ -105,8 +105,8 @@ prepended as an instruction:
 The Gecko paper also discusses a clever synthetic data generation technique
 related to task types. They use a text generation model to generate a relevant
 task and query for a given `unlabeled`_ passage from the web. Presumably, the
-text generation model is told to pick from one of the options described in
-:ref:`types`.
+text generation model is asked which of the task type options, as described in
+:ref:`types`, is most appropriate for the passage.
 
 ---------
 Inference
@@ -131,9 +131,9 @@ is literally prepended as an instruction before the text that you want to embed:
 
 .. code-block:: py
 
-   task_name_to_instruct = {"example": "Given a question, retrieve passages that answer the question",}
+   task_name_to_instruct = {"example": "Given a question, retrieve passages that answer the question"}
 
-   query_prefix = "Instruct: "+task_name_to_instruct["example"]+"\nQuery: "
+   query_prefix = "Instruct: " + task_name_to_instruct["example"] + "\nQuery: "
    queries = [
        'are judo throws allowed in wrestling?', 
        'how to become a radiology technician in michigan?'
@@ -154,6 +154,3 @@ is literally prepended as an instruction before the text that you want to embed:
    query_embeddings = model.encode(queries, instruction=query_prefix, max_length=max_length)
    passage_embeddings = model.encode(passages, instruction=passage_prefix, max_length=max_length)
 
-   # normalize embeddings
-   query_embeddings = F.normalize(query_embeddings, p=2, dim=1)
-   passage_embeddings = F.normalize(passage_embeddings, p=2, dim=1)

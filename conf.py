@@ -26,6 +26,7 @@ exclude_patterns = [
 extensions = [
     "matplotlib.sphinxext.plot_directive",
     "sitemap",
+    "sphinx.ext.mathjax",
     "sphinx_copybutton",
     "sphinx_reredirects",
 ]
