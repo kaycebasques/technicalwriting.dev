@@ -4,11 +4,23 @@
     <title>technicalwriting.dev</title>
     <link>https://technicalwriting.dev</link>
     <description>
-      A blog about technical writing by Kayce Basques.
+      Field notes from the frontier of technical writing.
     </description>
     <language>en-us</language>
-    <pubDate>Tue, 29 Apr 2025 17:17:17 -0700</pubDate>
+    <pubDate>Thu, 15 May 2025 15:34:40 -0700</pubDate>
     <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Understanding task types in the Gemini Embedding API</title>
+      <link>https://technicalwriting.dev/ml/embeddings/tasks/index.html</link>
+      <description>
+        The models.embedContent method of the Gemini Embedding API supports a
+        taskType parameter. This parameter lets you specify what kind of task the
+        embedding will be used for. Let's try to deduce how this "task type" thing
+        works.
+      </description>
+      <pubDate>Thu, 15 May 2025 15:34:40 -0700</pubDate>
+      <guid>https://technicalwriting.dev/ml/embeddings/tasks/index.html</guid>
+    </item>
     <item>
       <title>Automating code deletion with Gemini (and a little Python)</title>
       <link>https://technicalwriting.dev/ml/gn.html</link>
