@@ -18,12 +18,12 @@ task_types = [
     "CODE_RETRIEVAL_QUERY"
 ]
 embeddings = {}
-undisputed_best_fruit_in_world = "mango"
+term = "mango"
 
 for task_type in task_types:
     result = gemini.models.embed_content(
         model="gemini-embedding-exp-03-07",
-        contents=undisputed_best_fruit_in_world,
+        contents=term,
         config=types.EmbedContentConfig(task_type=task_type)
     )
     embeddings[task_type] = result.embeddings[0].values
