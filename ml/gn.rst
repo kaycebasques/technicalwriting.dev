@@ -389,7 +389,7 @@ Following the instructions too closely
 In other cases, Gemini followed my instructions too closely. E.g. there was
 an ``if`` block like this:
 
-.. code-block:: gn
+.. code-block:: py
 
    # We depend on emboss, so we can only compute size when emboss is in the build.
    if (dir_pw_third_party_emboss != "") {
@@ -419,7 +419,7 @@ an ``if`` block like this:
 Gemini correctly deleted the ``pw_size_diff`` code but left behind a now
 empty and useless ``if`` block:
 
-.. code-block:: gn
+.. code-block:: py
 
    # We depend on emboss, so we can only compute size when emboss is in the build.
    if (dir_pw_third_party_emboss != "") {
