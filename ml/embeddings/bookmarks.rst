@@ -13,3 +13,5 @@ Bookmarks
 * `NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models <https://arxiv.org/abs/2405.17428>`_
 * `Mapping LLM embeddings in three dimensions <https://tomhazledine.com/mapping-llm-embeddings-in-3d/>`_
 * `Harnessing the universal geometry of embeddings <https://news.ycombinator.com/item?id=44054425>`_
+* `Vertex AI quickstart <https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal#gen-ai-sdk-for-python>`_
+* `A visual exploration of vector embeddings <https://news.ycombinator.com/item?id=44120306>`_
