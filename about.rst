@@ -15,8 +15,14 @@ About
 Email me
 --------
 
-You're welcome to email me. To get my email address, open up a web browser
-console on this page and then run this JavaScript: ``getEmailAddress()``
+You're welcome to email me. To get my email address:
+
+#. Open up your web browser's developer tools.
+#. Run this JavaScript in the console:
+   
+   .. code-block:: js
+
+      getEmailAddress()
 
 .. raw:: html
 
