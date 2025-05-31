@@ -120,6 +120,8 @@ Strategy
 .. toctree::
    :hidden:
 
+   404
+   about
    analytics/index
    links/index
    ml/index

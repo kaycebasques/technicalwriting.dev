@@ -35,6 +35,8 @@ sphinx_docs_library(
         "_static/supabase-ai-answer.png",
         "_static/supabase-ai-question.png",
         "_templates/layout.html",
+        "404.rst",
+        "about.rst",
         "analytics/index.rst",
         "analytics/sheets.rst",
         "index.rst",
