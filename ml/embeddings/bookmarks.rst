@@ -15,3 +15,5 @@ Bookmarks
 * `Harnessing the universal geometry of embeddings <https://news.ycombinator.com/item?id=44054425>`_
 * `Vertex AI quickstart <https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal#gen-ai-sdk-for-python>`_
 * `A visual exploration of vector embeddings <https://news.ycombinator.com/item?id=44120306>`_
+* `Train the best sentence embedding model ever with 1B training pairs <https://discuss.huggingface.co/t/train-the-best-sentence-embedding-model-ever-with-1b-training-pairs/7354>`_
+* `sentence-transformers/all-MiniLM-L6-v2 <https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>`_
