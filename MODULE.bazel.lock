@@ -232,7 +232,7 @@
         "bzlTransitiveDigest": "+D0pesQWVftxFrDIgPJ73YmMFEclIwO1GnRJt0A/vOM=",
         "usagesDigest": "IC7R+ye57rjIAuiEplQeTSHz/olzq+L8RBYxqMNhatg=",
         "recordedFileInputs": {
-          "@@//requirements.lock": "d5e1b89e7b1c0eb2af7ae0ff88e254aeb55632b550ec29adf2b34f2e813a49a8",
+          "@@//requirements.lock": "a4099d5cde09bad50200d589b380d84707bc369cfa3fc8f6a94f59e13eec3254",
           "@@protobuf+//python/requirements.txt": "983be60d3cec4b319dcab6d48aeb3f5b2f7c3350f26b3a9e97486c37967c73c5",
           "@@rules_fuzzing+//fuzzing/requirements.txt": "ab04664be026b632a0d2a2446c4f65982b7654f5b6851d2f9d399a19b7242a5b",
           "@@rules_python+//tools/publish/requirements_darwin.txt": "095d4a4f3d639dce831cd493367631cd51b53665292ab20194bac2c0c6458fa8",
@@ -359,7 +359,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "certifi==2025.1.31"
+              "requirement": "certifi==2025.4.26"
             }
           },
           "pypi_311_charset_normalizer": {
@@ -368,7 +368,16 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "charset-normalizer==3.4.1"
+              "requirement": "charset-normalizer==3.4.2"
+            }
+          },
+          "pypi_311_click": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "click==8.2.1"
             }
           },
           "pypi_311_contourpy": {
@@ -377,7 +386,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "contourpy==1.3.1"
+              "requirement": "contourpy==1.3.2"
             }
           },
           "pypi_311_cycler": {
@@ -398,13 +407,58 @@
               "requirement": "docutils==0.21.2"
             }
           },
+          "pypi_311_einops": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "einops==0.8.1"
+            }
+          },
+          "pypi_311_filelock": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "filelock==3.18.0"
+            }
+          },
           "pypi_311_fonttools": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "fonttools==4.56.0"
+              "requirement": "fonttools==4.58.2"
+            }
+          },
+          "pypi_311_fsspec": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "fsspec==2025.5.1"
+            }
+          },
+          "pypi_311_hf_xet": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "hf-xet==1.1.3"
+            }
+          },
+          "pypi_311_huggingface_hub": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "huggingface-hub==0.32.5"
             }
           },
           "pypi_311_idna": {
@@ -434,6 +488,15 @@
               "requirement": "Jinja2==3.1.6"
             }
           },
+          "pypi_311_joblib": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "joblib==1.5.1"
+            }
+          },
           "pypi_311_kiwisolver": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
@@ -461,6 +524,15 @@
               "requirement": "matplotlib==3.9.2"
             }
           },
+          "pypi_311_mpmath": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "mpmath==1.3.0"
+            }
+          },
           "pypi_311_networkx": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
@@ -470,13 +542,148 @@
               "requirement": "networkx==3.4.2"
             }
           },
+          "pypi_311_nltk": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nltk==3.9.1"
+            }
+          },
           "pypi_311_numpy": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "numpy==2.2.4"
+              "requirement": "numpy==2.3.0"
+            }
+          },
+          "pypi_311_nvidia_cublas_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cublas-cu12==12.6.4.1"
+            }
+          },
+          "pypi_311_nvidia_cuda_cupti_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cuda-cupti-cu12==12.6.80"
+            }
+          },
+          "pypi_311_nvidia_cuda_nvrtc_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cuda-nvrtc-cu12==12.6.77"
+            }
+          },
+          "pypi_311_nvidia_cuda_runtime_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cuda-runtime-cu12==12.6.77"
+            }
+          },
+          "pypi_311_nvidia_cudnn_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cudnn-cu12==9.5.1.17"
+            }
+          },
+          "pypi_311_nvidia_cufft_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cufft-cu12==11.3.0.4"
+            }
+          },
+          "pypi_311_nvidia_cufile_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cufile-cu12==1.11.1.6"
+            }
+          },
+          "pypi_311_nvidia_curand_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-curand-cu12==10.3.7.77"
+            }
+          },
+          "pypi_311_nvidia_cusolver_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cusolver-cu12==11.7.1.2"
+            }
+          },
+          "pypi_311_nvidia_cusparse_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cusparse-cu12==12.5.4.2"
+            }
+          },
+          "pypi_311_nvidia_cusparselt_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-cusparselt-cu12==0.6.3"
+            }
+          },
+          "pypi_311_nvidia_nccl_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-nccl-cu12==2.26.2"
+            }
+          },
+          "pypi_311_nvidia_nvjitlink_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-nvjitlink-cu12==12.6.85"
+            }
+          },
+          "pypi_311_nvidia_nvtx_cu12": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "nvidia-nvtx-cu12==12.6.77"
             }
           },
           "pypi_311_packaging": {
@@ -485,7 +692,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "packaging==24.2"
+              "requirement": "packaging==25.0"
             }
           },
           "pypi_311_pillow": {
@@ -494,7 +701,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "pillow==11.1.0"
+              "requirement": "pillow==11.2.1"
             }
           },
           "pypi_311_pygments": {
@@ -524,13 +731,76 @@
               "requirement": "python-dateutil==2.9.0.post0"
             }
           },
+          "pypi_311_pyyaml": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "PyYAML==6.0.2"
+            }
+          },
+          "pypi_311_regex": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "regex==2024.11.6"
+            }
+          },
           "pypi_311_requests": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "requests==2.32.3"
+              "requirement": "requests==2.32.4"
+            }
+          },
+          "pypi_311_safetensors": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "safetensors==0.5.3"
+            }
+          },
+          "pypi_311_scikit_learn": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "scikit-learn==1.7.0"
+            }
+          },
+          "pypi_311_scipy": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "scipy==1.15.3"
+            }
+          },
+          "pypi_311_sentence_transformers": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "sentence-transformers==4.1.0"
+            }
+          },
+          "pypi_311_setuptools": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "setuptools==80.9.0"
             }
           },
           "pypi_311_six": {
@@ -548,7 +818,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "snowballstemmer==2.2.0"
+              "requirement": "snowballstemmer==3.0.1"
             }
           },
           "pypi_311_sphinx": {
@@ -567,6 +837,24 @@
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
               "requirement": "sphinx-copybutton==0.5.2"
+            }
+          },
+          "pypi_311_sphinx_genai": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "sphinx-genai==0.0.4"
+            }
+          },
+          "pypi_311_sphinx_genai_huggingface": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "sphinx-genai-huggingface==0.0.4"
             }
           },
           "pypi_311_sphinx_reredirects": {
@@ -632,13 +920,85 @@
               "requirement": "sphinxcontrib-serializinghtml==2.0.0"
             }
           },
+          "pypi_311_sympy": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "sympy==1.14.0"
+            }
+          },
+          "pypi_311_threadpoolctl": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "threadpoolctl==3.6.0"
+            }
+          },
+          "pypi_311_tokenizers": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "tokenizers==0.21.1"
+            }
+          },
+          "pypi_311_torch": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "torch==2.7.1"
+            }
+          },
+          "pypi_311_tqdm": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "tqdm==4.67.1"
+            }
+          },
+          "pypi_311_transformers": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "transformers==4.52.4"
+            }
+          },
+          "pypi_311_triton": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "triton==3.3.1"
+            }
+          },
+          "pypi_311_typing_extensions": {
+            "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
+            "attributes": {
+              "dep_template": "@pypi//{name}:{target}",
+              "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
+              "repo": "pypi_311",
+              "requirement": "typing_extensions==4.14.0"
+            }
+          },
           "pypi_311_urllib3": {
             "repoRuleId": "@@rules_python+//python/private/pypi:whl_library.bzl%whl_library",
             "attributes": {
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "urllib3==2.3.0"
+              "requirement": "urllib3==2.4.0"
             }
           },
           "rules_fuzzing_py_deps_310_absl_py": {
@@ -2972,28 +3332,60 @@
                 "babel": "{\"pypi_311_babel\":[{\"version\":\"3.11\"}]}",
                 "certifi": "{\"pypi_311_certifi\":[{\"version\":\"3.11\"}]}",
                 "charset_normalizer": "{\"pypi_311_charset_normalizer\":[{\"version\":\"3.11\"}]}",
+                "click": "{\"pypi_311_click\":[{\"version\":\"3.11\"}]}",
                 "contourpy": "{\"pypi_311_contourpy\":[{\"version\":\"3.11\"}]}",
                 "cycler": "{\"pypi_311_cycler\":[{\"version\":\"3.11\"}]}",
                 "docutils": "{\"pypi_311_docutils\":[{\"version\":\"3.11\"}]}",
+                "einops": "{\"pypi_311_einops\":[{\"version\":\"3.11\"}]}",
+                "filelock": "{\"pypi_311_filelock\":[{\"version\":\"3.11\"}]}",
                 "fonttools": "{\"pypi_311_fonttools\":[{\"version\":\"3.11\"}]}",
+                "fsspec": "{\"pypi_311_fsspec\":[{\"version\":\"3.11\"}]}",
+                "hf_xet": "{\"pypi_311_hf_xet\":[{\"version\":\"3.11\"}]}",
+                "huggingface_hub": "{\"pypi_311_huggingface_hub\":[{\"version\":\"3.11\"}]}",
                 "idna": "{\"pypi_311_idna\":[{\"version\":\"3.11\"}]}",
                 "imagesize": "{\"pypi_311_imagesize\":[{\"version\":\"3.11\"}]}",
                 "jinja2": "{\"pypi_311_jinja2\":[{\"version\":\"3.11\"}]}",
+                "joblib": "{\"pypi_311_joblib\":[{\"version\":\"3.11\"}]}",
                 "kiwisolver": "{\"pypi_311_kiwisolver\":[{\"version\":\"3.11\"}]}",
                 "markupsafe": "{\"pypi_311_markupsafe\":[{\"version\":\"3.11\"}]}",
                 "matplotlib": "{\"pypi_311_matplotlib\":[{\"version\":\"3.11\"}]}",
+                "mpmath": "{\"pypi_311_mpmath\":[{\"version\":\"3.11\"}]}",
                 "networkx": "{\"pypi_311_networkx\":[{\"version\":\"3.11\"}]}",
+                "nltk": "{\"pypi_311_nltk\":[{\"version\":\"3.11\"}]}",
                 "numpy": "{\"pypi_311_numpy\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cublas_cu12": "{\"pypi_311_nvidia_cublas_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cuda_cupti_cu12": "{\"pypi_311_nvidia_cuda_cupti_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cuda_nvrtc_cu12": "{\"pypi_311_nvidia_cuda_nvrtc_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cuda_runtime_cu12": "{\"pypi_311_nvidia_cuda_runtime_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cudnn_cu12": "{\"pypi_311_nvidia_cudnn_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cufft_cu12": "{\"pypi_311_nvidia_cufft_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cufile_cu12": "{\"pypi_311_nvidia_cufile_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_curand_cu12": "{\"pypi_311_nvidia_curand_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cusolver_cu12": "{\"pypi_311_nvidia_cusolver_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cusparse_cu12": "{\"pypi_311_nvidia_cusparse_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_cusparselt_cu12": "{\"pypi_311_nvidia_cusparselt_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_nccl_cu12": "{\"pypi_311_nvidia_nccl_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_nvjitlink_cu12": "{\"pypi_311_nvidia_nvjitlink_cu12\":[{\"version\":\"3.11\"}]}",
+                "nvidia_nvtx_cu12": "{\"pypi_311_nvidia_nvtx_cu12\":[{\"version\":\"3.11\"}]}",
                 "packaging": "{\"pypi_311_packaging\":[{\"version\":\"3.11\"}]}",
                 "pillow": "{\"pypi_311_pillow\":[{\"version\":\"3.11\"}]}",
                 "pygments": "{\"pypi_311_pygments\":[{\"version\":\"3.11\"}]}",
                 "pyparsing": "{\"pypi_311_pyparsing\":[{\"version\":\"3.11\"}]}",
                 "python_dateutil": "{\"pypi_311_python_dateutil\":[{\"version\":\"3.11\"}]}",
+                "pyyaml": "{\"pypi_311_pyyaml\":[{\"version\":\"3.11\"}]}",
+                "regex": "{\"pypi_311_regex\":[{\"version\":\"3.11\"}]}",
                 "requests": "{\"pypi_311_requests\":[{\"version\":\"3.11\"}]}",
+                "safetensors": "{\"pypi_311_safetensors\":[{\"version\":\"3.11\"}]}",
+                "scikit_learn": "{\"pypi_311_scikit_learn\":[{\"version\":\"3.11\"}]}",
+                "scipy": "{\"pypi_311_scipy\":[{\"version\":\"3.11\"}]}",
+                "sentence_transformers": "{\"pypi_311_sentence_transformers\":[{\"version\":\"3.11\"}]}",
+                "setuptools": "{\"pypi_311_setuptools\":[{\"version\":\"3.11\"}]}",
                 "six": "{\"pypi_311_six\":[{\"version\":\"3.11\"}]}",
                 "snowballstemmer": "{\"pypi_311_snowballstemmer\":[{\"version\":\"3.11\"}]}",
                 "sphinx": "{\"pypi_311_sphinx\":[{\"version\":\"3.11\"}]}",
                 "sphinx_copybutton": "{\"pypi_311_sphinx_copybutton\":[{\"version\":\"3.11\"}]}",
+                "sphinx_genai": "{\"pypi_311_sphinx_genai\":[{\"version\":\"3.11\"}]}",
+                "sphinx_genai_huggingface": "{\"pypi_311_sphinx_genai_huggingface\":[{\"version\":\"3.11\"}]}",
                 "sphinx_reredirects": "{\"pypi_311_sphinx_reredirects\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_applehelp": "{\"pypi_311_sphinxcontrib_applehelp\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_devhelp": "{\"pypi_311_sphinxcontrib_devhelp\":[{\"version\":\"3.11\"}]}",
@@ -3001,6 +3393,14 @@
                 "sphinxcontrib_jsmath": "{\"pypi_311_sphinxcontrib_jsmath\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_qthelp": "{\"pypi_311_sphinxcontrib_qthelp\":[{\"version\":\"3.11\"}]}",
                 "sphinxcontrib_serializinghtml": "{\"pypi_311_sphinxcontrib_serializinghtml\":[{\"version\":\"3.11\"}]}",
+                "sympy": "{\"pypi_311_sympy\":[{\"version\":\"3.11\"}]}",
+                "threadpoolctl": "{\"pypi_311_threadpoolctl\":[{\"version\":\"3.11\"}]}",
+                "tokenizers": "{\"pypi_311_tokenizers\":[{\"version\":\"3.11\"}]}",
+                "torch": "{\"pypi_311_torch\":[{\"version\":\"3.11\"}]}",
+                "tqdm": "{\"pypi_311_tqdm\":[{\"version\":\"3.11\"}]}",
+                "transformers": "{\"pypi_311_transformers\":[{\"version\":\"3.11\"}]}",
+                "triton": "{\"pypi_311_triton\":[{\"version\":\"3.11\"}]}",
+                "typing_extensions": "{\"pypi_311_typing_extensions\":[{\"version\":\"3.11\"}]}",
                 "urllib3": "{\"pypi_311_urllib3\":[{\"version\":\"3.11\"}]}"
               },
               "packages": [
@@ -3008,28 +3408,60 @@
                 "babel",
                 "certifi",
                 "charset_normalizer",
+                "click",
                 "contourpy",
                 "cycler",
                 "docutils",
+                "einops",
+                "filelock",
                 "fonttools",
+                "fsspec",
+                "hf_xet",
+                "huggingface_hub",
                 "idna",
                 "imagesize",
                 "jinja2",
+                "joblib",
                 "kiwisolver",
                 "markupsafe",
                 "matplotlib",
+                "mpmath",
                 "networkx",
+                "nltk",
                 "numpy",
+                "nvidia_cublas_cu12",
+                "nvidia_cuda_cupti_cu12",
+                "nvidia_cuda_nvrtc_cu12",
+                "nvidia_cuda_runtime_cu12",
+                "nvidia_cudnn_cu12",
+                "nvidia_cufft_cu12",
+                "nvidia_cufile_cu12",
+                "nvidia_curand_cu12",
+                "nvidia_cusolver_cu12",
+                "nvidia_cusparse_cu12",
+                "nvidia_cusparselt_cu12",
+                "nvidia_nccl_cu12",
+                "nvidia_nvjitlink_cu12",
+                "nvidia_nvtx_cu12",
                 "packaging",
                 "pillow",
                 "pygments",
                 "pyparsing",
                 "python_dateutil",
+                "pyyaml",
+                "regex",
                 "requests",
+                "safetensors",
+                "scikit_learn",
+                "scipy",
+                "sentence_transformers",
+                "setuptools",
                 "six",
                 "snowballstemmer",
                 "sphinx",
                 "sphinx_copybutton",
+                "sphinx_genai",
+                "sphinx_genai_huggingface",
                 "sphinx_reredirects",
                 "sphinxcontrib_applehelp",
                 "sphinxcontrib_devhelp",
@@ -3037,6 +3469,14 @@
                 "sphinxcontrib_jsmath",
                 "sphinxcontrib_qthelp",
                 "sphinxcontrib_serializinghtml",
+                "sympy",
+                "threadpoolctl",
+                "tokenizers",
+                "torch",
+                "tqdm",
+                "transformers",
+                "triton",
+                "typing_extensions",
                 "urllib3"
               ],
               "groups": {}

@@ -8,6 +8,7 @@ sphinx_build_binary(
         "@pypi//networkx",
         "@pypi//sphinx",
         "@pypi//sphinx_copybutton",
+        "@pypi//sphinx_genai_huggingface",
         "@pypi//sphinx_reredirects",
     ]
 )
