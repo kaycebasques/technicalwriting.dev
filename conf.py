@@ -33,6 +33,7 @@ extensions = [
 html_extra_path = ["rss.xml"]
 html_permalinks_icon = "§"
 html_static_path = ["_static"]
+html_theme = 'basic'
 project = "technicalwriting.dev"
 pygments_style = "github-dark"
 redirects = {
