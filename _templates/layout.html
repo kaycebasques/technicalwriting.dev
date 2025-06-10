@@ -26,13 +26,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <!-- Scripts -->
-    <script src="{{ pathto('_static/clipboard.min.js', 1) }}" async></script>
-    <script src="{{ pathto('_static/copybutton.js', 1) }}" async></script>
-    <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
-    <script src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
-    <script src="{{ pathto('_static/sphinx_highlight.js', 1) }}" async></script>
-    <script src="{{ pathto('_static/mathjax.js', 1) }}" async></script>
   </head>
   <body id="body">
     <a id="skip" href="#main">Skip to main content</a>
@@ -50,5 +43,16 @@
       <p>© 2025 <a href="https://kayce.basqu.es">Kayce Basques</a></p>
       <p><a href="#body">Jump to top</a></p>
     </footer>
+    <!-- Core scripts should be loaded synchronously, in this particular order. -->
+    <script src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
+    <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
+    <script src="{{ pathto('_static/sphinx_highlight.js', 1) }}"></script>
+    <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+    <script src="{{ pathto('_static/language_data.js', 1) }}"></script>
+    <script src="{{ pathto('searchindex.js', 1) }}"></script>
+    <!-- Non-core scripts should be loaded asynchronously. -->
+    <script src="{{ pathto('_static/clipboard.min.js', 1) }}" async></script>
+    <script src="{{ pathto('_static/copybutton.js', 1) }}" async></script>
+    <script src="{{ pathto('_static/mathjax.js', 1) }}" async></script>
   </body>
 </html>
