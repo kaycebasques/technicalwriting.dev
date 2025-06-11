@@ -43,16 +43,10 @@
       <p>© 2025 <a href="https://kayce.basqu.es">Kayce Basques</a></p>
       <p><a href="#body">Jump to top</a></p>
     </footer>
-    <!-- Core scripts should be loaded synchronously, in this particular order. -->
-    <script src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
-    <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
-    <script src="{{ pathto('_static/sphinx_highlight.js', 1) }}"></script>
-    <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
-    <script src="{{ pathto('_static/language_data.js', 1) }}"></script>
-    <script src="{{ pathto('searchindex.js', 1) }}"></script>
-    <!-- Non-core scripts should be loaded asynchronously. -->
-    <script src="{{ pathto('_static/clipboard.min.js', 1) }}" async></script>
-    <script src="{{ pathto('_static/copybutton.js', 1) }}" async></script>
-    <script src="{{ pathto('_static/mathjax.js', 1) }}" async></script>
+    {%- block scripts %}
+      {%- for js in script_files %}
+        {{ js_tag(js) }}
+      {%- endfor %}
+    {%- endblock %}
   </body>
 </html>
