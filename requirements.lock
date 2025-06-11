@@ -55,7 +55,7 @@ snowballstemmer==3.0.1
 Sphinx==8.0.2
 sphinx-copybutton==0.5.2
 sphinx-genai==0.0.4
-sphinx-genai-huggingface==0.0.4
+sphinx-genai-huggingface==0.0.5
 sphinx_reredirects==0.1.5
 sphinxcontrib-applehelp==2.0.0
 sphinxcontrib-devhelp==2.0.0
