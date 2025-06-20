@@ -38,6 +38,7 @@ sphinx_docs_library(
         "_templates/layout.html",
         "404.rst",
         "about.rst",
+        "ai/agents/agents.png",
         "ai/agents/index.rst",
         "ai/index.rst",
         "analytics/index.rst",
