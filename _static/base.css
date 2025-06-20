@@ -236,3 +236,38 @@ ul li p {
     margin-top: 0.5em;
     margin-bottom: 0;
 }
+
+#toc {
+    margin-top: 1em;
+}
+
+/*
+#toc ul {
+    list-style: none;
+    padding: 0 0 0 1em;
+}
+
+#toc > ul li::before {
+    content: "# ";
+}
+
+#toc > ul > li > ul > li::before {
+    content: "## ";
+}
+
+#toc > ul > li > ul > li > ul > li::before {
+    content: "### ";
+}
+
+#toc > ul > li > ul > li > ul > li > ul > li::before {
+    content: "#### ";
+}
+
+#toc > ul > li > ul > li > ul > li > ul > li > ul > li::before {
+    content: "##### ";
+}
+
+#toc > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li::before {
+    content: "###### ";
+}
+*/

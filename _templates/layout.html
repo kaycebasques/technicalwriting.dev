@@ -36,6 +36,12 @@
         <li><a href="{{ pathto('rss.xml', 1) }}">RSS</a></li>
       </ul>
     </nav>
+    {% if pagename not in ['index', 'about', 'search'] %}
+      <details id="toc">
+        <summary>Table of contents</summary>
+        {{ toc }}
+      </details>
+    {% endif %}
     <main id="main" role="main">
       {% block body %}{{ body() }}{% endblock %}
     </main>

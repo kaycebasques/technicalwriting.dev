@@ -232,7 +232,7 @@
         "bzlTransitiveDigest": "+D0pesQWVftxFrDIgPJ73YmMFEclIwO1GnRJt0A/vOM=",
         "usagesDigest": "IC7R+ye57rjIAuiEplQeTSHz/olzq+L8RBYxqMNhatg=",
         "recordedFileInputs": {
-          "@@//requirements.lock": "a4099d5cde09bad50200d589b380d84707bc369cfa3fc8f6a94f59e13eec3254",
+          "@@//requirements.lock": "284df476a86582da33ec2a761edfadfa14e11bd53e4e80b93ad93451855f348f",
           "@@protobuf+//python/requirements.txt": "983be60d3cec4b319dcab6d48aeb3f5b2f7c3350f26b3a9e97486c37967c73c5",
           "@@rules_fuzzing+//fuzzing/requirements.txt": "ab04664be026b632a0d2a2446c4f65982b7654f5b6851d2f9d399a19b7242a5b",
           "@@rules_python+//tools/publish/requirements_darwin.txt": "095d4a4f3d639dce831cd493367631cd51b53665292ab20194bac2c0c6458fa8",
@@ -845,7 +845,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "sphinx-genai==0.0.4"
+              "requirement": "sphinx-genai==0.0.5"
             }
           },
           "pypi_311_sphinx_genai_huggingface": {
@@ -854,7 +854,7 @@
               "dep_template": "@pypi//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_11_host//:python",
               "repo": "pypi_311",
-              "requirement": "sphinx-genai-huggingface==0.0.4"
+              "requirement": "sphinx-genai-huggingface==0.0.6"
             }
           },
           "pypi_311_sphinx_reredirects": {
