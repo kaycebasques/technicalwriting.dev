@@ -122,6 +122,7 @@ Strategy
 
    404
    about
+   ai/index
    analytics/index
    links/index
    ml/index
