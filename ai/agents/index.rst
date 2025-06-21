@@ -16,6 +16,8 @@
 .. _Cursor: https://docs.cursor.com/welcome
 .. _searchtools.txt: ../../_static/searchtools.txt
 .. _searchtools.md: ../../_static/searchtools.md
+.. _partial autonomy: https://youtu.be/LCEmiRjPEtQ?t=1289
+.. _burden of proof: https://en.wikipedia.org/wiki/Burden_of_proof_(law)
 
 ==================
 Docs for AI agents
@@ -62,9 +64,11 @@ the agent will:
 * Synthesize the information with an LLM
 * Write the summary to the specified path
 
-See `searchtools.txt`_ for an example of Claude Code working through this
-exact task and `searchtools.md`_ for the summary that Claude Code generated.
-See `Cursor 3-minute demo`_ for an example of the IDE experience.
+This really works! See `searchtools.txt`_ and `searchtools.md`_ for an
+example.
+
+Also, see `Cursor 3-minute demo`_ to get the gist of the agent experience
+within an IDE.
 
 How agents use docs
 ===================
@@ -76,22 +80,48 @@ Agent docs versus internal eng docs
 -----------------------------------
 
 As the meme at the start of the post suggests, my hunch is that "docs for AI
-agents" will end up looking largely the same as "internal eng docs". What are
-internal eng docs? These are the docs that engineering teams write for
-their own use. The goal is to share knowledge and standardize workflows among
-the team. E.g. RFCs explaining key design decisions of the codebase and
-tutorials explaining how to build the codebase and contribute your first
-commit. In open source projects these types of docs are often called
-"contributor docs".
+agents" will end up looking largely the same as "internal eng docs". 
 
-For docs strategy, the most important question on my mind is this:
-do we really need to treat agent docs as a completely separate doc set?
-They seem very similar to internal eng docs. Can we consolidate them into
-a single doc set? Or maybe colocate them?
+What are internal eng docs?
+===========================
 
-In the next few sections I compare and contrast docs for agents
-versus internal eng docs across various dimensions. The sections are
-ordered alphabetically be heading, not by importance.
+These are the docs that engineering teams write for their own use. The goal is
+to share knowledge and standardize workflows among the team. E.g. RFCs
+explaining key design decisions of the codebase and tutorials explaining how to
+build the codebase and contribute your first commit. In open source projects
+these types of docs are often called "contributor docs".
+
+Who cares?
+==========
+
+The current design of agent docs is steering us towards maintaining the
+agent docs as a separate docs set. E.g. your agent docs must have a specific
+name ``CLAUDE.md`` and the docs must be located at specific locations. I think
+this might be a mistake.
+
+For docs strategy, the most important question on my mind is this: do we really
+need to spin up agent docs as a completely separate doc set?  They seem very
+similar to internal eng docs. I worry that we'll end up duplicating information
+across the two doc sets, which inevitably leads to discrepancies. E.g. the
+internal eng docs say that you must instantiate objects via static factory
+methods, whereas the agent docs say that it's OK to use constructors directly.
+
+At this point your local AI enthusiast says something along the lines of this:
+"No problem! We can use AI agents themselves to keep the agent docs in-sync
+with the internal eng docs!" This sounds feasible to me, but I'm not sure how
+much that will actually happen in practice.
+
+But more importantly, if you think that `partial autonomy`_ is the right way to
+build AI systems over the medium-term, then combining or colocating the agent
+docs with the internal eng docs should be the default solution because it increases
+the odds that humans are constantly verifying the agent docs.
+
+Comparisons
+===========
+
+Over the next few sections, I compare and contrast agent docs versus
+internal eng docs across various dimensions. The sections are ordered
+alphabetically by heading, not importance.
 
 Capitalization
 ==============
