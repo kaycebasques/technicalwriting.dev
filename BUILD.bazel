@@ -17,6 +17,8 @@ sphinx_docs_library(
     name = "sources",
     srcs = [
         "_extensions/sitemap.py",
+        "_static/searchtools.md",
+        "_static/searchtools.txt",
         "_static/base.css",
         "_static/boat.png",
         "_static/dark.css",
@@ -39,8 +41,6 @@ sphinx_docs_library(
         "404.rst",
         "about.rst",
         "ai/agents/agents.png",
-        "ai/agents/searchtools.md",
-        "ai/agents/searchtools.txt",
         "ai/agents/index.rst",
         "ai/index.rst",
         "analytics/index.rst",

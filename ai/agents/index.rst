@@ -14,6 +14,8 @@
 .. _Cursor 3-minute demo: https://youtu.be/LR04bU_yV5k
 .. _Claude Code: https://docs.anthropic.com/en/docs/claude-code/overview
 .. _Cursor: https://docs.cursor.com/welcome
+.. _searchtools.txt: ../../_static/searchtools.txt
+.. _searchtools.md: ../../_static/searchtools.md
 
 ==================
 Docs for AI agents
@@ -25,33 +27,20 @@ How are docs for AI agents different than docs for humans? How are they
 similar? Do we have to maintain them as separate docs sets or can they
 be combined somehow?
 
-This page contains my notes on questions like these.
-
-----------
-Hypothesis
-----------
-
-As the meme above suggests, my hunch is that "documentation for AI agents" will
-end up looking largely the same as "documentation for (human) internal
-(software) engineers". (In open source, these types of docs are often called
-"contributor docs".) I could be wrong. I'm not trying to sell you on that idea.
-The only purpose of this hypothesis is to disclose potential biases in my
-research.
+This page contains my notes on docs for AI agents.
 
 -----
 Scope
 -----
 
-Technical writing is a big field that spans many industries. I'm focused on
-the domain of developer docs i.e. docs for (human) software developers. I don't
-know how relevant this "docs for AI agents" stuff is for technical writers in
-other industries or domains.
+* I work on **developer** docs i.e. docs for software engineers. I don't know
+  how relevant AI agents are for technical writers in other industries or
+  domains.
 
-I'm not talking about broadly about "writing documentation for AI". I think
-that phrase is too broad. I suspect that the
-
-Furthermore, "AI agents" is also a big field. I'm focused on "AI agents
-for software developers". More on this in the next section.
+* In this post I'm thinking specifically about docs for AI **agents**. I'm not
+  sure that an all-encompassing "docs for AI best practices" exists. The way
+  that we optimize docs for RAG-based chatbots (for example) is probably
+  different than the way we optimize for agents.
 
 .. _agents-overview:
 
@@ -61,32 +50,48 @@ Overview
 
 As a software developer, your primary interface for interacting with an AI
 agent is through a chat interface that's been bolted onto your CLI or IDE.
-See `Claude Code`_ for a CLI example and `Cursor` for an IDE example. The
+See `Claude Code`_ for the CLI case and `Cursor` for the IDE case. The
 power of AI agents is their ability to use "tools" to act on your behalf.
 For example, suppose that you need to understand the history of a file
 in your codebase. With a single prompt like ``look through the git and
-github history of this file and summarize the evolution of this file in
-evolution.md`` the agent will:
+github history of this file and summarize the evolution of this file``
+the agent will:
 
-* Do all the necessary pre-work: run ``git`` commands in your terminal,
-  fetch the contents of all GitHub issues mentioned in the commits, etc.
-  (`example <./searchtools.txt>`__)
-* Synthesize the information and write it to the specified file
-  (`example <./searchtools.md>`__)
-  
-See also `Cursor 3-minute demo`_.
+* Run ``git`` commands in your terminal
+* Fetch the contents of all GitHub issues mentioned in the commits
+* Synthesize the information with an LLM
+* Write the summary to the specified path
+
+See `searchtools.txt`_ for an example of Claude Code working through this
+exact task and `searchtools.md`_ for the summary that Claude Code generated.
+See `Cursor 3-minute demo`_ for an example of the IDE experience.
 
 How agents use docs
 ===================
 
 TODO
 
---------------
-Juxtapositions
---------------
+-----------------------------------
+Agent docs versus internal eng docs
+-----------------------------------
 
-The next few sections compare and contrast "docs for AI agents" versus "docs for humans".
-The sections are ordered alphabetically, not by importance.
+As the meme at the start of the post suggests, my hunch is that "docs for AI
+agents" will end up looking largely the same as "internal eng docs". What are
+internal eng docs? These are the docs that engineering teams write for
+their own use. The goal is to share knowledge and standardize workflows among
+the team. E.g. RFCs explaining key design decisions of the codebase and
+tutorials explaining how to build the codebase and contribute your first
+commit. In open source projects these types of docs are often called
+"contributor docs".
+
+For docs strategy, the most important question on my mind is this:
+do we really need to treat agent docs as a completely separate doc set?
+They seem very similar to internal eng docs. Can we consolidate them into
+a single doc set? Or maybe colocate them?
+
+In the next few sections I compare and contrast docs for agents
+versus internal eng docs across various dimensions. The sections are
+ordered alphabetically be heading, not by importance.
 
 Capitalization
 ==============
@@ -198,8 +203,11 @@ TODO
 Suggestions
 -----------
 
-Separate docs for agents smells like a bad idea
-===============================================
+Product-branded filenames seem silly
+====================================
+
+An incentive to make tacit knowledge explicit
+=============================================
 
 .. _agents-references:
 

@@ -32,8 +32,6 @@ extensions = [
     "sphinx_reredirects",
 ]
 html_extra_path = [
-    "ai/agents/searchtools.md",
-    "ai/agents/searchtools.txt",
     "rss.xml", 
 ]
 html_permalinks_icon = "§"
