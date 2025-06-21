@@ -31,7 +31,11 @@ extensions = [
     "sphinx_genai_huggingface",
     "sphinx_reredirects",
 ]
-html_extra_path = ["rss.xml"]
+html_extra_path = [
+    "ai/agents/searchtools.md",
+    "ai/agents/searchtools.txt",
+    "rss.xml", 
+]
 html_permalinks_icon = "§"
 html_static_path = ["_static"]
 html_theme = 'basic'

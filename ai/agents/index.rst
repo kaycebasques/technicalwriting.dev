@@ -12,10 +12,12 @@
 .. _Diátaxis: https://diataxis.fr/
 .. _Don't Make Me Think: https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think
 .. _Cursor 3-minute demo: https://youtu.be/LR04bU_yV5k
+.. _Claude Code: https://docs.anthropic.com/en/docs/claude-code/overview
+.. _Cursor: https://docs.cursor.com/welcome
 
-=========================================
-Docs for AI agents versus docs for humans
-=========================================
+==================
+Docs for AI agents
+==================
 
 .. figure:: ./agents.png
 
@@ -31,31 +33,60 @@ Hypothesis
 
 As the meme above suggests, my hunch is that "documentation for AI agents" will
 end up looking largely the same as "documentation for (human) internal
-engineers". I could be wrong. I'm not trying to sell you on that idea. The only
-purpose of this hypothesis is to disclose my bias.
+(software) engineers". (In open source, these types of docs are often called
+"contributor docs".) I could be wrong. I'm not trying to sell you on that idea.
+The only purpose of this hypothesis is to disclose potential biases in my
+research.
 
 -----
 Scope
 -----
 
 Technical writing is a big field that spans many industries. I'm focused on
-the subfield of developer docs i.e. docs for (human) software developers.
+the domain of developer docs i.e. docs for (human) software developers. I don't
+know how relevant this "docs for AI agents" stuff is for technical writers in
+other industries or domains.
 
-Furthermore, AI agents are also a big field. I'm focused on AI agents
-for software developers. More on that in the next section.
+I'm not talking about broadly about "writing documentation for AI". I think
+that phrase is too broad. I suspect that the
+
+Furthermore, "AI agents" is also a big field. I'm focused on "AI agents
+for software developers". More on this in the next section.
+
+.. _agents-overview:
 
 --------
 Overview
 --------
 
-Watch `Cursor 3-minute demo`_ if you don't know what an "AI agent
-for software developers" looks like.
+As a software developer, your primary interface for interacting with an AI
+agent is through a chat interface that's been bolted onto your CLI or IDE.
+See `Claude Code`_ for a CLI example and `Cursor` for an IDE example. The
+power of AI agents is their ability to use "tools" to act on your behalf.
+For example, suppose that you need to understand the history of a file
+in your codebase. With a single prompt like ``look through the git and
+github history of this file and summarize the evolution of this file in
+evolution.md`` the agent will:
 
-----------------------------
-Similarities and differences
-----------------------------
+* Do all the necessary pre-work: run ``git`` commands in your terminal,
+  fetch the contents of all GitHub issues mentioned in the commits, etc.
+  (`example <./searchtools.txt>`__)
+* Synthesize the information and write it to the specified file
+  (`example <./searchtools.md>`__)
+  
+See also `Cursor 3-minute demo`_.
 
-The following sections are ordered alphabetically.
+How agents use docs
+===================
+
+TODO
+
+--------------
+Juxtapositions
+--------------
+
+The next few sections compare and contrast "docs for AI agents" versus "docs for humans".
+The sections are ordered alphabetically, not by importance.
 
 Capitalization
 ==============
@@ -162,6 +193,13 @@ TODO
 ..      - Focused, actionable, and clear documentation is recommended
 ..      - Rules should be concise, composable, and provide concrete examples; avoid vague guidance
 ..      - Cursor Rules, Claude Code
+
+-----------
+Suggestions
+-----------
+
+Separate docs for agents smells like a bad idea
+===============================================
 
 .. _agents-references:
 
