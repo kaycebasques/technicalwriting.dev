@@ -11,6 +11,7 @@
 .. _Docs For Developers: https://docsfordevelopers.com/
 .. _Diátaxis: https://diataxis.fr/
 .. _Don't Make Me Think: https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think
+.. _Cursor 3-minute demo: https://youtu.be/LR04bU_yV5k
 
 =========================================
 Docs for AI agents versus docs for humans
@@ -18,19 +19,11 @@ Docs for AI agents versus docs for humans
 
 .. figure:: ./agents.png
 
-How is technical documentation that's optimized for AI agents different from
-technical documentation that's optimized for humans? How are they the same?
-Must we maintain them as separate docs sets or can they be combined into a
-single docs set?
+How are docs for AI agents different than docs for humans? How are they
+similar? Do we have to maintain them as separate docs sets or can they
+be combined somehow?
 
-This page contains my evergreen notes on these questions. I don't yet have
-answers to any of the questions.
-
-.. note::
-
-   By "evergreen" I mean that this page will constantly evolve as I encounter
-   new information. See :ref:`agents-changelog` for a summary of how this
-   page has changed over time.
+This page contains my notes on questions like these.
 
 ----------
 Hypothesis
@@ -38,37 +31,39 @@ Hypothesis
 
 As the meme above suggests, my hunch is that "documentation for AI agents" will
 end up looking largely the same as "documentation for (human) internal
-engineers". Long-term, I think it will be most beneficial to maintain them as
-a single docs set. But this is just an unsubstantiated hypothesis. The purpose
-of this section is merely to disclose my biases.
+engineers". I could be wrong. I'm not trying to sell you on that idea. The only
+purpose of this hypothesis is to disclose my bias.
 
-----------
-Background
-----------
+-----
+Scope
+-----
 
-A brief explanation of "docs for humans" and a longer explanation of "docs for
-AI agents".
+Technical writing is a big field that spans many industries. I'm focused on
+the subfield of developer docs i.e. docs for (human) software developers.
 
-Docs for humans
-===============
+Furthermore, AI agents are also a big field. I'm focused on AI agents
+for software developers. More on that in the next section.
 
-Technical writing is a big field that spans many industries. I am focused
-on the subfield of developer docs i.e. docs for human software engineers.
-These resources are the foundation of how I approach developer docs:
+--------
+Overview
+--------
 
-* `Every Page Is Page One`_
-* `Docs For Developers`_
-* `Diátaxis`_
-* `Don't Make Me Think`_
+Watch `Cursor 3-minute demo`_ if you don't know what an "AI agent
+for software developers" looks like.
 
-Docs for AI agents
-==================
+----------------------------
+Similarities and differences
+----------------------------
+
+The following sections are ordered alphabetically.
+
+Capitalization
+==============
 
 TODO
 
--------------
-Juxtaposition
--------------
+Goals
+=====
 
 TODO
 
