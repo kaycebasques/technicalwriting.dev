@@ -1,15 +1,12 @@
 .. _agents:
 
 .. _How to Make Your Developer Documentation Work with LLMs: https://fusionauth.io/blog/llms-for-docs
-.. _Writing documentation for AI: https://docs.kapa.ai/improving/writing-best-practices
+.. _optimize docs for RAG-based chatbots: https://docs.kapa.ai/improving/writing-best-practices
 .. _llms.txt: https://llmstxt.org
 .. _Rules: https://docs.cursor.com/context/rules
 .. _Claude Code Best Practices: https://www.anthropic.com/engineering/claude-code-best-practices
 .. _Software in the era of AI: https://youtu.be/LCEmiRjPEtQ
 .. _Agents.md Guide for OpenAI Codex: https://agentsmd.net
-.. _Every Page Is Page One: https://everypageispageone.com/the-book/
-.. _Docs For Developers: https://docsfordevelopers.com/
-.. _Diátaxis: https://diataxis.fr/
 .. _Don't Make Me Think: https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think
 .. _Cursor 3-minute demo: https://youtu.be/LR04bU_yV5k
 .. _Claude Code: https://docs.anthropic.com/en/docs/claude-code/overview
@@ -41,8 +38,8 @@ Scope
 
 * In this post I'm thinking specifically about docs for AI **agents**. I'm not
   sure that an all-encompassing "docs for AI best practices" exists. The way
-  that we optimize docs for RAG-based chatbots (for example) is probably
-  different than the way we optimize for agents.
+  that we `optimize docs for RAG-based chatbots`_ (for example) is probably
+  different than the way we optimize docs for agents.
 
 .. _agents-overview:
 
@@ -70,8 +67,15 @@ example.
 Also, see `Cursor 3-minute demo`_ to get the gist of the agent experience
 within an IDE.
 
-How agents use docs
-===================
+Purpose
+=======
+
+Why do agents need docs?
+
+Mechanics
+=========
+
+How exactly do agents use docs?
 
 TODO
 
@@ -82,46 +86,56 @@ Agent docs versus internal eng docs
 As the meme at the start of the post suggests, my hunch is that "docs for AI
 agents" will end up looking largely the same as "internal eng docs". 
 
-What are internal eng docs?
-===========================
+Internal eng docs
+=================
 
-These are the docs that engineering teams write for their own use. The goal is
-to share knowledge and standardize workflows among the team. E.g. RFCs
-explaining key design decisions of the codebase and tutorials explaining how to
-build the codebase and contribute your first commit. In open source projects
-these types of docs are often called "contributor docs".
+What are internal eng docs? These are the docs that engineering teams write for
+their own use. The goal is to share knowledge and standardize workflows among
+the team. E.g. RFCs explaining key design decisions of the codebase and
+tutorials explaining how to build the codebase and contribute your first
+commit. In open source projects these types of docs are often called
+"contributor docs".
 
-Who cares?
-==========
+Problem
+=======
 
 The current design of agent docs is steering us towards maintaining the
 agent docs as a separate docs set. E.g. your agent docs must have a specific
-name ``CLAUDE.md`` and the docs must be located at specific locations. I think
-this might be a mistake.
+name like ``CLAUDE.md`` or ``AGENTS.md`` and the docs must be located at specific
+locations. I think this might be a mistake.
 
 For docs strategy, the most important question on my mind is this: do we really
 need to spin up agent docs as a completely separate doc set?  They seem very
 similar to internal eng docs. I worry that we'll end up duplicating information
-across the two doc sets, which inevitably leads to discrepancies. E.g. the
+across the two doc sets, which inevitably leads to pain. E.g. the
 internal eng docs say that you must instantiate objects via static factory
 methods, whereas the agent docs say that it's OK to use constructors directly.
+That example problem would probably get caught at review time. A discrepancy
+between the agent docs and internal eng docs related to codebase design might
+be more insidious and hard to catch, though.
 
-At this point your local AI enthusiast says something along the lines of this:
-"No problem! We can use AI agents themselves to keep the agent docs in-sync
-with the internal eng docs!" This sounds feasible to me, but I'm not sure how
-much that will actually happen in practice.
+At this point your neighborhood AI enthusiast says something along the lines of
+this: "No problem! We can use AI agents themselves to keep the agent docs
+in-sync with the internal eng docs!" That sounds feasible, but I'm not sure how
+much it will actually happen in practice. Time will tell.
 
 But more importantly, if you think that `partial autonomy`_ is the right way to
 build AI systems over the medium-term, then combining or colocating the agent
 docs with the internal eng docs should be the default solution because it increases
-the odds that humans are constantly verifying the agent docs.
+the odds that humans are constantly verifying the agent docs. "Combining" means
+that the agent docs and internal eng docs are literally one and the same. "Colocating"
+means that the agent docs are embedded within the internal eng docs. I suspect
+that these are better approaches, because engineers will be keeping the agent docs
+aligned with the internal eng docs as a natural byproduct of their day-to-day work.
 
 Comparisons
 ===========
 
-Over the next few sections, I compare and contrast agent docs versus
-internal eng docs across various dimensions. The sections are ordered
-alphabetically by heading, not importance.
+To get closer to an answer regarding whether or not agent docs should be separate
+from internal eng docs, I'm going to compare and contrast the two types of docs
+across various dimensions. If there are huge differences, then they should be
+separate docs sets. If there aren't, then we should find a way to combine or colocate
+the agent docs with the internal eng docs.
 
 Capitalization
 ==============
@@ -233,11 +247,10 @@ TODO
 Suggestions
 -----------
 
-Product-branded filenames seem silly
-====================================
+Ditch the product-branded filenames
+===================================
 
-An incentive to make tacit knowledge explicit
-=============================================
+TODO
 
 .. _agents-references:
 
