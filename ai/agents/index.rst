@@ -16,6 +16,7 @@
 .. _searchtools.md: ../../_static/searchtools.md
 .. _partial autonomy: https://youtu.be/LCEmiRjPEtQ?t=1289
 .. _burden of proof: https://en.wikipedia.org/wiki/Burden_of_proof_(law)
+.. _Agents.md: https://agentsmd.net
 
 ==================
 Docs for AI agents
@@ -25,9 +26,7 @@ Docs for AI agents
 
 How are docs for AI agents different than docs for humans? How are they
 similar? Do we have to maintain them as separate docs sets or can they
-be combined somehow?
-
-This page contains my notes on docs for AI agents.
+be combined somehow? This page contains my notes on these questions. 
 
 -----
 Scope
@@ -42,11 +41,11 @@ Scope
   that we `optimize docs for RAG-based chatbots`_ (for example) is probably
   different than the way we optimize docs for agents.
 
-.. _agents-overview:
+.. _agents-background:
 
---------
-Overview
---------
+----------
+Background
+----------
 
 As a software developer, your primary interface for interacting with an AI
 agent is through a chat interface that's been bolted onto your CLI or IDE.
@@ -65,13 +64,49 @@ the agent will:
 This really works! See `searchtools.txt`_ and `searchtools.md`_ for an
 example.
 
-Also, see `Cursor 3-minute demo`_ to get the gist of the agent experience
-within an IDE.
+Also, see `Cursor 3-minute demo`_ to get the gist of the "agent in IDE"
+experience.
 
 Purpose
 =======
 
 Why do agents need docs?
+
+First, some quotes from `Agents.md`_:
+
+  Why use Agents.md?
+  
+  Just like human developers, OpenAI Codex and other AI agents perform best
+  when provided with clear documentation and guidance. Agents.md serves as a
+  communication bridge between your development team and AI tools, helping
+  OpenAI Codex understand your project's specific requirements and standards.
+
+  Key Benefits of Agents.md:
+
+  * Enhanced Code Quality. Agents.md helps OpenAI Codex generate higher
+    quality code that precisely follows your project's standards and best
+    practices, reducing the need for extensive code reviews and refactoring.
+    By providing clear guidelines in your Agents.md file, you ensure that
+    OpenAI Codex understands your project's specific requirements and can
+    generate code that meets your quality standards.
+
+  * Accelerated AI Onboarding. With Agents.md, OpenAI Codex can quickly
+    understand your codebase architecture and start contributing effectively,
+    dramatically reducing the time needed for AI to become productive.
+
+  * Consistent Output. Agents.md ensures code consistency with your project's
+    architecture and conventions.
+
+  * Time Efficiency. Reduce development time with AI that understands your
+    project instantly.
+
+Reading between the lines, they're basically saying that the agents need
+documentation in order to stay aligned with your codebase conventions, and that
+you get better results from agents when you guide them with docs. 
+
+A simple example from personal experience. When first trying out Claude Code on
+this website's repository, I instructed it to build the site. It searched
+through the codebase and made a reasonable (but incorrect) guess. TODO
 
 Mechanics
 =========
@@ -87,33 +122,36 @@ Agent docs versus internal eng docs
 As the meme at the start of the post suggests, my hunch is that "docs for AI
 agents" will end up looking largely the same as "internal eng docs". 
 
-Internal eng docs
-=================
+"Internal eng docs"?
+====================
 
-What are internal eng docs? These are the docs that engineering teams write for
-their own use. The goal is to share knowledge and standardize workflows among
-the team. E.g. RFCs explaining key design decisions of the codebase and
-tutorials explaining how to build the codebase and contribute your first
-commit. In open source projects these types of docs are often called
-"contributor docs".
+These are the docs that engineering teams write for their own use. The goal is
+to share knowledge and standardize workflows among the team. E.g. RFCs
+explaining key design decisions of the codebase and tutorials explaining how to
+build the codebase and contribute your first commit. In open source projects
+these types of docs are often called "contributor docs".
 
 Problem
 =======
 
-The current design of agent docs is steering us towards maintaining the
-agent docs as a separate docs set. E.g. your agent docs must have a specific
-name like ``CLAUDE.md`` or ``AGENTS.md`` and the docs must be located at specific
+The current design of agent docs is steering us towards maintaining the agent
+docs as a separate docs set. E.g. your agent docs must have a specific name
+like ``CLAUDE.md`` or ``AGENTS.md`` and the docs must be located at specific
 locations. I think this might be a mistake.
 
 For docs strategy, the most important question on my mind is this: do we really
 need to spin up agent docs as a completely separate doc set?  They seem very
 similar to internal eng docs. I worry that we'll end up duplicating information
-across the two doc sets, which inevitably leads to pain. E.g. the
-internal eng docs say that you must instantiate objects via static factory
-methods, whereas the agent docs say that it's OK to use constructors directly.
-That example problem would probably get caught at review time. A discrepancy
-between the agent docs and internal eng docs related to codebase design might
-be more insidious and hard to catch, though.
+across the two doc sets, which inevitably leads to pain. E.g. the internal eng
+docs say that you must instantiate objects via static factory methods, whereas
+the agent docs say that it's OK to use constructors directly.  That example
+problem would probably get caught at review time. A discrepancy between the
+agent docs and internal eng docs related to codebase design might be more
+insidious and hard to catch, though.
+
+Can we use AI agents themselves to keep the agent docs in-sync with the
+internal eng docs? It sounds feasible, but I'm not sure how much it
+will actually happen in practice. Time will tell.
 
 At this point your neighborhood AI enthusiast says something along the lines of
 this: "No problem! We can use AI agents themselves to keep the agent docs
@@ -122,12 +160,13 @@ much it will actually happen in practice. Time will tell.
 
 But more importantly, if you think that `partial autonomy`_ is the right way to
 build AI systems over the medium-term, then combining or colocating the agent
-docs with the internal eng docs should be the default solution because it increases
-the odds that humans are constantly verifying the agent docs. "Combining" means
-that the agent docs and internal eng docs are literally one and the same. "Colocating"
-means that the agent docs are embedded within the internal eng docs. I suspect
-that these are better approaches, because engineers will be keeping the agent docs
-aligned with the internal eng docs as a natural byproduct of their day-to-day work.
+docs with the internal eng docs should be the default solution because it
+increases the odds that humans are constantly verifying the agent docs.
+"Combining" means that the agent docs and internal eng docs are literally one
+and the same. "Colocating" means that the agent docs are embedded within the
+internal eng docs. I suspect that these are better approaches, because
+engineers will be keeping the agent docs aligned with the internal eng docs as
+a natural byproduct of their day-to-day work.
 
 Comparisons
 ===========
