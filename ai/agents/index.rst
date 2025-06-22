@@ -32,14 +32,14 @@ be combined somehow? This page contains my notes on these questions.
 Scope
 -----
 
-* I work on **developer** docs i.e. docs for software engineers. I don't know
+* I work on *developer* docs i.e. docs for software engineers. I don't know
   how relevant AI agents are for technical writers in other industries or
   domains.
 
-* In this post I'm thinking specifically about docs for AI **agents**. I'm not
+* In this post I'm thinking specifically about docs for AI *agents*. I'm not
   sure that an all-encompassing "docs for AI best practices" exists. The way
   that we `optimize docs for RAG-based chatbots`_ (for example) is probably
-  different than the way we optimize docs for agents.
+  different than the way we optimize docs for AI agents.
 
 .. _agents-background:
 
@@ -70,43 +70,37 @@ experience.
 Purpose
 =======
 
-Why do agents need docs?
+Why should you write docs for agents? Because you get better results from
+the agents. The output is more consistent, more aligned with your codebase
+conventions, and more accurate.
 
-First, some quotes from `Agents.md`_:
+Example
+-------
 
-  Why use Agents.md?
-  
-  Just like human developers, OpenAI Codex and other AI agents perform best
-  when provided with clear documentation and guidance. Agents.md serves as a
-  communication bridge between your development team and AI tools, helping
-  OpenAI Codex understand your project's specific requirements and standards.
+When first trying out Claude Code on this website's repository, I instructed
+it to build the site. It searched through the codebase and made a reasonable
+(but incorrect) guess:
 
-  Key Benefits of Agents.md:
+.. code-block:: text
 
-  * Enhanced Code Quality. Agents.md helps OpenAI Codex generate higher
-    quality code that precisely follows your project's standards and best
-    practices, reducing the need for extensive code reviews and refactoring.
-    By providing clear guidelines in your Agents.md file, you ensure that
-    OpenAI Codex understands your project's specific requirements and can
-    generate code that meets your quality standards.
+   > build the website
 
-  * Accelerated AI Onboarding. With Agents.md, OpenAI Codex can quickly
-    understand your codebase architecture and start contributing effectively,
-    dramatically reducing the time needed for AI to become productive.
+   ● I'll build the website for you. Let me first check what build system is being used and then run the build command.
 
-  * Consistent Output. Agents.md ensures code consistency with your project's
-    architecture and conventions.
+   ● Read(package.json)
+     ⎿  Error: File does not exist.
 
-  * Time Efficiency. Reduce development time with AI that understands your
-    project instantly.
+   ● List(.)
+     ⎿  Listed 166 paths (ctrl+r to expand)
 
-Reading between the lines, they're basically saying that the agents need
-documentation in order to stay aligned with your codebase conventions, and that
-you get better results from agents when you guide them with docs. 
+   ● This is a Sphinx documentation website using Bazel as the build system. Let me run the build command.
 
-A simple example from personal experience. When first trying out Claude Code on
-this website's repository, I instructed it to build the site. It searched
-through the codebase and made a reasonable (but incorrect) guess. TODO
+   ● Bash(bazel build //...)
+     ⎿  Running…
+
+The correct command for building this site is ``./bazelisk build //:docs``.
+After adding this command to the agent doc, Claude Code would always build
+the site correctly.
 
 Mechanics
 =========
@@ -283,9 +277,15 @@ TODO
 ..      - Rules should be concise, composable, and provide concrete examples; avoid vague guidance
 ..      - Cursor Rules, Claude Code
 
------------
-Suggestions
------------
+-----
+Ideas
+-----
+
+Build up the agent docs programmatically
+========================================
+
+.. Claude Code ``#`` thing is cool
+.. Analyze the whole codebase and build up the docs for us
 
 Ditch the product-branded filenames
 ===================================
