@@ -49,7 +49,7 @@ Background
 
 As a software developer, your primary interface for interacting with an AI
 agent is through a chat interface that's been bolted onto your CLI or IDE.
-See `Claude Code`_ for the CLI case and `Cursor` for the IDE case. The
+See `Claude Code`_ for the CLI case and `Cursor`_ for the IDE case. The
 power of AI agents is their ability to use "tools" to act on your behalf.
 For example, suppose that you need to understand the history of a file
 in your codebase. With a single prompt like ``look through the git and
