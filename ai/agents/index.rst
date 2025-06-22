@@ -2,6 +2,7 @@
 
 .. _How to Make Your Developer Documentation Work with LLMs: https://fusionauth.io/blog/llms-for-docs
 .. _optimize docs for RAG-based chatbots: https://docs.kapa.ai/improving/writing-best-practices
+.. _Writing documentation for AI: https://docs.kapa.ai/improving/writing-best-practices
 .. _llms.txt: https://llmstxt.org
 .. _Rules: https://docs.cursor.com/context/rules
 .. _Claude Code Best Practices: https://www.anthropic.com/engineering/claude-code-best-practices
