@@ -17,6 +17,7 @@
 .. _partial autonomy: https://youtu.be/LCEmiRjPEtQ?t=1289
 .. _burden of proof: https://en.wikipedia.org/wiki/Burden_of_proof_(law)
 .. _Agents.md: https://agentsmd.net
+.. _system prompt: https://help.flintk12.com/en/articles/9025167-what-is-a-system-prompt
 
 ==================
 Docs for AI agents
@@ -43,9 +44,9 @@ Scope
 
 .. _agents-background:
 
-----------
-Background
-----------
+---------
+AI agents
+---------
 
 As a software developer, your primary interface for interacting with an AI
 agent is through a chat interface that's been bolted onto your CLI or IDE.
@@ -67,25 +68,24 @@ example.
 Also, see `Cursor 3-minute demo`_ to get the gist of the "agent in IDE"
 experience.
 
-Purpose
-=======
+----------
+Agent docs
+----------
 
-Why should you write docs for agents? Because you get better results from
-the agents. The output is more consistent, more aligned with your codebase
-conventions, and more accurate.
+Agent docs are a way to get better results from the agents. The output is
+more consistent, more aligned with your codebase conventions, and more
+accurate.
 
-Example
--------
-
-When first trying out Claude Code on this website's repository, I instructed
-it to build the site. It searched through the codebase and made a reasonable
-(but incorrect) guess:
+For example, when first trying out Claude Code (CC) on this website's
+repository, I instructed CC to build the site. CC searched through the
+codebase and made a reasonable (but incorrect) guess:
 
 .. code-block:: text
 
    > build the website
 
-   ● I'll build the website for you. Let me first check what build system is being used and then run the build command.
+   ● I'll build the website for you. Let me first check what build system
+     is being used and then run the build command.
 
    ● Read(package.json)
      ⎿  Error: File does not exist.
@@ -93,21 +93,62 @@ it to build the site. It searched through the codebase and made a reasonable
    ● List(.)
      ⎿  Listed 166 paths (ctrl+r to expand)
 
-   ● This is a Sphinx documentation website using Bazel as the build system. Let me run the build command.
+   ● This is a Sphinx documentation website using Bazel as the build system.
+     Let me run the build command.
 
    ● Bash(bazel build //...)
      ⎿  Running…
 
-The correct command for building this site is ``./bazelisk build //:docs``.
-After adding this command to the agent doc, Claude Code would always build
-the site correctly.
+CC correctly determined that this is a
+:ref:`Sphinx site built with Bazel <sphazel-tutorial>`, but it got the
+specific build command wrong. The correct command is
+``./bazelisk build //:docs``. After adding that command to an agent doc,
+CC now always builds the site correctly, even if my prompt is simply
+``build``.
 
 Mechanics
 =========
 
 How exactly do agents use docs?
 
-TODO
+`Agents.md`_ makes it sound like a sophisticated process of analysis:
+
+  When OpenAI Codex or another AI agent encounters an Agents.md file in
+  your repository, it analyzes the information to guide its code generation
+  process. The Agents.md file acts as a knowledge base that informs the AI
+  about your project context, ensuring that AI-generated code follows your
+  project's standards.
+
+The reality seems to be much more mundane. Based off my reading of the docs from
+agent providers like Claude Code and OpenAI Codex CLI, it seems like the real
+mechanism is just automated prompt engineering. The agent software looks for a
+file with a specific name like ``AGENTS.md`` at a well-known location, such as
+the root directory of your codebase. If found, then the full contents of that file
+are prepended to any LLM API calls that the agent software makes. For example, if my
+``AGENTS.md`` file contains ``build the docs: `./bazelisk build //:docs`` and the
+command that I just sent to the agent is ``build``, then the underlying API call
+looks like this:
+
+.. code-block:: py
+
+   from openai import OpenAI
+   client = OpenAI()
+
+   response = client.responses.create(
+       model="gpt-4.1",
+       input=[
+           {
+               "role": "developer",
+               "content": "build the docs: `./bazelisk build //:docs`"
+           },
+           {
+               "role": "user",
+               "content": "build"
+           }
+       ]
+   )
+
+   print(response.output_text)
 
 -----------------------------------
 Agent docs versus internal eng docs
