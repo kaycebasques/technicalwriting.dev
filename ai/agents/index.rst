@@ -44,10 +44,10 @@ I'm going to reference this type of docs a lot, so let me define the term now
 and explain why these docs are important to the agent docs discussion.
 
 **Internal eng docs** are the docs that engineering teams write for their own
-use. The goal is to share knowledge and standardize workflows among the team.
+use. The goal is to share knowledge and standardize contributions across the team.
 E.g. an RFC explaining a key design decision, a guide explaining how to build
 the project, a tutorial explaining how to contribute your first patch, etc. In
-open source projects these types of docs are often called "contributor docs".
+open source these types of docs are often called "contributor docs".
 
 As the meme at the start of the post suggests, my hunch is that agent docs are
 largely the same thing as internal eng docs. Yet the agent providers are
@@ -75,8 +75,9 @@ in your codebase. With a single prompt like this:
 
 .. code-block:: text
 
-   look through the git and github history of searchtools.js and
-   summarize the evolution of the file
+   look through the git and github history of
+   searchtools.js and summarize the evolution
+   of the file
 
 The agent will:
 
@@ -124,10 +125,9 @@ reasonable (but incorrect) guess:
      ⎿  Running…
 
 CC correctly determined that this is a :ref:`Sphinx site built with Bazel
-<sphazel-tutorial>`, but it got the specific build command wrong. The correct
-command is ``./bazelisk build //:docs``. After adding that command to an agent
-doc, CC now always builds the site correctly, even if my prompt is simply
-``build``.
+<sphazel-tutorial>`, but it got the specific build command wrong.  After adding
+the correct build command to an agent doc, CC now always builds the site
+correctly, even if my prompt is simply ``build``.
 
 Implementation
 ==============
@@ -140,18 +140,15 @@ The agent providers look for these docs in the root directory of your project:
 * Gemini CLI: ``//GEMINI.md``
 * Codex CLI: ``//AGENTS.md``
 
+(``//`` is shorthand for "the root directory of your project". E.g. if
+your project is located at ``~/repo/app`` then ``//AGENTS.md`` resolves
+to ``~/repo/app/AGENTS.md``.)
+
 I hope the agent providers standardize around the generic ``AGENTS.md`` name.
 It seems like all of these files serve the same purpose. There's no need to
 have a product-specific filename like ``CLAUDE.md`` or ``GEMINI.md``. It looks
-like Gemini CLI allows you to configure the filename via `contextFileName`_. It
-seems like Claude Code requires the ``CLAUDE.md`` filename and doesn't let you
-configure it to something else. (I'm going to use all three filenames
-interchangeably in this section to drive home the idea that all of these
-filenames serve the same fundamental purpose.)
-
-(``//`` is shorthand for "the root directory of your project". E.g. if
-your project is located at ``~/repo/app`` then ``//CLAUDE.md`` resolves
-to ``~/repo/app/CLAUDE.md``.)
+like Gemini CLI allows you to configure the filename via `contextFileName`_.
+I don't see a way to configure the filename in Claude Code.
 
 I'll call this the **project agent doc**.
 
@@ -185,18 +182,17 @@ so it seems important to keep the project agent doc highly curated.
 
 You can also create **subdirectory agent docs**. These agent docs are
 only used when the agent does something that involves that subdirectory.
-E.g. ``//docs/GEMINI.md`` is only added to the system prompt when the
+E.g. ``//docs/AGENTS.md`` is only added to the system prompt when the
 agent is doing stuff in the ``//docs`` directory.
 
 You can also create a **user agent doc** in your home directory. This
-agent doc is for truly global instructions that you want the agent to
-run no matter what in every project.
+agent doc is for truly global workflows that you use in all of your projects.
 
 As to the contents within an ``AGENTS.md`` file, it's just basic
 Markdown. In terms of `Diataxis`_ doc types, the content is a mix
 between `how-to guide`_ and `reference`_. See `AGENTS.md Example`_.
-See also the search results for `path:CLAUDE.md`_ for a bunch of examples
-of real-world ``CLAUDE.md`` files.
+See also the GitHub search results for `path:CLAUDE.md`_ for a bunch of
+real-world examples.
 
 References:
 
@@ -209,32 +205,34 @@ Gotta keep 'em separated?
 -------------------------
 
 As mentioned before, the current design of agent docs is steering us towards
-maintaining the agent docs and the internal eng docs as separate docs set.
+maintaining the agent docs and the internal eng docs as separate docs sets.
 The agent docs must have a specific filename, and the location of the agent
-docs is very significant. I'm not decided yet whether this is the right approach.
-Here are some pros and cons.
+docs is very significant. My hunch is that the agent providers are steering
+us towards a world of pain, but I'm not decided yet. Here are some arguments
+for (i.e. keeping the agent docs and internal eng docs separate is the right approach)
+and against (i.e. uniting the agent docs and internal eng docs somehow is the
+right approach).
 
-Pros (i.e. reasons we should keep agent docs separate from internal eng docs):
+For:
 
-* Writing style. E.g. agent docs, using all caps might be an effective way to
+* Writing style. In agent docs, using all caps might be an effective way to
   emphasize a particular instruction. In internal eng docs, this might come off
   rude or distracting.
 
-* Completeness. In the agent docs, you probably must highly curate the content.
-  If you put in too much content, you will blast through tokens and probably
-  reduce LLM output quality. In internal eng docs, we ideally aim for 100%
+* Completeness. In agent docs, you likely need to keep the content highly curated.
+  If you put in too much content, you'll blast through your API quotes quickly and will
+  probably reduce LLM output quality. In internal eng docs, we ideally aim for 100%
   completeness. I.e. every important design decision, API reference, workflow,
   etc. is documented somewhere.
 
-* Goals. The goal of agent docs is to steer the agent towards the correct workflow,
-  coding style, architecture, API usage, etc. on behalf 
-
-Cons (i.e. reasons we should find a way to unite agent docs and internal eng docs):
+Against:
 
 * Duplication. Conceptually, agent docs are a subset of internal eng docs.
   The underlying goal is the same. You're documenting workflows and knowledge
   that's important to the team. But now you need to maintain that same information
   in two different doc sets.
+
+I'm probably missing a lot of arguments for and against. Please help me think up more!
 
 I'll wrap up this post with some potential solutions to the problem.
 
@@ -252,9 +250,8 @@ Combine
 and the same. I only see two ways to do this:
 
 * Ditch the agent docs completely. When you need to do some particular task,
-  feed in the relevant internal eng docs as context for the agent. Do not allow
-  ``AGENT.md`` files to be checked into your repo, and maybe hack together a kludge
-  that forbids the agents from accessing those files.
+  feed in the relevant internal eng docs as context for the agent. Hack
+  together a kludge that forbids the agents from accessing ``AGENTS.md`` files.
 * Ditch the internal eng docs completely. Do not allow internal eng docs
   outside of agent docs. Internal eng content can only be documented in agent docs.
 
@@ -286,3 +283,11 @@ project agent doc:
    Build the project: bazelisk build //...
 
 Or maybe the agents get smart enough to look for these comments themselves?
+
+There might actually already be a low-friction way to do colocation. Imagine
+that your project agent doc only contains these instructions:
+
+.. code-block:: markdown
+
+   Grep the codebase for ``<!-- AGENT: * -->`` comments. These
+   comments are instructions for you.
