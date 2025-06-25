@@ -7,8 +7,19 @@
       Field notes from the frontier of technical writing.
     </description>
     <language>en-us</language>
-    <pubDate>Thu, 15 May 2025 15:34:40 -0700</pubDate>
+    <pubDate>Wed, 25 Jun 2025 16:35:58 -0700</pubDate>
     <atom:link href="https://technicalwriting.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Docs for AI agents</title>
+      <link>https://technicalwriting.dev/ai/agents/index.html</link>
+      <description>
+        What are docs for AI agents? How are they different than internal eng docs? Do
+        we really have to maintain the agent docs and eng docs as separate docs sets?
+        This page contains my notes on these questions.
+      </description>
+      <pubDate>Wed, 25 Jun 2025 16:35:58 -0700</pubDate>
+      <guid>https://technicalwriting.dev/ai/agents/index.html</guid>
+    </item>
     <item>
       <title>Understanding task types in the Gemini Embedding API</title>
       <link>https://technicalwriting.dev/ml/embeddings/tasks/index.html</link>
