@@ -1,8 +1,6 @@
 .. _agents:
 
 .. _How to Make Your Developer Documentation Work with LLMs: https://fusionauth.io/blog/llms-for-docs
-.. _optimize docs for RAG-based chatbots: https://docs.kapa.ai/improving/writing-best-practices
-.. _Writing documentation for AI: https://docs.kapa.ai/improving/writing-best-practices
 .. _llms.txt: https://llmstxt.org
 .. _Rules: https://docs.cursor.com/context/rules
 .. _Claude Code Best Practices: https://www.anthropic.com/engineering/claude-code-best-practices
@@ -19,6 +17,14 @@
 .. _system prompt: https://help.flintk12.com/en/articles/9025167-what-is-a-system-prompt
 .. _Manage Claude's memory: https://docs.anthropic.com/en/docs/claude-code/memory
 .. _Prompt iteration strategies: https://developers.google.com/machine-learning/resources/prompt-eng#prompt_iteration_strategies
+.. _Agents.md Example: https://agentsmd.net/#example
+.. _Diataxis: https://diataxis.fr
+.. _how-to guide: https://diataxis.fr/how-to-guides/
+.. _reference: https://diataxis.fr/reference/
+.. _Share with your team: https://www.youtube.com/live/6eBSHbLKuN0?t=1043s
+.. _Memory & project docs: https://github.com/openai/codex?tab=readme-ov-file#memory--project-docs
+.. _contextFileName: https://github.com/google-gemini/gemini-cli/blob/3a369ddec3b226dea9d1a9dcc3bae048310edffd/docs/cli/configuration.md?plain=1#L36
+.. _path\:CLAUDE.md: https://github.com/search?q=path%3ACLAUDE.md&type=code
 
 ==================
 Docs for AI agents
@@ -26,25 +32,28 @@ Docs for AI agents
 
 .. figure:: ./agents.png
 
-What are docs for AI agents? How are they different than docs for humans?
-How are they similar? Do we have to maintain them as separate docs sets
-or can they be combined somehow? This page contains my notes on these
-questions. 
+What are docs for AI agents? How are they different than internal eng docs? Do
+we really have to maintain the agent docs and eng docs as separate docs sets?
+This page contains my notes on these questions.
 
-(This post is a work in progress.)
+-----------------
+Internal eng docs
+-----------------
 
------
-Scope
------
+I'm going to reference this type of docs a lot, so let me define the term now
+and explain why these docs are important to the agent docs discussion.
 
-* I work on *developer* docs i.e. docs for software engineers. I don't know
-  if AI agents are relevant for technical writers in other industries or
-  domains.
+**Internal eng docs** are the docs that engineering teams write for their own
+use. The goal is to share knowledge and standardize workflows among the team.
+E.g. an RFC explaining a key design decision, a guide explaining how to build
+the project, a tutorial explaining how to contribute your first patch, etc. In
+open source projects these types of docs are often called "contributor docs".
 
-* In this post I'm thinking specifically about docs for AI *agents*. I'm not
-  sure that an all-encompassing "best practices when writing docs for AI" exists.
-  The way that we `optimize docs for RAG-based chatbots`_ (for example) is
-  probably different than the way we optimize docs for AI agents.
+As the meme at the start of the post suggests, my hunch is that agent docs are
+largely the same thing as internal eng docs. Yet the agent providers are
+steering us towards maintaining them as separate docs sets. I worry that having
+the agent docs divorced from the internal eng docs will result in a lot of
+duplicated and contradictory information over the long run.
 
 .. _agents-background:
 
@@ -53,23 +62,32 @@ AI agents
 ---------
 
 As a software developer, your primary interface for interacting with an AI
-agent is through a chat interface that's been bolted onto your CLI or IDE.
-See `Claude Code`_ for a CLI example and `Cursor`_ for an IDE example. The
-power of AI agents is their ability to use "tools" to act on your behalf, in
-addition to all the cool stuff that LLMs can do.
+agent is through a chat interface that's been bolted onto your CLI (e.g.
+`Claude Code`_) or IDE (e.g. `Cursor`_). The power of AI agents is their
+ability to combine LLM capabilities with **tools** like web search and
+``grep``.
 
-For example, suppose that you need to understand the history of a file
-in your codebase. With a single prompt like ``look through the git and
-github history of searchtools.js and summarize the evolution of the file``
-the agent will:
+Example
+=======
+
+Suppose that you need to understand the history of a file
+in your codebase. With a single prompt like this:
+
+.. code-block:: text
+
+   look through the git and github history of searchtools.js and
+   summarize the evolution of the file
+
+The agent will:
 
 * Run the relevant ``git`` commands in your terminal
 * Fetch the contents of all GitHub issues mentioned in the commits
 * Synthesize the information with an LLM
 * Write the summary to a file
 
-This really works! See `searchtools.txt`_ and `searchtools.md`_ for an
-example.
+This really works! See `searchtools.txt`_ for an example of Claude Code
+working through this problem and `searchtools.md`_ for the generated
+summary.
 
 ----------
 Agent docs
@@ -79,9 +97,12 @@ Agent docs are a way to get better results from the agents. Agent docs
 make the agent output more consistent, more aligned with your codebase
 conventions, and more accurate.
 
-For example, when first trying out Claude Code (CC) on this website's
-repository, I instructed CC to build the site. CC searched through the
-codebase and made a reasonable (but incorrect) guess:
+Example
+=======
+
+When first trying out Claude Code (CC) on this website's repository, I
+instructed CC to build the site. CC searched through the codebase and made a
+reasonable (but incorrect) guess:
 
 .. code-block:: text
 
@@ -102,196 +123,166 @@ codebase and made a reasonable (but incorrect) guess:
    ● Bash(bazel build //...)
      ⎿  Running…
 
-CC correctly determined that this is a
-:ref:`Sphinx site built with Bazel <sphazel-tutorial>`, but it got the
-specific build command wrong. The correct command is
-``./bazelisk build //:docs``. After adding that command to an agent doc,
-CC now always builds the site correctly, even if my prompt is simply
+CC correctly determined that this is a :ref:`Sphinx site built with Bazel
+<sphazel-tutorial>`, but it got the specific build command wrong. The correct
+command is ``./bazelisk build //:docs``. After adding that command to an agent
+doc, CC now always builds the site correctly, even if my prompt is simply
 ``build``.
 
-Mechanics
-=========
+Implementation
+==============
 
-How exactly do agents use docs?
+Suppose that you want to spin up agent docs for your project. Here's what you do.
 
-`Agents.md`_ makes it sound like a sophisticated, anthropomorphic process
-of analysis:
+The agent providers look for these docs in the root directory of your project:
 
-  When OpenAI Codex or another AI agent encounters an Agents.md file in
-  your repository, it analyzes the information to guide its code generation
-  process. The Agents.md file acts as a knowledge base that informs the AI
-  about your project context, ensuring that AI-generated code follows your
-  project's standards.
+* Claude Code: ``//CLAUDE.md``
+* Gemini CLI: ``//GEMINI.md``
+* Codex CLI: ``//AGENTS.md``
 
-The reality seems to be much more mundane. Based off my reading of Claude Code
-docs, Codex docs, Cursor docs, etc. it seems like the real mechanism is just
-automated prompt engineering. The agent software looks for a file with a
-specific name like ``AGENTS.md`` at a well-known location, such as the root
-directory of your codebase. If found, then the full contents of that file are
-prepended to any LLM API calls that the agent software makes.
-For example, if my ``AGENTS.md`` file contains ``build the docs: ./bazelisk
-build //:docs`` and the command that I just sent to the agent is ``build``,
-then the underlying API call that the agent software makes to an LLM looks
-like this:
+I hope the agent providers standardize around the generic ``AGENTS.md`` name.
+It seems like all of these files serve the same purpose. There's no need to
+have a product-specific filename like ``CLAUDE.md`` or ``GEMINI.md``. It looks
+like Gemini CLI allows you to configure the filename via `contextFileName`_. It
+seems like Claude Code requires the ``CLAUDE.md`` filename and doesn't let you
+configure it to something else. (I'm going to use all three filenames
+interchangeably in this section to drive home the idea that all of these
+filenames serve the same fundamental purpose.)
+
+(``//`` is shorthand for "the root directory of your project". E.g. if
+your project is located at ``~/repo/app`` then ``//CLAUDE.md`` resolves
+to ``~/repo/app/CLAUDE.md``.)
+
+I'll call this the **project agent doc**.
+
+Whenever the agent needs to make an LLM API call, it prepends the project agent
+doc in its entirety as a `system prompt`_. For example, if my ``AGENTS.md`` file
+contains ``foo`` and my current command to the agent is ``bar``, then the
+underlying API call looks something like this:
 
 .. code-block:: py
-
-   from openai import OpenAI
-   client = OpenAI()
 
    response = client.responses.create(
        model="gpt-4.1",
        input=[
            {
                "role": "developer",
-               "content": "build the docs: ./bazelisk build //:docs"
+               "content": "foo"
            },
            {
                "role": "user",
-               "content": "build"
+               "content": "bar"
            }
        ]
    )
 
-   print(response.output_text)
+I couldn't find any evidence that the agents do any further processing or
+analysis of the agent docs beyond this automated prompt engineering.
+Please correct me if I'm wrong.
 
------------------------------------
-Agent docs versus internal eng docs
------------------------------------
+The project agent doc is always prepended to the API calls no matter what,
+so it seems important to keep the project agent doc highly curated.
 
-As the meme at the start of the post suggests, my hunch is that "docs for AI
-agents" are largely the same thing as "internal eng docs".  These are the docs
-that engineering teams write for their own use. The goal is to share knowledge
-and standardize workflows among the team. E.g. an RFC explaining a key
-architectural decision in the codebase, a guide explaining how to build the
-project, a tutorial explaining how to contribute your first patch, etc.  In
-open source projects these types of docs are often called "contributor docs".
+You can also create **subdirectory agent docs**. These agent docs are
+only used when the agent does something that involves that subdirectory.
+E.g. ``//docs/GEMINI.md`` is only added to the system prompt when the
+agent is doing stuff in the ``//docs`` directory.
 
-Problem
-=======
+You can also create a **user agent doc** in your home directory. This
+agent doc is for truly global instructions that you want the agent to
+run no matter what in every project.
 
-The current design of agent docs is steering us towards maintaining the agent
-docs as a separate docs set. E.g. your agent docs must have a specific name
-like ``CLAUDE.md`` or ``AGENTS.md`` and the docs must be located at specific
-locations. I think this might be a mistake.
+As to the contents within an ``AGENTS.md`` file, it's just basic
+Markdown. In terms of `Diataxis`_ doc types, the content is a mix
+between `how-to guide`_ and `reference`_. See `AGENTS.md Example`_.
+See also the search results for `path:CLAUDE.md`_ for a bunch of examples
+of real-world ``CLAUDE.md`` files.
 
-Agent docs seem to be duplicating the information that already exists in the
-internal eng docs. Duplicated information is the root of a lot of docs sins.
-I worry that the agent docs will eventually get out-of-sync with the internal
-eng docs, and the two docs sets will start saying contradictory things about
-the same topics. E.g. the internal eng docs say that you must instantiate
-objects via static factory methods, whereas the agent docs say that it's OK
-to use constructors directly. This one would probably get caught at review time.
-A discrepancy related to codebase design might be more insidious, though.
+References:
+
+* `Share with your team`_ 
+* `Memory & project docs`_
+* `Manage Claude's memory`_
+
+-------------------------
+Gotta keep 'em separated?
+-------------------------
+
+As mentioned before, the current design of agent docs is steering us towards
+maintaining the agent docs and the internal eng docs as separate docs set.
+The agent docs must have a specific filename, and the location of the agent
+docs is very significant. I'm not decided yet whether this is the right approach.
+Here are some pros and cons.
+
+Pros (i.e. reasons we should keep agent docs separate from internal eng docs):
+
+* Writing style. E.g. agent docs, using all caps might be an effective way to
+  emphasize a particular instruction. In internal eng docs, this might come off
+  rude or distracting.
+
+* Completeness. In the agent docs, you probably must highly curate the content.
+  If you put in too much content, you will blast through tokens and probably
+  reduce LLM output quality. In internal eng docs, we ideally aim for 100%
+  completeness. I.e. every important design decision, API reference, workflow,
+  etc. is documented somewhere.
+
+* Goals. The goal of agent docs is to steer the agent towards the correct workflow,
+  coding style, architecture, API usage, etc. on behalf 
+
+Cons (i.e. reasons we should find a way to unite agent docs and internal eng docs):
+
+* Duplication. Conceptually, agent docs are a subset of internal eng docs.
+  The underlying goal is the same. You're documenting workflows and knowledge
+  that's important to the team. But now you need to maintain that same information
+  in two different doc sets.
+
+I'll wrap up this post with some potential solutions to the problem.
+
+Automatic synchronization
+=========================
 
 Maybe we can use AI agents themselves to keep the agent docs in-sync with the
 internal eng docs? It sounds feasible, but I'm not sure how much it will
 actually happen in practice. Time will tell.
 
-But more importantly, if you think that `partial autonomy`_ is the right way to
-build AI systems over the medium-term, then combining or colocating the agent
-docs with the internal eng docs should be the default solution because it
-increases the odds that humans are constantly verifying the instructions that are
-provided to the agents. I explain these "combine" and "colocate" ideas in more
-depth later, but the basic gist is that you don't want the agent docs tucked off
-in a corner, where no humans actually read them. You want to set up your codebase
-so that engineers are naturally reading and updating the agent docs all the
-time, as a natural byproduct of their work.
+Combine
+=======
 
------------
-Comparisons
------------
+"Combining" means that the agent docs and internal eng docs are literally one
+and the same. I only see two ways to do this:
 
-To get closer to an answer regarding whether or not agent docs should be separate
-from internal eng docs, I'm going to compare and contrast the two types of docs
-across various dimensions. If there are huge differences, then they should be
-separate docs sets. If there aren't, then we should find a way to combine or colocate
-the agent docs with the internal eng docs.
+* Ditch the agent docs completely. When you need to do some particular task,
+  feed in the relevant internal eng docs as context for the agent. Do not allow
+  ``AGENT.md`` files to be checked into your repo, and maybe hack together a kludge
+  that forbids the agents from accessing those files.
+* Ditch the internal eng docs completely. Do not allow internal eng docs
+  outside of agent docs. Internal eng content can only be documented in agent docs.
 
-The comparison sections are ordered alphabetically, not by importance.
-
-All caps
+Colocate
 ========
 
-In agent docs, all caps is an effective way to emphasize an important
-instruction. In internal eng docs, this might seem rude or distracting.
+Embed the agent docs as comments within the internal eng docs. Use an automated
+script to extract the comments from the internal eng docs and copy them to the
+``AGENTS.md`` files. I.e. the ``AGENTS.md`` files become a read-only build artifact.
 
-I actually think that we should adapt internal eng docs to be more accepting of
-all caps. It seems like a pretty effective, plaintext way to emphasize a point.
-You see all caps used in code comments sometimes, but it's only used in extreme
-situations.
+E.g. this is your internal eng doc:
 
-Completeness
-============
+.. code-block:: markdown
 
-There's a finite amount of information that you can put into the agent docs
-before you start overwhelming the LLM and reducing the quality of its outputs.
+   # Build the project
 
-With internal eng docs, we aim for completeness. You ideally want documentation
-for all APIs, important concepts, key workflows, etc.
+   ## Setup
 
-File formats
-============
+   <!-- AGENT: Build the project: bazelisk build //... -->
 
-Agent docs are strongly encouraged to be written in Markdown because LLMs
-understand Markdown very well. Internal eng docs are also usually written
-in Markdown.
+   1. Install [Bazelisk](…).
+   2. …
 
-Goals
-=====
+Your automated script extracts the comment for the agent and places this into your
+project agent doc:
 
-The goal of agent docs is to steer the agent towards correct workflows,
-coding styles, architectures, API usage, etc. Internal eng docs have the same
-goals. The only difference is that you're trying to steer an engineer towards
-those successful outcomes, not a language model.
+.. code-block:: markdown
 
-.. -----
-.. Ideas
-.. -----
-.. 
-.. Combine
-.. =======
-.. 
-.. "Combining" means that the agent docs and internal eng docs are literally one
-.. and the same. 
-.. 
-.. Colocate
-.. ========
-.. 
-.. "Colocating" means that the agent docs are embedded within the
-.. internal eng docs and you do some automated processing to transform the content
-.. into the ``AGENTS.md`` files at well-known locations. I suspect that these are
-.. better approaches, because engineers will be keeping the agent docs aligned with
-.. the internal eng docs as a natural byproduct of their day-to-day work.
-.. 
-.. 
-.. Build up the agent docs programmatically
-.. ========================================
-.. 
-.. .. Claude Code ``#`` thing is cool
-.. .. Analyze the whole codebase and build up the docs for us
-.. 
-.. Ditch the product-branded filenames
-.. ===================================
+   Build the project: bazelisk build //...
 
-.. _agents-references:
-
-----------
-References
-----------
-
-* `How to Make Your Developer Documentation Work with LLMs`_
-* `Writing documentation for AI`_
-* `llms.txt`_
-* `Rules`_
-* `Claude Code Best Practices`_
-* `Software in the era of AI`_
-* `Agents.md Guide for OpenAI Codex`_
-
-.. _agents-changelog:
-
----------
-Changelog
----------
-
-TODO
+Or maybe the agents get smart enough to look for these comments themselves?
