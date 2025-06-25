@@ -237,7 +237,7 @@ For:
   rude or distracting.
 
 * Completeness. In agent docs, you likely need to keep the content highly curated.
-  If you put in too much content, you'll blast through your API quotes quickly and will
+  If you put in too much content, you'll blast through your API quotas quickly and will
   probably reduce LLM output quality. In internal eng docs, we ideally aim for 100%
   completeness. I.e. every important design decision, API reference, workflow,
   etc. is documented somewhere.
@@ -253,8 +253,8 @@ I'm probably missing a lot of arguments for and against. Please help me think up
 
 I'll wrap up this post with some potential solutions to the problem.
 
-Automatic synchronization
-=========================
+Synchronize
+===========
 
 Maybe we can use AI agents themselves to keep the agent docs in-sync with the
 internal eng docs? It sounds feasible, but I'm not sure how much it will
@@ -306,5 +306,6 @@ that your project agent doc only contains these instructions:
 
 .. code-block:: markdown
 
-   Grep the codebase for ``<!-- AGENT: * -->`` comments. These
-   comments are instructions for you.
+   Grep the codebase for ``<!-- AGENT: * -->``
+   comments that are relevant to your current
+   task.
