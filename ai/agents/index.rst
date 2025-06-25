@@ -25,6 +25,10 @@
 .. _Memory & project docs: https://github.com/openai/codex?tab=readme-ov-file#memory--project-docs
 .. _contextFileName: https://github.com/google-gemini/gemini-cli/blob/3a369ddec3b226dea9d1a9dcc3bae048310edffd/docs/cli/configuration.md?plain=1#L36
 .. _path\:CLAUDE.md: https://github.com/search?q=path%3ACLAUDE.md&type=code
+.. _Gemini CLI: https://github.com/google-gemini/gemini-cli
+.. _Aider: https://aider.chat/
+.. _Windsurf: https://windsurf.com/
+.. _Copilot: https://github.com/features/copilot
 
 ==================
 Docs for AI agents
@@ -35,6 +39,17 @@ Docs for AI agents
 What are docs for AI agents? How are they different than internal eng docs? Do
 we really have to maintain the agent docs and eng docs as separate docs sets?
 This page contains my notes on these questions.
+
+Scope:
+
+* I work on *developer* docs i.e. docs for software engineers. I don't know
+  how relevant AI agents are for technical writers in other industries or
+  domains.
+
+* I'm thinking specifically about docs for AI *agents*. I'm not
+  sure that an all-encompassing "docs for AI best practices" exists. The way
+  that we optimize docs for RAG-based chatbots (for example) is probably
+  different than the way we optimize docs for AI agents.
 
 -----------------
 Internal eng docs
@@ -63,7 +78,8 @@ AI agents
 
 As a software developer, your primary interface for interacting with an AI
 agent is through a chat interface that's been bolted onto your CLI (e.g.
-`Claude Code`_) or IDE (e.g. `Cursor`_). The power of AI agents is their
+`Claude Code`_, `Gemini CLI`_, `Aider`_, etc.) or IDE (e.g. `Cursor`_,
+`Windsurf`_, `Copilot`_, etc.). The power of AI agents is their
 ability to combine LLM capabilities with **tools** like web search and
 ``grep``.
 
@@ -199,6 +215,7 @@ References:
 * `Share with your team`_ 
 * `Memory & project docs`_
 * `Manage Claude's memory`_
+* `Rules`_
 
 -------------------------
 Gotta keep 'em separated?
