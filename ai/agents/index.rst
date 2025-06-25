@@ -1,5 +1,3 @@
-.. _agents:
-
 .. _How to Make Your Developer Documentation Work with LLMs: https://fusionauth.io/blog/llms-for-docs
 .. _llms.txt: https://llmstxt.org
 .. _Rules: https://docs.cursor.com/context/rules
@@ -29,6 +27,8 @@
 .. _Aider: https://aider.chat/
 .. _Windsurf: https://windsurf.com/
 .. _Copilot: https://github.com/features/copilot
+
+.. _agents:
 
 ==================
 Docs for AI agents

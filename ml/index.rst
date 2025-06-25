@@ -42,8 +42,6 @@ Miscellaneous
 
 * :ref:`hyperlint`.
 
-* :ref:`agents`.
-
 .. -------------
 .. Uncategorized
 .. -------------
