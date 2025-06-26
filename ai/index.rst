@@ -7,3 +7,4 @@ Artificial intelligence
    :maxdepth: 1
 
    agents/index
+   tokens

@@ -43,6 +43,8 @@ sphinx_docs_library(
         "ai/agents/agents.png",
         "ai/agents/index.rst",
         "ai/index.rst",
+        "ai/tokens.py",
+        "ai/tokens.rst",
         "analytics/index.rst",
         "analytics/sheets.rst",
         "index.rst",
