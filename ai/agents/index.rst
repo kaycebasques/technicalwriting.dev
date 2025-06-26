@@ -225,10 +225,8 @@ As mentioned before, the current design of agent docs is steering us towards
 maintaining the agent docs and the internal eng docs as separate docs sets.
 The agent docs must have a specific filename, and the location of the agent
 docs is very significant. My hunch is that the agent providers are steering
-us towards a world of pain, but I'm not decided yet. Here are some arguments
-for (i.e. keeping the agent docs and internal eng docs separate is the right approach)
-and against (i.e. uniting the agent docs and internal eng docs somehow is the
-right approach).
+us towards a world of duplicated information, but I'm not decided yet. Here
+are some arguments for and against keeping the docs sets separate.
 
 For:
 
@@ -236,11 +234,21 @@ For:
   emphasize a particular instruction. In internal eng docs, this might come off
   rude or distracting.
 
-* Completeness. In agent docs, you likely need to keep the content highly curated.
+* Conciseness vs. completeness. In agent docs, you likely need to keep the content highly curated.
   If you put in too much content, you'll blast through your API quotas quickly and will
   probably reduce LLM output quality. In internal eng docs, we ideally aim for 100%
   completeness. I.e. every important design decision, API reference, workflow,
   etc. is documented somewhere.
+
+* Differing knowledge needs. The information that LLMs need help with is not the same as
+  the information that human engineers need help with. For example, Gemini 2.5 Pro
+  has pretty good built-in awareness of Pigweed's C++ Style Guide. I tested that
+  assertion by invoking the Gemini API and instructing it ``Recite the Pigweed
+  C++ Guide in its entirety``. It did not recite in full, but it gave a detailed
+  summary of all the points. So the Gemini 2.5 Pro API was either trained on the style
+  guide, or it's able to retrieve the style guide when needed. Therefore, it's
+  not necessary to include the full style guide as ``AGENTS.md`` context.
+  (Credit to Keir Mierle for this idea.)
 
 Against:
 
@@ -309,3 +317,15 @@ that your project agent doc only contains these instructions:
    Grep the codebase for ``<!-- AGENT: * -->``
    comments that are relevant to your current
    task.
+
+Import
+======
+
+A lot of the agent providers support an ``@`` syntax within agent docs that allows
+you to import other files.
+
+.. code-block:: text
+
+   Consult @CONTRIBUTING.md for project development guidance.
+
+(Credit to Brandon Bloom for this idea.)
