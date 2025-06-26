@@ -1,10 +1,3 @@
-# Setup:
-#
-# python3 -m venv venv  # make sure that this `venv` dir is also in your .gitignore!
-# . venv/bin/activate or . venv/bin/activate.fish
-# python3 -m pip install google-genai
-# python3 tokens.py
-
 from json import dump, load
 from os import environ, walk
 from pathlib import Path
@@ -40,7 +33,8 @@ def collect(root: Path) -> (list[Path], int):
     """Collect all paths in the repository."""
     paths: list[Path] = []
     ignored: list[Path] = []
-    tokens = 0
+    data = []
+    total = 0
     for current_working_dir, _, files in walk(root):
         cwd = Path(current_working_dir)
         if _is_in_ignored_dir(cwd, ignored):
@@ -66,16 +60,26 @@ def collect(root: Path) -> (list[Path], int):
                 response = gemini.models.count_tokens(
                     model="gemini-2.5-flash", contents=contents
                 )
-                tokens += response.total_tokens
-    return (paths, tokens)
+                tokens = response.total_tokens
+                total += tokens
+                key = str(path)
+                data.append([key, tokens])
+    filenames = sorted(data, key=lambda tup: tup[0])
+    filenames = [f"{x[0]}: {x[1]}" for x in filenames]
+    tokens = sorted(data, key=lambda tup: tup[1], reverse=True)
+    tokens = [f"{x[0]}: {x[1]}" for x in tokens]
+    with open("filenames.txt", "w") as f:
+        f.write("\n".join(filenames))
+    with open("tokens.txt", "w") as f:
+        f.write("\n".join(tokens))
+    print("*" * 80)
+    print(f"file count: {len(paths)}")
+    print(f"tokens: {total}")
 
 
 def main():
     root = Path(".")
-    paths, tokens = collect(root)
-    print("*" * 80)
-    print(f"file count: {len(paths)}")
-    print(f"tokens: {tokens}")
+    collect(root)
 
 
 if __name__ == "__main__":
