@@ -1,4 +1,6 @@
-# python3 -m venv venv
+# Setup:
+#
+# python3 -m venv venv  # make sure that this `venv` dir is also in your .gitignore!
 # . venv/bin/activate or . venv/bin/activate.fish
 # python3 -m pip install google-genai
 # python3 tokens.py
