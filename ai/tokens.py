@@ -1,3 +1,8 @@
+# python3 -m venv venv
+# . venv/bin/activate or . venv/bin/activate.fish
+# python3 -m pip install google-genai
+# python3 tokens.py
+
 from json import dump, load
 from os import environ, walk
 from pathlib import Path
