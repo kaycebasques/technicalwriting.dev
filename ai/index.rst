@@ -6,5 +6,6 @@ Artificial intelligence
    :hidden:
    :maxdepth: 1
 
+   agents/colocate
    agents/index
    tokens

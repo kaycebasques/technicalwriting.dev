@@ -41,6 +41,8 @@ sphinx_docs_library(
         "404.rst",
         "about.rst",
         "ai/agents/agents.png",
+        "ai/agents/colocate.rst",
+        "ai/agents/colocate.txt",
         "ai/agents/index.rst",
         "ai/index.rst",
         "ai/tokens.py",

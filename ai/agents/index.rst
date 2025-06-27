@@ -280,6 +280,8 @@ and the same. I only see two ways to do this:
 * Ditch the internal eng docs completely. Do not allow internal eng docs
   outside of agent docs. Internal eng content can only be documented in agent docs.
 
+.. _agents-colocate:
+
 Colocate
 ========
 
