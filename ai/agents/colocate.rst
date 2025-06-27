@@ -1,6 +1,6 @@
 .. _Guidelines for buildable and testable code examples: https://pigweed.dev/docs/contributing/docs/examples.html
 .. _examples.rst: https://cs.opensource.google/pigweed/pigweed/+/c66eb854d321815eca1b0d4cbdfb893a43ab0b5d:docs/contributing/docs/examples.rst;bpv=1
-.. _pwrev.dev/301461/1: https://pigweed-review.git.corp.google.com/c/pigweed/pigweed/+/301461/1
+.. _pwrev.dev/301461/1: https://pigweed-review.googlesource.com/c/pigweed/pigweed/+/301461/1
 
 .. _colocate:
 
