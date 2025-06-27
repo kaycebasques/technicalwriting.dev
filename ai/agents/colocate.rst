@@ -1,11 +1,11 @@
-.. _colocate:
-
 .. _Guidelines for buildable and testable code examples: https://pigweed.dev/docs/contributing/docs/examples.html
 .. _examples.rst: https://cs.opensource.google/pigweed/pigweed/+/c66eb854d321815eca1b0d4cbdfb893a43ab0b5d:docs/contributing/docs/examples.rst;bpv=1
 
-=======================================================
-Experiment: colocating agent instructions with eng docs
-=======================================================
+.. _colocate:
+
+========================================================
+(Experiment) Colocating agent instructions with eng docs
+========================================================
 
 In :ref:`my initial investigation of docs for AI agents <agents>`
 I expressed skepticism over the current design of agent docs.
