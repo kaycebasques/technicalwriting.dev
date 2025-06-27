@@ -1,5 +1,6 @@
 .. _Guidelines for buildable and testable code examples: https://pigweed.dev/docs/contributing/docs/examples.html
 .. _examples.rst: https://cs.opensource.google/pigweed/pigweed/+/c66eb854d321815eca1b0d4cbdfb893a43ab0b5d:docs/contributing/docs/examples.rst;bpv=1
+.. _pwrev.dev/301461/1: https://pigweed-review.git.corp.google.com/c/pigweed/pigweed/+/301461/1
 
 .. _colocate:
 
@@ -103,7 +104,8 @@ that you get the best results when you have both agent docs and more targeted
 instructions like `examples.rst`_ that you load in when you're trying to accomplish
 a particular task.
 
-Below is the full log.
+Below is the full log. See `pwrev.dev/301461/1`_ to view the code that Gemini CLI
+generated.
 
 .. literalinclude:: ./colocate.txt
    :language: text
