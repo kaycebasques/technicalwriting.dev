@@ -83,7 +83,7 @@ and then instructed Gemini CLI to migrate a specific code example:
 Results
 -------
 
-It worked surprisingly great! Gemini CLI followed the agent instructions
+It worked really well. Gemini CLI followed the agent instructions
 that I put at the top of the `examples.rst`_ file:
 
 * Crucially, it created a failing test first, verified that the test fails,
@@ -100,7 +100,8 @@ require me to run this workflow in a project that doesn't have any agent
 docs. The Pigweed repo does have an agent doc, as you can tell after I run
 the ``/memory show`` command. So, if anything, this experiment may be suggesting
 that you get the best results when you have both agent docs and more targeted
-instructions that you load in ad-hoc.
+instructions like `examples.rst`_ that you load in when you're trying to accomplish
+a particular task.
 
 Below is the full log.
 
