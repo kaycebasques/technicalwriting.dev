@@ -18,11 +18,9 @@ out-of-sync with one another, and you end up in the confusing
 situation where you're not sure whether the agent docs or the internal
 eng docs are correct.
 
-At the end of the post I proposed various solutions for keeping the
-agent docs in-sync with the internal eng docs. In :ref:`agents-colocate`,
-I basically propose embedding the agent instructions within the
-internal eng docs.
-
+At the end of :ref:`agents` I propose various solutions to the synchronization
+problem. In :ref:`agents-colocate`, I basically propose embedding the
+agent instructions within the internal eng docs.
 I tried out the colocate solution today, and it worked great!
 Here are the details.
 
