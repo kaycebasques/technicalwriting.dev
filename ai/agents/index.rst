@@ -27,6 +27,7 @@
 .. _Aider: https://aider.chat/
 .. _Windsurf: https://windsurf.com/
 .. _Copilot: https://github.com/features/copilot
+.. _IfThisThenThat: https://fuchsia.dev/fuchsia-src/development/source_code/presubmit_checks#ifthisthenthat
 
 .. _agents:
 
@@ -331,3 +332,12 @@ you to import other files.
    Consult @CONTRIBUTING.md for project development guidance.
 
 (Credit to Brandon Bloom for this idea.)
+
+IfThisThenThat
+==============
+
+`IfThisThenThat`_ is a presubmit tool that helps ensure that files stay synchronized
+with each other. You mark up two or more files with comments that indicate that if one
+file is changed, then the others should be changed as well.
+
+.. TODO: Add example.
