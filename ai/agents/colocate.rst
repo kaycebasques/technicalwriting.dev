@@ -8,22 +8,18 @@
 (Experiment) Colocating agent instructions with eng docs
 ========================================================
 
-In :ref:`my initial investigation of docs for AI agents <agents>`
-I expressed skepticism over the current design of agent docs.
-The agent providers (Claude Code, Gemini CLI, Cursor, etc.) are
-steering us towards maintaining the agent docs as a new, separate
-docs set. Yet agent docs seem to be very similar to internal eng docs.
-I worry that we'll end up duplicating a lot of information across the
-two docs sets. Inevitably, the duplicated information gets
-out-of-sync with one another, and you end up in the confusing
-situation where you're not sure whether the agent docs or the internal
-eng docs are correct.
+In my initial investigation of agent docs (:ref:`agents`) I expressed
+skepticism over the current design of agent docs.  Agent providers like Claude
+Code, Gemini CLI, Cursor, and so on are steering us towards maintaining agent
+docs as a new docs set, separate from preexisting internal eng docs. I worry
+that we'll end up duplicating a lot of information across the two docs sets.
+Inevitably, the duplicated information gets out-of-sync with each other.
 
-At the end of :ref:`agents` I propose various solutions to the synchronization
-problem. In :ref:`agents-colocate`, I basically propose embedding the
-agent instructions within the internal eng docs.
-I tried out the colocate solution today, and it worked great!
-Here are the details.
+In :ref:`agents-colocate`, I basically propose embedding the agent instructions
+within the internal eng docs.  I tried out the colocate solution today, and the
+results were promising. Here are the details.
+
+.. _colocate-background:
 
 ----------
 Background
@@ -65,6 +61,8 @@ These comments are the instructions for the agent. I embedded them within
 the eng doc, rather than spinning up a separate agent doc like ``CLAUDE.md``,
 ``GEMINI.md``, ``AGENTS.md``, etc.
 
+.. _colocate-experiment:
+
 ----------
 Experiment
 ----------
@@ -80,29 +78,34 @@ and then instructed Gemini CLI to migrate a specific code example:
      has a mistake. When you update the sphinx_docs_library Bazel rules, you should
      update the `srcs` list, not the `deps` list.
 
+.. _colocate-results:
+
 -------
 Results
 -------
 
-It worked really well. Gemini CLI followed the agent instructions
-that I put at the top of the `examples.rst`_ file:
+It worked really well. Gemini CLI closely followed the agent instructions
+that I provided. Specifically:
 
-* Crucially, it created a failing test first, verified that the test fails,
-  and then updated the test to pass.
-
+* I told Gemini CLI to first create a failing test, verify that the test fails,
+  and then fix it. It did exactly that. 
+  
 * I got inadvertent confirmation that Gemini CLI was following my instructions
   closely. There's a mistake in ``examples.rst``. It instructs you to update
   the ``deps`` list in the ``sphinx_docs_library``. You actually need to update
   the ``srcs`` list. The first time I tried this workflow, Gemini CLI got
   confused because it could not find a ``deps`` list on the rule.
 
-However, note that this is not a "pure" experiment. A pure experiment would
-require me to run this workflow in a project that doesn't have any agent
-docs. The Pigweed repo does have an agent doc, as you can tell after I run
-the ``/memory show`` command. So, if anything, this experiment may be suggesting
-that you get the best results when you have both agent docs and more targeted
-instructions like `examples.rst`_ that you load in when you're trying to accomplish
-a particular task.
+Caveats:
+
+* This was an informal experiment. To properly control the experiment, the
+  repo should have no agent docs, i.e. no ``GEMINI.md`` files. This was not
+  the case. The Pigweed repo has an extensive agent doc, as you can see in
+  the logs after I run the ``/memory show`` command. So, it's still not clear
+  whether the agent would successfully complete the task if given only colocated
+  instructions. In other words, maybe this experiment is suggesting that you
+  get the best results when you have both agent docs and more targeted
+  instructions.
 
 Below is the full log. See `pwrev.dev/301461/1`_ to view the code that Gemini CLI
 generated.

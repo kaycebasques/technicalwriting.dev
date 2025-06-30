@@ -321,6 +321,25 @@ that your project agent doc only contains these instructions:
    comments that are relevant to your current
    task.
 
+Another approach is to append the agent instructions as a new section at the end
+of the doc. The agent instructions would be visible to everyone on the rendered
+webpage. Humans can potentially benefit from the instructions, and it makes the
+instructions easier to review. Modifying the previous example to demonstrate
+this approach:
+
+.. code-block:: markdown
+
+   # Build the project
+
+   ## Setup
+
+   1. Install [Bazelisk](…).
+   2. …
+
+   ## Appendix: Instructions for AI agents
+
+   Build the project: bazelisk build //...
+
 Import
 ======
 
