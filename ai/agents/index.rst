@@ -322,10 +322,10 @@ that your project agent doc only contains these instructions:
    task.
 
 Another approach is to append the agent instructions as a new section at the end
-of the doc. The agent instructions would be visible to everyone on the rendered
-webpage. Humans can potentially benefit from the instructions, and it makes the
-instructions easier to review. Modifying the previous example to demonstrate
-this approach:
+of the doc. (Credit to Curtis Galloway for this idea.) The agent instructions
+would be visible to everyone on the rendered webpage. Humans can potentially
+benefit from the instructions, and it makes the instructions easier to review.
+Modifying the previous example to demonstrate this approach:
 
 .. code-block:: markdown
 
