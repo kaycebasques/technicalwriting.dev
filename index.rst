@@ -25,6 +25,7 @@ Topics:
    about
    ai/index
    analytics/index
+   blogroll
    links/index
    ml/index
    sphinx/index
