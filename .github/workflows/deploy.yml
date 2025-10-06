@@ -19,7 +19,7 @@ jobs:
       - name: configure
         uses: actions/configure-pages@v5
       - name: build
-        run: ${{github.workspace}}/bazelisk build //:docs
+        run: ${{github.workspace}}/bazelisk/linux-amd64 build //:docs
       - name: upload
         uses: actions/upload-pages-artifact@v3
         with:
