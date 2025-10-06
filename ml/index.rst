@@ -40,8 +40,6 @@ Miscellaneous
   the process of removing code from over 200 GN build files. Here's how it
   went.
 
-* :ref:`hyperlint`.
-
 .. -------------
 .. Uncategorized
 .. -------------
@@ -76,7 +74,6 @@ Miscellaneous
    evals
    gn
    huggingface
-   hyperlint
    playing-nicely
    pocketflow/index
    products

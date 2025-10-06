@@ -28,7 +28,7 @@ Background
 Today on ``pigweed.dev``, we published `Guidelines for buildable and testable code examples`_.
 At the top of the page, I embedded AI agent instructions:
 
-.. code-block:: txt
+.. code-block:: none
 
    .. Instructions for AI agents (e.g. Gemini CLI):
    .. #. Follow the workflow described in :ref:`contributing-docs-quickstart-a`.

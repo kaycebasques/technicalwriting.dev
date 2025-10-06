@@ -28,7 +28,6 @@ extensions = [
     "sitemap",
     "sphinx.ext.mathjax",
     "sphinx_copybutton",
-    "sphinx_genai_huggingface",
     "sphinx_reredirects",
 ]
 html_extra_path = [

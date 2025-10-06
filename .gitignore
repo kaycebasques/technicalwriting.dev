@@ -1,6 +1,3 @@
-bazel-bin
-bazel-dev
-bazel-out
-bazel-testlogs
+.DS_Store
+bazel-*
 venv
-bazel-website
