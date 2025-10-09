@@ -8,5 +8,4 @@ Artificial intelligence
 
    agents/colocate
    agents/index
-   rag/bookmarks
    tokens

@@ -19,11 +19,11 @@ jobs:
       - name: configure
         uses: actions/configure-pages@v5
       - name: build
-        run: ${{github.workspace}}/bazelisk/linux-amd64 build //:docs
+        run: ${{github.workspace}}/bazelisk/linux-amd64 build //:website
       - name: upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{github.workspace}}/bazel-out/k8-fastbuild/bin/docs/_build/html
+          path: ${{github.workspace}}/bazel-bin/website/_build/html
       - name: deploy
         id: deployment
         uses: actions/deploy-pages@v4

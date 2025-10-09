@@ -11,13 +11,10 @@ Sphinx
 
 * :ref:`sphazel-tutorial`.
 
-* :ref:`incremental`.
-
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    bazel/tutorial
    bazel/context
-   bazel/incremental
    search
