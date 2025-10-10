@@ -360,3 +360,9 @@ with each other. You mark up two or more files with comments that indicate that 
 file is changed, then the others should be changed as well.
 
 .. TODO: Add example.
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   colocate

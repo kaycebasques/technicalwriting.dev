@@ -8,11 +8,13 @@ Field notes from the frontier of technical writing.
 
 Topics:
 
+* :ref:`agents`
+
 * :ref:`analytics`
 
-* :ref:`links`
+* :ref:`embeddings`
 
-* :ref:`ml`
+* :ref:`links`
 
 * :ref:`sphinx`
 
@@ -23,9 +25,10 @@ Topics:
 
    404
    about
-   ai/index
+   agents/index
    analytics/index
+   automation/index
+   embeddings/index
    links/index
-   ml/index
    sphinx/index
    strategy/index

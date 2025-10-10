@@ -40,9 +40,14 @@ project = "technicalwriting.dev"
 pygments_style = "github-dark"
 redirects = {
     "a11y/skip": "https://web.archive.org/web/20250225001215/https://technicalwriting.dev/a11y/skip.html",
-    "data/embeddings": "../embeddings/overview.html",
+    "ai/agents/index": "../agents/index.html",
+    "ai/agents/colocate": "../agents/colocate.html",
+    "data/embeddings": "../embeddings/underrated.html",
     "data/intertwingularity": "../links/intertwingularity.html",
-    "embeddings/overview": "../ml/embeddings/overview.html",
+    "embeddings/overview": "./embeddings/underrated.html",
+    "ml/embeddings/overview": "../embeddings/underrated.html",
+    "ml/embeddings/tasks/index": "../embeddings/tasks/index.html",
+    "ml/gn": "../automation/gn.html",
     "ml/plugins": "https://web.archive.org/web/20250222025828/https://technicalwriting.dev/ml/plugins.html",
     "seo/discovered-not-indexed": "https://web.archive.org/web/20250222024724/https://technicalwriting.dev/seo/discovered-not-indexed.html",
     "seo/sentry-overflow": "https://web.archive.org/web/20250221195536/https://technicalwriting.dev/seo/sentry-overflow.html",
